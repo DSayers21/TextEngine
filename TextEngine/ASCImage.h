@@ -5,53 +5,51 @@
 #include <map>
 #include "Pixel.h"
 
-class ASCImage
+namespace TxtEgn
 {
-public:
-	ASCImage()
+	class ASCImage
 	{
+	public:
+		ASCImage()
+		{
 
-	}
+		}
 
-	ASCImage(std::vector<Pixel> Img, int Width) : _Image(Img), _Width(Width)
-	{
+		ASCImage(std::vector<Pixel> Img, int Width) : _Image(Img), _Width(Width)
+		{
 
-	}
+		}
 
-	~ASCImage()
-	{
+		~ASCImage()
+		{
 
-	}
+		}
 
-	ASCImage(const ASCImage& other)
-	{
-		_Image = other._Image;
-		_Width = other._Width;
+		ASCImage(const ASCImage& other)
+		{
+			_Image = other._Image;
+			_Width = other._Width;
 
-	}
-	ASCImage operator=(const ASCImage &other)
-	{
-		_Image = other._Image;
-		_Width = other._Width;
-		return *this;
-	}
+		}
+		ASCImage operator=(const ASCImage &other)
+		{
+			_Image = other._Image;
+			_Width = other._Width;
+			return *this;
+		}
 
-	void Init(std::vector<Pixel>& Img, int Width)
-	{
-		_Image = Img;
-		_Width = Width;
-	}
+		void Init(std::vector<Pixel>& Img, int Width)
+		{
+			_Image = Img;
+			_Width = Width;
+		}
+		//Getters
+		std::vector<Pixel> GetImage() { return _Image; }
 
-	std::vector<Pixel> GetImage()
-	{
-		return _Image;
-	}
+		int GetWidth() { return _Width; }
 
-	int GetWidth()
-	{
-		return _Width;
-	}
-private:
-	std::vector<Pixel> _Image;
-	int _Width;
-};
+	private:
+		std::vector<Pixel> _Image;
+		int _Width;
+	};
+}

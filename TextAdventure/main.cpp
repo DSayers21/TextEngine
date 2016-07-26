@@ -8,11 +8,11 @@
 
 int main()
 {
-	InputControl _Input;
-	ImageCache Cache(_Input);
+	TxtEgn::InputControl _Input;
+	TxtEgn::ImageCache Cache(_Input);
 
-	ConsoleZone _ConsoleZoneA;
-	ConsoleProp _Console;
+	TxtEgn::ConsoleZone _ConsoleZoneA;
+	TxtEgn::ConsoleProp _Console;
 
 	//_ConsoleZoneA.Init(50, 0, 7, 7, 10, 16, 12); 
 	//_Console.Init(10, 16, 0, 0, 7, true);
@@ -20,11 +20,11 @@ int main()
 	_Console.SetConsoleWidth(_Console.FindConsoleWidth());
 
 	//COutput _OutputA(_ConsoleZoneA, _Input, Cache);
-	COutput _OutputB(_Console, _Input, Cache);
+	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
 
-	_OutputB.DrawImage("Images/MafiaDen.txt", ALIGN::CENTER);
-	_OutputB.DrawImage("Images/MainTitle.txt", ALIGN::LEFT);
-	_OutputB.DrawImage("Images/MainTitle.txt", ALIGN::RIGHT);
+	_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::CENTER);
+	_OutputB.DrawImage("Images/MainTitle.txt", TxtEgn::ALIGN::LEFT);
+	_OutputB.DrawImage("Images/MainTitle.txt", TxtEgn::ALIGN::RIGHT);
 
 	_OutputB.WriteSlow("<C123> Hello <C12> my name <C/> is ", true);
 

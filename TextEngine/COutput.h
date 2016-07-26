@@ -9,64 +9,66 @@
 #include "ImageCache.h"
 #include "ASCImage.h"
 
-class InputControl;
-
-enum class ALIGN {
-	LEFT,
-	CENTER,
-	RIGHT,
-};
-
-class COutput
+namespace TxtEgn
 {
-public:
-	COutput();
+	class InputControl;
 
-	COutput(ConsoleProp& Console, InputControl& Input, ImageCache& Cache);
+	enum class ALIGN {
+		LEFT,
+		CENTER,
+		RIGHT,
+	};
 
-	~COutput();
+	class COutput
+	{
+	public:
+		COutput();
 
-	void COutput::DisplayBanner(int Colour, std::string Statement, bool EndL);
+		COutput(ConsoleProp& Console, InputControl& Input, ImageCache& Cache);
 
-	void WriteSlow(std::string DisplayString, bool EndL);
+		~COutput();
 
-	void WriteLine(int Colour, char WriteChar);
+		void COutput::DisplayBanner(int Colour, std::string Statement, bool EndL);
 
-	void CompleteLine(char FinChar);
+		void WriteSlow(std::string DisplayString, bool EndL);
 
-	void DisplayTextBox(std::vector<std::string> SentText, char Surround, int Colour);
+		void WriteLine(int Colour, char WriteChar);
 
-	void ConsoleClear();
+		void CompleteLine(char FinChar);
 
-	std::vector<std::string> GetInput(std::string Question);
+		void DisplayTextBox(std::vector<std::string> SentText, char Surround, int Colour);
 
-	void DrawImage(std::string Img, ALIGN Align);
+		void ConsoleClear();
 
-	//Setters
-	void SetConsole(ConsoleProp& Console);
+		std::vector<std::string> GetInput(std::string Question);
 
-	void SetInput(InputControl& Input);
+		void DrawImage(std::string Img, ALIGN Align);
 
-	//Getters
-	ConsoleProp* GetConsole();
+		//Setters
+		void SetConsole(ConsoleProp& Console);
 
-private:
-	bool CheckIfOver(std::string DisplayString);
+		void SetInput(InputControl& Input);
 
-	void TypeString(std::string DisplayString);
+		//Getters
+		ConsoleProp* GetConsole();
 
-	int TestTag(std::string StringPassed);
+	private:
+		bool CheckIfOver(std::string DisplayString);
 
-	void SetTag(std::string StringPassed);
+		void TypeString(std::string DisplayString);
 
-	int ImageAlign(ASCImage Img, ALIGN Align);
+		int TestTag(std::string StringPassed);
 
-	ConsoleProp* _Console;
+		void SetTag(std::string StringPassed);
 
-	InputControl* _Input;
+		int ImageAlign(ASCImage Img, ALIGN Align);
 
-	ImageCache* _Cache;
+		ConsoleProp* _Console;
 
-	int _Speed;
-};
+		InputControl* _Input;
 
+		ImageCache* _Cache;
+
+		int _Speed;
+	};
+}

@@ -5,247 +5,250 @@
 #include <chrono>
 #include <thread>
 
-COutput::COutput() : _Speed(10)
+namespace TxtEgn
 {
-}
-
-COutput::COutput(ConsoleProp& Console, InputControl& Input, ImageCache& Cache) : 
-	_Console(&Console), 
-	_Input(&Input), 
-	_Cache(&Cache),
-	_Speed(0)
-{
-
-}
-
-COutput::~COutput()
-{
-}
-
-void COutput::DisplayBanner(int Colour, std::string Statement, bool EndL)
-{
-	_Console->Update();
-	//Run WriteSlow Function
-	std::cout << Statement;
-	if (EndL)
-		_Console->EndLine();
-}
-
-void COutput::WriteSlow(std::string DisplayString, bool EndL)
-{
-	_Console->Update();
-	std::vector<std::string> TempVec = _Input->ParseIntoWords(DisplayString);
-	int Size = static_cast<int>(TempVec.size());
-	for (int i = 0; i < Size; i++)
+	COutput::COutput() : _Speed(10)
 	{
-		if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 2))
+	}
+
+	COutput::COutput(ConsoleProp& Console, InputControl& Input, ImageCache& Cache) :
+		_Console(&Console),
+		_Input(&Input),
+		_Cache(&Cache),
+		_Speed(0)
+	{
+
+	}
+
+	COutput::~COutput()
+	{
+	}
+
+	void COutput::DisplayBanner(int Colour, std::string Statement, bool EndL)
+	{
+		_Console->Update();
+		//Run WriteSlow Function
+		std::cout << Statement;
+		if (EndL)
+			_Console->EndLine();
+	}
+
+	void COutput::WriteSlow(std::string DisplayString, bool EndL)
+	{
+		_Console->Update();
+		std::vector<std::string> TempVec = _Input->ParseIntoWords(DisplayString);
+		int Size = static_cast<int>(TempVec.size());
+		for (int i = 0; i < Size; i++)
 		{
-			_Console->RevertColour();
+			if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 2))
+			{
+				_Console->RevertColour();
+			}
+			else if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 1))
+				SetTag(TempVec[i]);
+			else
+			{
+				TypeString(TempVec[i]);
+				if ((i != Size) && (_Console->wherex() != _Console->GetConsoleWidth()) && (_Console->wherex() != 0) && (_Console->wherex() != _Console->GetConsoleWidth() - 1))
+					std::cout << " ";
+			}
 		}
-		else if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 1))
-			SetTag(TempVec[i]);
-		else
+		if (EndL)
+			_Console->EndLine();
+	}
+
+	//Write a line of characters across the screen
+	void COutput::WriteLine(int Colour, char WriteChar)
+	{
+		_Console->Update();
+		//Set Colour to the colour passed to the function
+		_Console->SetColour(Colour);
+		//Go through each char space on screen and place char there
+		for (int i = _Console->GetStartX() - _Console->GetConsoleWidth(); i < _Console->GetConsoleWidth(); i++)
 		{
-			TypeString(TempVec[i]);
-			if ((i != Size) && (_Console->wherex() != _Console->GetConsoleWidth()) && (_Console->wherex() != 0) && (_Console->wherex() != _Console->GetConsoleWidth() - 1))
-				std::cout << " ";
+			std::cout << WriteChar;
 		}
-	}
-	if (EndL)
 		_Console->EndLine();
-}
-
-//Write a line of characters across the screen
-void COutput::WriteLine(int Colour, char WriteChar)
-{
-	_Console->Update();
-	//Set Colour to the colour passed to the function
-	_Console->SetColour(Colour);
-	//Go through each char space on screen and place char there
-	for (int i = _Console->GetStartX() - _Console->GetConsoleWidth(); i < _Console->GetConsoleWidth(); i++)
-	{
-		std::cout << WriteChar;
 	}
-	_Console->EndLine();
-}
 
-void COutput::CompleteLine(char FinChar)
-{
-	int Buffer = _Console->GetConsoleWidth();
-	int CurPos = _Console->wherex();
-
-	for (int i = CurPos; i < Buffer; i++)
-		std::cout << FinChar;
-}
-
-void COutput::DisplayTextBox(std::vector<std::string> SentText, char Surround, int Colour)
-{
-	int VecSize = static_cast<int>(SentText.size());
-	std::string Space = "";
-	std::string LEndCap = _Input->AlignLeft(' ', _Console->GetConsoleWidth(), Space + Surround);
-	std::string REndCap = _Input->AlignRight(' ', _Console->GetConsoleWidth(), Surround + Space);
-	std::string Output;
-
-	WriteLine(Colour, Surround);
-	for (int i = 0; i < VecSize; i++)
+	void COutput::CompleteLine(char FinChar)
 	{
-		Output = _Input->CombineString(LEndCap, REndCap);
-		Output = _Input->CombineString(Output, _Input->AlignCenter(' ', _Console->GetConsoleWidth(), SentText[i]));
-		DisplayBanner(Colour, Output, false);
+		int Buffer = _Console->GetConsoleWidth();
+		int CurPos = _Console->wherex();
+
+		for (int i = CurPos; i < Buffer; i++)
+			std::cout << FinChar;
 	}
-	WriteLine(Colour, Surround);
-}
 
-void COutput::ConsoleClear()
-{
-	int PrevY = _Console->GetCurrentY();
-	_Console->SetCurrentY(_Console->GetStartY());
-	_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
-	for (int i = _Console->GetStartY(); i < PrevY; i++)
+	void COutput::DisplayTextBox(std::vector<std::string> SentText, char Surround, int Colour)
 	{
-		WriteLine(0, ' ');
-		_Console->gotoxy(_Console->GetStartX(), i);
+		int VecSize = static_cast<int>(SentText.size());
+		std::string Space = "";
+		std::string LEndCap = _Input->AlignLeft(' ', _Console->GetConsoleWidth(), Space + Surround);
+		std::string REndCap = _Input->AlignRight(' ', _Console->GetConsoleWidth(), Surround + Space);
+		std::string Output;
+
+		WriteLine(Colour, Surround);
+		for (int i = 0; i < VecSize; i++)
+		{
+			Output = _Input->CombineString(LEndCap, REndCap);
+			Output = _Input->CombineString(Output, _Input->AlignCenter(' ', _Console->GetConsoleWidth(), SentText[i]));
+			DisplayBanner(Colour, Output, false);
+		}
+		WriteLine(Colour, Surround);
 	}
-	_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
-}
 
-std::vector<std::string> COutput::GetInput(std::string Question)
-{
-	unsigned short TmpCol = _Console->GetColour();
-	unsigned short PTmpCol = _Console->GetPrevColour();
-	WriteSlow("<C10>" + Question + " <C7> " + ">", false);
-	std::vector<std::string> InData = _Input->AskInput();
-	_Console->EndLine();
-	_Console->SetColour(TmpCol);
-	_Console->SetPrevColour(PTmpCol);
-	return InData;
-}
-
-void COutput::DrawImage(std::string Img, ALIGN Align)
-{
-	//Get image from cache
-	std::vector<Pixel> Image;
-	ASCImage& AImg = _Cache->GetTexture(Img);
-	Image = AImg.GetImage();
-
-	int OFFx = ImageAlign(AImg, Align);
-
-	int Width = AImg.GetWidth();
-
-	//Display
-	if (_Console->wherex() != _Console->GetStartX() + OFFx)
+	void COutput::ConsoleClear()
 	{
+		int PrevY = _Console->GetCurrentY();
+		_Console->SetCurrentY(_Console->GetStartY());
+		_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
+		for (int i = _Console->GetStartY(); i < PrevY; i++)
+		{
+			WriteLine(0, ' ');
+			_Console->gotoxy(_Console->GetStartX(), i);
+		}
+		_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
+	}
+
+	std::vector<std::string> COutput::GetInput(std::string Question)
+	{
+		unsigned short TmpCol = _Console->GetColour();
+		unsigned short PTmpCol = _Console->GetPrevColour();
+		WriteSlow("<C10>" + Question + " <C7> " + ">", false);
+		std::vector<std::string> InData = _Input->AskInput();
+		_Console->EndLine();
+		_Console->SetColour(TmpCol);
+		_Console->SetPrevColour(PTmpCol);
+		return InData;
+	}
+
+	void COutput::DrawImage(std::string Img, ALIGN Align)
+	{
+		//Get image from cache
+		std::vector<Pixel> Image;
+		ASCImage& AImg = _Cache->GetTexture(Img);
+		Image = AImg.GetImage();
+
+		int OFFx = ImageAlign(AImg, Align);
+
+		int Width = AImg.GetWidth();
+
+		//Display
+		if (_Console->wherex() != _Console->GetStartX() + OFFx)
+		{
+			_Console->SetCurrentY(_Console->GetCurrentY() + 1);
+			_Console->gotoxy(_Console->GetStartX(), _Console->GetCurrentY());
+		}
+		_Console->gotoxy(OFFx, _Console->GetCurrentY());
+
+		int Count = _Console->GetStartX();
+
+		for (int i = 0; i < Image.size(); i++)
+		{
+			_Console->SetColour(Image[i].GetColour());
+			std::cout << Image[i].GetChar() << Image[i].GetChar();
+			//std::this_thread::sleep_for(std::chrono::milliseconds(4));
+			if (Count == Width - 1)
+			{
+				//Show Line
+				_Console->EndLine();
+				_Console->gotoxy(OFFx, _Console->GetCurrentY());
+				Count = 0;
+			}
+			else
+				Count++;
+		}
 		_Console->SetCurrentY(_Console->GetCurrentY() + 1);
 		_Console->gotoxy(_Console->GetStartX(), _Console->GetCurrentY());
 	}
-	_Console->gotoxy(OFFx, _Console->GetCurrentY());
 
-	int Count = _Console->GetStartX();
-
-	for (int i = 0; i < Image.size(); i++)
+	bool COutput::CheckIfOver(std::string DisplayString)
 	{
-		_Console->SetColour(Image[i].GetColour());
-		std::cout << Image[i].GetChar() << Image[i].GetChar();
-		//std::this_thread::sleep_for(std::chrono::milliseconds(4));
-		if (Count == Width-1)
+		int TempSize = static_cast<int>(DisplayString.size());
+		if (TempSize == _Console->GetConsoleWidth())
 		{
-			//Show Line
-			_Console->EndLine();
-			_Console->gotoxy(OFFx, _Console->GetCurrentY());
-			Count = 0;
+			char First = DisplayString[0];
+			char Last = DisplayString[TempSize - 1];
+
+			if ((First == ' ') || (Last == ' '))
+				return true;
 		}
-		else
-			Count++;
+		return false;
 	}
-	_Console->SetCurrentY(_Console->GetCurrentY() + 1);
-	_Console->gotoxy(_Console->GetStartX(), _Console->GetCurrentY());
-}
 
-bool COutput::CheckIfOver(std::string DisplayString)
-{
-	int TempSize = static_cast<int>(DisplayString.size());
-	if (TempSize == _Console->GetConsoleWidth())
+	void COutput::TypeString(std::string DisplayString)
 	{
-		char First = DisplayString[0];
-		char Last = DisplayString[TempSize - 1];
+		int Size = static_cast<int>(DisplayString.size());
 
-		if ((First == ' ') || (Last == ' '))
-			return true;
+		if (_Console->wherex() + Size > _Console->GetConsoleWidth())
+			_Console->EndLine();
+
+		for (int i = 0; i < Size; i++)
+		{
+			std::cout << DisplayString[i];
+			std::this_thread::sleep_for(std::chrono::milliseconds(_Speed));
+		}
 	}
-	return false;
-}
 
-void COutput::TypeString(std::string DisplayString)
-{
-	int Size = static_cast<int>(DisplayString.size());
-
-	if (_Console->wherex() + Size > _Console->GetConsoleWidth())
-		_Console->EndLine();
-
-	for (int i = 0; i < Size; i++)
+	int COutput::TestTag(std::string StringPassed)
 	{
-		std::cout << DisplayString[i];
-		std::this_thread::sleep_for(std::chrono::milliseconds(_Speed));
+		char First, Second, Last, Special;
+		int Size = static_cast<int>(StringPassed.size());
+
+		First = StringPassed[0];
+		Second = StringPassed[1];
+		Special = StringPassed[2];
+		Last = StringPassed[Size - 1];
+
+		if ((First == '<') && (Second == 'C') && (Special == '/') && (Last == '>'))
+			return 2;
+		if ((First == '<') && (Second == 'C') && (Last == '>'))
+			return 1;
+		return 0;
 	}
-}
 
-int COutput::TestTag(std::string StringPassed)
-{
-	char First, Second, Last, Special;
-	int Size = static_cast<int>(StringPassed.size());
-
-	First = StringPassed[0];
-	Second = StringPassed[1];
-	Special = StringPassed[2];
-	Last = StringPassed[Size - 1];
-
-	if ((First == '<') && (Second == 'C') && (Special == '/') && (Last == '>'))
-		return 2;
-	if ((First == '<') && (Second == 'C') && (Last == '>'))
-		return 1;
-	return 0;
-}
-
-void COutput::SetTag(std::string StringPassed)
-{
-	int Size = static_cast<int>(StringPassed.size());
-	std::string TagNum = "";
-
-	for (int i = 0; i < Size; i++)
-		if (isdigit(StringPassed[i]))
-			TagNum = TagNum + StringPassed[i];
-	_Console->SetColour(std::stoi(TagNum));
-}
-
-int COutput::ImageAlign(ASCImage Img, ALIGN Align)
-{
-	switch (Align)
+	void COutput::SetTag(std::string StringPassed)
 	{
+		int Size = static_cast<int>(StringPassed.size());
+		std::string TagNum = "";
+
+		for (int i = 0; i < Size; i++)
+			if (isdigit(StringPassed[i]))
+				TagNum = TagNum + StringPassed[i];
+		_Console->SetColour(std::stoi(TagNum));
+	}
+
+	int COutput::ImageAlign(ASCImage Img, ALIGN Align)
+	{
+		switch (Align)
+		{
 		case ALIGN::LEFT:
 			return 0;
-		break;
+			break;
 		case ALIGN::CENTER:
-			return ((_Console->GetConsoleWidth()) - Img.GetWidth()*2)/2;
-		break;
+			return ((_Console->GetConsoleWidth()) - Img.GetWidth() * 2) / 2;
+			break;
 		case ALIGN::RIGHT:
-			return ((_Console->GetConsoleWidth() - Img.GetWidth()*2));
-		break;
+			return ((_Console->GetConsoleWidth() - Img.GetWidth() * 2));
+			break;
+		}
 	}
-}
 
-//Setters
-void COutput::SetConsole(ConsoleProp& Console)
-{
-	_Console = &Console;
-}
+	//Setters
+	void COutput::SetConsole(ConsoleProp& Console)
+	{
+		_Console = &Console;
+	}
 
-void COutput::SetInput(InputControl& Input)
-{
-	_Input = &Input;
-}
+	void COutput::SetInput(InputControl& Input)
+	{
+		_Input = &Input;
+	}
 
-//Getters
-ConsoleProp* COutput::GetConsole()
-{
-	return _Console;
+	//Getters
+	ConsoleProp* COutput::GetConsole()
+	{
+		return _Console;
+	}
 }

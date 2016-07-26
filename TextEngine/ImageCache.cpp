@@ -6,77 +6,80 @@
 #include <cctype>
 #include <stdio.h>
 
-ImageCache::ImageCache(InputControl& Input)
+namespace TxtEgn
 {
-	_Input = &Input;
-}
-
-
-ImageCache::~ImageCache()
-{
-}
-
-ASCImage ImageCache::GetTexture(std::string FileName)
-{
-	//Lookup the texture and see if its in the map
-	auto Mit = _ImageMap.find(FileName);
-	//Check if its not in the map
-	if (Mit == _ImageMap.end())
+	ImageCache::ImageCache(InputControl& Input)
 	{
-		//Load Texture
-		ASCImage NewImage = LoadImage(FileName);
-		//Insert into map
-		_ImageMap.insert(make_pair(FileName, NewImage));
-		OutputDebugString(L"Loaded Texture");
-
-		int Size = NewImage.GetImage().size();
-
-		return NewImage;
+		_Input = &Input;
 	}
-	OutputDebugString(L"Used Catched Texture");
-	return Mit->second;
-}
 
-ASCImage ImageCache::LoadImage(std::string FileName)
-{
-	std::string Input, Line;
-	std::ifstream myfile(FileName);
 
-	int Count = 0;
-	int Width;
-	if (myfile.is_open())
+	ImageCache::~ImageCache()
 	{
-		while (getline(myfile, Line))
+	}
+
+	ASCImage ImageCache::GetTexture(std::string FileName)
+	{
+		//Lookup the texture and see if its in the map
+		auto Mit = _ImageMap.find(FileName);
+		//Check if its not in the map
+		if (Mit == _ImageMap.end())
 		{
-			if (Count == 0)
-			{
-				if (_Input->is_number(Line))
-					Width = stoi(Line);
-				Count++;
-			}
-			else
-				Input = Line;
+			//Load Texture
+			ASCImage NewImage = LoadImage(FileName);
+			//Insert into map
+			_ImageMap.insert(make_pair(FileName, NewImage));
+			OutputDebugString(L"Loaded Texture");
+
+			int Size = NewImage.GetImage().size();
+
+			return NewImage;
 		}
-		myfile.close();
-
-		std::vector<int> Temp = _Input->ParseByComma(Input);
-		std::vector<Pixel> Img = ConvertImage(Temp);
-		ASCImage TImg(Img, Width);
-
-		return TImg;
+		OutputDebugString(L"Used Catched Texture");
+		return Mit->second;
 	}
-	else std::cout << "Unable to open file" << std::endl;
-}
 
-std::vector<Pixel> ImageCache::ConvertImage(std::vector<int> SentImage)
-{
-	std::vector<Pixel> ConImg;
-	for (int i = 0; i < SentImage.size(); i++)
+	ASCImage ImageCache::LoadImage(std::string FileName)
 	{
-		Pixel newPix(SentImage[i]);
-		//std::cout << newPix.GetColour();
+		std::string Input, Line;
+		std::ifstream myfile(FileName);
 
-		ConImg.push_back(newPix);
+		int Count = 0;
+		int Width;
+		if (myfile.is_open())
+		{
+			while (getline(myfile, Line))
+			{
+				if (Count == 0)
+				{
+					if (_Input->is_number(Line))
+						Width = stoi(Line);
+					Count++;
+				}
+				else
+					Input = Line;
+			}
+			myfile.close();
+
+			std::vector<int> Temp = _Input->ParseByComma(Input);
+			std::vector<Pixel> Img = ConvertImage(Temp);
+			ASCImage TImg(Img, Width);
+
+			return TImg;
+		}
+		else std::cout << "Unable to open file" << std::endl;
 	}
-	return ConImg;
+
+	std::vector<Pixel> ImageCache::ConvertImage(std::vector<int> SentImage)
+	{
+		std::vector<Pixel> ConImg;
+		for (int i = 0; i < SentImage.size(); i++)
+		{
+			Pixel newPix(SentImage[i]);
+			//std::cout << newPix.GetColour();
+
+			ConImg.push_back(newPix);
+		}
+		return ConImg;
+	}
 }

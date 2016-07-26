@@ -7,23 +7,26 @@
 #include "InputControl.h"
 #include "ASCImage.h"
 
-class InputControl;
-
-class ImageCache
+namespace TxtEgn
 {
-public:
-	ImageCache(InputControl& Input);
+	class InputControl;
 
-	~ImageCache();
+	class ImageCache
+	{
+	public:
+		ImageCache(InputControl& Input);
 
-	ASCImage GetTexture(std::string FileName);
+		~ImageCache();
 
-private:
-	ASCImage LoadImage(std::string FileName);
+		ASCImage GetTexture(std::string FileName);
 
-	std::vector<Pixel> ConvertImage(std::vector<int> SentImage);
+	private:
+		ASCImage LoadImage(std::string FileName);
 
-	std::map<std::string, ASCImage> _ImageMap;
+		std::vector<Pixel> ConvertImage(std::vector<int> SentImage);
 
-	InputControl* _Input;
-};
+		std::map<std::string, ASCImage> _ImageMap;
+
+		InputControl* _Input;
+	};
+}

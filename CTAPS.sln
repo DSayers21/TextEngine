@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextAdventure", "TextAdventure\TextAdventure.vcxproj", "{0736AD30-28B9-4FFD-9029-47A1F02AA667}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E553D86-B60E-4CAF-A358-69365AF453CA} = {3E553D86-B60E-4CAF-A358-69365AF453CA}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextEngine", "TextEngine\TextEngine.vcxproj", "{3E553D86-B60E-4CAF-A358-69365AF453CA}"
 EndProject

@@ -1,29 +1,9 @@
-﻿Build started 26/07/2016 23:30:59.
+﻿Build started 27/07/2016 00:00:21.
      1>Project "F:\User\Documents\Home Work\C++\CTAPS\TextEngine\TextEngine.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\TextEngine.pdb" /Gd /TP /analyze- /errorReport:prompt ConsoleProp.cpp ConsoleZone.cpp COutput.cpp ImageCache.cpp InputControl.cpp Pixel.cpp
-         Pixel.cpp
-         InputControl.cpp
-     1>f:\user\documents\home work\c++\ctaps\textengine\inputcontrol.cpp(207): warning C4018: '<': signed/unsigned mismatch
-         ImageCache.cpp
-     1>f:\user\documents\home work\c++\ctaps\textengine\imagecache.cpp(74): warning C4018: '<': signed/unsigned mismatch
-         COutput.cpp
-     1>f:\user\documents\home work\c++\ctaps\textengine\coutput.cpp(145): warning C4018: '<': signed/unsigned mismatch
-         ConsoleZone.cpp
-         ConsoleProp.cpp
-         Generating Code...
-     1>f:\user\documents\home work\c++\ctaps\textengine\coutput.cpp(234): warning C4715: 'COutput::ImageAlign': not all control paths return a value
-     1>f:\user\documents\home work\c++\ctaps\textengine\imagecache.cpp(69): warning C4715: 'ImageCache::LoadImageW': not all control paths return a value
-       Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"F:\User\Documents\Home Work\C++\CTAPS\Debug\TextEngine.lib" /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" /NOLOGO Debug\ConsoleProp.obj
-         Debug\ConsoleZone.obj
-         Debug\COutput.obj
-         Debug\ImageCache.obj
-         Debug\InputControl.obj
-         Debug\Pixel.obj
+     1>Lib:
          TextEngine.vcxproj -> F:\User\Documents\Home Work\C++\CTAPS\Debug\TextEngine.lib
      1>Done Building Project "F:\User\Documents\Home Work\C++\CTAPS\TextEngine\TextEngine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.27
+Time Elapsed 00:00:00.04

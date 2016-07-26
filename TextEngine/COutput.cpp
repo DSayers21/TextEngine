@@ -37,7 +37,12 @@ void COutput::WriteSlow(std::string DisplayString, bool EndL)
 	std::vector<std::string> TempVec = _Input->ParseIntoWords(DisplayString);
 	int Size = static_cast<int>(TempVec.size());
 	for (int i = 0; i < Size; i++)
-		if ((TempVec[i].size() > 3) && (TestTag(TempVec[i])))
+	{
+		if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 2))
+		{
+			_Console->RevertColour();
+		}
+		else if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 1))
 			SetTag(TempVec[i]);
 		else
 		{
@@ -45,7 +50,7 @@ void COutput::WriteSlow(std::string DisplayString, bool EndL)
 			if ((i != Size) && (_Console->wherex() != _Console->GetConsoleWidth()) && (_Console->wherex() != 0) && (_Console->wherex() != _Console->GetConsoleWidth() - 1))
 				std::cout << " ";
 		}
-
+	}
 	if (EndL)
 		_Console->EndLine();
 }
@@ -184,15 +189,18 @@ void COutput::TypeString(std::string DisplayString)
 	}
 }
 
-bool COutput::TestTag(std::string StringPassed)
+int COutput::TestTag(std::string StringPassed)
 {
-	char First, Second, Last;
+	char First, Second, Last, Special;
 	int Size = static_cast<int>(StringPassed.size());
 
 	First = StringPassed[0];
 	Second = StringPassed[1];
+	Special = StringPassed[2];
 	Last = StringPassed[Size - 1];
 
+	if ((First == '<') && (Second == 'C') && (Special == '/') && (Last == '>'))
+		return 2;
 	if ((First == '<') && (Second == 'C') && (Last == '>'))
 		return 1;
 	return 0;
@@ -202,6 +210,7 @@ void COutput::SetTag(std::string StringPassed)
 {
 	int Size = static_cast<int>(StringPassed.size());
 	std::string TagNum = "";
+
 	for (int i = 0; i < Size; i++)
 		if (isdigit(StringPassed[i]))
 			TagNum = TagNum + StringPassed[i];

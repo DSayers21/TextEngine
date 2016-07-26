@@ -55,7 +55,7 @@ private:
 
 	void TypeString(std::string DisplayString);
 
-	bool TestTag(std::string StringPassed);
+	int TestTag(std::string StringPassed);
 
 	void SetTag(std::string StringPassed);
 

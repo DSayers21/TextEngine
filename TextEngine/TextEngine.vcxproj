@@ -148,15 +148,20 @@
   <ItemGroup>
     <ClCompile Include="ConsoleProp.cpp" />
     <ClCompile Include="ConsoleZone.cpp" />
+    <ClCompile Include="ImageCache.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="COutput.cpp" />
     <ClCompile Include="InputControl.cpp" />
+    <ClCompile Include="Pixel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleProp.h" />
     <ClInclude Include="ConsoleZone.h" />
     <ClInclude Include="COutput.h" />
+    <ClInclude Include="ImageCache.h" />
+    <ClInclude Include="ASCImage.h" />
     <ClInclude Include="InputControl.h" />
+    <ClInclude Include="Pixel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

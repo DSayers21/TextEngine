@@ -115,6 +115,16 @@ int ConsoleProp::GetCurrentY()
 	return _CurrentY;
 }
 
+void ConsoleProp::SetStartX(int StartX)
+{
+	_StartX = StartX;
+}
+
+void ConsoleProp::SetConsoleWidth(int Width)
+{
+	_Width = Width;
+}
+
 int ConsoleProp::GetFontX()
 {
 	return _FontX;

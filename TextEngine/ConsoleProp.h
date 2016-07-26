@@ -39,7 +39,8 @@ public:
 	void SetColour(unsigned short Colour);
 	void SetPrevColour(unsigned short Colour);
 	void SetCurrentY(int CurrentY);
-	
+	void SetStartX(int StartX);
+	void SetConsoleWidth(int Width);
 private:
 	int UpdateFont();
 	void UpdateColour();

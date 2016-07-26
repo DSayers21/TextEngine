@@ -1,5 +1,6 @@
 #include "COutput.h"
 #include "InputControl.h"
+#include "Pixel.h"
 
 #include <chrono>
 #include <thread>
@@ -8,7 +9,11 @@ COutput::COutput() : _Speed(10)
 {
 }
 
-COutput::COutput(ConsoleProp& Console, InputControl& Input) : _Console(&Console), _Input(&Input), _Speed(0)
+COutput::COutput(ConsoleProp& Console, InputControl& Input, ImageCache& Cache) : 
+	_Console(&Console), 
+	_Input(&Input), 
+	_Cache(&Cache),
+	_Speed(0)
 {
 
 }
@@ -111,6 +116,46 @@ std::vector<std::string> COutput::GetInput(std::string Question)
 	return InData;
 }
 
+void COutput::DrawImage(std::string Img, ALIGN Align)
+{
+	//Get image from cache
+	std::vector<Pixel> Image;
+	ASCImage& AImg = _Cache->GetTexture(Img);
+	Image = AImg.GetImage();
+
+	int OFFx = ImageAlign(AImg, Align);
+
+	int Width = AImg.GetWidth();
+
+	//Display
+	if (_Console->wherex() != _Console->GetStartX() + OFFx)
+	{
+		_Console->SetCurrentY(_Console->GetCurrentY() + 1);
+		_Console->gotoxy(_Console->GetStartX(), _Console->GetCurrentY());
+	}
+	_Console->gotoxy(OFFx, _Console->GetCurrentY());
+
+	int Count = _Console->GetStartX();
+
+	for (int i = 0; i < Image.size(); i++)
+	{
+		_Console->SetColour(Image[i].GetColour());
+		std::cout << Image[i].GetChar() << Image[i].GetChar();
+		//std::this_thread::sleep_for(std::chrono::milliseconds(4));
+		if (Count == Width-1)
+		{
+			//Show Line
+			_Console->EndLine();
+			_Console->gotoxy(OFFx, _Console->GetCurrentY());
+			Count = 0;
+		}
+		else
+			Count++;
+	}
+	_Console->SetCurrentY(_Console->GetCurrentY() + 1);
+	_Console->gotoxy(_Console->GetStartX(), _Console->GetCurrentY());
+}
+
 bool COutput::CheckIfOver(std::string DisplayString)
 {
 	int TempSize = static_cast<int>(DisplayString.size());
@@ -161,6 +206,22 @@ void COutput::SetTag(std::string StringPassed)
 		if (isdigit(StringPassed[i]))
 			TagNum = TagNum + StringPassed[i];
 	_Console->SetColour(std::stoi(TagNum));
+}
+
+int COutput::ImageAlign(ASCImage Img, ALIGN Align)
+{
+	switch (Align)
+	{
+		case ALIGN::LEFT:
+			return 0;
+		break;
+		case ALIGN::CENTER:
+			return ((_Console->GetConsoleWidth()) - Img.GetWidth()*2)/2;
+		break;
+		case ALIGN::RIGHT:
+			return ((_Console->GetConsoleWidth() - Img.GetWidth()*2));
+		break;
+	}
 }
 
 //Setters

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <regex>
 #include <iomanip>
+#include <sstream>
+
 InputControl::InputControl()
 {
 
@@ -195,4 +197,31 @@ std::string InputControl::AlignRight(char Letter, int Buffer, std::string Origin
 		Original = Letter + Original;
 	//Return new string
 	return Original;
+}
+
+std::vector<int> InputControl::ParseByComma(std::string InputS)
+{
+	std::vector<int> vect;
+	std::string rem = "";
+
+	for (int i = 0; i < InputS.size(); i++)
+	{
+		if ((InputS[i] == ' '))
+		{
+		}
+		else
+		{
+			if ((InputS[i] == ','))
+			{
+				//std::cout << "[" << rem << "]";
+				vect.push_back(stoi(rem));
+				rem = "";
+			}
+			else
+			{
+				rem += InputS[i];
+			}
+		}
+	}
+	return vect;
 }

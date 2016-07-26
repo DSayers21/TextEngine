@@ -34,4 +34,6 @@ public:
 	std::string AlignLeft(char Letter, int Buffer, std::string Original);
 
 	std::string AlignRight(char Letter, int Buffer, std::string Original);
+
+	std::vector<int> ParseByComma(std::string InputS);
 };

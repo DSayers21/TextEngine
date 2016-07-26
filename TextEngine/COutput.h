@@ -6,15 +6,23 @@
 
 #include "ConsoleProp.h"
 #include "InputControl.h"
+#include "ImageCache.h"
+#include "ASCImage.h"
 
 class InputControl;
+
+enum class ALIGN {
+	LEFT,
+	CENTER,
+	RIGHT,
+};
 
 class COutput
 {
 public:
 	COutput();
 
-	COutput(ConsoleProp& Console, InputControl& Input);
+	COutput(ConsoleProp& Console, InputControl& Input, ImageCache& Cache);
 
 	~COutput();
 
@@ -31,6 +39,8 @@ public:
 	void ConsoleClear();
 
 	std::vector<std::string> GetInput(std::string Question);
+
+	void DrawImage(std::string Img, ALIGN Align);
 
 	//Setters
 	void SetConsole(ConsoleProp& Console);
@@ -49,9 +59,13 @@ private:
 
 	void SetTag(std::string StringPassed);
 
+	int ImageAlign(ASCImage Img, ALIGN Align);
+
 	ConsoleProp* _Console;
 
 	InputControl* _Input;
+
+	ImageCache* _Cache;
 
 	int _Speed;
 };

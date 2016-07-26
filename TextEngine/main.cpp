@@ -2,45 +2,28 @@
 #include "COutput.h"
 #include "InputControl.h"
 #include "ConsoleZone.h"
+#include "ImageCache.h"
 
 #include <iostream>
 
 int main()
 {
 	InputControl _Input;
+	ImageCache Cache(_Input);
 
 	ConsoleZone _ConsoleZoneA;
-	ConsoleZone _ConsoleZoneB;
+	ConsoleProp _Console;
 
-	_ConsoleZoneA.Init(50, 0, 7, 7, 10, 16, 12);
-	_ConsoleZoneB.Init(50, 52, 7, 7, 10, 16, 13);
+	//_ConsoleZoneA.Init(50, 0, 7, 7, 10, 16, 12);
+	_Console.Init(10, 16, 0, 0, 7, true);
+	_Console.SetConsoleWidth(_Console.FindConsoleWidth());
 
-	std::cout << " Line " << std::endl;
-	std::cout << " Line " << std::endl;
-	std::cout << " Line " << std::endl;
-	std::cout << " Line " << std::endl;
-	std::cout << " Line " << std::endl;
-	std::cout << " Line " << std::endl;
-
-	COutput _OutputA(_ConsoleZoneA, _Input);
-	COutput _OutputB(_ConsoleZoneB, _Input);
-
-	_OutputA.DisplayBanner(_OutputA.GetConsole()->GetColour(), _Input.AlignCenter(' ', _OutputA.GetConsole()->GetConsoleWidth(), "Para 1"), true);
-	for (int i = 0; i < 12; i++)
-	{
-		_OutputA.WriteSlow("The Quick Brown Fox Jumped Over The Lazy Dog", true);
-	}
+	//COutput _OutputA(_ConsoleZoneA, _Input, Cache);
+	COutput _OutputB(_Console, _Input, Cache);
 	
-	_OutputB.DisplayBanner(_OutputB.GetConsole()->GetColour(), _Input.AlignLeft(' ', _OutputB.GetConsole()->GetConsoleWidth(),  "Para 2"), true);
-	for (int i = 0; i < 21; i++)
-	{
-		_OutputB.WriteSlow("The Quick Brown Fox Jumped Over The Lazy Dog", true);
-	}
-	_OutputA.GetInput("What's your name?");
-	_OutputB.GetInput("What's your second name?");
-	_OutputA.WriteSlow("Deans Great", false);
-
-	_OutputB.ConsoleClear();
+	_OutputB.DrawImage("Images/MafiaDen.txt", ALIGN::CENTER);
+	_OutputB.DrawImage("Images/MainTitle.txt", ALIGN::LEFT);
+	_OutputB.DrawImage("Images/MainTitle.txt", ALIGN::RIGHT);
 
 	int a;
 	std::cin >> a;

@@ -3,7 +3,7 @@
 #include <TextEngine/InputControl.h>
 #include <TextEngine/ConsoleZone.h>
 #include <TextEngine/ImageCache.h>
-
+#include <boost/property_tree/ptree.hpp>
 #include "DialogTree.h"
 
 #include <iostream>
@@ -18,9 +18,8 @@ int main()
 
 	DialogTree First(_OutputB);
 	First.Init();
-	int rv = First.PerformDialog();
-
-	_OutputB.WriteSlow("" + rv, true);
+	//int rv = First.PerformDialog();
+	//_OutputB.WriteSlow("" + rv, true);
 
 	int a;
 	std::cin >> a;

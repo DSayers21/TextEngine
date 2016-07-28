@@ -16,11 +16,12 @@ int main()
 	TxtEgn::InputControl _Input;
 	TxtEgn::ImageCache Cache(_Input);
 	TxtEgn::ConsoleProp _Console;
-	_Console.Init(10, 16, 0, 0, 7, true);
+	_Console.Init(10, 16, 0, 0, 7, false);
 	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
 
-	DialogTree First(_OutputB);
+	DialogTree First(_OutputB, "./Test.json");
 	First.Init();
+	First.PerformDialog();
 
 	int a;
 	std::cin >> a;
@@ -30,6 +31,9 @@ int main()
 //
 //int rv = First.PerformDialog();
 //_OutputB.WriteSlow("" + rv, true);
+//_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::LEFT);
+//_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::LEFT);
+
 
 //_ConsoleZoneA.Init(50, 0, 7, 7, 10, 16, 12); 
 

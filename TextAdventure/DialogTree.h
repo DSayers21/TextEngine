@@ -4,6 +4,7 @@
 #include <vector>
 #include <TextEngine/COutput.h>
 #include <TextEngine/InOutDataManager.h>
+#include <TextEngine/InputControl.h>
 #include <boost/property_tree/ptree.hpp>
 
 class DialogOption;
@@ -31,7 +32,7 @@ public:
 class DialogTree
 {
 public:
-	DialogTree(TxtEgn::COutput& Output);
+	DialogTree(TxtEgn::COutput& Output, std::string FilePath);
 	~DialogTree();
 
 	void Init();
@@ -42,6 +43,10 @@ private:
 	void PrintTree(boost::property_tree::ptree &pt, int level);
 
 	InOutDataManager IOMan;
+
+	TxtEgn::InputControl _Input;
+	std::string _FilePath;
+
 	std::vector<DialogNode*> _DialogNodes;
 	TxtEgn::COutput* _Output;
 };

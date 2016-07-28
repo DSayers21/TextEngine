@@ -227,4 +227,14 @@ namespace TxtEgn
 		}
 		return vect;
 	}
+
+	int InputControl::SearchVector(std::vector<std::string> Vector, std::string Find)
+	{
+		for (int i = 0; i < Vector.size(); i++)
+		{
+			if (Vector[i] == Find)
+				return i;
+		}
+		return -1;
+	}
 }

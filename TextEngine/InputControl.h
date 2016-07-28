@@ -38,5 +38,7 @@ namespace TxtEgn
 		std::string AlignRight(char Letter, int Buffer, std::string Original);
 
 		std::vector<int> ParseByComma(std::string InputS);
+
+		int SearchVector(std::vector<std::string> Vector, std::string Find);
 	};
 }

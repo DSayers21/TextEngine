@@ -12,9 +12,10 @@ DialogNode::DialogNode(std::string Text)
 	_Text = Text;
 }
 
-DialogTree::DialogTree(TxtEgn::COutput& Output)
+DialogTree::DialogTree(TxtEgn::COutput& Output, std::string FilePath)
 {
 	_Output = &Output;
+	_FilePath = FilePath;
 }
 
 
@@ -29,57 +30,58 @@ DialogTree::~DialogTree()
 
 void DialogTree::Init()
 {
-	/*
-	DialogNode *node0 = new DialogNode("<C8> Hello Brave Warrier");
-	DialogNode *node1 = new DialogNode("<C8> I don't want to talk to you");
-	DialogNode *node2 = new DialogNode("<C8> I have a quest for you");
-	DialogNode *node3 = new DialogNode("<C8> You will get 5 gold you greedy swine!");
-	DialogNode *node4 = new DialogNode("<C8> Collect 10 Dandelions");
-
-	node0->_DialogOptions.emplace_back("<C14> Sub Noob", 0, node1);
-	node0->_DialogOptions.emplace_back("<C14> Hello Strange Voice", 0, node2);
-	_DialogNodes.push_back(node0);
-
-	node1->_DialogOptions.emplace_back("<C14> Aww", 0, nullptr);
-	_DialogNodes.push_back(node1);
-
-	node2->_DialogOptions.emplace_back("<C14> K bye", 0, nullptr);
-	node2->_DialogOptions.emplace_back("<C14> What is it?", 0, node4);
-	node2->_DialogOptions.emplace_back("<C14> What's the pay?", 0, node3);
-	_DialogNodes.push_back(node2);
-
-	node3->_DialogOptions.emplace_back("<C14> Okay what is it?", 0, node4);
-	node3->_DialogOptions.emplace_back("<C14> That sucks im out!", 0, nullptr);
-	_DialogNodes.push_back(node3);
-
-	node4->_DialogOptions.emplace_back("<C14> Let's do it!", 1, nullptr);
-	node4->_DialogOptions.emplace_back("<C14> No Way", 0, nullptr);
-	_DialogNodes.push_back(node4);
-	*/
-	boost::property_tree::ptree Tree = IOMan.LoadJSON("./Test.json");
-	//PrintTree(Tree, 0);
-
-	//std::cout << Tree.get<std::string>("Conversation Name") << std::endl;
-
-	//std::cout << Tree.get_child("Nodes").get_child("Node0").get<std::string>("Dialog") << std::endl;
-	std::cout << Tree.get_child("Nodes").size() << std::endl;
-
-	boost::property_tree::ptree Child = Tree.get_child("Nodes");
-
-	for (int i = 0; i < Child.size(); i++)
+	//Temp Vector Used for linking pointers
+	std::vector<std::string> _DialogName;
+	//Load Data into Tree
+	boost::property_tree::ptree Tree = IOMan.LoadJSON(_FilePath);
+	//Tree that gets Nodes from main tree
+	boost::property_tree::ptree Nodes = Tree.get_child("Nodes");
+	//Tree to get elements of above Nodes tree e.g. Node1 Node2 ect
+	boost::property_tree::ptree NodeNum;
+	//Load in all of the dialog NOT the options within the dialog this is done later
+	for (int i = 0; i < Nodes.size(); i++)
 	{
+		//Get name
 		std::string NodeName = "Node" + std::to_string(i);
-		boost::property_tree::ptree SubChild = Child.get_child(NodeName);
-		std::string Dialog = SubChild.get<std::string>("Dialog");
-		//std::cout << Dialog << std::endl;
+		_DialogName.push_back(NodeName);
+		//Get node number 
+		NodeNum = Nodes.get_child(NodeName);
+		//Get dialog e.g. "Hello Traveller"
+		std::string Dialog = NodeNum.get<std::string>("Dialog");
+		//Create node and add it to _DialogNodes vector
 		DialogNode *node = new DialogNode(Dialog);
 		_DialogNodes.emplace_back(node);
 	}
+	//Add dialog options to nodes being held in _DialogNodes vector
 	for (int i = 0; i < _DialogNodes.size(); i++)
 	{
-		_Output->WriteSlow(_DialogNodes[i]->_Text, true);
-	}
+		//Get Node number child
+		std::string NodeName = "Node" + std::to_string(i);
+		NodeNum = Nodes.get_child(NodeName);
+		//Get options child
+		boost::property_tree::ptree Options = NodeNum.get_child("Options");
+		//Loop through all options of current Node
+		for (int j = 0; j < Options.size(); j++)
+		{
+			//Get options number child
+			std::string OptionName = "Option" + std::to_string(j);
+			std::string NodeName = "Node" + std::to_string(i);
+			boost::property_tree::ptree OptionNum = Options.get_child(OptionName);
+			//Get all information needed from optionNum
+			std::string Name = OptionNum.get<std::string>("Name");
+			int ReturnCode = OptionNum.get<int>("ReturnCode");
+			std::string NextNode = OptionNum.get<std::string>("NextNode");
+			//Find which node is to be pointed to
+			int Position = _Input.SearchVector(_DialogName, NextNode);
 
+			//std::cout << i << " |:| " << Position << std::endl;
+			//Add option to the _DialogNodes node 
+			if (Position != -1)
+				_DialogNodes[i]->_DialogOptions.emplace_back(Name, ReturnCode, _DialogNodes[Position]);
+			else
+				_DialogNodes[i]->_DialogOptions.emplace_back(Name, ReturnCode, nullptr);
+		}
+	}
 }
 
 int DialogTree::PerformDialog()
@@ -93,24 +95,19 @@ int DialogTree::PerformDialog()
 		//Start Convo
 		_Output->WriteSlow(CurrentNode->_Text, true);
 		for (int i = 0; i < CurrentNode->_DialogOptions.size(); i++)
-		{
-			std::string Out = "" + (i + 1) + CurrentNode->_DialogOptions[i]._Text;
-			_Output->WriteSlow(Out, true);
-		}
-		int input;
-		std::cin >> input;
+			_Output->WriteSlow(CurrentNode->_DialogOptions[i]._Text, true);
+		
+		
+		int input = stoi(_Input.ParseIntoSentence(_Output->GetInput("What say you?"), 0));
 
 		if ((input < 0) || (input > CurrentNode->_DialogOptions.size()))
-		{
 			_Output->WriteSlow("<C12 Invalid Input!", true);
-		}
 		else
 		{
 			//Check for end of convo
 			if (CurrentNode->_DialogOptions[input - 1]._nxtNode == nullptr)
-			{
 				return CurrentNode->_DialogOptions[input - 1]._ReturnCode;
-			}
+			
 			CurrentNode = CurrentNode->_DialogOptions[input - 1]._nxtNode;
 		}
 	}

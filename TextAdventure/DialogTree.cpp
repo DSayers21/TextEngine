@@ -29,6 +29,7 @@ DialogTree::~DialogTree()
 
 void DialogTree::Init()
 {
+	/*
 	DialogNode *node0 = new DialogNode("<C8> Hello Brave Warrier");
 	DialogNode *node1 = new DialogNode("<C8> I don't want to talk to you");
 	DialogNode *node2 = new DialogNode("<C8> I have a quest for you");
@@ -54,6 +55,31 @@ void DialogTree::Init()
 	node4->_DialogOptions.emplace_back("<C14> Let's do it!", 1, nullptr);
 	node4->_DialogOptions.emplace_back("<C14> No Way", 0, nullptr);
 	_DialogNodes.push_back(node4);
+	*/
+	boost::property_tree::ptree Tree = IOMan.LoadJSON("./Test.json");
+	//PrintTree(Tree, 0);
+
+	//std::cout << Tree.get<std::string>("Conversation Name") << std::endl;
+
+	//std::cout << Tree.get_child("Nodes").get_child("Node0").get<std::string>("Dialog") << std::endl;
+	std::cout << Tree.get_child("Nodes").size() << std::endl;
+
+	boost::property_tree::ptree Child = Tree.get_child("Nodes");
+
+	for (int i = 0; i < Child.size(); i++)
+	{
+		std::string NodeName = "Node" + std::to_string(i);
+		boost::property_tree::ptree SubChild = Child.get_child(NodeName);
+		std::string Dialog = SubChild.get<std::string>("Dialog");
+		//std::cout << Dialog << std::endl;
+		DialogNode *node = new DialogNode(Dialog);
+		_DialogNodes.emplace_back(node);
+	}
+	for (int i = 0; i < _DialogNodes.size(); i++)
+	{
+		_Output->WriteSlow(_DialogNodes[i]->_Text, true);
+	}
+
 }
 
 int DialogTree::PerformDialog()
@@ -88,4 +114,34 @@ int DialogTree::PerformDialog()
 			CurrentNode = CurrentNode->_DialogOptions[input - 1]._nxtNode;
 		}
 	}
+}
+
+std::string DialogTree::Indent(int level) 
+{
+	std::string s;
+	for (int i = 0; i<level; i++) s += "  ";
+	return s;
+}
+
+void DialogTree::PrintTree(boost::property_tree::ptree &pt, int level) 
+{
+	if (pt.empty()) {
+		std::cerr << "\"" << pt.data() << "\"";
+	}
+	else 
+	{
+		if (level) std::cerr << std::endl;
+		std::cerr << Indent(level) << "{" << std::endl;
+		for (boost::property_tree::ptree::iterator pos = pt.begin(); pos != pt.end();) {
+			std::cerr << Indent(level + 1) << "\"" << pos->first << "\": ";
+			PrintTree(pos->second, level + 1);
+			++pos;
+			if (pos != pt.end()) {
+				std::cerr << ",";
+			}
+			std::cerr << std::endl;
+		}
+		std::cerr << Indent(level) << " }";
+	}
+	return;
 }

@@ -1,21 +1,15 @@
-﻿Build started 27/07/2016 00:03:57.
+﻿Build started 28/07/2016 00:01:21.
      1>Project "F:\User\Documents\Home Work\C++\CTAPS\TextEngine\TextEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\TextEngine.pdb" /Gd /TP /analyze- /errorReport:prompt COutput.cpp ConsoleProp.cpp ConsoleZone.cpp ImageCache.cpp InputControl.cpp
-         COutput.cpp
-     1>f:\user\documents\home work\c++\ctaps\textengine\coutput.cpp(147): warning C4018: '<': signed/unsigned mismatch
-         Generating Code...
-     1>f:\user\documents\home work\c++\ctaps\textengine\coutput.cpp(236): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
-         Skipping... (no relevant changes detected)
-         InputControl.cpp
-         ImageCache.cpp
-         ConsoleZone.cpp
-         ConsoleProp.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\TextEngine.pdb" /Gd /TP /analyze- /errorReport:prompt InOutDataManager.cpp
+         InOutDataManager.cpp
+     1>f:\user\documents\home work\c++\ctaps\textengine\inoutdatamanager.cpp(36): warning C4172: returning address of local variable or temporary: Tree
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"F:\User\Documents\Home Work\C++\CTAPS\Debug\TextEngine.lib" /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" /NOLOGO Debug\ConsoleProp.obj
          Debug\ConsoleZone.obj
          Debug\COutput.obj
          Debug\ImageCache.obj
+         Debug\InOutDataManager.obj
          Debug\InputControl.obj
          Debug\Pixel.obj
          TextEngine.vcxproj -> F:\User\Documents\Home Work\C++\CTAPS\Debug\TextEngine.lib
@@ -23,4 +17,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.40
+Time Elapsed 00:00:02.19

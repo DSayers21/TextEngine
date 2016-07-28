@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <TextEngine/COutput.h>
+#include <TextEngine/InOutDataManager.h>
+#include <boost/property_tree/ptree.hpp>
 
 class DialogOption;
 class DialogNode;
@@ -36,6 +38,10 @@ public:
 
 	int PerformDialog();
 private:
+	std::string Indent(int level);
+	void PrintTree(boost::property_tree::ptree &pt, int level);
+
+	InOutDataManager IOMan;
 	std::vector<DialogNode*> _DialogNodes;
 	TxtEgn::COutput* _Output;
 };

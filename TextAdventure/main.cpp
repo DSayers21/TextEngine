@@ -19,7 +19,7 @@ int main()
 	_Console.Init(10, 16, 0, 0, 7, false);
 	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
 
-	DialogTree First(_OutputB, "./Test.json");
+	DialogTree First(_OutputB, "Dialog/Test.json");
 	First.Init();
 	First.PerformDialog();
 

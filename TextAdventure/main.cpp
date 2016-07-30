@@ -8,9 +8,6 @@
 
 #include <iostream>
 
-
-
-
 int main()
 {
 	TxtEgn::InputControl _Input;

@@ -13,11 +13,12 @@ class DialogNode;
 class DialogOption
 {
 public:
-	DialogOption(std::string Text, int ReturnCode, DialogNode *nxtNode);
+	DialogOption(std::string Text, std::string NxtNode, int ReturnCode, DialogNode *nxtNode);
 
-	std::string _Text;
-	int _ReturnCode;
-	DialogNode *_nxtNode;
+	std::string m_Text;
+	std::string m_SNxtNode;
+	int m_ReturnCode;
+	DialogNode *m_nxtNode;
 };
 
 class DialogNode
@@ -25,8 +26,8 @@ class DialogNode
 public:
 	DialogNode(std::string Text);
 
-	std::string _Text;
-	std::vector<DialogOption> _DialogOptions;
+	std::string m_Text;
+	std::vector<DialogOption> m_DialogOptions;
 };
 
 class DialogTree
@@ -42,12 +43,15 @@ private:
 	std::string Indent(int level);
 	void PrintTree(boost::property_tree::ptree &pt, int level);
 
-	InOutDataManager IOMan;
+	void LoadTree();
+	void SaveTree();
 
-	TxtEgn::InputControl _Input;
-	std::string _FilePath;
+	InOutDataManager m_IOMan;
 
-	std::vector<DialogNode*> _DialogNodes;
-	TxtEgn::COutput* _Output;
+	TxtEgn::InputControl m_Input;
+	std::string m_FilePath;
+
+	std::vector<DialogNode*> m_DialogNodes;
+	TxtEgn::COutput* m_Output;
 };
 

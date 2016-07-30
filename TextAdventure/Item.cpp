@@ -1,11 +1,18 @@
 #include "Item.h"
 
-Item::Item(std::string ItmName, std::string ItmDesc, float ItmValue, bool Stackable)
+Item::Item()
 {
-	m_ItmName = ItmName;
-	m_ItmDesc = ItmDesc;
-	m_ItmValue = ItmValue;
-	m_Stackable = Stackable;
+	//Empty
+}
+
+Item::Item(std::string ItmName, std::string ItmDesc, float ItmValue, bool Stackable) :
+	m_ItmName(ItmName),
+	m_ItmDesc(ItmDesc),
+	m_ItmValue(ItmValue),
+	m_Stackable(Stackable)
+
+{
+	//Empty
 }
 
 Item::~Item()

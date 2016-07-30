@@ -4,6 +4,7 @@
 class Item
 {
 public:
+	Item();
 	Item(std::string ItmName, std::string ItmDesc, float ItmValue, bool Stackable);
 	~Item();
 	Item(const Item& other);

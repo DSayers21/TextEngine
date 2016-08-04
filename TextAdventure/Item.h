@@ -16,13 +16,14 @@ public:
 	void SetItemName(std::string ItmName) { m_ItmName = ItmName; }
 	void SetItemDesc(std::string ItmDesc) { m_ItmDesc = ItmDesc; }
 	void SetItemValue(float ItmValue) { m_ItmValue = ItmValue; }
-	void SetFilePath() { m_ItmPath = "Item/" + m_Input.RemoveSpaces(m_ItmName) + ".json"; }
+	void SetFilePath() { m_ItmPath = "Item/" + m_Input.RemoveSpaces(m_ItmName); }
 
 	//Getters
 	std::string GetItemName() { return m_ItmName; }
 	std::string GetItemDesc() { return m_ItmDesc; }
 	float GetItemValue() { return m_ItmValue; }
 	bool IfStackable() { return m_Stackable; }
+	std::string GetItemPath() { return m_ItmPath; }
 
 	//SaveNLoad
 	void Load(std::string FilePath);

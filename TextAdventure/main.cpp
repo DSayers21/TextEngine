@@ -19,19 +19,10 @@ int main()
 
 
 
-	//DialogTree First(_OutputB, "Dialog/Test.json");
-	//First.Init();
-	//First.PerformDialog();
+	DialogTree First(_OutputB, "Dialog/Test");
 
-	//Item newItem("Sword of Power", "The most Powerful sword in the world", 100.0f, false);
-	//newItem.Save();
+	First.Init();
 
-	Item LoadItem;
-	LoadItem.Load("Item/SwordofPower.json");
-
-	std::cout << LoadItem.GetItemName() << std::endl;
-	std::cout << LoadItem.GetItemDesc() << std::endl;
-	std::cout << (float)LoadItem.GetItemValue() << std::endl;
 
 	int a;
 	std::cin >> a;

@@ -14,7 +14,8 @@
                     "ReturnCode": "0",
                     "NextNode": "Node2"
                 }
-            }
+            },
+            "Items": ""
         },
         "Node1": {
             "Dialog": "<C8> I don't want to talk to you",
@@ -24,7 +25,8 @@
                     "ReturnCode": "0",
                     "NextNode": "NULL"
                 }
-            }
+            },
+            "Items": ""
         },
         "Node2": {
             "Dialog": "<C8> I have a quest for you",
@@ -44,7 +46,8 @@
                     "ReturnCode": "0",
                     "NextNode": "Node3"
                 }
-            }
+            },
+            "Items": ""
         },
         "Node3": {
             "Dialog": "<C8> You will get 5 gold you greedy swine!",
@@ -58,6 +61,11 @@
                     "Name": "<C14> That sucks im out!",
                     "ReturnCode": "0",
                     "NextNode": "NULL"
+                }
+            },
+            "Items": {
+                "Item0": {
+                    "ItmPath": "Item\/SwordofPower"
                 }
             }
         },
@@ -74,7 +82,8 @@
                     "ReturnCode": "0",
                     "NextNode": "NULL"
                 }
-            }
+            },
+            "Items": ""
         }
     }
 }

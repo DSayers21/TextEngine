@@ -9,6 +9,7 @@
 
 class DialogOption;
 class DialogNode;
+class Item;
 
 class DialogOption
 {
@@ -28,6 +29,7 @@ public:
 
 	std::string m_Text;
 	std::vector<DialogOption> m_DialogOptions;
+	std::vector<Item> m_DialogItems;
 };
 
 class DialogTree

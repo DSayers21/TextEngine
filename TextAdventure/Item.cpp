@@ -43,7 +43,7 @@ Item Item::operator=(const Item& other)
 void Item::Load(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
-	boost::property_tree::ptree Tree = m_IOMan.LoadJSON(FilePath);
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
 
 	m_ItmName = Tree.get<std::string>("ItmName");
 	m_ItmDesc = Tree.get<std::string>("ItmDesc");
@@ -63,5 +63,5 @@ void Item::Save()
 	Tree.put("ItmValue", m_ItmValue);
 	Tree.put("ItmStack", m_Stackable);
 	//Save the tree to a readable format
-	m_IOMan.SaveJSON(m_ItmPath, Tree);
+	m_IOMan.SaveFile(m_ItmPath, Tree);
 }

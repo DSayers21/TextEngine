@@ -1,11 +1,25 @@
-﻿Build started 04/08/2016 20:14:22.
+﻿Build started 04/08/2016 21:40:21.
      1>Project "F:\User\Documents\Home Work\C++\CTAPS\TextAdventure\TextAdventure.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Item.cpp Player.cpp main.cpp
-         main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt DialogTree.cpp Item.cpp Player.cpp main.cpp
+         DialogTree.cpp
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(25): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(48): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(54): warning C4018: '>': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(108): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(122): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(130): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(152): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(175): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(189): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(212): warning C4018: '<': signed/unsigned mismatch
+         Generating Code...
+     1>f:\user\documents\home work\c++\ctaps\textadventure\dialogtree.cpp(65): warning C4715: 'DialogTree::PerformDialog': not all control paths return a value
+         Compiling...
          Item.cpp
          Generating Code...
          Skipping... (no relevant changes detected)
+         main.cpp
          Player.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\User\Documents\Home Work\C++\CTAPS\Debug\TextAdventure.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\User\Documents\Home Work\C++\CTAPS\Debug\TextAdventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\User\Documents\Home Work\C++\CTAPS\Debug\TextAdventure.lib" /MACHINE:X86 Debug\DialogTree.obj
@@ -17,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.91
+Time Elapsed 00:00:05.35

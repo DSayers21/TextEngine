@@ -1,4 +1,5 @@
 #include "DialogTree.h"
+#include "Item.h"
 
 DialogOption::DialogOption(std::string Text, std::string NxtNode, int ReturnCode, DialogNode *nxtNode)
 {
@@ -31,6 +32,7 @@ DialogTree::~DialogTree()
 void DialogTree::Init()
 {
 	LoadTree();
+	SaveTree();
 }
 
 int DialogTree::PerformDialog()
@@ -97,7 +99,7 @@ void DialogTree::LoadTree()
 	//Temp Vector Used for linking pointers
 	std::vector<std::string> _DialogName;
 	//Load Data into Tree
-	boost::property_tree::ptree Tree = m_IOMan.LoadJSON(m_FilePath);
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(m_FilePath);
 	//Tree that gets Nodes from main tree
 	boost::property_tree::ptree Nodes = Tree.get_child("Nodes");
 	//Tree to get elements of above Nodes tree e.g. Node1 Node2 ect
@@ -145,6 +147,20 @@ void DialogTree::LoadTree()
 			else
 				m_DialogNodes[i]->m_DialogOptions.emplace_back(Name, NextNode, ReturnCode, nullptr);
 		}
+		//Get Items child
+		boost::property_tree::ptree Items = NodeNum.get_child("Items");
+		for (int j = 0; j < Items.size(); j++)
+		{
+			//Get options number child
+			std::string ItemName = "Item" + std::to_string(j);
+			boost::property_tree::ptree ItemNum = Items.get_child(ItemName);
+			//Get all information needed from optionNum
+			std::string FilePath = ItemNum.get<std::string>("ItmPath");
+			//Add Item
+			Item loadItem;
+			loadItem.Load(FilePath);
+			m_DialogNodes[i]->m_DialogItems.push_back(loadItem);
+		}
 	}
 }
 
@@ -188,11 +204,33 @@ void DialogTree::SaveTree()
 			//Add all the options to the current node
 			NodeNum.add_child("Options", Options);
 		}
+		//If there is create the options tree
+		boost::property_tree::ptree Items;
+		if (m_DialogNodes[i]->m_DialogItems.size() > 0)
+		{
+			//Loop through all the options
+			for (int j = 0; j < m_DialogNodes[i]->m_DialogItems.size(); j++)
+			{
+				//Get the current option
+				Item* Current = &m_DialogNodes[i]->m_DialogItems[j];
+				//Get the option number
+				std::string ItmNum = "Item" + std::to_string(j);
+				//Create the tree for the current option num
+				boost::property_tree::ptree ItemTree;
+				//Put all the option information into the tree
+				ItemTree.put("ItmPath", Current->GetItemPath());
+				//Add the current option num into the options tree
+				Items.add_child(ItmNum, ItemTree);
+			}
+		}
+		//Add all the options to the current node
+		NodeNum.add_child("Items", Items);
+
 		//Add all the nodes to the nodes tree
 		Nodes.add_child(Num, NodeNum);
 	}
 	//Add the nodes tree to the main tree
 	Tree.add_child("Nodes", Nodes);
 	//Save the tree to a readable format
-	m_IOMan.SaveJSON(m_FilePath, Tree);
+	m_IOMan.SaveFile(m_FilePath, Tree);
 }

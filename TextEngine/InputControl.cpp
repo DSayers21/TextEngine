@@ -237,4 +237,17 @@ namespace TxtEgn
 		}
 		return -1;
 	}
+
+	std::string InputControl::RemoveSpaces(std::string Original)
+	{
+		std::string Out = "";
+		for (int i = 0; i < Original.size(); i++)
+		{
+			if (Original[i] != ' ')
+			{
+				Out += Original[i];
+			}
+		}
+		return Out;
+	}
 }

@@ -5,6 +5,7 @@
 #include <TextEngine/ImageCache.h>
 
 #include "DialogTree.h"
+#include "Item.h"
 
 #include <iostream>
 
@@ -16,9 +17,21 @@ int main()
 	_Console.Init(10, 16, 0, 0, 7, false);
 	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
 
-	DialogTree First(_OutputB, "Dialog/Test.json");
-	First.Init();
-	First.PerformDialog();
+
+
+	//DialogTree First(_OutputB, "Dialog/Test.json");
+	//First.Init();
+	//First.PerformDialog();
+
+	//Item newItem("Sword of Power", "The most Powerful sword in the world", 100.0f, false);
+	//newItem.Save();
+
+	Item LoadItem;
+	LoadItem.Load("Item/SwordofPower.json");
+
+	std::cout << LoadItem.GetItemName() << std::endl;
+	std::cout << LoadItem.GetItemDesc() << std::endl;
+	std::cout << (float)LoadItem.GetItemValue() << std::endl;
 
 	int a;
 	std::cin >> a;

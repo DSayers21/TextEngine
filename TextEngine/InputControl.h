@@ -40,5 +40,7 @@ namespace TxtEgn
 		std::vector<int> ParseByComma(std::string InputS);
 
 		int SearchVector(std::vector<std::string> Vector, std::string Find);
+
+		std::string RemoveSpaces(std::string Original);
 	};
 }

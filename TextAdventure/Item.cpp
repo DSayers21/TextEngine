@@ -12,7 +12,7 @@ Item::Item(std::string ItmName, std::string ItmDesc, float ItmValue, bool Stacka
 	m_Stackable(Stackable)
 
 {
-	//Empty
+	SetFilePath();
 }
 
 Item::~Item()
@@ -26,6 +26,7 @@ Item::Item(const Item& other)
 	m_ItmDesc = other.m_ItmDesc;
 	m_ItmValue = other.m_ItmValue;
 	m_Stackable = other.m_Stackable;
+	m_ItmPath = other.m_ItmPath;
 }
 
 Item Item::operator=(const Item& other)
@@ -34,5 +35,33 @@ Item Item::operator=(const Item& other)
 	m_ItmDesc = other.m_ItmDesc;
 	m_ItmValue = other.m_ItmValue;
 	m_Stackable = other.m_Stackable;
+	m_ItmPath = other.m_ItmPath;
+
 	return *this;
+}
+
+void Item::Load(std::string FilePath)
+{
+	//Create Main Tree and Nodes tree
+	boost::property_tree::ptree Tree = m_IOMan.LoadJSON(FilePath);
+
+	m_ItmName = Tree.get<std::string>("ItmName");
+	m_ItmDesc = Tree.get<std::string>("ItmDesc");
+	m_ItmValue = Tree.get<float>("ItmValue");
+	m_Stackable = Tree.get<bool>("ItmStack");
+
+	SetFilePath();
+}
+
+void Item::Save()
+{
+	//Create Main Tree and Nodes tree
+	boost::property_tree::ptree Tree;
+	//Add the Conversation name to the top of the tree
+	Tree.put("ItmName", m_ItmName);
+	Tree.put("ItmDesc", m_ItmDesc);
+	Tree.put("ItmValue", m_ItmValue);
+	Tree.put("ItmStack", m_Stackable);
+	//Save the tree to a readable format
+	m_IOMan.SaveJSON(m_ItmPath, Tree);
 }

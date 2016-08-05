@@ -22,7 +22,7 @@ int main()
 	DialogTree First(_OutputB, "Dialog/Test");
 
 	First.Init();
-
+	First.PerformDialog();
 
 	int a;
 	std::cin >> a;

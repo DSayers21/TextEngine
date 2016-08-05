@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 #include <TextEngine/InputControl.h>
+#include <TextEngine/InOutDataManager.h>
+#include <boost/property_tree/ptree.hpp>
+#include "SaveLoadControl.h"
 
 class Item;
 
@@ -11,8 +14,11 @@ public:
 	Player(std::string PlyrName, unsigned int Level, float Gold);
 	~Player();
 
-	void AddItem(Item* addItem);
-	void RemoveItem(Item* remItem);
+	void SavePlayer(std::string FilePath);
+	void LoadPlayer(std::string FilePath);
+
+	void AddItem(Item addItem);
+	void RemoveItem(Item remItem);
 
 	//Setters
 	void SetPlyrName(std::string PlyrName) { m_PlyrName = PlyrName; }
@@ -25,13 +31,14 @@ public:
 	std::string GetPlyrName() { return m_PlyrName; }
 	unsigned int GetPlyrLevel() { return m_Level; }
 	float GetPlyrGold() { return m_Gold; }
-private:
 
+private:
 	std::string m_PlyrName = "John Doe";
-	std::vector<Item*> m_PlyrItems;
+	std::vector<Item> m_PlyrItems;
 	unsigned int m_Level = 1;
 	float m_Gold = 0;
 
 	TxtEgn::InputControl m_Input;
+	SaveLoadControl m_SandL;
+	InOutDataManager m_IOMan;
 };
-

@@ -31,7 +31,6 @@ void SaveLoadControl::SaveItemsToVector(std::vector<Item>* ItemVec, boost::prope
 		//Get all information needed from optionNum
 		std::string FilePath = ItemNum.get<std::string>("ItmPath");
 
-		std::cout << FilePath << std::endl;
 		//Add Item
 		Item loadItem;
 		loadItem.Load(FilePath);

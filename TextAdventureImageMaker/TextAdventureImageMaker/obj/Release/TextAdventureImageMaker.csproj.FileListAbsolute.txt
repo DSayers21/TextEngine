@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.exe.config
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.exe
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.pdb
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.Form1.resources
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.LoadFormat.resources
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.Properties.Resources.resources
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.exe
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.pdb
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.ColourChange.resources

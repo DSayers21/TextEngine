@@ -1,0 +1,9 @@
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\bin\Debug\TextAdventureImageMaker.exe.config
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\bin\Debug\TextAdventureImageMaker.exe
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\bin\Debug\TextAdventureImageMaker.pdb
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Debug\TextAdventureImageMaker.Form1.resources
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Debug\TextAdventureImageMaker.LoadFormat.resources
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Debug\TextAdventureImageMaker.Properties.Resources.resources
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Debug\TextAdventureImageMaker.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Debug\TextAdventureImageMaker.exe
+C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Debug\TextAdventureImageMaker.pdb

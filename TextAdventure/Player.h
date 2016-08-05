@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <TextEngine/InputControl.h>
 
 class Item;
 
@@ -9,6 +10,9 @@ class Player
 public:
 	Player(std::string PlyrName, unsigned int Level, float Gold);
 	~Player();
+
+	void AddItem(Item* addItem);
+	void RemoveItem(Item* remItem);
 
 	//Setters
 	void SetPlyrName(std::string PlyrName) { m_PlyrName = PlyrName; }
@@ -26,6 +30,8 @@ private:
 	std::string m_PlyrName = "John Doe";
 	std::vector<Item*> m_PlyrItems;
 	unsigned int m_Level = 1;
-	float m_Gold = 0;;
+	float m_Gold = 0;
+
+	TxtEgn::InputControl m_Input;
 };
 

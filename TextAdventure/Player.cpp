@@ -17,6 +17,23 @@ Player::~Player()
 	//Empty
 }
 
+void Player::AddItem(Item* addItem)
+{
+	m_PlyrItems.push_back(addItem);
+}
+
+void Player::RemoveItem(Item* remItem)
+{
+	for (int i = 0; i < m_PlyrItems.size(); i++)
+	{
+		if (m_Input.CompareStrings(m_PlyrItems[i]->GetItemName(), remItem->GetItemName()))
+		{
+			m_PlyrItems.erase(m_PlyrItems.begin() + i);
+			break;
+		}
+	}
+}
+
 Item* Player::GetItem(std::string ItemName)
 {
 	TxtEgn::InputControl Input;

@@ -6,6 +6,7 @@
 #include <TextEngine/InOutDataManager.h>
 #include <TextEngine/InputControl.h>
 #include <boost/property_tree/ptree.hpp>
+#include "SaveLoadControl.h"
 
 class DialogOption;
 class DialogNode;
@@ -55,5 +56,6 @@ private:
 
 	std::vector<DialogNode*> m_DialogNodes;
 	TxtEgn::COutput* m_Output;
+	SaveLoadControl m_SandL;
 };
 

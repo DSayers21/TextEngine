@@ -149,18 +149,8 @@ void DialogTree::LoadTree()
 		}
 		//Get Items child
 		boost::property_tree::ptree Items = NodeNum.get_child("Items");
-		for (int j = 0; j < Items.size(); j++)
-		{
-			//Get options number child
-			std::string ItemName = "Item" + std::to_string(j);
-			boost::property_tree::ptree ItemNum = Items.get_child(ItemName);
-			//Get all information needed from optionNum
-			std::string FilePath = ItemNum.get<std::string>("ItmPath");
-			//Add Item
-			Item loadItem;
-			loadItem.Load(FilePath);
-			m_DialogNodes[i]->m_DialogItems.push_back(loadItem);
-		}
+		//Save Items from Tree into Vector
+		m_SandL.SaveItemsToVector(&m_DialogNodes[i]->m_DialogItems, Items);
 	}
 }
 
@@ -206,23 +196,9 @@ void DialogTree::SaveTree()
 		}
 		//If there is create the options tree
 		boost::property_tree::ptree Items;
-		if (m_DialogNodes[i]->m_DialogItems.size() > 0)
-		{
-			//Loop through all the options
-			for (int j = 0; j < m_DialogNodes[i]->m_DialogItems.size(); j++)
-			{
-				//Get the current option
-				Item* Current = &m_DialogNodes[i]->m_DialogItems[j];
-				//Get the option number
-				std::string ItmNum = "Item" + std::to_string(j);
-				//Create the tree for the current option num
-				boost::property_tree::ptree ItemTree;
-				//Put all the option information into the tree
-				ItemTree.put("ItmPath", Current->GetItemPath());
-				//Add the current option num into the options tree
-				Items.add_child(ItmNum, ItemTree);
-			}
-		}
+		//Add Items to Tree
+		m_SandL.SaveItemsToTree(&Items, m_DialogNodes[i]->m_DialogItems);
+
 		//Add all the options to the current node
 		NodeNum.add_child("Items", Items);
 

@@ -2,6 +2,11 @@
 #include "Item.h"
 #include "Location.h"
 
+Object::Object()
+{
+
+}
+
 Object::Object(std::string Name, std::string Desc,
 	std::string ActionWord, std::string m_RemovedDesc, std::string m_ActionConnector) :
 	m_Name(Name), m_Desc(Desc), m_ActionWord(ActionWord), m_RemovedDesc(m_RemovedDesc), m_ActionConnector(m_ActionConnector)
@@ -97,4 +102,9 @@ void Object::LoadObject(std::string FilePath)
 	//Save Items from Tree into Vector
 	m_SandL.SaveLocationToMap(&Locations, &m_NewExits);
 
+}
+
+std::string Object::BuildPath()
+{
+	return "Object/" + m_Name;
 }

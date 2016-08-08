@@ -7,10 +7,10 @@
 #include <TextEngine/InputControl.h>
 #include <boost/property_tree/ptree.hpp>
 #include "SaveLoadControl.h"
+#include "Item.h"
 
 class DialogOption;
 class DialogNode;
-class Item;
 
 class DialogOption
 {
@@ -61,4 +61,3 @@ private:
 	TxtEgn::COutput* m_Output;
 	SaveLoadControl m_SandL;
 };
-

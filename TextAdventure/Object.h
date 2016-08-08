@@ -13,6 +13,7 @@ class Item;
 class Object
 {
 public:
+	Object();
 	Object(std::string Name, std::string Desc, 
 		std::string ActionWord, std::string m_RemovedDesc, std::string m_ActionConnector = "");
 
@@ -39,6 +40,8 @@ public:
 	//SaveAndLoad
 	void SaveObject(std::string FilePath);
 	void LoadObject(std::string FilePath);
+
+	std::string BuildPath();
 
 private:
 	std::string m_Name = "Blank";

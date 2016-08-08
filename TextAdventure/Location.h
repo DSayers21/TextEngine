@@ -4,10 +4,16 @@
 #include <boost/property_tree/ptree.hpp>
 #include "SaveLoadControl.h"
 
+#include "Item.h"
+#include "Object.h"
+#include "NPC.h"
+
 #include <string>
 #include <map>
 #include <vector>
 
+class Object;
+class NPC;
 class Location
 {
 public:
@@ -31,6 +37,13 @@ public:
 private:
 	std::string m_Name;
 	std::string m_Desc;
+
+	std::map<std::string, Location*> m_Exits = std::map<std::string, Location*>();
+
+	std::vector<Item> m_Items;
+	std::vector<Object*> m_Objects;
+	std::vector<NPC*> m_NPC;
+
 
 	TxtEgn::InputControl m_Input;
 	SaveLoadControl m_SandL;

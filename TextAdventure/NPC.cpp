@@ -1,5 +1,5 @@
 #include "NPC.h"
-
+#include "DialogTree.h"
 
 
 NPC::NPC()
@@ -97,4 +97,9 @@ void NPC::Load(std::string FilePath)
 
 		m_WantedItems.push_back(WItm);
 	}
+}
+
+std::string NPC::BuildPath()
+{
+	return "NPC/" + m_Name;
 }

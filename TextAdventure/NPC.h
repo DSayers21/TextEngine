@@ -4,13 +4,13 @@
 #include <boost/property_tree/ptree.hpp>
 #include "SaveLoadControl.h"
 
-#include "DialogTree.h"
-
 #include <string>
 #include <map>
 #include <vector>
 
-class Item;
+#include "Item.h"
+
+class DialogTree;
 
 class WantedItem
 {
@@ -67,6 +67,8 @@ public:
 
 	void Save(std::string FilePath);
 	void Load(std::string FilePath);
+
+	std::string BuildPath();
 
 private:
 	std::string m_Name = "BLANK";

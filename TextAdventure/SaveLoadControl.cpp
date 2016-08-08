@@ -1,5 +1,8 @@
 #include "SaveLoadControl.h"
+#include "Object.h"
+#include "NPC.h"
 #include "Location.h"
+#include "Item.h"
 
 SaveLoadControl::SaveLoadControl()
 {
@@ -118,5 +121,79 @@ void SaveLoadControl::SaveLocationToMap(boost::property_tree::ptree* Locations, 
 		Location loadLocation;
 		loadLocation.Load(FilePath);
 		LocationMap->insert(std::pair<std::string, Location*>(Direction, &loadLocation));
+	}
+}
+
+//Object
+
+void SaveLoadControl::SaveObjectsToVector(std::vector<Object*>* ObjectVec, boost::property_tree::ptree& Objects)
+{
+	for (int i = 0; i < Objects.size(); i++)
+	{
+		//Get options number child
+		std::string ObjectName = "Object" + std::to_string(i);
+		boost::property_tree::ptree ObjectNum = Objects.get_child(ObjectName);
+		//Get all information needed from optionNum
+		std::string FilePath = ObjectNum.get<std::string>("ObjectPath");
+
+		//Add Item
+		Object loadObject;
+		loadObject.LoadObject(FilePath);
+		ObjectVec->push_back(&loadObject);
+	}
+}
+void SaveLoadControl::SaveObjectsToTree(boost::property_tree::ptree* Objects, std::vector<Object*> ObjectVec)
+{
+	//Loop through all the options
+	for (int i = 0; i < ObjectVec.size(); i++)
+	{
+		//Get the current option
+		Object* Current = ObjectVec[i];
+		//Get the option number
+		std::string ObjectNum = "Object" + std::to_string(i);
+		//Create the tree for the current option num
+		boost::property_tree::ptree ObjectTree;
+		//Put all the option information into the tree
+		ObjectTree.put("ObjectPath", Current->BuildPath());
+		//Add the current option num into the options tree
+		Objects->add_child(ObjectNum, ObjectTree);
+	}
+}
+
+
+//NPC
+
+void SaveLoadControl::SaveNPCsToVector(std::vector<NPC*>* NPCVec, boost::property_tree::ptree& NPCs)
+{
+	for (int i = 0; i < NPCs.size(); i++)
+	{
+		//Get options number child
+		std::string NPCName = "NPC" + std::to_string(i);
+		boost::property_tree::ptree NPCNum = NPCs.get_child(NPCName);
+		//Get all information needed from optionNum
+		std::string FilePath = NPCNum.get<std::string>("NPCPath");
+
+		//Add Item
+		NPC loadNPC;
+		loadNPC.Load(FilePath);
+		NPCVec->push_back(&loadNPC);
+	}
+}
+
+void SaveLoadControl::SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec)
+{
+	//Loop through all the options
+	for (int i = 0; i < NPCVec.size(); i++)
+	{
+		//Get the current option
+		NPC* Current = NPCVec[i];
+		//Get the option number
+		std::string NPCNum = "NPC" + std::to_string(i);
+		//Create the tree for the current option num
+		boost::property_tree::ptree NPCTree;
+		//Put all the option information into the tree
+		NPCTree.put("NPCPath", Current->BuildPath());
+		//Add the current option num into the options tree
+		NPCs->add_child(NPCNum, NPCTree);
 	}
 }

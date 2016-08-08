@@ -126,13 +126,17 @@
   <ItemGroup>
     <ClCompile Include="DialogTree.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Location.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SaveLoadControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DialogTree.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Location.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SaveLoadControl.h" />
   </ItemGroup>

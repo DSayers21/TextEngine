@@ -51,8 +51,6 @@ void Player::LoadPlayer(std::string FilePath)
 	m_SandL.SaveItemsToVector(&m_PlyrItems, Items);
 }
 
-
-
 void Player::AddItem(Item addItem)
 {
 	m_PlyrItems.push_back(addItem);

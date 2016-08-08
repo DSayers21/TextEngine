@@ -39,16 +39,19 @@ public:
 	DialogTree(TxtEgn::COutput& Output, std::string FilePath);
 	~DialogTree();
 
-	void Init();
+	void Init(std::string FilePath);
 
 	int PerformDialog();
+
+	std::string GetFilePath() { return m_FilePath; }
+
+	void LoadTree(std::string FilePath);
+	void SaveTree(std::string FilePath);
+
 private:
 	std::string Indent(int level);
 	void PrintTree(boost::property_tree::ptree &pt, int level);
-
-	void LoadTree();
-	void SaveTree();
-
+	
 	InOutDataManager m_IOMan;
 
 	TxtEgn::InputControl m_Input;

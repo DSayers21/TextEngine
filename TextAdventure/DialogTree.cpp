@@ -29,10 +29,10 @@ DialogTree::~DialogTree()
 	m_DialogNodes.clear();
 }
 
-void DialogTree::Init()
+void DialogTree::Init(std::string FilePath)
 {
-	LoadTree();
-	SaveTree();
+	LoadTree(FilePath);
+	SaveTree(FilePath);
 }
 
 int DialogTree::PerformDialog()
@@ -94,12 +94,12 @@ void DialogTree::PrintTree(boost::property_tree::ptree &pt, int level)
 	return;
 }
 
-void DialogTree::LoadTree()
+void DialogTree::LoadTree(std::string FilePath)
 {
 	//Temp Vector Used for linking pointers
 	std::vector<std::string> _DialogName;
 	//Load Data into Tree
-	boost::property_tree::ptree Tree = m_IOMan.LoadFile(m_FilePath);
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
 	//Tree that gets Nodes from main tree
 	boost::property_tree::ptree Nodes = Tree.get_child("Nodes");
 	//Tree to get elements of above Nodes tree e.g. Node1 Node2 ect
@@ -154,7 +154,7 @@ void DialogTree::LoadTree()
 	}
 }
 
-void DialogTree::SaveTree()
+void DialogTree::SaveTree(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree;
@@ -208,5 +208,5 @@ void DialogTree::SaveTree()
 	//Add the nodes tree to the main tree
 	Tree.add_child("Nodes", Nodes);
 	//Save the tree to a readable format
-	m_IOMan.SaveFile(m_FilePath, Tree);
+	m_IOMan.SaveFile(FilePath, Tree);
 }

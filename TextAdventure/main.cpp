@@ -21,7 +21,8 @@ int main()
 
 	DialogTree First(_OutputB, "Dialog/Test");
 
-	First.Init();
+	First.Init("Dialog/Test");
+
 	First.PerformDialog();
 
 	int a;

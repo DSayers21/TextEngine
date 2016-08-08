@@ -2,12 +2,14 @@
 #include <boost/property_tree/ptree.hpp>
 #include <vector>
 #include "Item.h"
-#include "Location.h"
 #include <map>
 
+class Location;
 class SaveLoadControl
 {
 public:
+	SaveLoadControl();
+
 	void SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item>& ItmVec);
 	void SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item*> ItmVec);
 	void SaveItemsToVector(std::vector<Item>* ItemVec, boost::property_tree::ptree& Items);

@@ -1,7 +1,10 @@
 #include "Location.h"
 
 
+Location::Location()
+{
 
+}
 Location::Location(std::string Name, std::string Desc) : m_Name(Name), m_Desc(Desc)
 {
 }
@@ -16,12 +19,12 @@ std::string Location::BuildPath()
 	return "Location/" + m_Name;
 }
 
-void Load(std::string FilePath)
+void Location::Load(std::string FilePath)
 {
 
 }
 
-void Save(std::string FilePath)
+void Location::Save(std::string FilePath)
 {
 
 }

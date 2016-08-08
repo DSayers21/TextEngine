@@ -1,4 +1,10 @@
 #include "SaveLoadControl.h"
+#include "Location.h"
+
+SaveLoadControl::SaveLoadControl()
+{
+
+}
 
 //Items
 
@@ -70,9 +76,9 @@ void SaveLoadControl::SaveItemsToVector(std::vector<Item*>* ItemVec, boost::prop
 		std::string FilePath = ItemNum.get<std::string>("ItmPath");
 
 		//Add Item
-		Item* loadItem;
-		loadItem->Load(FilePath);
-		ItemVec->push_back(loadItem);
+		Item loadItem;
+		loadItem.Load(FilePath);
+		ItemVec->push_back(&loadItem);
 	}
 }
 
@@ -109,8 +115,8 @@ void SaveLoadControl::SaveLocationToMap(boost::property_tree::ptree* Locations, 
 		std::string FilePath = LocationNum.get<std::string>("ItmPath");
 		std::string Direction = LocationNum.get<std::string>("Direction");
 		//Add Location
-		Location* loadLocation;
-		loadLocation->Load(FilePath);
-		LocationMap->insert(std::pair<std::string, Location*>(Direction, loadLocation));
+		Location loadLocation;
+		loadLocation.Load(FilePath);
+		LocationMap->insert(std::pair<std::string, Location*>(Direction, &loadLocation));
 	}
 }

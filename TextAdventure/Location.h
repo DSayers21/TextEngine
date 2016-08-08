@@ -8,10 +8,10 @@
 #include <map>
 #include <vector>
 
-
 class Location
 {
 public:
+	Location();
 	Location(std::string Name, std::string Desc);
 	~Location();
 

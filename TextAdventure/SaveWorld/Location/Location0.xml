@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LocName>&lt;C8&gt; Clouded Pass</LocName>
+<LocDesc>&lt;C8&gt; A clouded pass is before you</LocDesc>
+<Items>
+	<Item0>
+		<ItmPath>SaveWorld/Item/SwordofPower</ItmPath>
+	</Item0>
+</Items>
+<Objects/>
+<NPCs/>

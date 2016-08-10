@@ -11,22 +11,22 @@ InOutDataManager::~InOutDataManager()
 {
 }
 
-void InOutDataManager::SaveFile(std::string FilePath, boost::property_tree::ptree& Tree, std::string Extension)
+void InOutDataManager::SaveFile(std::string FilePath, boost::property_tree::ptree& Tree)
 {
-	if (Extension == ".xml")
+	if (SaveExtension == ".xml")
 		SaveXML(FilePath, Tree);
-	else if (Extension == ".json")
+	else if (SaveExtension == ".json")
 		SaveJSON(FilePath, Tree);
 	else
 		return;
 }
 
-boost::property_tree::ptree InOutDataManager::LoadFile(std::string FilePath, std::string Extension)
+boost::property_tree::ptree InOutDataManager::LoadFile(std::string FilePath)
 {
 	boost::property_tree::ptree Tree;
-	if (Extension == ".xml")
+	if (LoadExtension == ".xml")
 		Tree = LoadXML(FilePath);
-	else if (Extension == ".json")
+	else if (LoadExtension == ".json")
 		Tree = LoadJSON(FilePath);
 	return Tree;
 }

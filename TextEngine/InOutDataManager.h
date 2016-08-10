@@ -11,8 +11,8 @@ public:
 	~InOutDataManager();
 
 	//General Save And Load
-	void SaveFile(std::string FilePath, boost::property_tree::ptree& Tree, std::string Extension = ".json");
-	boost::property_tree::ptree LoadFile(std::string FilePath, std::string Extension = ".json");
+	void SaveFile(std::string FilePath, boost::property_tree::ptree& Tree);
+	boost::property_tree::ptree LoadFile(std::string FilePath);
 
 private:
 	//Specific Save And Load
@@ -21,4 +21,7 @@ private:
 
 	boost::property_tree::ptree LoadJSON(std::string FilePath);
 	boost::property_tree::ptree LoadXML(std::string FilePath);
+
+	std::string SaveExtension = ".xml";
+	std::string LoadExtension = ".json";
 };

@@ -1,0 +1,17 @@
+{
+	"LocName": "<C8> Clouded Pass",
+	"LocDesc": "<C8> A clouded pass is before you",
+	"Items": {
+		"Item0": {
+			"ItmPath": "GameWorld\/Item\/SwordofPower"
+		}
+	},
+	"Objects": "",
+	"NPCs": "",
+	"Exits": {
+		"Exit0": {
+			"Direction": "SOUTH",
+			"NextLocation": "Location1"
+		}
+	}
+}

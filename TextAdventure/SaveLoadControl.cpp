@@ -136,9 +136,9 @@ void SaveLoadControl::SaveObjectsToVector(std::vector<Object*>* ObjectVec, boost
 		//Get all information needed from optionNum
 		std::string FilePath = ObjectNum.get<std::string>("ObjectPath");
 
-		//Add Item
+		//Add Object
 		Object loadObject;
-		loadObject.LoadObject(FilePath);
+		//loadObject.LoadObject(FilePath);
 		ObjectVec->push_back(&loadObject);
 	}
 }

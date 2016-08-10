@@ -45,20 +45,15 @@ void Location::Load(std::string FilePath)
 	/////////////////Objects///////////////////////////////////
 	//Get Objects child
 	boost::property_tree::ptree Objects = Tree.get_child("Objects");
+
 	//Save Objects from Tree into Vector
-	m_SandL.SaveObjectsToVector(&m_Objects, Items);
+	m_SandL.SaveObjectsToVector(&m_Objects, Objects);
 
 	/////////////////NPCs//////////////////////////////////////
 	//Get NPCs child
 	boost::property_tree::ptree NPCs = Tree.get_child("NPCs");
 	//Save NPCs from Tree into Vector
-	m_SandL.SaveNPCsToVector(&m_NPC, Items);
-
-	/////////////////Locations////////////////////////////////
-	//Get Locations child
-	boost::property_tree::ptree Locations = Tree.get_child("Locations");
-	//Save Locations from Tree into Vector
-	m_SandL.SaveLocationToMap(&Locations, &m_Exits);
+	m_SandL.SaveNPCsToVector(&m_NPC, NPCs);
 }
 
 void Location::Save(std::string FilePath)
@@ -96,4 +91,33 @@ void Location::Save(std::string FilePath)
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(FilePath, Tree);
 
+}
+
+void Location::AddExit(std::string Direction, Location *Loc)
+{
+	m_Exits.insert(std::pair<std::string, Location*>(Direction, Loc));
+}
+
+void Location::DisplayAll()
+{
+	std::cout << "LocationName: " << m_Name << std::endl;
+	std::cout << "LocationDesc: " << m_Desc << std::endl;
+	std::cout << "--------------------------------------" << std::endl;
+	for (int i = 0; i < m_Items.size(); i++)
+	{
+		std::cout << "ItemName: " << m_Items[i].GetItemName() << std::endl;
+	}
+	std::cout << "--------------------------------------" << std::endl;
+	for (int i = 0; i < m_Objects.size(); i++)
+	{
+		std::cout << "ObjectName: " << m_Objects[i]->GetName() << std::endl;
+	}
+
+	if (m_Exits.size() != 0)
+	{
+		for (std::map<std::string, Location*>::iterator ii = m_Exits.begin(); ii != m_Exits.end(); ++ii)
+		{
+			std::cout << "Direction: " << ii->first << " To Location: " << ii->second->GetName() << std::endl;
+		}
+	}
 }

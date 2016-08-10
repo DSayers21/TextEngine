@@ -34,6 +34,10 @@ public:
 	void Load(std::string FilePath);
 	void Save(std::string FilePath);
 
+	void AddExit(std::string Direction, Location *Loc);
+
+	void DisplayAll();
+
 private:
 	std::string m_Name;
 	std::string m_Desc;

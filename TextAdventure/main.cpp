@@ -4,8 +4,7 @@
 #include <TextEngine/ConsoleZone.h>
 #include <TextEngine/ImageCache.h>
 
-#include "DialogTree.h"
-#include "Item.h"
+#include "GameWorld.h"
 
 #include <iostream>
 
@@ -17,13 +16,8 @@ int main()
 	_Console.Init(10, 16, 0, 0, 7, false);
 	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
 
-
-
-	DialogTree First(_OutputB, "Dialog/Test");
-
-	First.Init("Dialog/Test");
-
-	First.PerformDialog();
+	GameWorld Test;
+	Test.Load("GameWorld/Location");
 
 	int a;
 	std::cin >> a;

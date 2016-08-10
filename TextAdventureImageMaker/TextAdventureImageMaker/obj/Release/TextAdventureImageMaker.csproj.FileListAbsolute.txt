@@ -9,3 +9,6 @@ C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMa
 C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.pdb
 C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.csprojResolveAssemblyReference.cache
 C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.ColourChange.resources
+F:\User\Documents\Home Work\C++\CTAPS\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.exe.config
+F:\User\Documents\Home Work\C++\CTAPS\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.exe
+F:\User\Documents\Home Work\C++\CTAPS\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.pdb

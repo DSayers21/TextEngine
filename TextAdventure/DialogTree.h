@@ -36,17 +36,17 @@ public:
 class DialogTree
 {
 public:
-	DialogTree(TxtEgn::COutput& Output, std::string FilePath);
+	DialogTree(TxtEgn::COutput& Output);
 	~DialogTree();
 
 	void Init(std::string FilePath);
 
 	int PerformDialog();
 
-	std::string GetFilePath() { return m_FilePath; }
+	void Load(std::string FilePath);
+	void Save(std::string FilePath);
 
-	void LoadTree(std::string FilePath);
-	void SaveTree(std::string FilePath);
+	std::string BuildPath(std::string FilePath);
 
 private:
 	std::string Indent(int level);
@@ -55,8 +55,7 @@ private:
 	InOutDataManager m_IOMan;
 
 	TxtEgn::InputControl m_Input;
-	std::string m_FilePath;
-
+	std::string m_DiaName;
 	std::vector<DialogNode*> m_DialogNodes;
 	TxtEgn::COutput* m_Output;
 	SaveLoadControl m_SandL;

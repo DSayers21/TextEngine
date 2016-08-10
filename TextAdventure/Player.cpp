@@ -27,7 +27,7 @@ void Player::SavePlayer(std::string FilePath)
 	//If there is create the options tree
 	boost::property_tree::ptree Items;
 	//Add Items to Tree
-	m_SandL.SaveItemsToTree(&Items, m_PlyrItems);
+	m_SandL.SaveItemsToTree(&Items, m_PlyrItems, FilePath);
 
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);

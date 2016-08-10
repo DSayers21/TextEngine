@@ -28,6 +28,9 @@ void GameWorld::Load(std::string FilePath)
 	std::vector<std::string> _LocationNames;
 	//Load Data into Tree
 	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath + "/Location");
+
+	m_GameName = Tree.get<std::string>("GameName");;
+
 	//Tree that gets Nodes from main tree
 	boost::property_tree::ptree Nodes = Tree.get_child("Locations");
 	//Tree to get elements of above Nodes tree e.g. Location0, Location1 ect
@@ -87,7 +90,28 @@ void GameWorld::Load(std::string FilePath)
 
 void GameWorld::Save(std::string FilePath)
 {
+	//Create Main Tree and Nodes tree
+	boost::property_tree::ptree Tree;
+	boost::property_tree::ptree Locations;
+	//Add the GameName name to the top of the tree
+	Tree.put("GameName", m_GameName);
+	//Loop through all the Locations in the tree
 
+	for (int i = 0; i < m_Locations.size(); i++)
+	{
+		//For each node get the node num
+		std::string LocNum = "Location" + std::to_string(i);
+		//Create the node num tree for the current node
+		boost::property_tree::ptree LocationTree;
+		//Add the current nodes dialog to the node num tree
+
+		m_Locations[i]->Save(FilePath);
+
+
+	}
+
+	//Save the tree to a readable format
+	m_IOMan.SaveFile(FilePath + "/Location", Tree);
 }
 
 void PrintTree(boost::property_tree::ptree &pt, int level)

@@ -14,21 +14,21 @@ class SaveLoadControl
 public:
 	SaveLoadControl();
 
-	void SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item>& ItmVec);
-	void SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item*> ItmVec);
+	void SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item>& ItmVec, std::string FilePath);
+	void SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item*> ItmVec, std::string FilePath);
 	void SaveItemsToVector(std::vector<Item>* ItemVec, boost::property_tree::ptree& Items);
 	void SaveItemsToVector(std::vector<Item*>* ItemVec, boost::property_tree::ptree& Items);
 
 
-	void SaveLocationToTree(boost::property_tree::ptree* Locations, std::map<std::string, Location*> LocationMap);
+	void SaveLocationToTree(boost::property_tree::ptree* Locations, std::map<std::string, Location*> LocationMap, std::string FilePath);
 	void SaveLocationToMap(boost::property_tree::ptree* Locations, std::map<std::string, Location*>* LocationMap);
 
 
 	void SaveObjectsToVector(std::vector<Object*>* ObjectVec, boost::property_tree::ptree& Objects);
-	void SaveObjectsToTree(boost::property_tree::ptree* Objects, std::vector<Object*> ObjectVec);
+	void SaveObjectsToTree(boost::property_tree::ptree* Objects, std::vector<Object*> ObjectVec, std::string FilePath);
 
 
 	void SaveNPCsToVector(std::vector<NPC*>* NPCVec, boost::property_tree::ptree& NPCs);
-	void SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec);
+	void SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec, std::string FilePath);
 };
 

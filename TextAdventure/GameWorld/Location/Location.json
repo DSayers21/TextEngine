@@ -1,5 +1,5 @@
 {
-    "Game Name": "Cloud Land",
+    "GameName": "Cloud Land",
     "Locations": {
         "Location0": {
             "LocPath": "GameWorld\/Location\/Location0",

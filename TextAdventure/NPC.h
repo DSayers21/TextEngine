@@ -31,8 +31,8 @@ public:
 		//Add the Conversation name to the top of the tree
 		Tree.put("WItmGiveMess", m_GiveMessage);
 		Tree.put("WItmAmount", m_Amount);
-		Tree.put("WItmWan", m_wanItem->GetItemPath());
-		Tree.put("WItmGive", m_giveItem->GetItemPath());
+		Tree.put("WItmWan", m_wanItem->BuildPath(FilePath));
+		Tree.put("WItmGive", m_giveItem->BuildPath(FilePath));
 
 		//Save the tree to a readable format
 		return Tree;
@@ -68,7 +68,7 @@ public:
 	void Save(std::string FilePath);
 	void Load(std::string FilePath);
 
-	std::string BuildPath();
+	std::string BuildPath(std::string FilePath);
 
 private:
 	std::string m_Name = "BLANK";

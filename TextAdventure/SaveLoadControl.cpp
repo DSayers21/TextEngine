@@ -11,7 +11,7 @@ SaveLoadControl::SaveLoadControl()
 
 //Items
 
-void SaveLoadControl::SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item>& ItmVec)
+void SaveLoadControl::SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item>& ItmVec, std::string FilePath)
 {
 	if (ItmVec.size() > 0)
 	{
@@ -25,13 +25,13 @@ void SaveLoadControl::SaveItemsToTree(boost::property_tree::ptree* Items, std::v
 			//Create the tree for the current option num
 			boost::property_tree::ptree ItemTree;
 			//Put all the option information into the tree
-			ItemTree.put("ItmPath", Current->GetItemPath());
+			ItemTree.put("ItmPath", Current->BuildPath(FilePath));
 			//Add the current option num into the options tree
 			Items->add_child(ItmNum, ItemTree);
 		}
 	}
 }
-void SaveLoadControl::SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item*> ItmVec)
+void SaveLoadControl::SaveItemsToTree(boost::property_tree::ptree* Items, std::vector<Item*> ItmVec, std::string FilePath)
 {
 	if (ItmVec.size() > 0)
 	{
@@ -45,7 +45,7 @@ void SaveLoadControl::SaveItemsToTree(boost::property_tree::ptree* Items, std::v
 			//Create the tree for the current option num
 			boost::property_tree::ptree ItemTree;
 			//Put all the option information into the tree
-			ItemTree.put("ItmPath", Current->GetItemPath());
+			ItemTree.put("ItmPath", Current->BuildPath(FilePath));
 			//Add the current option num into the options tree
 			Items->add_child(ItmNum, ItemTree);
 		}
@@ -87,7 +87,7 @@ void SaveLoadControl::SaveItemsToVector(std::vector<Item*>* ItemVec, boost::prop
 
 //Location
 
-void SaveLoadControl::SaveLocationToTree(boost::property_tree::ptree* Locations, std::map<std::string, Location*> LocationMap)
+void SaveLoadControl::SaveLocationToTree(boost::property_tree::ptree* Locations, std::map<std::string, Location*> LocationMap, std::string FilePath)
 {
 	int Count = 0;
 	for (std::map<std::string, Location*>::iterator ii = LocationMap.begin(); ii != LocationMap.end(); ++ii)
@@ -142,7 +142,7 @@ void SaveLoadControl::SaveObjectsToVector(std::vector<Object*>* ObjectVec, boost
 		ObjectVec->push_back(&loadObject);
 	}
 }
-void SaveLoadControl::SaveObjectsToTree(boost::property_tree::ptree* Objects, std::vector<Object*> ObjectVec)
+void SaveLoadControl::SaveObjectsToTree(boost::property_tree::ptree* Objects, std::vector<Object*> ObjectVec, std::string FilePath)
 {
 	//Loop through all the options
 	for (int i = 0; i < ObjectVec.size(); i++)
@@ -154,7 +154,7 @@ void SaveLoadControl::SaveObjectsToTree(boost::property_tree::ptree* Objects, st
 		//Create the tree for the current option num
 		boost::property_tree::ptree ObjectTree;
 		//Put all the option information into the tree
-		ObjectTree.put("ObjectPath", Current->BuildPath());
+		ObjectTree.put("ObjectPath", Current->BuildPath(FilePath));
 		//Add the current option num into the options tree
 		Objects->add_child(ObjectNum, ObjectTree);
 	}
@@ -180,7 +180,7 @@ void SaveLoadControl::SaveNPCsToVector(std::vector<NPC*>* NPCVec, boost::propert
 	}
 }
 
-void SaveLoadControl::SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec)
+void SaveLoadControl::SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec, std::string FilePath)
 {
 	//Loop through all the options
 	for (int i = 0; i < NPCVec.size(); i++)
@@ -192,7 +192,7 @@ void SaveLoadControl::SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vec
 		//Create the tree for the current option num
 		boost::property_tree::ptree NPCTree;
 		//Put all the option information into the tree
-		NPCTree.put("NPCPath", Current->BuildPath());
+		NPCTree.put("NPCPath", Current->BuildPath(FilePath));
 		//Add the current option num into the options tree
 		NPCs->add_child(NPCNum, NPCTree);
 	}

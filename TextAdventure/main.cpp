@@ -18,6 +18,7 @@ int main()
 
 	GameWorld Test;
 	Test.Load("GameWorld/Location");
+	Test.Save("SaveWorld/Location");
 
 	int a;
 	std::cin >> a;

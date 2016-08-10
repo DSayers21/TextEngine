@@ -41,7 +41,7 @@ void Object::RemoveItem(std::string ItmName)
 	}
 }
 
-void Object::SaveObject(std::string FilePath)
+void Object::Save(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree;
@@ -57,7 +57,7 @@ void Object::SaveObject(std::string FilePath)
 	//If there is create the options tree
 	boost::property_tree::ptree Items;
 	//Add Items to Tree
-	m_SandL.SaveItemsToTree(&Items, m_NewItems);
+	m_SandL.SaveItemsToTree(&Items, m_NewItems, FilePath);
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
 
@@ -65,15 +65,15 @@ void Object::SaveObject(std::string FilePath)
 	//If there is create the options tree
 	boost::property_tree::ptree Locations;
 	//Add Locations to Tree
-	m_SandL.SaveLocationToTree(&Items, m_NewExits);
+	m_SandL.SaveLocationToTree(&Items, m_NewExits, FilePath);
 	//Add all the options to the current node
 	Tree.add_child("Locations", Locations);
 
 	//Save the tree to a readable format
-	m_IOMan.SaveFile(FilePath, Tree);
+	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
 }
 
-void Object::LoadObject(std::string FilePath)
+void Object::Load(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
@@ -104,7 +104,7 @@ void Object::LoadObject(std::string FilePath)
 
 }
 
-std::string Object::BuildPath()
+std::string Object::BuildPath(std::string FilePath)
 {
-	return "Object/" + m_Name;
+	return FilePath + "/Object/" + m_Input.RemoveSpaces(m_Name);
 }

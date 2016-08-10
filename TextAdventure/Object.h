@@ -38,10 +38,10 @@ public:
 	void SetActionItemName(std::string ActionItemName) { m_ActionItemName = ActionItemName; };
 
 	//SaveAndLoad
-	void SaveObject(std::string FilePath);
-	void LoadObject(std::string FilePath);
+	void Save(std::string FilePath);
+	void Load(std::string FilePath);
 
-	std::string BuildPath();
+	std::string BuildPath(std::string FilePath);
 
 private:
 	std::string m_Name = "Blank";

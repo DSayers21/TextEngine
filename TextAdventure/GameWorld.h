@@ -21,6 +21,8 @@ public:
 private:
 	std::vector<Location*> m_Locations;
 
+	std::string m_GameName;
+
 	TxtEgn::InputControl m_Input;
 	SaveLoadControl m_SandL;
 	InOutDataManager m_IOMan;

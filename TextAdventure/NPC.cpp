@@ -23,12 +23,12 @@ void NPC::Save(std::string FilePath)
 	Tree.put("NpcGender", m_Gender);
 	Tree.put("NpcBye", m_Goodbye);
 	Tree.put("NpcAlrGiv", m_AlrGivenMes);
-	Tree.put("Dialog", m_Dialog->GetFilePath());
+	Tree.put("Dialog", m_Dialog->BuildPath(FilePath));
 
 	//If there is create the options tree
 	boost::property_tree::ptree Items;
 	//Add Items to Tree
-	m_SandL.SaveItemsToTree(&Items, m_ShopItems);
+	m_SandL.SaveItemsToTree(&Items, m_ShopItems, FilePath);
 
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
@@ -46,7 +46,7 @@ void NPC::Save(std::string FilePath)
 	}
 	Tree.add_child("WItems", WItems);
 	//Save the tree to a readable format
-	m_IOMan.SaveFile(FilePath, Tree);
+	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
 }
 
 void NPC::Load(std::string FilePath)
@@ -60,7 +60,7 @@ void NPC::Load(std::string FilePath)
 	m_Goodbye = Tree.get<std::string>("PlrName");
 	m_AlrGivenMes = Tree.get<std::string>("PlrLevel");
 
-	m_Dialog->LoadTree(FilePath);
+	m_Dialog->Load(FilePath);
 
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
@@ -99,7 +99,7 @@ void NPC::Load(std::string FilePath)
 	}
 }
 
-std::string NPC::BuildPath()
+std::string NPC::BuildPath(std::string FilePath)
 {
-	return "NPC/" + m_Name;
+	return FilePath + "/NPC/" + m_Input.RemoveSpaces(m_Name);
 }

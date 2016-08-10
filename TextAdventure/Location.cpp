@@ -66,31 +66,30 @@ void Location::Save(std::string FilePath)
 
 	//Items////////////////////////////////////////////////
 	boost::property_tree::ptree Items;
-	m_SandL.SaveItemsToTree(&Items, m_Items);
+	m_SandL.SaveItemsToTree(&Items, m_Items, FilePath);
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
 
 	//Objects//////////////////////////////////////////////
 	boost::property_tree::ptree Objects;
-	m_SandL.SaveObjectsToTree(&Objects, m_Objects);
+	m_SandL.SaveObjectsToTree(&Objects, m_Objects, FilePath);
 	//Add all the options to the current node
 	Tree.add_child("Objects", Objects);
 
 	//NPCs/////////////////////////////////////////////////
 	boost::property_tree::ptree NPCs;
-	m_SandL.SaveNPCsToTree(&NPCs, m_NPC);
+	m_SandL.SaveNPCsToTree(&NPCs, m_NPC, FilePath);
 	//Add all the options to the current node
 	Tree.add_child("NPCs", NPCs);
 
 	//Exits/////////////////////////////////////////////////
 	boost::property_tree::ptree Exits;
-	m_SandL.SaveLocationToTree(&Exits, m_Exits);
+	m_SandL.SaveLocationToTree(&Exits, m_Exits, FilePath);
 	//Add all the options to the current node
 	Tree.add_child("Locations", Exits);
 
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(FilePath, Tree);
-
 }
 
 void Location::AddExit(std::string Direction, Location *Loc)

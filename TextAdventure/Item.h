@@ -17,21 +17,20 @@ public:
 	void SetItemName(std::string ItmName) { m_ItmName = ItmName; }
 	void SetItemDesc(std::string ItmDesc) { m_ItmDesc = ItmDesc; }
 	void SetItemValue(float ItmValue) { m_ItmValue = ItmValue; }
-	void SetFilePath() { m_ItmPath = "Item/" + m_Input.RemoveSpaces(m_ItmName); }
 
 	//Getters
 	std::string GetItemName() { return m_ItmName; }
 	std::string GetItemDesc() { return m_ItmDesc; }
 	float GetItemValue() { return m_ItmValue; }
 	bool IfStackable() { return m_Stackable; }
-	std::string GetItemPath() { return m_ItmPath; }
+
+	std::string BuildPath(std::string FilePath);
 
 	//SaveNLoad
 	void Load(std::string FilePath);
-	void Save();
+	void Save(std::string FilePath);
 
 private:
-	std::string m_ItmPath = "FilePath";
 	std::string m_ItmName = "EmptyItem";
 	std::string m_ItmDesc = "EmptyDesc";
 	float m_ItmValue = 0.0f;

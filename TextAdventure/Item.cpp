@@ -12,7 +12,7 @@ Item::Item(std::string ItmName, std::string ItmDesc, float ItmValue, bool Stacka
 	m_Stackable(Stackable)
 
 {
-	SetFilePath();
+	
 }
 
 Item::~Item()
@@ -26,7 +26,6 @@ Item::Item(const Item& other)
 	m_ItmDesc = other.m_ItmDesc;
 	m_ItmValue = other.m_ItmValue;
 	m_Stackable = other.m_Stackable;
-	m_ItmPath = other.m_ItmPath;
 }
 
 Item Item::operator=(const Item& other)
@@ -35,7 +34,6 @@ Item Item::operator=(const Item& other)
 	m_ItmDesc = other.m_ItmDesc;
 	m_ItmValue = other.m_ItmValue;
 	m_Stackable = other.m_Stackable;
-	m_ItmPath = other.m_ItmPath;
 
 	return *this;
 }
@@ -49,11 +47,9 @@ void Item::Load(std::string FilePath)
 	m_ItmDesc = Tree.get<std::string>("ItmDesc");
 	m_ItmValue = Tree.get<float>("ItmValue");
 	m_Stackable = Tree.get<bool>("ItmStack");
-
-	SetFilePath();
 }
 
-void Item::Save()
+void Item::Save(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree;
@@ -63,5 +59,10 @@ void Item::Save()
 	Tree.put("ItmValue", m_ItmValue);
 	Tree.put("ItmStack", m_Stackable);
 	//Save the tree to a readable format
-	m_IOMan.SaveFile(m_ItmPath, Tree);
+	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
+}
+
+std::string Item::BuildPath(std::string FilePath)
+{
+	return FilePath + "/Item/" + m_Input.RemoveSpaces(m_ItmName);
 }

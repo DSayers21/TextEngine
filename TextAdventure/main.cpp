@@ -17,8 +17,8 @@ int main()
 	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
 
 	GameWorld Test;
-	Test.Load("GameWorld/Location");
-	Test.Save("SaveWorld/Location");
+	Test.Load("GameWorld");
+	Test.Save("SaveWorld");
 
 	int a;
 	std::cin >> a;

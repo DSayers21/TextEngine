@@ -27,7 +27,7 @@ void GameWorld::Load(std::string FilePath)
 	//Temp Vector Used for linking pointers
 	std::vector<std::string> _LocationNames;
 	//Load Data into Tree
-	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath + "/Location");
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath + "/Location/Location");
 
 	m_GameName = Tree.get<std::string>("GameName");;
 
@@ -46,10 +46,10 @@ void GameWorld::Load(std::string FilePath)
 		//Get Location information
 		//Create and Add to vector
 		Location* newLocation = new Location();
-		std::string Path = FilePath + "/" + LocName;
+		std::string Path = FilePath + "/Location/" + LocName;
 
 		newLocation->Load(Path);
-
+		newLocation->SetLocationNum(LocName);
 		m_Locations.emplace_back(newLocation);
 	}
 
@@ -81,11 +81,6 @@ void GameWorld::Load(std::string FilePath)
 				m_Locations[i]->AddExit(Direction, m_Locations[Position]);
 		}
 	}
-	for (int i = 0; i < m_Locations.size(); i++)
-	{
-		m_Locations[i]->DisplayAll();
-		std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << std::endl;
-	}
 }
 
 void GameWorld::Save(std::string FilePath)
@@ -101,17 +96,47 @@ void GameWorld::Save(std::string FilePath)
 	{
 		//For each node get the node num
 		std::string LocNum = "Location" + std::to_string(i);
-		//Create the node num tree for the current node
-		boost::property_tree::ptree LocationTree;
-		//Add the current nodes dialog to the node num tree
+		boost::property_tree::ptree LocationNum;
 
-		m_Locations[i]->Save(FilePath);
+		LocationNum.put("LocPath", m_Locations[i]->BuildPathLocNum(FilePath));
+
+		
+		//Exits
+		boost::property_tree::ptree Exits;
+		int Count = 0;
+
+		std::map<std::string, Location*> newMap = m_Locations[i]->GetExits();
+		for (std::map<std::string, Location*>::iterator ii = newMap.begin(); ii != newMap.end(); ++ii)
+		{
+			//For each node get the node num
+			std::string ExiNumber = "Exit" + std::to_string(Count);
+			boost::property_tree::ptree ExitNum;
 
 
+			ExitNum.put("Direction", ii->first);
+			
+			ExitNum.put("NextLocation", ii->second->GetLocationNum());
+			//Add all the nodes to the nodes tree
+			Exits.add_child(ExiNumber, ExitNum);
+			Count++;
+		}
+
+		//Add the nodes tree to the main tree
+		LocationNum.add_child("Exits", Exits);
+
+		//Add all the nodes to the nodes tree
+		Locations.add_child(LocNum, LocationNum);
+		
+		//Save
+		std::string OutNum = "Location" + std::to_string(i);
+		m_Locations[i]->Save(FilePath, OutNum);
 	}
 
+	//Add the nodes tree to the main tree
+	Tree.add_child("Locations", Locations);
+
 	//Save the tree to a readable format
-	m_IOMan.SaveFile(FilePath + "/Location", Tree);
+	m_IOMan.SaveFile(FilePath + "/Location/Location", Tree);
 }
 
 void PrintTree(boost::property_tree::ptree &pt, int level)

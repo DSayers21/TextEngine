@@ -95,11 +95,11 @@ void SaveLoadControl::SaveLocationToTree(boost::property_tree::ptree* Locations,
 		//Get the current location
 		Location* Current = ii->second;
 		//Get the option number
-		std::string LocNum = "Location" + std::to_string(Count);
+		std::string LocNum = "Exit" + std::to_string(Count);
 		//Create the tree for the current option num
 		boost::property_tree::ptree LocationTree;
 		//Put all the option information into the tree
-		LocationTree.put("ItmPath", Current->BuildPath());
+		LocationTree.put("ItmPath", Current->BuildPath(FilePath));
 		LocationTree.put("Direction", ii->first);
 		//Add the current option num into the options tree
 		Locations->add_child(LocNum, LocationTree);

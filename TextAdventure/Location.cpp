@@ -14,19 +14,15 @@ Location::~Location()
 {
 }
 
-std::string Location::BuildPath()
+std::string Location::BuildPath(std::string FilePath)
 {
-	return "Location/" + m_Name;
+	return FilePath + "/Location/" + m_Input.RemoveSpaces(m_Name);
 }
 
-std::string m_Name;
-std::string m_Desc;
-
-std::map<std::string, Location*> m_Exits = std::map<std::string, Location*>();
-
-std::vector<Item> m_Items;
-std::vector<Object> m_Objects;
-std::vector<NPC> m_NPC;
+std::string Location::BuildPathLocNum(std::string FilePath)
+{
+	return FilePath + "/Location/" + m_Input.RemoveSpaces(m_LocationNum);
+}
 
 void Location::Load(std::string FilePath)
 {
@@ -56,7 +52,7 @@ void Location::Load(std::string FilePath)
 	m_SandL.SaveNPCsToVector(&m_NPC, NPCs);
 }
 
-void Location::Save(std::string FilePath)
+void Location::Save(std::string FilePath, std::string Num)
 {
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree;
@@ -70,11 +66,17 @@ void Location::Save(std::string FilePath)
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
 
+	for (int i = 0; i < m_Items.size(); i++)
+		m_Items[i].Save(FilePath);
+
 	//Objects//////////////////////////////////////////////
 	boost::property_tree::ptree Objects;
 	m_SandL.SaveObjectsToTree(&Objects, m_Objects, FilePath);
 	//Add all the options to the current node
 	Tree.add_child("Objects", Objects);
+
+	for (int i = 0; i < m_Objects.size(); i++)
+		m_Objects[i]->Save(FilePath);
 
 	//NPCs/////////////////////////////////////////////////
 	boost::property_tree::ptree NPCs;
@@ -82,14 +84,11 @@ void Location::Save(std::string FilePath)
 	//Add all the options to the current node
 	Tree.add_child("NPCs", NPCs);
 
-	//Exits/////////////////////////////////////////////////
-	boost::property_tree::ptree Exits;
-	m_SandL.SaveLocationToTree(&Exits, m_Exits, FilePath);
-	//Add all the options to the current node
-	Tree.add_child("Locations", Exits);
+	for (int i = 0; i < m_NPC.size(); i++)
+		m_NPC[i]->Save(FilePath);
 
 	//Save the tree to a readable format
-	m_IOMan.SaveFile(FilePath, Tree);
+	m_IOMan.SaveFile(BuildPath(FilePath, Num), Tree);
 }
 
 void Location::AddExit(std::string Direction, Location *Loc)
@@ -119,4 +118,11 @@ void Location::DisplayAll()
 			std::cout << "Direction: " << ii->first << " To Location: " << ii->second->GetName() << std::endl;
 		}
 	}
+}
+
+std::string Location::BuildPath(std::string FilePath, std::string LocationNum)
+{
+	std::string Ret = FilePath + "/Location/" + m_Input.RemoveSpaces(LocationNum);
+	std::cout << Ret << std::endl;
+	return Ret;
 }

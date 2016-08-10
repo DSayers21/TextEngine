@@ -1,0 +1,11 @@
+{
+    "LocName": "<C8> Clouded Pass",
+    "LocDesc": "<C8> A clouded pass is before you",
+    "Items": {
+        "Item0": {
+            "ItmPath": "SaveWorld\/Item\/SwordofPower"
+        }
+    },
+    "Objects": "",
+    "NPCs": ""
+}

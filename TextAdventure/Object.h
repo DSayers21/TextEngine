@@ -19,7 +19,7 @@ public:
 
 	~Object();
 
-	void AddExit(std::string Direction, Location* Room);
+	void AddExit(std::string Direction, std::string Room);
 
 	void AddItem(Item* sItem);
 	void RemoveItem(std::string ItmName);
@@ -52,7 +52,7 @@ private:
 	std::string m_RemovedDesc = "Blank";			//The message which appears when the object is interacted with
 	std::string m_ActionItemName = "Blank";			//e.g key, card, token etc
 
-	std::map<std::string, Location*> m_NewExits = std::map<std::string, Location*>();	//Exits which get added to the current location when the object has been moved
+	std::map<std::string, std::string> m_NewExits = std::map<std::string, std::string>();	//Exits which get added to the current location when the object has been moved
 	std::vector<Item*> m_NewItems;														//Items which get added to the room, e.g. they fall to the floor after the door is opened
 	
 	bool m_IfRemoved = false;

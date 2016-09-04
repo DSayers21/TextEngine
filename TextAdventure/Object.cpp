@@ -19,9 +19,9 @@ Object::~Object()
 
 }
 
-void Object::AddExit(std::string Direction, Location* Room)
+void Object::AddExit(std::string Direction, std::string Room)
 {
-	m_NewExits.insert(std::pair<std::string, Location*>(Direction, Room));
+	m_NewExits.insert(std::pair<std::string, std::string>(Direction, Room));
 }
 
 void Object::AddItem(Item* sItem)
@@ -61,13 +61,14 @@ void Object::Save(std::string FilePath)
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
 
-	///Locations
+	///Locations/////////////////////////////////////////////////////////
 	//If there is create the options tree
-	boost::property_tree::ptree Locations;
+	//boost::property_tree::ptree Locations;
 	//Add Locations to Tree
-	m_SandL.SaveLocationToTree(&Items, m_NewExits, FilePath);
+	//m_SandL.SaveLocationToTree(&Items, m_NewExits, FilePath);
 	//Add all the options to the current node
-	Tree.add_child("Locations", Locations);
+	//Tree.add_child("Locations", Locations);
+	//////////////////////////////////////////////////////////////////////
 
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
@@ -97,11 +98,12 @@ void Object::Load(std::string FilePath)
 	//Save Items from Tree into Vector
 	m_SandL.SaveItemsToVector(&m_NewItems, Items);
 
+	////////////////////////////////////////////////////////////////////////////////////////
 	//Get Locations child
-	boost::property_tree::ptree Locations = Tree.get_child("Locations");
+	//boost::property_tree::ptree Locations = Tree.get_child("Locations");
 	//Save Items from Tree into Vector
-	m_SandL.SaveLocationToMap(&Locations, &m_NewExits);
-
+	//m_SandL.SaveLocationToMap(&Locations, &m_NewExits);
+	////////////////////////////////////////////////////////////////////////////////////////
 }
 
 std::string Object::BuildPath(std::string FilePath)

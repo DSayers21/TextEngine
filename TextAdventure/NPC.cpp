@@ -6,6 +6,14 @@ NPC::NPC()
 {
 }
 
+NPC::NPC(std::string NPCName, std::string NPCDesc, std::string NPCGender, std::string NPCGoodbye, std::string NPCAlreadyGiven)
+{
+	m_Name = NPCName;
+	m_Description = NPCDesc;
+	m_Gender = NPCGender;
+	m_Goodbye = NPCGoodbye;
+	m_AlrGivenMes = NPCAlreadyGiven;
+}
 
 NPC::~NPC()
 {
@@ -23,7 +31,10 @@ void NPC::Save(std::string FilePath)
 	Tree.put("NpcGender", m_Gender);
 	Tree.put("NpcBye", m_Goodbye);
 	Tree.put("NpcAlrGiv", m_AlrGivenMes);
-	Tree.put("Dialog", m_Dialog->BuildPath(FilePath));
+	if (m_Dialog != nullptr)
+		Tree.put("Dialog", m_Dialog->BuildPath(FilePath));
+	else
+		Tree.put("Dialog", "NULL");
 
 	//If there is create the options tree
 	boost::property_tree::ptree Items;
@@ -54,13 +65,15 @@ void NPC::Load(std::string FilePath)
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
 
-	m_Name = Tree.get<std::string>("PlrName");
-	m_Description = Tree.get<std::string>("PlrLevel");
-	m_Gender = Tree.get<std::string>("PlrGold");
-	m_Goodbye = Tree.get<std::string>("PlrName");
-	m_AlrGivenMes = Tree.get<std::string>("PlrLevel");
+	m_Name = Tree.get<std::string>("NpcName");
+	m_Description = Tree.get<std::string>("NpcDesc");
+	m_Gender = Tree.get<std::string>("NpcGender");
+	m_Goodbye = Tree.get<std::string>("NpcBye");
+	m_AlrGivenMes = Tree.get<std::string>("NpcAlrGiv");
 
-	m_Dialog->Load(FilePath);
+	std::string GetDia = Tree.get<std::string>("Dialog");
+	if(GetDia != "NULL")
+		m_Dialog->Load(GetDia);
 
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");

@@ -39,6 +39,9 @@ public:
 	void Save(std::string FilePath, std::string Num);
 
 	void AddExit(std::string Direction, Location *Loc);
+	void AddItem(Item Itm);
+	void AddObject(Object *Obj);
+	void AddNPC(NPC *npc);
 
 	void DisplayAll();
 

@@ -8,6 +8,10 @@
 
 #include <iostream>
 
+
+
+
+
 int main()
 {
 	TxtEgn::InputControl _Input;
@@ -17,11 +21,11 @@ int main()
 	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
 
 	GameWorld Test;
-	//Test.Load("GameWorld");
-	//Test.Save("SaveWorld");
+	Test.Load("CloudGame");
+	Test.Save("SaveTestBed");
 
-	_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::CENTER);
-	_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::CENTER);
+	//_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::CENTER);
+	//_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::CENTER);
 
 	int a;
 	std::cin >> a;

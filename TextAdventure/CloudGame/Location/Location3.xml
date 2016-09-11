@@ -3,4 +3,8 @@
 <LocDesc>a strange tower, it appears to be emmitting an ominous dark glow across the sky.</LocDesc>
 <Items/>
 <Objects/>
-<NPCs/>
+<NPCs>
+	<NPC0>
+		<NPCPath>CloudGame\/NPC\/Nigel</NPCPath>
+	</NPC0>
+</NPCs>

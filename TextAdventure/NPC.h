@@ -63,6 +63,7 @@ class NPC
 {
 public:
 	NPC();
+	NPC(std::string NPCName, std::string NPCDesc, std::string NPCGender, std::string NPCGoodbye, std::string NPCAlreadyGiven);
 	~NPC();
 
 	void Save(std::string FilePath);
@@ -80,7 +81,7 @@ private:
 	std::vector<WantedItem> m_WantedItems;
 	std::vector<Item> m_ShopItems;
 
-	DialogTree* m_Dialog;
+	DialogTree* m_Dialog = nullptr;
 
 
 	TxtEgn::InputControl m_Input;

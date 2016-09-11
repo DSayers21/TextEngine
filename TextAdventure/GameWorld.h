@@ -17,6 +17,7 @@ public:
 	void Load(std::string FilePath);
 
 	void Save(std::string FilePath);
+	void TestBed();
 
 private:
 	std::vector<Location*> m_Locations;

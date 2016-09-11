@@ -1,6 +1,5 @@
 #include "Location.h"
 
-
 Location::Location()
 {
 
@@ -49,7 +48,7 @@ void Location::Load(std::string FilePath)
 	//Get NPCs child
 	boost::property_tree::ptree NPCs = Tree.get_child("NPCs");
 	//Save NPCs from Tree into Vector
-	m_SandL.SaveNPCsToVector(&m_NPC, NPCs);
+	m_NPC = m_SandL.SaveNPCsToVector(m_NPC, NPCs);
 }
 
 void Location::Save(std::string FilePath, std::string Num)
@@ -90,10 +89,24 @@ void Location::Save(std::string FilePath, std::string Num)
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath, Num), Tree);
 }
-
 void Location::AddExit(std::string Direction, Location *Loc)
 {
 	m_Exits.insert(std::pair<std::string, Location*>(Direction, Loc));
+}
+
+void Location::AddItem(Item Itm)
+{
+	m_Items.push_back(Itm);
+}
+
+void Location::AddObject(Object *Obj)
+{
+	m_Objects.push_back(Obj);
+}
+
+void Location::AddNPC(NPC *npc)
+{
+	m_NPC.push_back(npc);
 }
 
 void Location::DisplayAll()

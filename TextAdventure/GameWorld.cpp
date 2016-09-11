@@ -1,5 +1,6 @@
 #include "GameWorld.h"
 #include "Location.h"
+#include "DialogTree.h"
 
 void PrintTree(boost::property_tree::ptree &pt, int level);
 std::string Indent(int level);
@@ -100,7 +101,6 @@ void GameWorld::Save(std::string FilePath)
 
 		LocationNum.put("LocPath", m_Locations[i]->BuildPathLocNum(FilePath));
 
-		
 		//Exits
 		boost::property_tree::ptree Exits;
 		int Count = 0;
@@ -112,10 +112,9 @@ void GameWorld::Save(std::string FilePath)
 			std::string ExiNumber = "Exit" + std::to_string(Count);
 			boost::property_tree::ptree ExitNum;
 
-
 			ExitNum.put("Direction", ii->first);
-			
 			ExitNum.put("NextLocation", ii->second->GetLocationNum());
+
 			//Add all the nodes to the nodes tree
 			Exits.add_child(ExiNumber, ExitNum);
 			Count++;
@@ -167,4 +166,46 @@ std::string Indent(int level)
 	std::string s;
 	for (int i = 0; i<level; i++) s += "  ";
 	return s;
+}
+
+void GameWorld::TestBed()
+{
+	//Locations
+	Location CloudForest("Cloud Forest", "a wide variety of trees all with a perculiar type of leaf.. it almost looks like clouds. You stand in a clearning.");
+	CloudForest.SetLocationNum("Location0");
+	Location CloudCityOutSkirts("Outskirts of Cloud City", "an enourmous city with hundreds of spires which reach high into the atmosphere. The city seems peaceful with a hive of activty.");
+	CloudCityOutSkirts.SetLocationNum("Location1");
+	Location CloudCity("Cloud City", "a busseling city center full of people all going about their business.");
+	CloudCity.SetLocationNum("Location2");
+	Location MysteriousTower("Mysterious Tower", "a strange tower, it appears to be emmitting an ominous dark glow across the sky.");
+	MysteriousTower.SetLocationNum("Location3");
+
+	//Updates
+	m_Locations.push_back(&CloudForest);
+	m_Locations.push_back(&CloudCityOutSkirts);
+	m_Locations.push_back(&CloudCity);
+	m_Locations.push_back(&MysteriousTower);
+
+	//Exits
+	CloudForest.AddExit("North", &CloudCityOutSkirts);
+	CloudForest.AddExit("West", &MysteriousTower);
+	CloudCity.AddExit("South", &CloudCityOutSkirts);
+	CloudCityOutSkirts.AddExit("South", &CloudForest);
+	MysteriousTower.AddExit("East", &CloudForest);
+	//Items
+	Item CityPass("City Pass", "a strange card which reads 'Cloud City Pass'", 50, 0);
+	CloudForest.AddItem(CityPass);
+	Item NigelsWand("Magic Wand", "a wand of basic level power.", 500, 0);
+	//Objects
+	Object CloudCityGate("Cloud City Gate", "an enourmous looming gate reaching too high to scale.", "Unlock", "The gate slowly opens allowing you entry to the great city.", "with");
+	CloudCityGate.AddExit("North", "Cloud City");
+	CloudCityGate.SetActionItemName("City Pass");
+	
+	CloudCityOutSkirts.AddObject(&CloudCityGate);
+
+	//NPCs
+	//Nigel
+	NPC Nigel("Nigel Samson", "an etherial floating being with the physical appearance of a cloud", "mysterious figure", "Ta Ta for now chum", "I was missing a vial of blottergale!");
+	
+	MysteriousTower.AddNPC(&Nigel);
 }

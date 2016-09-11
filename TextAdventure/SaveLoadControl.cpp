@@ -163,7 +163,7 @@ void SaveLoadControl::SaveObjectsToTree(boost::property_tree::ptree* Objects, st
 
 //NPC
 
-void SaveLoadControl::SaveNPCsToVector(std::vector<NPC*>* NPCVec, boost::property_tree::ptree& NPCs)
+std::vector<NPC*> SaveLoadControl::SaveNPCsToVector(std::vector<NPC*> NPCVec, boost::property_tree::ptree& NPCs)
 {
 	for (int i = 0; i < NPCs.size(); i++)
 	{
@@ -174,10 +174,11 @@ void SaveLoadControl::SaveNPCsToVector(std::vector<NPC*>* NPCVec, boost::propert
 		std::string FilePath = NPCNum.get<std::string>("NPCPath");
 
 		//Add Item
-		NPC loadNPC;
-		loadNPC.Load(FilePath);
-		NPCVec->push_back(&loadNPC);
+		NPC* loadNPC = new NPC();
+		loadNPC->Load(FilePath);
+		NPCVec.push_back(loadNPC);
 	}
+	return NPCVec;
 }
 
 void SaveLoadControl::SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec, std::string FilePath)
@@ -187,6 +188,7 @@ void SaveLoadControl::SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vec
 	{
 		//Get the current option
 		NPC* Current = NPCVec[i];
+
 		//Get the option number
 		std::string NPCNum = "NPC" + std::to_string(i);
 		//Create the tree for the current option num

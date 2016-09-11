@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItmName>Magic Wand</ItmName>
+<ItmDesc>a wand of basic level power.</ItmDesc>
+<ItmValue>500</ItmValue>
+<ItmStack>false</ItmStack>

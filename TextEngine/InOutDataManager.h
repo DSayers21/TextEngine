@@ -23,5 +23,5 @@ private:
 	boost::property_tree::ptree LoadXML(std::string FilePath);
 
 	std::string SaveExtension = ".xml";
-	std::string LoadExtension = ".json";
+	std::string LoadExtension = ".xml";
 };

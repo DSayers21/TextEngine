@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NpcName>Nigel Samson</NpcName>
+<NpcDesc>an etherial floating being with the physical appearance of a cloud</NpcDesc>
+<NpcGender>mysterious figure</NpcGender>
+<NpcBye>Ta Ta for now chum</NpcBye>
+<NpcAlrGiv>I was missing a vial of blottergale!</NpcAlrGiv>
+<Dialog>NULL</Dialog>
+<Items>
+	<Item0>
+		<ItmPath>SaveTestBed/Item/MagicWand</ItmPath>
+	</Item0>
+</Items>
+<WItems/>

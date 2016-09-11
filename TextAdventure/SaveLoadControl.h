@@ -28,7 +28,7 @@ public:
 	void SaveObjectsToTree(boost::property_tree::ptree* Objects, std::vector<Object*> ObjectVec, std::string FilePath);
 
 
-	void SaveNPCsToVector(std::vector<NPC*>* NPCVec, boost::property_tree::ptree& NPCs);
+	std::vector<NPC*> SaveNPCsToVector(std::vector<NPC*> NPCVec, boost::property_tree::ptree& NPCs);
 	void SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec, std::string FilePath);
 };
 

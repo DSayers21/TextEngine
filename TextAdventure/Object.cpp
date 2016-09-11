@@ -63,11 +63,24 @@ void Object::Save(std::string FilePath)
 
 	///Locations/////////////////////////////////////////////////////////
 	//If there is create the options tree
-	//boost::property_tree::ptree Locations;
+	boost::property_tree::ptree Locations;
 	//Add Locations to Tree
-	//m_SandL.SaveLocationToTree(&Items, m_NewExits, FilePath);
+	int Count = 0;
+	for (std::map<std::string, std::string>::iterator ii = m_NewExits.begin(); ii != m_NewExits.end(); ++ii)
+	{
+		//Get the option number
+		std::string LocNum = "Exit" + std::to_string(Count);
+		//Create the tree for the current option num
+		boost::property_tree::ptree LocationTree;
+		//Put all the option information into the tree
+		LocationTree.put("LocName", ii->second);
+		LocationTree.put("Direction", ii->first);
+		//Add the current option num into the options tree
+		Locations.add_child(LocNum, LocationTree);
+		Count++;
+	}
 	//Add all the options to the current node
-	//Tree.add_child("Locations", Locations);
+	Tree.add_child("Locations", Locations);
 	//////////////////////////////////////////////////////////////////////
 
 	//Save the tree to a readable format
@@ -100,9 +113,20 @@ void Object::Load(std::string FilePath)
 
 	////////////////////////////////////////////////////////////////////////////////////////
 	//Get Locations child
-	//boost::property_tree::ptree Locations = Tree.get_child("Locations");
+	boost::property_tree::ptree Locations = Tree.get_child("Locations");
 	//Save Items from Tree into Vector
-	//m_SandL.SaveLocationToMap(&Locations, &m_NewExits);
+
+	for (int i = 0; i < Locations.size(); i++)
+	{
+		//Get options number child
+		std::string LocationCur = "Exit" + std::to_string(i);
+		boost::property_tree::ptree LocationNum = Locations.get_child(LocationCur);
+		//Get all information needed from optionNum
+		std::string LocationName = LocationNum.get<std::string>("LocName");
+		std::string Direction = LocationNum.get<std::string>("Direction");
+		//Add Location
+		m_NewExits.insert(std::pair<std::string, std::string>(Direction, LocationName));
+	}
 	////////////////////////////////////////////////////////////////////////////////////////
 }
 

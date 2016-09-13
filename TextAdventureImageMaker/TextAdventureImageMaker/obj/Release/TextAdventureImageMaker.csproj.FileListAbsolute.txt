@@ -12,3 +12,14 @@ C:\Users\User\Desktop\TextAdventure\TextAdventureImageMaker\TextAdventureImageMa
 F:\User\Documents\Home Work\C++\CTAPS\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.exe.config
 F:\User\Documents\Home Work\C++\CTAPS\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.exe
 F:\User\Documents\Home Work\C++\CTAPS\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.pdb
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.exe.config
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.exe
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.pdb
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.ColourChange.resources
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.Form1.resources
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.LoadFormat.resources
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.Properties.Resources.resources
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.csproj.GenerateResource.Cache
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.exe
+D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.pdb

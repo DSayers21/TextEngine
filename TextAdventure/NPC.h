@@ -1,6 +1,8 @@
 #pragma once
 #include <TextEngine/InputControl.h>
 #include <TextEngine/InOutDataManager.h>
+#include <TextEngine/COutput.h>
+
 #include <boost/property_tree/ptree.hpp>
 #include "SaveLoadControl.h"
 
@@ -80,9 +82,9 @@ private:
 
 	std::vector<WantedItem> m_WantedItems;
 	std::vector<Item> m_ShopItems;
+	TxtEgn::COutput* m_Output;
 
 	DialogTree* m_Dialog = nullptr;
-
 
 	TxtEgn::InputControl m_Input;
 	SaveLoadControl m_SandL;

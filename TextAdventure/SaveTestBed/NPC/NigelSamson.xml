@@ -4,7 +4,7 @@
 <NpcGender>mysterious figure</NpcGender>
 <NpcBye>Ta Ta for now chum</NpcBye>
 <NpcAlrGiv>I was missing a vial of blottergale!</NpcAlrGiv>
-<Dialog>NULL</Dialog>
+<Dialog>SaveTestBed/Dialog/NigelConversation</Dialog>
 <Items>
 	<Item0>
 		<ItmPath>SaveTestBed/Item/MagicWand</ItmPath>

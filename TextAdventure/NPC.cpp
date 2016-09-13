@@ -13,6 +13,8 @@ NPC::NPC(std::string NPCName, std::string NPCDesc, std::string NPCGender, std::s
 	m_Gender = NPCGender;
 	m_Goodbye = NPCGoodbye;
 	m_AlrGivenMes = NPCAlreadyGiven;
+
+	m_Dialog = new DialogTree(*m_Output);
 }
 
 NPC::~NPC()
@@ -32,7 +34,10 @@ void NPC::Save(std::string FilePath)
 	Tree.put("NpcBye", m_Goodbye);
 	Tree.put("NpcAlrGiv", m_AlrGivenMes);
 	if (m_Dialog != nullptr)
+	{
 		Tree.put("Dialog", m_Dialog->BuildPath(FilePath));
+		m_Dialog->Save(FilePath);
+	}
 	else
 		Tree.put("Dialog", "NULL");
 
@@ -72,8 +77,11 @@ void NPC::Load(std::string FilePath)
 	m_AlrGivenMes = Tree.get<std::string>("NpcAlrGiv");
 
 	std::string GetDia = Tree.get<std::string>("Dialog");
-	if(GetDia != "NULL")
+	if (GetDia != "NULL")
+	{
+		m_Dialog = new DialogTree(*m_Output);
 		m_Dialog->Load(GetDia);
+	}
 
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");

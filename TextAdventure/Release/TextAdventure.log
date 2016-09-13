@@ -1,0 +1,18 @@
+﻿  DialogTree.cpp
+d:\documents\github\textengine\textadventure\DialogTree.h(5): fatal error C1083: Cannot open include file: 'TextEngine/COutput.h': No such file or directory
+  GameWorld.cpp
+d:\documents\github\textengine\textadventure\GameWorld.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+  Item.cpp
+d:\documents\github\textengine\textadventure\Item.h(3): fatal error C1083: Cannot open include file: 'TextEngine/InOutDataManager.h': No such file or directory
+  Location.cpp
+d:\documents\github\textengine\textadventure\Location.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+  main.cpp
+main.cpp(1): fatal error C1083: Cannot open include file: 'TextEngine/ConsoleProp.h': No such file or directory
+  NPC.cpp
+d:\documents\github\textengine\textadventure\NPC.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+  Object.cpp
+d:\documents\github\textengine\textadventure\Object.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+  Player.cpp
+d:\documents\github\textengine\textadventure\Player.h(4): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+  SaveLoadControl.cpp
+d:\documents\github\textengine\textadventure\SaveLoadControl.h(2): fatal error C1083: Cannot open include file: 'boost/property_tree/ptree.hpp': No such file or directory

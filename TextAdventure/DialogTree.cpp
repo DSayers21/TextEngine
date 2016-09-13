@@ -14,6 +14,11 @@ DialogNode::DialogNode(std::string Text)
 	m_Text = Text;
 }
 
+DialogTree::DialogTree()
+{
+
+}
+
 DialogTree::DialogTree(TxtEgn::COutput& Output)
 {
 	m_Output = &Output;
@@ -117,8 +122,11 @@ void DialogTree::Load(std::string FilePath)
 		std::string Dialog = NodeNum.get<std::string>("Dialog");
 		//Create node and add it to _DialogNodes vector
 		DialogNode *node = new DialogNode(Dialog);
+
 		m_DialogNodes.emplace_back(node);
 	}
+
+
 	//Add dialog options to nodes being held in _DialogNodes vector
 	for (int i = 0; i < m_DialogNodes.size(); i++)
 	{
@@ -199,6 +207,11 @@ void DialogTree::Save(std::string FilePath)
 		boost::property_tree::ptree Items;
 		//Add Items to Tree
 		m_SandL.SaveItemsToTree(&Items, m_DialogNodes[i]->m_DialogItems, FilePath);
+
+		for (int x = 0; x < m_DialogNodes[i]->m_DialogItems.size(); x++)
+		{
+			m_DialogNodes[i]->m_DialogItems[x].Save(FilePath);
+		}
 
 		//Add all the options to the current node
 		NodeNum.add_child("Items", Items);

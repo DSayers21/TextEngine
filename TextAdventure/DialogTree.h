@@ -36,6 +36,7 @@ public:
 class DialogTree
 {
 public:
+	DialogTree();
 	DialogTree(TxtEgn::COutput& Output);
 	~DialogTree();
 

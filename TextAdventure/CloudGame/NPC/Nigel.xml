@@ -5,7 +5,7 @@
 <NpcBye>Ta Ta for now chum</NpcBye>
 <NpcAlrGiv>I was missing a vial of blottergale!</NpcAlrGiv>
 
-<Dialog>NULL</Dialog>
+<Dialog>CloudGame\/Dialog\/NigelConvo</Dialog>
 
 <Items>
 	<Item0>

@@ -26,16 +26,16 @@ namespace TxtEgn
 
 	void COutput::DisplayBanner(int Colour, std::string Statement, bool EndL)
 	{
-		_Console->Update();
+		_Console->SetColour(Colour);
 		//Run WriteSlow Function
 		std::cout << Statement;
 		if (EndL)
 			_Console->EndLine();
+		_Console->SetColour(_Console->GetPrevColour());
 	}
 
 	void COutput::WriteSlow(std::string DisplayString, bool EndL)
 	{
-		_Console->Update();
 		std::vector<std::string> TempVec = _Input->ParseIntoWords(DisplayString);
 		int Size = static_cast<int>(TempVec.size());
 		for (int i = 0; i < Size; i++)
@@ -54,17 +54,19 @@ namespace TxtEgn
 			}
 		}
 		if (EndL)
-			_Console->EndLine();
+		{
+			if(_Console->wherex() != _Console->GetStartX())
+				_Console->EndLine();
+		}
 	}
 
 	//Write a line of characters across the screen
 	void COutput::WriteLine(int Colour, char WriteChar)
 	{
-		_Console->Update();
 		//Set Colour to the colour passed to the function
 		_Console->SetColour(Colour);
 		//Go through each char space on screen and place char there
-		for (int i = _Console->GetStartX() - _Console->GetConsoleWidth(); i < _Console->GetConsoleWidth(); i++)
+		for (int i = _Console->GetStartX(); i < _Console->GetConsoleWidth(); i++)
 		{
 			std::cout << WriteChar;
 		}
@@ -180,8 +182,8 @@ namespace TxtEgn
 	void COutput::TypeString(std::string DisplayString)
 	{
 		int Size = static_cast<int>(DisplayString.size());
-
-		if (_Console->wherex() + Size > _Console->GetConsoleWidth())
+		int InitX = _Console->wherex();
+		if (InitX + Size > _Console->GetConsoleWidth())
 			_Console->EndLine();
 
 		for (int i = 0; i < Size; i++)
@@ -189,6 +191,8 @@ namespace TxtEgn
 			std::cout << DisplayString[i];
 			std::this_thread::sleep_for(std::chrono::milliseconds(_Speed));
 		}
+		if (InitX + Size == _Console->GetConsoleWidth())
+			_Console->EndLine();
 	}
 
 	int COutput::TestTag(std::string StringPassed)

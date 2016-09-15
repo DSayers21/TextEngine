@@ -1,2 +1,4 @@
-﻿  InOutDataManager.cpp
+﻿  COutput.cpp
+d:\documents\github\textengine\textengine\coutput.cpp(149): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textengine\coutput.cpp(240): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
   TextEngine.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextEngine.lib

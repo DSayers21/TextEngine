@@ -18,7 +18,6 @@ GameWorld::GameWorld()
 {
 }
 
-
 GameWorld::~GameWorld()
 {
 }

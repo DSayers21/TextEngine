@@ -14,6 +14,8 @@ namespace TxtEgn
 	class ImageCache
 	{
 	public:
+		ImageCache();
+
 		ImageCache(InputControl& Input);
 
 		~ImageCache();

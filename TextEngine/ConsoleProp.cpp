@@ -64,6 +64,7 @@ namespace TxtEgn
 	void ConsoleProp::ToggleFull()
 	{
 		::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+		_Width = FindConsoleWidth();
 	}
 
 	void ConsoleProp::RevertColour()

@@ -109,28 +109,79 @@ void Location::AddNPC(NPC *npc)
 	m_NPC.push_back(npc);
 }
 
-void Location::DisplayAll()
+void Location::DisplayAll(TxtEgn::COutput* Output)
 {
-	std::cout << "LocationName: " << m_Name << std::endl;
-	std::cout << "LocationDesc: " << m_Desc << std::endl;
-	std::cout << "--------------------------------------" << std::endl;
-	for (int i = 0; i < m_Items.size(); i++)
-	{
-		std::cout << "ItemName: " << m_Items[i].GetItemName() << std::endl;
-	}
-	std::cout << "--------------------------------------" << std::endl;
-	for (int i = 0; i < m_Objects.size(); i++)
-	{
-		std::cout << "ObjectName: " << m_Objects[i]->GetName() << std::endl;
-	}
+	Output->GetConsole()->Update();
 
-	if (m_Exits.size() != 0)
+	Output->WriteLine(7, '-');
+
+	Output->WriteSlow("<C7>You are in " + m_Name + ". You see a " + m_Desc, false);
+	DisplayNPCs(Output);
+	DisplayItems(Output);
+	DisplayObjects(Output);
+	DisplayExits(Output);
+
+	Output->GetConsole()->EndLine();
+
+	Output->WriteLine(7, '-');
+}
+
+void Location::DisplayExits(TxtEgn::COutput* Output)
+{
+	for (std::map<std::string, Location*>::iterator ii = m_Exits.begin(); ii != m_Exits.end(); ++ii)
+		Output->WriteSlow("<C7>You can travel " + (*ii).first + " to go to " + (*ii).second->GetName() + ".", false);
+}
+
+void Location::DisplayItems(TxtEgn::COutput* Output)
+{
+	int Count = 0;
+	int Size = static_cast<int>(m_Items.size());
+	if (Size != 0)
 	{
-		for (std::map<std::string, Location*>::iterator ii = m_Exits.begin(); ii != m_Exits.end(); ++ii)
+		for (int i = 0; i < Size; i++)
 		{
-			std::cout << "Direction: " << ii->first << " To Location: " << ii->second->GetName() << std::endl;
+			if (i == 0)
+				Output->WriteSlow("<C7>You see " + m_Items[i].GetItemName() + ".", false);
+			else
+				Output->WriteSlow("<C7>You then see " + m_Items[i].GetItemName() + ".", false);
 		}
 	}
+}
+
+void Location::DisplayObjects(TxtEgn::COutput* Output)
+{
+	int Count = 0;
+	int Size = static_cast<int>(m_Objects.size());
+
+	for (int i = 0; i < Size; i++)
+	{
+		if (i == 0)
+			Output->WriteSlow("<C7>You see " + m_Objects[i]->GetName() + ".", false);
+		else
+			Output->WriteSlow("<C7>You then see " + m_Objects[i]->GetName() + ".", false);
+	}
+}
+
+void Location::DisplayNPCs(TxtEgn::COutput* Output)
+{
+	int Count = 0;
+	int Size = static_cast<int>(m_NPC.size());
+	if (Size != 0)
+	{
+		for (int i = 0; i < Size; i++)
+			Output->WriteSlow("<C7>You see a " + m_NPC[i]->GetGender() + " you overhear that their name is " + m_NPC[i]->GetName() + ".", false);
+	}
+}
+
+Location* Location::GoCommand(std::string Direction)
+{
+	Location* ReturnLoc = this;
+	for (std::map<std::string, Location*>::iterator ii = m_Exits.begin(); ii != m_Exits.end(); ++ii)
+	{
+		if (m_Input.CompareStrings((*ii).first, Direction))
+			ReturnLoc = (*ii).second;
+	}
+	return ReturnLoc;
 }
 
 std::string Location::BuildPath(std::string FilePath, std::string LocationNum)

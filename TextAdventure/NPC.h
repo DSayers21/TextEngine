@@ -78,6 +78,12 @@ public:
 
 	std::string BuildPath(std::string FilePath);
 
+	std::string GetName() { return m_Name; }
+	std::string GetDesc() { return m_Description; }
+	std::string GetGender() { return m_Gender; }
+	std::string GetGoodBye() { return m_Goodbye; }
+	std::string GetAlrGivenMes() { return m_AlrGivenMes; }
+
 private:
 	std::string m_Name = "BLANK";
 	std::string m_Description = "BLANK";

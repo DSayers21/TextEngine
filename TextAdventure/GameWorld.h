@@ -19,6 +19,8 @@ public:
 	void Save(std::string FilePath);
 	void TestBed();
 
+	Location* GetFirstLocation() { return m_Locations[0]; }
+
 private:
 	std::vector<Location*> m_Locations;
 
@@ -28,4 +30,3 @@ private:
 	SaveLoadControl m_SandL;
 	InOutDataManager m_IOMan;
 };
-

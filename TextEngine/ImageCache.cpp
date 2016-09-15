@@ -8,6 +8,11 @@
 
 namespace TxtEgn
 {
+	ImageCache::ImageCache()
+	{
+
+	}
+
 	ImageCache::ImageCache(InputControl& Input)
 	{
 		_Input = &Input;

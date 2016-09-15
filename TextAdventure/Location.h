@@ -2,6 +2,8 @@
 #include <TextEngine/InputControl.h>
 #include <TextEngine/InOutDataManager.h>
 #include <boost/property_tree/ptree.hpp>
+#include <TextEngine/COutput.h>
+
 #include "SaveLoadControl.h"
 
 #include "Item.h"
@@ -43,7 +45,13 @@ public:
 	void AddObject(Object *Obj);
 	void AddNPC(NPC *npc);
 
-	void DisplayAll();
+	void DisplayAll(TxtEgn::COutput* Output);
+	void DisplayExits(TxtEgn::COutput* Output);
+	void DisplayItems(TxtEgn::COutput* Output);
+	void DisplayObjects(TxtEgn::COutput* Output);
+	void DisplayNPCs(TxtEgn::COutput* Output);
+
+	Location* GoCommand(std::string Direction);
 
 	std::string BuildPath(std::string FilePath, std::string LocationNum);
 	std::string BuildPathLocNum(std::string FilePath);

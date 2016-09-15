@@ -5,6 +5,7 @@
 #include <TextEngine/ImageCache.h>
 
 #include "GameWorld.h"
+#include "MainGame.h"
 
 #include <iostream>
 
@@ -17,15 +18,13 @@ int main()
 	TxtEgn::InputControl _Input;
 	TxtEgn::ImageCache Cache(_Input);
 	TxtEgn::ConsoleProp _Console;
-	_Console.Init(10, 16, 0, 0, 7, false);
-	TxtEgn::COutput _OutputB(_Console, _Input, Cache);
+	_Console.Init(10, 16, 0, 0, 7, true);
+	TxtEgn::COutput _Output(_Console, _Input, Cache);
 
-	GameWorld Test;
-	Test.Load("CloudGame");
-	Test.Save("SaveTestBed");
-
-	//_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::CENTER);
-	//_OutputB.DrawImage("Images/MafiaDen.txt", TxtEgn::ALIGN::CENTER);
+	GameWorld CloudGame;
+	CloudGame.Load("CloudGame");
+	MainGame Game(CloudGame, &_Input, &_Console, &Cache, &_Output);
+	Game.StartGame();
 
 	int a;
 	std::cin >> a;

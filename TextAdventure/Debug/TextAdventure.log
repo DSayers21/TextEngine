@@ -1,13 +1,3 @@
-﻿  MainGame.cpp
-  Location.cpp
-d:\documents\github\textengine\textadventure\location.cpp(68): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\location.cpp(77): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\location.cpp(86): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  SaveLoadControl.cpp
-  Object.cpp
-  GameWorld.cpp
+﻿  main.cpp
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)

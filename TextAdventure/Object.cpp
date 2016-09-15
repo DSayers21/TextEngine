@@ -92,13 +92,6 @@ void Object::Load(std::string FilePath)
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
 
-	Tree.put("ObjName", m_Name);
-	Tree.put("ObjDesc", m_Desc);
-	Tree.put("ObjActWord", m_ActionWord);
-	Tree.put("ObjActCon", m_ActionConnector);
-	Tree.put("ObjRemDesc", m_RemovedDesc);
-	Tree.put("ObjItmName", m_ActionItemName);
-
 	m_Name = Tree.get<std::string>("ObjName");
 	m_Desc = Tree.get<std::string>("ObjDesc");
 	m_ActionWord = Tree.get<std::string>("ObjActWord");

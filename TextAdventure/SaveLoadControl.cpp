@@ -137,9 +137,9 @@ void SaveLoadControl::SaveObjectsToVector(std::vector<Object*>* ObjectVec, boost
 		std::string FilePath = ObjectNum.get<std::string>("ObjectPath");
 
 		//Add Object
-		Object loadObject;
-		//loadObject.LoadObject(FilePath);
-		ObjectVec->push_back(&loadObject);
+		Object* loadObject = new Object();
+		loadObject->Load(FilePath);
+		ObjectVec->push_back(loadObject);
 	}
 }
 void SaveLoadControl::SaveObjectsToTree(boost::property_tree::ptree* Objects, std::vector<Object*> ObjectVec, std::string FilePath)

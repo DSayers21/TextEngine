@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NpcName>City Merchant</NpcName>
+<NpcDesc>a merchant whom sells general items and trinkets.</NpcDesc>
+<NpcGender>merchant</NpcGender>
+<NpcBye>Come back again with more &lt;C246&gt; GOLD! &lt;C249&gt; *chuckle*</NpcBye>
+<NpcAlrGiv>Oh I don&apos;t actually have it sorry.</NpcAlrGiv>
+<Dialog>SaveTestBed/Dialog/CityMerchantConversation</Dialog>
+<Items>
+	<Item0>
+		<ItmPath>SaveTestBed/Item/CloudShoes</ItmPath>
+	</Item0>
+	<Item1>
+		<ItmPath>SaveTestBed/Item/CandyFloss</ItmPath>
+	</Item1>
+	<Item2>
+		<ItmPath>SaveTestBed/Item/OrnateSphere</ItmPath>
+	</Item2>
+	<Item3>
+		<ItmPath>SaveTestBed/Item/WoodenSword</ItmPath>
+	</Item3>
+	<Item4>
+		<ItmPath>SaveTestBed/Item/SmallGoldfishBowl</ItmPath>
+	</Item4>
+	<Item5>
+		<ItmPath>SaveTestBed/Item/VialofRainDrops</ItmPath>
+	</Item5>
+</Items>
+<WItems/>

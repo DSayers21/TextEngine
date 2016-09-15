@@ -44,15 +44,20 @@ public:
 	{
 		m_GiveMessage = TreeLoad.get<std::string>("WItmGiveMess");
 		m_Amount = TreeLoad.get<int>("WItmAmount");
+
 		std::string ItmLoad = TreeLoad.get<std::string>("WItmWan");
+
+		m_wanItem = new Item();
 		m_wanItem->Load(ItmLoad);
 
 		ItmLoad = TreeLoad.get<std::string>("WItmGive");
+
+		m_giveItem = new Item();
 		m_giveItem->Load(ItmLoad);
 	}
 
-	Item* m_wanItem;
-	Item* m_giveItem;
+	Item* m_wanItem = nullptr;
+	Item* m_giveItem = nullptr;
 	int m_Amount;
 	std::string m_GiveMessage;
 private:
@@ -79,6 +84,7 @@ private:
 	std::string m_Gender = "BLANK";
 	std::string m_Goodbye = "BLANK";
 	std::string m_AlrGivenMes = "BLANK";
+	bool m_IsShop = false;
 
 	std::vector<WantedItem> m_WantedItems;
 	std::vector<Item> m_ShopItems;

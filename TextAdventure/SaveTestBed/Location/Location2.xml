@@ -3,4 +3,8 @@
 <LocDesc>a busseling city center full of people all going about their business.</LocDesc>
 <Items/>
 <Objects/>
-<NPCs/>
+<NPCs>
+	<NPC0>
+		<NPCPath>SaveTestBed/NPC/CityMerchant</NPCPath>
+	</NPC0>
+</NPCs>

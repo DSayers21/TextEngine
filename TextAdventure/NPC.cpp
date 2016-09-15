@@ -49,6 +49,11 @@ void NPC::Save(std::string FilePath)
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
 
+	for (int i = 0; i < m_ShopItems.size(); i++)
+	{
+		m_ShopItems[i].Save(FilePath);
+	}
+
 	//Add Wanted Items
 	boost::property_tree::ptree WItems;
 	for (int i = 0; i < m_WantedItems.size(); i++)
@@ -57,8 +62,10 @@ void NPC::Save(std::string FilePath)
 		WantedItem* Current = &m_WantedItems[i];
 		//Get the option number
 		std::string WItmNum = "WItem" + std::to_string(i);
-		boost::property_tree::ptree* WItem = &m_WantedItems[i].Save(FilePath);
-		WItems.add_child(WItmNum, *WItem);
+
+		boost::property_tree::ptree WItem = Current->Save(FilePath);
+
+		WItems.add_child(WItmNum, WItem);
 	}
 	Tree.add_child("WItems", WItems);
 	//Save the tree to a readable format
@@ -90,31 +97,14 @@ void NPC::Load(std::string FilePath)
 
 	//Add Wanted Items
 	boost::property_tree::ptree WItems = Tree.get_child("WItems");
-	for (int i = 0; i < m_WantedItems.size(); i++)
+	for (int i = 0; i < WItems.size(); i++)
 	{
-		//Get the current option
-		WantedItem* Current = &m_WantedItems[i];
 		//Get the option number
 		std::string WItmNum = "WItem" + std::to_string(i);
-		boost::property_tree::ptree* WItem = &m_WantedItems[i].Save(FilePath);
-		WItems.add_child(WItmNum, *WItem);
-
-
-		//Get options number child
-		std::string ItemName = "WItem" + std::to_string(i);
-		boost::property_tree::ptree ItemNum = Items.get_child(ItemName);
-		//Get all information needed from optionNum
-		std::string WItmWan = ItemNum.get<std::string>("WItmWan");
-		std::string WItmGive = ItemNum.get<std::string>("WItmGive");
-
-		std::string WItmGiveMess = ItemNum.get<std::string>("WItmGiveMess");
-		int WItmAmount = ItemNum.get<int>("WItmAmount");
-		Item WanItem, GiveItem;
-		WanItem.Load(WItmWan);
-		GiveItem.Load(WItmGive);
+		boost::property_tree::ptree ItemNum = WItems.get_child(WItmNum);
 
 		WantedItem WItm;
-		WItm.Init(&WanItem, &GiveItem, WItmGiveMess, WItmAmount);
+		WItm.Load(ItemNum);
 
 		m_WantedItems.push_back(WItm);
 	}

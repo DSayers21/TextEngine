@@ -27,6 +27,9 @@ bool MainGame::GameLoop()
 	bool GameRunning = true;
 	std::vector<std::string> CurCommand;
 	//m_Output->WriteSlow("The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog lol", true);
+	
+	m_Output->DisplayBanner(207, m_Input->AlignCenter(' ', m_Output->GetConsole()->GetConsoleWidth(), "[Type 'HELP' to see a full list of known commands]"), true);
+	
 	while (GameRunning)
 	{
 		CurCommand.clear();
@@ -40,7 +43,7 @@ bool MainGame::GameLoop()
 				default:
 					m_Output->WriteSlow("<C12>You need to enter a valid Command", true);
 				break;
-				case 0://Go Command
+				case 0:			//Go Command
 				{
 					if (CurCommand.size() > 1)
 					{
@@ -52,16 +55,73 @@ bool MainGame::GameLoop()
 						m_Output->WriteSlow("<C12>You need to enter a direction", true);
 					break;
 				}
-				case 2: //Quit
+				case 2:			//Quit Command
 				{
 					GameRunning = false;
 					std::string Test = m_Input->AlignCenter(' ', m_Output->GetConsole()->GetConsoleWidth(), "Game Quitted");
 					m_Output->DisplayBanner(207, Test, true);
 					break;
 				}
-				case 3: //Look
+				case 3:			//Look Command
 				{
 					m_CurrentLocation->DisplayAll(m_Output);
+					break;
+				}
+				case 4:			//Clear Command
+				{
+					m_Output->ConsoleClear();
+					break;
+				}
+				case 5:			//Help Command
+				{
+					std::string Left, Middle, Right, Output;
+					int TempSize;
+
+					m_Output->DisplayBanner(240, m_Input->AlignCenter(' ', m_Output->GetConsole()->GetConsoleWidth(), "Command List"), false);
+					int VecSizeTemp = static_cast<int>(Command.size());
+
+					if (VecSizeTemp % 3 == 0)
+						TempSize = VecSizeTemp;
+					else
+						(VecSizeTemp + 1 % 3 == 0) ? TempSize = (VecSizeTemp + 1) : TempSize = (VecSizeTemp + 2);
+
+					for (int i = 0; i < TempSize; i += 3)
+					{
+						Left = m_Input->AlignLeft(' ', m_Output->GetConsole()->GetConsoleWidth(), "[" + Command[i] + "]");
+
+						if ((i + 1 < TempSize) && (i + 1 < VecSizeTemp))
+							Middle = m_Input->AlignCenter(' ', m_Output->GetConsole()->GetConsoleWidth(), "[" + Command[i + 1] + "]");
+						else
+							Middle = m_Input->AlignCenter(' ', m_Output->GetConsole()->GetConsoleWidth(), " ");
+						if ((i + 2 < TempSize) && (i + 2 < VecSizeTemp))
+							Right = m_Input->AlignRight(' ', m_Output->GetConsole()->GetConsoleWidth(), "[" + Command[i + 2] + "]");
+						else
+							Right = m_Input->AlignRight(' ', m_Output->GetConsole()->GetConsoleWidth(), " ");
+
+						Output = m_Input->CombineString(Left, Right);
+						Output = m_Input->CombineString(Output, Middle);
+						m_Output->DisplayBanner(112, Output, true);
+					}
+					m_Output->GetConsole()->SetColour(7);
+					m_Output->GetConsole()->Update();
+					break;
+				}
+				case 11:		//Colours Command
+				{
+					for (int i = 0; i < 255; i++)
+					{
+						m_Output->GetConsole()->SetColour(i);
+						if (i < 10)
+							std::cout << " ";
+						if (i < 100)
+							std::cout << " ";
+						std::cout << std::to_string(i);
+						if (i % 15 == 0)
+							std::cout << std::endl;
+					}
+					std::cout << std::endl;
+					m_Output->GetConsole()->SetCurrentY(m_Output->GetConsole()->wherey());
+					break;
 				}
 			}
 		}

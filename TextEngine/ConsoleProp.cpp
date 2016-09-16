@@ -76,6 +76,7 @@ namespace TxtEgn
 	{
 		COORD p = { static_cast<short>(x), static_cast<short>(y) };
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), p);
+		SetCurrentY(y);
 	}
 
 	void ConsoleProp::EndLine()

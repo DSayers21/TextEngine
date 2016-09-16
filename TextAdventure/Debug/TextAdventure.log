@@ -1,3 +1,4 @@
-﻿  main.cpp
+﻿  MainGame.cpp
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)

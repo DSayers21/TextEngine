@@ -102,15 +102,16 @@ namespace TxtEgn
 
 	void COutput::ConsoleClear()
 	{
-		int PrevY = _Console->GetCurrentY();
+		int PrevY = _Console->wherey();
 		_Console->SetCurrentY(_Console->GetStartY());
 		_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
-		for (int i = _Console->GetStartY(); i < PrevY; i++)
+		for (int i = _Console->GetStartY(); i <= PrevY; i++)
 		{
 			WriteLine(0, ' ');
 			_Console->gotoxy(_Console->GetStartX(), i);
 		}
 		_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
+
 	}
 
 	std::vector<std::string> COutput::GetInput(std::string Question)

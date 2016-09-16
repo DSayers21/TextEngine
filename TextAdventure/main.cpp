@@ -30,10 +30,5 @@ int main()
 	MainGame Game(CloudGame, &_Input, &_Console, &Cache, &_Output);
 	Game.StartGame();
 
-	//End of game pause
-	std::cout << " :: TYPE ANYTHING TO QUIT :: " << std::endl;
-	int a;
-	std::cin >> a;
-
 	return 0;
 }

@@ -167,44 +167,15 @@ std::string Indent(int level)
 	return s;
 }
 
-void GameWorld::TestBed()
+Location* GameWorld::FindLocation(std::string LocName)
 {
-	//Locations
-	Location CloudForest("Cloud Forest", "a wide variety of trees all with a perculiar type of leaf.. it almost looks like clouds. You stand in a clearning.");
-	CloudForest.SetLocationNum("Location0");
-	Location CloudCityOutSkirts("Outskirts of Cloud City", "an enourmous city with hundreds of spires which reach high into the atmosphere. The city seems peaceful with a hive of activty.");
-	CloudCityOutSkirts.SetLocationNum("Location1");
-	Location CloudCity("Cloud City", "a busseling city center full of people all going about their business.");
-	CloudCity.SetLocationNum("Location2");
-	Location MysteriousTower("Mysterious Tower", "a strange tower, it appears to be emmitting an ominous dark glow across the sky.");
-	MysteriousTower.SetLocationNum("Location3");
-
-	//Updates
-	m_Locations.push_back(&CloudForest);
-	m_Locations.push_back(&CloudCityOutSkirts);
-	m_Locations.push_back(&CloudCity);
-	m_Locations.push_back(&MysteriousTower);
-
-	//Exits
-	CloudForest.AddExit("North", &CloudCityOutSkirts);
-	CloudForest.AddExit("West", &MysteriousTower);
-	CloudCity.AddExit("South", &CloudCityOutSkirts);
-	CloudCityOutSkirts.AddExit("South", &CloudForest);
-	MysteriousTower.AddExit("East", &CloudForest);
-	//Items
-	Item CityPass("City Pass", "a strange card which reads 'Cloud City Pass'", 50, 0);
-	CloudForest.AddItem(CityPass);
-	Item NigelsWand("Magic Wand", "a wand of basic level power.", 500, 0);
-	//Objects
-	Object CloudCityGate("Cloud City Gate", "an enourmous looming gate reaching too high to scale.", "Unlock", "The gate slowly opens allowing you entry to the great city.", "with");
-	CloudCityGate.AddExit("North", "Cloud City");
-	CloudCityGate.SetActionItemName("City Pass");
-	
-	CloudCityOutSkirts.AddObject(&CloudCityGate);
-
-	//NPCs
-	//Nigel
-	NPC Nigel("Nigel Samson", "an etherial floating being with the physical appearance of a cloud", "mysterious figure", "Ta Ta for now chum", "I was missing a vial of blottergale!");
-	
-	MysteriousTower.AddNPC(&Nigel);
+	Location* Return = m_Locations[0];
+	for (int i = 0; i < m_Locations.size(); i++)
+	{
+		if (m_Input.CompareStrings(m_Locations[i]->GetName(), LocName))
+		{
+			return m_Locations[i];
+		}
+	}
+	return Return;
 }

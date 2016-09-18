@@ -97,10 +97,10 @@ Item* Player::GetItem(std::string ItemName)
 	{
 		if (Input.CompareStrings(it.GetItemName(), ItemName))
 		{
-			it;
+			return &it;
 		}	
 	}
-	Item* BlankReturn = new Item();
+	Item* BlankReturn = nullptr;;
 	return BlankReturn;
 }
 

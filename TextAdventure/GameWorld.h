@@ -18,9 +18,10 @@ public:
 	void Load(std::string FilePath);
 
 	void Save(std::string FilePath);
-	void TestBed();
 
 	Location* GetFirstLocation() { return m_Locations[0]; }
+
+	Location* FindLocation(std::string LocName);
 
 private:
 	std::vector<Location*> m_Locations;

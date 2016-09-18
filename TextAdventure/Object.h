@@ -1,6 +1,7 @@
 #pragma once
 #include <TextEngine/InputControl.h>
 #include <TextEngine/InOutDataManager.h>
+#include <TextEngine/COutput.h>
 #include <boost/property_tree/ptree.hpp>
 #include "SaveLoadControl.h"
 
@@ -9,7 +10,10 @@
 #include <vector>
 
 class Location;
-class Item;
+class Item; 
+class GameWorld;
+class Player;
+
 class Object
 {
 public:
@@ -42,6 +46,9 @@ public:
 	void Load(std::string FilePath);
 
 	std::string BuildPath(std::string FilePath);
+
+	void ObjectCommand(TxtEgn::COutput* Output, GameWorld* Game, std::string Command, Player* MainPlr, Location* Current);
+	void Object::ObjectAction(TxtEgn::COutput* Output, GameWorld* Game, Location* Current);
 
 private:
 	std::string m_Name = "Blank";

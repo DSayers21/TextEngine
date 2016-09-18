@@ -4,13 +4,25 @@ Location::Location()
 {
 
 }
+
 Location::Location(std::string Name, std::string Desc) : m_Name(Name), m_Desc(Desc)
 {
 }
 
-
 Location::~Location()
 {
+}
+
+Object* Location::FindObject(std::string ObjName)
+{
+	Object* Temp = nullptr;
+	int Size = static_cast<int>(m_Objects.size());
+	for (int i = 0; i < Size; i++)
+	{
+		if (m_Input.CompareStrings(m_Objects[i]->GetName(), ObjName))
+			return m_Objects[i];
+	}
+	return Temp;
 }
 
 std::string Location::BuildPath(std::string FilePath)
@@ -89,6 +101,7 @@ void Location::Save(std::string FilePath, std::string Num)
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath, Num), Tree);
 }
+
 void Location::AddExit(std::string Direction, Location *Loc)
 {
 	m_Exits.insert(std::pair<std::string, Location*>(Direction, Loc));
@@ -267,4 +280,79 @@ bool Location::InspectNPCs(TxtEgn::COutput* Output, std::string Compare)
 		}
 	}
 	return false;
+}
+
+//Command = unlock
+//InitialString = the rest eg. door with key
+void Location::CommandObject(TxtEgn::COutput* Output, GameWorld* Game, std::string Command, std::string InitialString, Player* Plr)
+{
+	std::vector<std::string> OBJReturn = GetObjectFrString(InitialString);
+	Object* Obj = FindObject(OBJReturn[0]);
+
+	if (Obj != nullptr)
+	{
+		if (!Obj->IfRemoved())
+		{
+			std::vector<std::string> Temp = m_Input.ParseIntoWords(OBJReturn[1]);
+			if (Temp.size() > 0)
+			{
+				std::string ObjName = OBJReturn[0];
+				std::string Connector = Temp[0];
+				std::string ItemName = m_Input.ParseIntoSentence(Temp, 1);
+
+				if (m_Input.CompareStrings(Obj->GetActionWord(), Command))
+				{
+					if (m_Input.CompareStrings(Obj->GetActionConnector(), Connector))
+					{
+						if (Plr->GetItem(ItemName) != nullptr)
+						{
+							//WriteSlow("<C4> " + Command + " " + "<C11> " + ObjName + " " + "<C14> " + Connector + "<C110> " + ItemName, true);
+							Obj->ObjectAction(Output, Game, this);
+						}
+						else
+							Output->WriteSlow("<C12>You do not have this item", true);
+					}
+					else
+						Output->WriteSlow("<C12>This is not understood", true);
+				}
+				else
+					Output->WriteSlow("<C12>The action is not understood", true);
+			}
+			else
+			{
+				std::string Connector = Obj->GetActionConnector();
+				Connector[0] = toupper(Connector[0]);
+				std::string Temp = m_Input.ParseIntoSentence(Output->GetInput("<C10> " + Connector + " what?"), 0);
+
+				if (Plr->GetItem(Temp) != nullptr)
+					Obj->ObjectAction(Output, Game, this);
+				else
+					Output->WriteSlow("<C12>You do not have this item", true);
+			}
+		}
+		else
+			Output->WriteSlow("<C12>This has already been done", true);
+	}
+	else
+		Output->WriteSlow("<C12>Object doesn't exist", true);
+}
+
+std::vector<std::string> Location::GetObjectFrString(std::string InitialString)
+{
+	std::vector<std::string> Temp = m_Input.ParseIntoWords(InitialString);
+	std::string CurTest = "";
+	std::string ObjectName;
+	int PosEnd = 0;
+	int Size = static_cast<int>(Temp.size());
+
+	for (int i = 0; i < Size; i++)
+	{
+		CurTest = (CurTest.size() == 0) ? CurTest + Temp[i] : CurTest = CurTest + " " + Temp[i];
+		if (FindObject(CurTest) != nullptr)
+		{
+			ObjectName = CurTest;
+			PosEnd = (i != Size) ? i + 1 : i;
+		}
+	}
+	return{ ObjectName, m_Input.ParseIntoSentence(Temp, PosEnd) };
 }

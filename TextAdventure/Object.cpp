@@ -1,6 +1,8 @@
 #include "Object.h"
 #include "Item.h"
 #include "Location.h"
+#include "GameWorld.h"
+#include "Player.h"
 
 Object::Object()
 {
@@ -126,4 +128,48 @@ void Object::Load(std::string FilePath)
 std::string Object::BuildPath(std::string FilePath)
 {
 	return FilePath + "/Object/" + m_Input.RemoveSpaces(m_Name);
+}
+
+void Object::ObjectCommand(TxtEgn::COutput* Output, GameWorld* Game, std::string Command, Player* MainPlr, Location* Current)
+{
+	if (m_IfRemoved)
+		Output->WriteSlow("<C12>This has already been done", true);
+	else
+	{
+		if (m_Input.CompareStrings(Command, m_ActionWord))
+		{
+			for(int i = 0; i < m_NewItems.size(); i++)
+				Current->AddItem(*m_NewItems[i]);
+
+			for (std::map<std::string, std::string>::iterator ii = m_NewExits.begin(); ii != m_NewExits.end(); ++ii)
+			{
+				Location* Found = Game->FindLocation((*ii).second);
+				Current->AddExit((*ii).first, Found);
+			}
+				
+			m_IfRemoved = true;
+			Output->WriteSlow("<C11>" + m_RemovedDesc, true);
+		}
+		else
+			Output->WriteSlow("<C12>This doesn't work", true);
+	}
+}
+
+void Object::ObjectAction(TxtEgn::COutput* Output, GameWorld* Game, Location* Current)
+{
+	if (m_IfRemoved)
+		Output->WriteSlow("<C12>This has already been done", true);
+	else
+	{
+		for (std::map<std::string, std::string>::iterator ii = m_NewExits.begin(); ii != m_NewExits.end(); ++ii)
+		{
+			Location* Found = Game->FindLocation((*ii).second);
+			Current->AddExit((*ii).first, Found);
+		}
+		for (int i = 0; i < m_NewItems.size(); i++)
+			Current->AddItem(*m_NewItems[i]);
+
+		m_IfRemoved = true;
+		Output->WriteSlow("<C11>" + m_RemovedDesc, true);
+	}
 }

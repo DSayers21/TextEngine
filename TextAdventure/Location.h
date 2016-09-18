@@ -29,12 +29,12 @@ public:
 	std::string GetDesc() { return m_Desc; }
 	std::string GetLocationNum() { return m_LocationNum; }
 	std::map<std::string, Location*> GetExits() { return m_Exits; }
+	Object* FindObject(std::string ObjName);
 
 	//Setters
 	void SetName(std::string Name) { m_Name = Name; }
 	void SetDesc(std::string Desc) { m_Desc = Desc; }
 	void SetLocationNum(std::string LocationNum) { m_LocationNum = LocationNum; }
-
 
 	std::string BuildPath(std::string FilePath);
 
@@ -64,6 +64,8 @@ public:
 	bool InspectObjects(TxtEgn::COutput* Output, std::string Compare);
 	bool InspectNPCs(TxtEgn::COutput* Output, std::string Compare);
 
+	void CommandObject(TxtEgn::COutput* Output, GameWorld* Game, std::string Command, std::string InitialString, Player* Plr);
+	std::vector<std::string> Location::GetObjectFrString(std::string InitialString);
 
 private:
 	std::string m_Name;

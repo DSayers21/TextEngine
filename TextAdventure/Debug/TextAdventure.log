@@ -1,2 +1,14 @@
-﻿  TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
+﻿  Player.cpp
+d:\documents\github\textengine\textadventure\player.cpp(66): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  SaveLoadControl.cpp
+  Object.cpp
+  NPC.cpp
+  MainGame.cpp
+  Location.cpp
+  GameWorld.cpp
+  DialogTree.cpp
+  TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)

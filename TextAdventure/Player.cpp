@@ -91,3 +91,30 @@ std::string Player::BuildPath(std::string FilePath)
 {
 	return FilePath + "/PlayerData";
 }
+
+void Player::Display(TxtEgn::COutput* Out)
+{
+	int StrLen = static_cast<int>(m_PlyrItems.size());
+
+
+	Out->WriteLine(7, '-');
+
+	Out->WriteSlow("<C10> [" + m_PlyrName + "] <C7>: Character Information", true);
+	Out->WriteSlow("<C7>|- Your Current Level is: <C11>" + std::to_string(m_Level), true);
+	Out->WriteSlow("<C7>|- You currently have: <C14>$" + std::to_string(m_Gold), true);
+
+	if (StrLen > 0)
+	{
+		Out->WriteSlow("<C7>|- Currently in your inventory you have; ", true);
+
+		Out->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 208);
+
+		for (int i = 0; i < StrLen; i++)
+		{
+			Out->DisplayColumns3(m_PlyrItems[i].GetItemName(), m_PlyrItems[i].GetItemDesc(), "$" + std::to_string(m_PlyrItems[i].GetItemValue()), 13);
+			Out->GetConsole()->SetCurrentY(Out->GetConsole()->wherey());
+			Out->GetConsole()->Update();
+		}
+	}
+	Out->WriteLine(7, '-');
+}

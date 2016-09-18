@@ -68,6 +68,17 @@ bool MainGame::GameLoop()
 						m_Output->WriteSlow("<C12>You need to enter a direction", true);
 					break;
 				}
+				case 1:			//Take Command
+				{
+					if (CurCommand.size() > 1)
+					{
+						std::string Temp = m_Input->ParseIntoSentence(CurCommand, 1);
+						m_CurrentLocation->PickUpItem(m_Output, &m_Player, Temp);
+					}
+					else
+						m_Output->WriteSlow("<C12>You need to enter a item", true);
+					break;
+				}
 				case 2:			//Quit Command
 				{
 					GameRunning = false;
@@ -119,30 +130,9 @@ bool MainGame::GameLoop()
 					m_Output->GetConsole()->Update();
 					break;
 				}
-				case 6://Stats Command
+				case 6:			//Stats Command
 				{
-					int StrLen = static_cast<int>(m_Player.GetItems().size());
-
-
-					m_Output->WriteLine(7, '-');
-
-					m_Output->WriteSlow("<C10> [" + m_Player.GetPlyrName() + "] <C7>: Character Information", true);
-					m_Output->WriteSlow("<C7>|- Your Current Level is: <C11>" + std::to_string(m_Player.GetPlyrLevel()), true);
-					m_Output->WriteSlow("<C7>|- You currently have: <C14>$" + std::to_string(m_Player.GetPlyrGold()), true);
-
-					std::vector<Item>* PlrItems = &m_Player.GetItems();
-
-					if (StrLen > 0)
-					{
-						m_Output->WriteSlow("<C7>|- Currently in your inventory you have; ", true);
-
-						m_Output->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 208);
-
-						for (int i = 0; i < StrLen; i++)
-							m_Output->DisplayColumns3(m_Player.GetItems()[i].GetItemName(), m_Player.GetItems()[i].GetItemDesc(), "$" + std::to_string(m_Player.GetItems()[i].GetItemValue()), 13);
-					}
-					m_Console->EndLine();
-					m_Output->WriteLine(7, '-');
+					m_Player.Display(m_Output);
 					break;
 				}
 				case 11:		//Colours Command

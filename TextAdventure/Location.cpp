@@ -190,3 +190,18 @@ std::string Location::BuildPath(std::string FilePath, std::string LocationNum)
 	std::cout << Ret << std::endl;
 	return Ret;
 }
+
+void Location::PickUpItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName)
+{
+	int Size = static_cast<int>(m_Items.size());
+	for (int i = 0; i < Size; i++)
+	{
+		if (m_Input.CompareStrings(m_Items[i].GetItemName(), ItemName))
+		{
+			Output->WriteSlow("<C11>You pick up " + m_Items[i].GetItemName(), true);
+			Plr->AddItem(m_Items[i]);
+			m_Items.erase(m_Items.begin() + i);
+			return;
+		}
+	}
+}

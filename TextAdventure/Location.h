@@ -9,6 +9,7 @@
 #include "Item.h"
 #include "Object.h"
 #include "NPC.h"
+#include "Player.h"
 
 #include <string>
 #include <map>
@@ -55,6 +56,8 @@ public:
 
 	std::string BuildPath(std::string FilePath, std::string LocationNum);
 	std::string BuildPathLocNum(std::string FilePath);
+
+	void PickUpItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName);
 
 private:
 	std::string m_Name;

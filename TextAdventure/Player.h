@@ -3,6 +3,7 @@
 #include <vector>
 #include <TextEngine/InputControl.h>
 #include <TextEngine/InOutDataManager.h>
+#include <TextEngine/COutput.h>
 #include <boost/property_tree/ptree.hpp>
 #include "SaveLoadControl.h"
 
@@ -20,6 +21,8 @@ public:
 
 	void AddItem(Item addItem);
 	void RemoveItem(Item remItem);
+
+	void Display(TxtEgn::COutput* Out);
 
 	//Setters
 	void SetPlyrName(std::string PlyrName) { m_PlyrName = PlyrName; }

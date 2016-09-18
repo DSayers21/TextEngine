@@ -48,7 +48,7 @@ namespace TxtEgn
 
 		COutput CreateColumn(int Width, int StartX, int Colour);
 
-		int DisplayColumn(std::string Statement, int LowestY, bool EndLine);
+		int DisplayColumn(std::string Statement, int LowestY);
 
 		//Setters
 		void SetConsole(ConsoleProp& Console);

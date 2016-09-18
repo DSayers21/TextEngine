@@ -135,6 +135,17 @@ bool MainGame::GameLoop()
 					m_Player.Display(m_Output);
 					break;
 				}
+				case 7:			//Drop Command
+				{
+					if (CurCommand.size() > 1)
+					{
+						std::string Temp = m_Input->ParseIntoSentence(CurCommand, 1);
+						m_Player.DropItem(m_Output, m_CurrentLocation, Temp);
+					}
+					else
+						m_Output->WriteSlow("<C12>You need to enter a item", true);
+					break;
+				}
 				case 11:		//Colours Command
 				{
 					for (int i = 0; i < 255; i++)

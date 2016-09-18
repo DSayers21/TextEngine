@@ -8,6 +8,7 @@
 #include "SaveLoadControl.h"
 
 class Item;
+class Location;
 
 class Player
 {
@@ -21,6 +22,7 @@ public:
 
 	void AddItem(Item addItem);
 	void RemoveItem(Item remItem);
+	void DropItem(TxtEgn::COutput* Out, Location* CurrentLocation, std::string ItemName);
 
 	void Display(TxtEgn::COutput* Out);
 

@@ -204,4 +204,5 @@ void Location::PickUpItem(TxtEgn::COutput* Output, Player* Plr, std::string Item
 			return;
 		}
 	}
+	Output->WriteSlow("<C12>There is no item of that name in the area.", true);
 }

@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Item.h"
+#include "Location.h"
 #include <TextEngine/InputControl.h>
 
 Player::Player()
@@ -71,6 +72,22 @@ void Player::RemoveItem(Item remItem)
 			break;
 		}
 	}
+}
+
+void Player::DropItem(TxtEgn::COutput* Out, Location* CurrentLocation, std::string ItemName)
+{
+	int StrLen = static_cast<int>(m_PlyrItems.size());
+	for (int i = 0; i < StrLen; i++)
+	{
+		if (m_Input.CompareStrings(ItemName, m_PlyrItems[i].GetItemName()))
+		{
+			Out->WriteSlow("<C11>You have dropped " + m_PlyrItems[i].GetItemName() + " to the ground", true);
+			CurrentLocation->AddItem(m_PlyrItems[i]);
+			m_PlyrItems.erase(m_PlyrItems.begin() + i);
+			return;
+		}
+	}
+	Out->WriteSlow("<C12>You do not have that item.", true);
 }
 
 Item* Player::GetItem(std::string ItemName)

@@ -242,48 +242,41 @@ namespace TxtEgn
 
 	void COutput::DisplayColumns3(std::string Left, std::string Middle, std::string Right, int Colour)
 	{
+		//Init LowestY
 		int LowestY = 0;
-
-		int SecLeft = _Console->FindConsoleWidth()*0.333;
-
-		TxtEgn::ConsoleProp _ConsoleLeft;
-		_ConsoleLeft.Init(10, 16, 0, _Console->wherey(), Colour, false);
-		_ConsoleLeft.SetConsoleWidth(SecLeft);
-		_ConsoleLeft.gotoxy(_ConsoleLeft.GetStartX(), _ConsoleLeft.GetStartY());
-
-		TxtEgn::COutput _OutputLeft(_ConsoleLeft, *_Input, *_Cache);
-
-		TxtEgn::ConsoleProp _ConsoleMiddle;
-		_ConsoleMiddle.Init(10, 16, SecLeft, _Console->wherey(), Colour, false);
-		_ConsoleMiddle.SetConsoleWidth(SecLeft);
-		_ConsoleMiddle.gotoxy(_ConsoleLeft.GetStartX(), _ConsoleLeft.GetStartY());
-
-		TxtEgn::COutput _OutputMiddle(_ConsoleMiddle, *_Input, *_Cache);
-
-		TxtEgn::ConsoleProp _ConsoleRight;
-		_ConsoleRight.Init(10, 16, SecLeft*2, _Console->wherey(), Colour, false);
-		_ConsoleRight.SetConsoleWidth(SecLeft);
-		_ConsoleRight.gotoxy(_ConsoleLeft.GetStartX(), _ConsoleLeft.GetStartY());
-
-		TxtEgn::COutput _OutputRight(_ConsoleRight, *_Input, *_Cache);
-
-		_OutputLeft.GetConsole()->Update();
-		_OutputLeft.WriteSlow(Left, false);
-		_OutputLeft.CompleteLine(' ');
-		LowestY = _OutputLeft.GetConsole()->wherey();
-
-		_OutputMiddle.GetConsole()->Update();
-		_OutputMiddle.WriteSlow(Middle, false);
-		_OutputMiddle.CompleteLine(' ');
-		LowestY = (_OutputMiddle.GetConsole()->wherey() > LowestY) ? _OutputLeft.GetConsole()->wherey() : LowestY;
-
-		_OutputRight.GetConsole()->Update();
-		_OutputRight.WriteSlow(Right, false);
-		_OutputRight.CompleteLine(' ');
-		_OutputRight.GetConsole()->EndLine();
-		LowestY = (_OutputRight.GetConsole()->wherey() > LowestY) ? _OutputLeft.GetConsole()->wherey() : LowestY;
-
+		//Get console width
+		int ColWidth = _Console->FindConsoleWidth()*0.333;
+		//Create Columns to output information to
+		TxtEgn::COutput _OutputLeft = CreateColumn(ColWidth, 0, Colour);
+		TxtEgn::COutput _OutputMiddle = CreateColumn(ColWidth, ColWidth, Colour);
+		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth, ColWidth*2, Colour);
+		//Output information to columns whilst updating lowestY
+		LowestY = _OutputLeft.DisplayColumn(Left, LowestY, false);
+		LowestY = _OutputMiddle.DisplayColumn(Middle, LowestY, false);
+		LowestY = _OutputRight.DisplayColumn(Right, LowestY, true);
+		//Set main console to the lowest position
 		GetConsole()->SetCurrentY(LowestY);
+	}
+
+	COutput COutput::CreateColumn(int Width, int StartX, int Colour)
+	{
+		TxtEgn::ConsoleProp* _ConsoleCol = new TxtEgn::ConsoleProp();
+		_ConsoleCol->Init(_Console->GetFontX(), _Console->GetFontY(), StartX, _Console->wherey(), Colour, false);
+		_ConsoleCol->SetConsoleWidth(Width);
+		_ConsoleCol->gotoxy(_ConsoleCol->GetStartX(), _ConsoleCol->GetStartY());
+
+		TxtEgn::COutput _OutputCol(*_ConsoleCol, *_Input, *_Cache);
+		return _OutputCol;
+	}
+
+	int COutput::DisplayColumn(std::string Statement, int LowestY, bool EndLine)
+	{
+		GetConsole()->Update();
+		WriteSlow(Statement, false);
+		CompleteLine(' ');
+		if(EndLine)
+			GetConsole()->EndLine();
+		return (GetConsole()->wherey() > LowestY) ? GetConsole()->wherey() : LowestY;
 	}
 
 	//Setters

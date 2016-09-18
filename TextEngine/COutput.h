@@ -44,6 +44,8 @@ namespace TxtEgn
 
 		void DrawImage(std::string Img, ALIGN Align);
 
+		void DisplayColumns3(std::string Left, std::string Middle, std::string Right, int Colour);
+
 		//Setters
 		void SetConsole(ConsoleProp& Console);
 

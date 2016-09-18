@@ -240,6 +240,52 @@ namespace TxtEgn
 		}
 	}
 
+	void COutput::DisplayColumns3(std::string Left, std::string Middle, std::string Right, int Colour)
+	{
+		int LowestY = 0;
+
+		int SecLeft = _Console->FindConsoleWidth()*0.333;
+
+		TxtEgn::ConsoleProp _ConsoleLeft;
+		_ConsoleLeft.Init(10, 16, 0, _Console->wherey(), Colour, false);
+		_ConsoleLeft.SetConsoleWidth(SecLeft);
+		_ConsoleLeft.gotoxy(_ConsoleLeft.GetStartX(), _ConsoleLeft.GetStartY());
+
+		TxtEgn::COutput _OutputLeft(_ConsoleLeft, *_Input, *_Cache);
+
+		TxtEgn::ConsoleProp _ConsoleMiddle;
+		_ConsoleMiddle.Init(10, 16, SecLeft, _Console->wherey(), Colour, false);
+		_ConsoleMiddle.SetConsoleWidth(SecLeft);
+		_ConsoleMiddle.gotoxy(_ConsoleLeft.GetStartX(), _ConsoleLeft.GetStartY());
+
+		TxtEgn::COutput _OutputMiddle(_ConsoleMiddle, *_Input, *_Cache);
+
+		TxtEgn::ConsoleProp _ConsoleRight;
+		_ConsoleRight.Init(10, 16, SecLeft*2, _Console->wherey(), Colour, false);
+		_ConsoleRight.SetConsoleWidth(SecLeft);
+		_ConsoleRight.gotoxy(_ConsoleLeft.GetStartX(), _ConsoleLeft.GetStartY());
+
+		TxtEgn::COutput _OutputRight(_ConsoleRight, *_Input, *_Cache);
+
+		_OutputLeft.GetConsole()->Update();
+		_OutputLeft.WriteSlow(Left, false);
+		_OutputLeft.CompleteLine(' ');
+		LowestY = _OutputLeft.GetConsole()->wherey();
+
+		_OutputMiddle.GetConsole()->Update();
+		_OutputMiddle.WriteSlow(Middle, false);
+		_OutputMiddle.CompleteLine(' ');
+		LowestY = (_OutputMiddle.GetConsole()->wherey() > LowestY) ? _OutputLeft.GetConsole()->wherey() : LowestY;
+
+		_OutputRight.GetConsole()->Update();
+		_OutputRight.WriteSlow(Right, false);
+		_OutputRight.CompleteLine(' ');
+		_OutputRight.GetConsole()->EndLine();
+		LowestY = (_OutputRight.GetConsole()->wherey() > LowestY) ? _OutputLeft.GetConsole()->wherey() : LowestY;
+
+		GetConsole()->SetCurrentY(LowestY);
+	}
+
 	//Setters
 	void COutput::SetConsole(ConsoleProp& Console)
 	{

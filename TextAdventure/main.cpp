@@ -21,13 +21,8 @@ int main()
 	//Draw title
 	_Output.DrawImage("Images/MainTitle.txt", TxtEgn::ALIGN::CENTER);
 
-	//Create GameWorld
-	GameWorld CloudGame;
-	//Load GameWorld
-	CloudGame.Load("CloudGame");
-
 	//Init MainGame
-	MainGame Game(CloudGame, &_Input, &_Console, &Cache, &_Output);
+	MainGame Game("CloudGame", true, &_Input, &_Console, &Cache, &_Output);
 	Game.StartGame();
 
 	return 0;

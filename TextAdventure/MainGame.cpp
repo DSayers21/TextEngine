@@ -1,13 +1,26 @@
 #include "MainGame.h"
 
-MainGame::MainGame(GameWorld Game, TxtEgn::InputControl* Input, TxtEgn::ConsoleProp* Console, TxtEgn::ImageCache* Cache, TxtEgn::COutput* Output)
+MainGame::MainGame(std::string FilePath, bool NewPlayer, TxtEgn::InputControl* Input, TxtEgn::ConsoleProp* Console, TxtEgn::ImageCache* Cache, TxtEgn::COutput* Output)
 {
 	m_Cache = Cache;
 	m_Input = Input;
 	m_Console = Console;
 	m_Output = Output;
 
-	m_Game = Game;
+	m_Game.Load(FilePath);
+
+	if (NewPlayer)
+	{
+		std::string PlrName = m_Input->ParseIntoSentence(m_Output->GetInput("<C10>What is your name?"), 0);
+
+		m_Player = Player(PlrName, 1, 100);
+		Item Test("Test Item", "This Item is to Test the columns, if this is working there should be multiple lines wooooo. And maybe even 3 of them like all below one another in a list", 100, false);
+		m_Player.AddItem(Test);
+	}
+	else
+	{
+		m_Player.Load(FilePath);
+	}
 }
 
 
@@ -104,6 +117,32 @@ bool MainGame::GameLoop()
 					}
 					m_Output->GetConsole()->SetColour(7);
 					m_Output->GetConsole()->Update();
+					break;
+				}
+				case 6://Stats Command
+				{
+					int StrLen = static_cast<int>(m_Player.GetItems().size());
+
+
+					m_Output->WriteLine(7, '-');
+
+					m_Output->WriteSlow("<C10> [" + m_Player.GetPlyrName() + "] <C7>: Character Information", true);
+					m_Output->WriteSlow("<C7>|- Your Current Level is: <C11>" + std::to_string(m_Player.GetPlyrLevel()), true);
+					m_Output->WriteSlow("<C7>|- You currently have: <C14>$" + std::to_string(m_Player.GetPlyrGold()), true);
+
+					std::vector<Item>* PlrItems = &m_Player.GetItems();
+
+					if (StrLen > 0)
+					{
+						m_Output->WriteSlow("<C7>|- Currently in your inventory you have; ", true);
+
+						m_Output->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 208);
+
+						for (int i = 0; i < StrLen; i++)
+							m_Output->DisplayColumns3(m_Player.GetItems()[i].GetItemName(), m_Player.GetItems()[i].GetItemDesc(), "$" + std::to_string(m_Player.GetItems()[i].GetItemValue()), 13);
+					}
+					m_Console->EndLine();
+					m_Output->WriteLine(7, '-');
 					break;
 				}
 				case 11:		//Colours Command

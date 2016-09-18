@@ -1,2 +1,5 @@
-﻿  ConsoleProp.cpp
+﻿  COutput.cpp
+d:\documents\github\textengine\textengine\coutput.cpp(150): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textengine\coutput.cpp(247): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\documents\github\textengine\textengine\coutput.cpp(241): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
   TextEngine.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextEngine.lib

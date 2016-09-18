@@ -11,11 +11,12 @@ class Item;
 class Player
 {
 public:
+	Player();
 	Player(std::string PlyrName, unsigned int Level, float Gold);
 	~Player();
 
-	void SavePlayer(std::string FilePath);
-	void LoadPlayer(std::string FilePath);
+	void Save(std::string FilePath);
+	void Load(std::string FilePath);
 
 	void AddItem(Item addItem);
 	void RemoveItem(Item remItem);
@@ -28,10 +29,12 @@ public:
 	void DecPlyrGold(float Gold) { m_Gold = (m_Gold - Gold < 0) ? 0 : m_Gold -= Gold; }
 	//Getters
 	Item* GetItem(std::string ItemName);
+	std::vector<Item> GetItems() { return m_PlyrItems; }
 	std::string GetPlyrName() { return m_PlyrName; }
 	unsigned int GetPlyrLevel() { return m_Level; }
 	float GetPlyrGold() { return m_Gold; }
 
+	std::string BuildPath(std::string FilePath);
 private:
 	std::string m_PlyrName = "John Doe";
 	std::vector<Item> m_PlyrItems;

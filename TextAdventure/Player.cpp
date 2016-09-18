@@ -2,6 +2,11 @@
 #include "Item.h"
 #include <TextEngine/InputControl.h>
 
+Player::Player()
+{
+
+}
+
 Player::Player(std::string PlyrName, unsigned int Level, float Gold) :
 	m_PlyrName(PlyrName),
 	m_Level(Level),
@@ -15,7 +20,7 @@ Player::~Player()
 	//Empty
 }
 
-void Player::SavePlayer(std::string FilePath)
+void Player::Save(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree;
@@ -33,13 +38,13 @@ void Player::SavePlayer(std::string FilePath)
 	Tree.add_child("Items", Items);
 
 	//Save the tree to a readable format
-	m_IOMan.SaveFile(FilePath, Tree);
+	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
 }
 
-void Player::LoadPlayer(std::string FilePath)
+void Player::Load(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
-	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(BuildPath(FilePath));
 
 	m_PlyrName = Tree.get<std::string>("PlrName");
 	m_Level = Tree.get<unsigned int>("PlrLevel");
@@ -80,4 +85,9 @@ Item* Player::GetItem(std::string ItemName)
 	}
 	Item* BlankReturn = new Item();
 	return BlankReturn;
+}
+
+std::string Player::BuildPath(std::string FilePath)
+{
+	return FilePath + "/PlayerData";
 }

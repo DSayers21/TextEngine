@@ -23,7 +23,7 @@ GameWorld::~GameWorld()
 }
 
 void GameWorld::Load(std::string FilePath)
-{
+{	
 	//Temp Vector Used for linking pointers
 	std::vector<std::string> _LocationNames;
 	//Load Data into Tree

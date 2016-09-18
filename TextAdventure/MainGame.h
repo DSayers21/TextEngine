@@ -1,6 +1,7 @@
 #pragma once
 #include "GameWorld.h"
 #include "Location.h"
+#include "Player.h"
 #include <vector>
 #include <string>
 #include <TextEngine/InputControl.h>
@@ -11,7 +12,7 @@
 class MainGame
 {
 public:
-	MainGame(GameWorld Game, TxtEgn::InputControl* Input, TxtEgn::ConsoleProp* Console, TxtEgn::ImageCache* Cache, TxtEgn::COutput* Output);
+	MainGame(std::string FilePath, bool NewPlayer, TxtEgn::InputControl* Input, TxtEgn::ConsoleProp* Console, TxtEgn::ImageCache* Cache, TxtEgn::COutput* Output);
 	~MainGame();
 
 	void StartGame();
@@ -21,6 +22,7 @@ private:
 
 	GameWorld m_Game;
 	Location* m_CurrentLocation;
+	Player m_Player;
 
 	std::vector<std::string> Direction{ "North", "South", "West", "East", "Up", "Down", "North West", "North East", "Out" };
 	std::vector<std::string> Command{ "Go", "Take", "Quit", "Look", "Clear", "Help", "Stats", "Drop", "Push", "Pull",

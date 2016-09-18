@@ -163,6 +163,14 @@ bool MainGame::GameLoop()
 					m_Output->GetConsole()->SetCurrentY(m_Output->GetConsole()->wherey());
 					break;
 				}
+				case 17:		//Inspect Item
+				{
+					if (CurCommand.size() > 1)
+						m_CurrentLocation->InspectAll(m_Output, m_Input->ParseIntoSentence(CurCommand, 1));
+					else
+						m_Output->WriteSlow("<C12>You need to enter a item to inspect", true);
+					break;
+				}
 			}
 		}
 	}

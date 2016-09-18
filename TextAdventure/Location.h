@@ -59,6 +59,12 @@ public:
 
 	void PickUpItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName);
 
+	void InspectAll(TxtEgn::COutput* Output, std::string Compare);
+	bool InspectItems(TxtEgn::COutput* Output, std::string Compare);
+	bool InspectObjects(TxtEgn::COutput* Output, std::string Compare);
+	bool InspectNPCs(TxtEgn::COutput* Output, std::string Compare);
+
+
 private:
 	std::string m_Name;
 	std::string m_Desc;

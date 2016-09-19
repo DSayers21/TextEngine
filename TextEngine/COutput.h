@@ -31,6 +31,7 @@ namespace TxtEgn
 		void COutput::DisplayBanner(int Colour, std::string Statement, bool EndL);
 
 		void WriteSlow(std::string DisplayString, bool EndL);
+		void WriteSlow(std::string DisplayString, bool EndL, bool CompLine);
 
 		void WriteLine(int Colour, char WriteChar);
 
@@ -63,7 +64,7 @@ namespace TxtEgn
 	private:
 		bool CheckIfOver(std::string DisplayString);
 
-		void TypeString(std::string DisplayString);
+		void TypeString(std::string DisplayString, bool CompLine);
 
 		int TestTag(std::string StringPassed);
 

@@ -57,6 +57,7 @@ int DialogTree::PerformDialog(std::string NPCName, TxtEgn::COutput* Output, Play
 		if (CurrentNode->m_DialogOptions.size() == 0)
 			return LastCode;
 
+		//Get input
 		int input = stoi(m_Input.ParseIntoSentence(Output->GetInput("What say you?"), 0));
 
 		if ((input < 0) || (input > CurrentNode->m_DialogOptions.size()))

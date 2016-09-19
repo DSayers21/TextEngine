@@ -48,7 +48,7 @@ namespace TxtEgn
 				SetTag(TempVec[i]);
 			else
 			{
-				TypeString(TempVec[i]);
+				TypeString(TempVec[i], false);
 				if ((i != Size) && (_Console->wherex() != _Console->GetConsoleWidth()) && (_Console->wherex() != 0) && (_Console->wherex() != _Console->GetConsoleWidth() - 1))
 					std::cout << " ";
 			}
@@ -57,6 +57,38 @@ namespace TxtEgn
 		{
 			if(_Console->wherex() != _Console->GetStartX())
 				_Console->EndLine();
+		}
+	}
+
+	void COutput::WriteSlow(std::string DisplayString, bool EndL, bool CompLine)
+	{
+		std::vector<std::string> TempVec = _Input->ParseIntoWords(DisplayString);
+		int Size = static_cast<int>(TempVec.size());
+		for (int i = 0; i < Size; i++)
+		{
+			if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 2))
+			{
+				_Console->RevertColour();
+			}
+			else if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 1))
+				SetTag(TempVec[i]);
+			else
+			{
+				TypeString(TempVec[i], CompLine);
+				if ((i != Size) && (_Console->wherex() != _Console->GetConsoleWidth()) && (_Console->wherex() != 0) && (_Console->wherex() != _Console->GetConsoleWidth() - 1))
+					std::cout << " ";
+			}
+		}
+
+		if (CompLine)
+			CompleteLine(' ');
+
+		if (EndL)
+		{
+			if (_Console->wherex() != _Console->GetStartX())
+			{
+				_Console->EndLine();
+			}
 		}
 	}
 
@@ -111,7 +143,6 @@ namespace TxtEgn
 			_Console->gotoxy(_Console->GetStartX(), i);
 		}
 		_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
-
 	}
 
 	std::vector<std::string> COutput::GetInput(std::string Question)
@@ -180,18 +211,22 @@ namespace TxtEgn
 		return false;
 	}
 
-	void COutput::TypeString(std::string DisplayString)
+	void COutput::TypeString(std::string DisplayString, bool CompLine)
 	{
 		int Size = static_cast<int>(DisplayString.size());
 		int InitX = _Console->wherex();
 		if (InitX + Size > _Console->GetConsoleWidth())
+		{
+			CompleteLine(' ');
 			_Console->EndLine();
+		}
 
 		for (int i = 0; i < Size; i++)
 		{
 			std::cout << DisplayString[i];
 			std::this_thread::sleep_for(std::chrono::milliseconds(_Speed));
 		}
+	
 		if (InitX + Size == _Console->GetConsoleWidth())
 			_Console->EndLine();
 	}
@@ -290,8 +325,8 @@ namespace TxtEgn
 	int COutput::DisplayColumn(std::string Statement, int LowestY)
 	{
 		GetConsole()->Update();
-		WriteSlow(Statement, false);
-		CompleteLine(' ');
+		WriteSlow(Statement, false, true);
+		//CompleteLine(' ');
 		return (GetConsole()->wherey() > LowestY) ? GetConsole()->GetCurrentY() : LowestY;
 	}
 

@@ -88,12 +88,18 @@ public:
 	void StartConversation(TxtEgn::COutput* Output, Player* Plr);
 
 private:
+	void StartShop(TxtEgn::COutput* Output, Player* Plr);
+	void DisplayShop(TxtEgn::COutput* Output);
+	void PurchaseItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName);
+
 	std::string m_Name = "BLANK";
 	std::string m_Description = "BLANK";
 	std::string m_Gender = "BLANK";
 	std::string m_Goodbye = "BLANK";
 	std::string m_AlrGivenMes = "BLANK";
 	bool m_IsShop = false;
+
+	std::vector<std::string> m_GoodByeMes{ "Bye", "Goodbye", "See you later", "See ya" };
 
 	std::vector<WantedItem> m_WantedItems;
 	std::vector<Item> m_ShopItems;

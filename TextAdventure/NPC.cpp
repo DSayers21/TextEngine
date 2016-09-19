@@ -117,5 +117,59 @@ std::string NPC::BuildPath(std::string FilePath)
 
 void NPC::StartConversation(TxtEgn::COutput* Output, Player* Plr)
 {
-	m_Dialog->PerformDialog(m_Name, Output, Plr);
+	int ReturnCode = m_Dialog->PerformDialog(this, Output, Plr, m_GoodByeMes);
+	if (ReturnCode == 2)
+		StartShop(Output, Plr);
+}
+
+void NPC::StartShop(TxtEgn::COutput* Output, Player* Plr)
+{
+	bool StillShop = true;
+
+	DisplayShop(Output);
+	while (StillShop)
+	{
+		std::string Temp = m_Input.ParseIntoSentence(Output->GetInput("What would you like to buy?"), 0);
+
+		if (m_Input.FindString(m_GoodByeMes, Temp))
+			StillShop = false;
+
+		else if ((Temp == "look"))
+			DisplayShop(Output);
+		else
+			PurchaseItem(Output, Plr, Temp);
+	}
+	Output->DisplayColumnsConvo(m_Name, m_Goodbye, 159, 249);
+}
+
+void NPC::DisplayShop(TxtEgn::COutput* Output)
+{
+	int Size = static_cast<int>(m_ShopItems.size());
+	Output->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 224);
+	for (int i = 0; i < Size; i++)
+		Output->DisplayColumns3(m_ShopItems[i].GetItemName(), m_ShopItems[i].GetItemDesc(), "$" + std::to_string(m_ShopItems[i].GetItemValue()), 14);
+}
+
+void NPC::PurchaseItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName)
+{
+	NPC* ReturnCon = this;
+	int Size = static_cast<int>(m_ShopItems.size());
+	int Difference;
+	for (int i = 0; i < Size; i++)
+	{
+		if (m_Input.CompareStrings(m_ShopItems[i].GetItemName(), ItemName))
+		{
+			if (m_ShopItems[i].GetItemValue() <= Plr->GetPlyrGold())
+			{
+				Plr->SetPlyrGold(-m_ShopItems[i].GetItemValue());
+				Plr->AddItem(m_ShopItems[i]);
+				Output->WriteSlow("<C11>You bought " + m_ShopItems[i].GetItemName() + " for" + " <C14>$" + std::to_string(m_ShopItems[i].GetItemValue()), true);
+			}
+			else
+			{
+				Difference = m_ShopItems[i].GetItemValue() - Plr->GetPlyrGold();
+				Output->WriteSlow("<C12> You don't have enough for that, you need an extra <C14>$" + std::to_string(Difference), true);
+			}
+		}
+	}
 }

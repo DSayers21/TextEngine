@@ -29,6 +29,8 @@ namespace TxtEgn
 
 		bool FindString(std::vector<std::string> CheckVec, std::string Search);
 
+		int FindStringPosition(std::vector<std::string> CheckVec, std::string Search);
+
 		bool CompareStrings(std::string One, std::string Two);
 
 		std::string AlignCenter(char Letter, int Buffer, std::string Original);

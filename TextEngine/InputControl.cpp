@@ -147,6 +147,17 @@ namespace TxtEgn
 		return 0;
 	}
 
+	int InputControl::FindStringPosition(std::vector<std::string> CheckVec, std::string Search)
+	{
+		int VecSizeTemp = static_cast<int>(CheckVec.size());
+		for (int i = 0; i < VecSizeTemp; i++)
+		{
+			if (CompareStrings(Search, CheckVec[i]))
+				return i;
+		}
+		return -1;
+	}
+
 	bool InputControl::CompareStrings(std::string One, std::string Two)
 	{
 		std::transform(One.begin(), One.end(), One.begin(), ::tolower);

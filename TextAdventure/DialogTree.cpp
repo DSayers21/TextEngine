@@ -33,7 +33,7 @@ void DialogTree::Init(std::string FilePath)
 	Load(FilePath);
 }
 
-int DialogTree::PerformDialog(std::string NPCName, TxtEgn::COutput* Output, Player* Plr)
+int DialogTree::PerformDialog(NPC* Person, TxtEgn::COutput* Output, Player* Plr, std::vector<std::string> GoodByeMes)
 {
 	if (m_DialogNodes.empty())
 		return -1;
@@ -44,11 +44,30 @@ int DialogTree::PerformDialog(std::string NPCName, TxtEgn::COutput* Output, Play
 	while (isConvo)
 	{
 		//Start Convo
-		Output->DisplayColumnsConvo(NPCName, CurrentNode->m_Text, 159, 249);
+		Output->DisplayColumnsConvo(Person->GetName(), CurrentNode->m_Text, 159, 249);
 
+		//Set Colours for options
 		Output->GetConsole()->SetColour(7);
 		for (int i = 0; i < CurrentNode->m_DialogOptions.size(); i++)
+		{
+			switch (CurrentNode->m_DialogOptions[i].m_ReturnCode)
+			{
+			case 0:
+				if (CurrentNode->m_DialogOptions[i].m_nxtNode->m_DialogOptions.size() == 0)
+					Output->GetConsole()->SetColour(12);
+				else
+					Output->GetConsole()->SetColour(7);
+				break;
+			case 1:
+				Output->GetConsole()->SetColour(11);
+				break;
+			case 2:
+				Output->GetConsole()->SetColour(14);
+				break;
+			}
+
 			Output->WriteSlow("[" + std::to_string(i) + "]\t\t" + CurrentNode->m_DialogOptions[i].m_Text, true);
+		}
 		
 		//Give Items
 		CurrentNode->GiveItems(Plr, Output);
@@ -58,15 +77,29 @@ int DialogTree::PerformDialog(std::string NPCName, TxtEgn::COutput* Output, Play
 			return LastCode;
 
 		//Get input
-		int input = stoi(m_Input.ParseIntoSentence(Output->GetInput("What say you?"), 0));
+		std::string Input = m_Input.ParseIntoSentence(Output->GetInput("What say you?"), 0);
+		int input = (m_Input.is_number(Input)) ? std::stoi(Input) 
+			: m_Input.FindStringPosition(CurrentNode->MakeOptionVector(), Input);
 
-		if ((input < 0) || (input > CurrentNode->m_DialogOptions.size()))
+		//Check Goodbye
+		if (!m_Input.is_number(Input))
+		{
+			if (m_Input.FindString(GoodByeMes, Input))
+			{
+				Output->DisplayColumnsConvo(Person->GetName(), Person->GetGoodBye(), 159, 249);
+				isConvo = false;
+				return LastCode;
+			}
+		}
+
+		if ((input < 0) || (input > CurrentNode->m_DialogOptions.size()-1))
 			Output->WriteSlow("<C12> Invalid Input!", true);
 		else
 		{
-			if(CurrentNode->m_DialogOptions[input].m_nxtNode->m_DialogOptions.size() > 0)
-				LastCode = CurrentNode->m_DialogOptions[input].m_ReturnCode;
+			//Get Return Code
+			LastCode = CurrentNode->m_DialogOptions[input].m_ReturnCode;
 
+			//Go to next node
 			CurrentNode = CurrentNode->m_DialogOptions[input].m_nxtNode;
 		}
 	}

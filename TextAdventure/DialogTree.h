@@ -9,6 +9,7 @@
 #include "SaveLoadControl.h"
 #include "Item.h"
 #include "Player.h"
+#include "NPC.h"
 
 class DialogOption;
 class DialogNode;
@@ -37,6 +38,16 @@ public:
 		}
 	}
 
+	std::vector<std::string> MakeOptionVector()
+	{
+		std::vector<std::string> Return;
+		for (int i = 0; i < m_DialogOptions.size(); i++)
+		{
+			Return.push_back(m_DialogOptions[i].m_Text);
+		}
+		return Return;
+	}
+
 	DialogNode(std::string Text);
 
 	std::string m_Text;
@@ -52,7 +63,7 @@ public:
 
 	void Init(std::string FilePath);
 
-	int PerformDialog(std::string NPCName, TxtEgn::COutput* Output, Player* Plr);
+	int PerformDialog(NPC* Person, TxtEgn::COutput* Output, Player* Plr, std::vector<std::string> GoodByeMes);
 
 	void Load(std::string FilePath);
 	void Save(std::string FilePath);

@@ -14,7 +14,7 @@ NPC::NPC(std::string NPCName, std::string NPCDesc, std::string NPCGender, std::s
 	m_Goodbye = NPCGoodbye;
 	m_AlrGivenMes = NPCAlreadyGiven;
 
-	m_Dialog = new DialogTree(*m_Output);
+	m_Dialog = new DialogTree();
 }
 
 NPC::~NPC()
@@ -86,7 +86,7 @@ void NPC::Load(std::string FilePath)
 	std::string GetDia = Tree.get<std::string>("Dialog");
 	if (GetDia != "NULL")
 	{
-		m_Dialog = new DialogTree(*m_Output);
+		m_Dialog = new DialogTree();
 		m_Dialog->Load(GetDia);
 	}
 
@@ -113,4 +113,9 @@ void NPC::Load(std::string FilePath)
 std::string NPC::BuildPath(std::string FilePath)
 {
 	return FilePath + "/NPC/" + m_Input.RemoveSpaces(m_Name);
+}
+
+void NPC::StartConversation(TxtEgn::COutput* Output, Player* Plr)
+{
+	m_Dialog->PerformDialog(m_Name, Output, Plr);
 }

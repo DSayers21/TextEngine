@@ -19,11 +19,6 @@ DialogTree::DialogTree()
 
 }
 
-DialogTree::DialogTree(TxtEgn::COutput& Output)
-{
-	m_Output = &Output;
-}
-
 DialogTree::~DialogTree()
 {
 	for (int i = 0; i < m_DialogNodes.size(); i++)
@@ -38,31 +33,40 @@ void DialogTree::Init(std::string FilePath)
 	Load(FilePath);
 }
 
-int DialogTree::PerformDialog()
+int DialogTree::PerformDialog(std::string NPCName, TxtEgn::COutput* Output, Player* Plr)
 {
 	if (m_DialogNodes.empty())
 		return -1;
 	DialogNode *CurrentNode = m_DialogNodes[0];
 	bool isConvo = true;
+	int LastCode = 0;
+
 	while (isConvo)
 	{
 		//Start Convo
-		m_Output->WriteSlow(CurrentNode->m_Text, true);
+		Output->DisplayColumnsConvo(NPCName, CurrentNode->m_Text, 159, 249);
+
+		Output->GetConsole()->SetColour(7);
 		for (int i = 0; i < CurrentNode->m_DialogOptions.size(); i++)
-			m_Output->WriteSlow(CurrentNode->m_DialogOptions[i].m_Text, true);
+			Output->WriteSlow("[" + std::to_string(i) + "]\t\t" + CurrentNode->m_DialogOptions[i].m_Text, true);
 		
-		
-		int input = stoi(m_Input.ParseIntoSentence(m_Output->GetInput("What say you?"), 0));
+		//Give Items
+		CurrentNode->GiveItems(Plr, Output);
+
+		//Check if end
+		if (CurrentNode->m_DialogOptions.size() == 0)
+			return LastCode;
+
+		int input = stoi(m_Input.ParseIntoSentence(Output->GetInput("What say you?"), 0));
 
 		if ((input < 0) || (input > CurrentNode->m_DialogOptions.size()))
-			m_Output->WriteSlow("<C12 Invalid Input!", true);
+			Output->WriteSlow("<C12> Invalid Input!", true);
 		else
 		{
-			//Check for end of convo
-			if (CurrentNode->m_DialogOptions[input - 1].m_nxtNode == nullptr)
-				return CurrentNode->m_DialogOptions[input - 1].m_ReturnCode;
-			
-			CurrentNode = CurrentNode->m_DialogOptions[input - 1].m_nxtNode;
+			if(CurrentNode->m_DialogOptions[input].m_nxtNode->m_DialogOptions.size() > 0)
+				LastCode = CurrentNode->m_DialogOptions[input].m_ReturnCode;
+
+			CurrentNode = CurrentNode->m_DialogOptions[input].m_nxtNode;
 		}
 	}
 }

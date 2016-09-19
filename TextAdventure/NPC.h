@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "Item.h"
+#include "Player.h"
 
 class DialogTree;
 
@@ -84,6 +85,8 @@ public:
 	std::string GetGoodBye() { return m_Goodbye; }
 	std::string GetAlrGivenMes() { return m_AlrGivenMes; }
 
+	void StartConversation(TxtEgn::COutput* Output, Player* Plr);
+
 private:
 	std::string m_Name = "BLANK";
 	std::string m_Description = "BLANK";
@@ -94,7 +97,6 @@ private:
 
 	std::vector<WantedItem> m_WantedItems;
 	std::vector<Item> m_ShopItems;
-	TxtEgn::COutput* m_Output;
 
 	DialogTree* m_Dialog = nullptr;
 

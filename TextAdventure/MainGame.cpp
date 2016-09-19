@@ -55,8 +55,8 @@ bool MainGame::GameLoop()
 			{
 				default:
 					m_Output->WriteSlow("<C12>You need to enter a valid Command", true);
-				break;
-				case 0:							//Go Command
+				break;	
+				case 0:									//Go Command
 				{
 					if (CurCommand.size() > 1)
 					{
@@ -68,7 +68,7 @@ bool MainGame::GameLoop()
 						m_Output->WriteSlow("<C12>You need to enter a direction", true);
 					break;
 				}
-				case 1:							//Take Command
+				case 1:									//Take Command
 				{
 					if (CurCommand.size() > 1)
 					{
@@ -79,24 +79,24 @@ bool MainGame::GameLoop()
 						m_Output->WriteSlow("<C12>You need to enter a item", true);
 					break;
 				}
-				case 2:							//Quit Command
+				case 2:									//Quit Command
 				{
 					GameRunning = false;
 					std::string Test = m_Input->AlignCenter(' ', m_Output->GetConsole()->GetConsoleWidth(), "Game Quitted");
 					m_Output->DisplayBanner(207, Test, true);
 					break;
 				}
-				case 3:							//Look Command
+				case 3:									//Look Command
 				{
 					m_CurrentLocation->DisplayAll(m_Output);
 					break;
 				}
-				case 4:							//Clear Command
+				case 4:									//Clear Command
 				{
 					m_Output->ConsoleClear();
 					break;
 				}
-				case 5:							//Help Command
+				case 5:									//Help Command
 				{
 					std::string Left, Middle, Right, Output;
 					int TempSize;
@@ -130,12 +130,12 @@ bool MainGame::GameLoop()
 					m_Output->GetConsole()->Update();
 					break;
 				}	
-				case 6:							//Stats Command
+				case 6:									//Stats Command
 				{
 					m_Player.Display(m_Output);
 					break;
-				}
-				case 7:							//Drop Command
+				}	
+				case 7:									//Drop Command
 				{
 					if (CurCommand.size() > 1)
 					{
@@ -146,7 +146,7 @@ bool MainGame::GameLoop()
 						m_Output->WriteSlow("<C12>You need to enter a item", true);
 					break;
 				}
-				case 8: case 9: case 16:		//Push And Pull Search Command
+				case 8: case 9: case 16:				//Push And Pull Search Command
 				{
 					if (CurCommand.size() > 1)
 					{
@@ -158,7 +158,7 @@ bool MainGame::GameLoop()
 						m_Output->WriteSlow("<C12>You need to enter a object", true);
 					break;
 				}
-				case 10://Unlock
+				case 10:								//Unlock
 				{
 					if (CurCommand.size() > 1)
 					{
@@ -170,7 +170,7 @@ bool MainGame::GameLoop()
 
 					break;
 				}
-				case 11:						//Colours Command
+				case 11:								//Colours Command
 				{
 					for (int i = 0; i < 255; i++)
 					{
@@ -187,7 +187,23 @@ bool MainGame::GameLoop()
 					m_Output->GetConsole()->SetCurrentY(m_Output->GetConsole()->wherey());
 					break;
 				}
-				case 17:						//Inspect Item
+				case 12: case 13: case 14: case 15:		//Hello, hi, hey, howdy
+				{
+					if (CurCommand.size() > 1)
+					{
+						std::string Temp = m_Input->ParseIntoSentence(CurCommand, 1);
+						NPC* Found = m_CurrentLocation->FindNPC(Temp);
+						if(Found != nullptr)
+							Found->StartConversation(m_Output, &m_Player);
+						else
+							m_Output->WriteSlow("<C12>No one exists of that name", true);
+					}
+					else
+						m_Output->WriteSlow("<C12>You need to enter someone to talk to", true);
+
+					break;
+				}
+				case 17:								//Inspect Item
 				{
 					if (CurCommand.size() > 1)
 						m_CurrentLocation->InspectAll(m_Output, m_Input->ParseIntoSentence(CurCommand, 1));

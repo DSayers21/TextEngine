@@ -45,6 +45,8 @@ namespace TxtEgn
 		void DrawImage(std::string Img, ALIGN Align);
 
 		void DisplayColumns3(std::string Left, std::string Middle, std::string Right, int Colour);
+		
+		void COutput::DisplayColumnsConvo(std::string Left, std::string Right, int ColourA, int ColourB);
 
 		COutput CreateColumn(int Width, int StartX, int Colour);
 

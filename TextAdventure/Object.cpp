@@ -30,7 +30,6 @@ void Object::AddItem(Item* sItem)
 {
 	m_NewItems.push_back(sItem);
 }
-
 void Object::RemoveItem(std::string ItmName)
 {
 	for (int i = 0; i < m_NewItems.size(); i++)

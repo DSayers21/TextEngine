@@ -259,6 +259,23 @@ namespace TxtEgn
 		GetConsole()->Update();
 	}
 
+	void COutput::DisplayColumnsConvo(std::string Left, std::string Right, int ColourA, int ColourB)
+	{
+		//Init LowestY
+		int LowestY = 0;
+		//Get console width
+		int ColWidth = _Console->FindConsoleWidth()*0.333;
+		//Create Columns to output information to
+		TxtEgn::COutput _OutputLeft = CreateColumn(ColWidth, 0, ColourA);
+		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth*2+1, ColWidth, ColourB);
+		//Output information to columns whilst updating lowestY
+		LowestY = _OutputLeft.DisplayColumn(Left, LowestY);
+		LowestY = _OutputRight.DisplayColumn(Right, LowestY);
+		//Set main console to the lowest position
+		GetConsole()->SetCurrentY(++LowestY);
+		GetConsole()->Update();
+	}
+
 	COutput COutput::CreateColumn(int Width, int StartX, int Colour)
 	{
 		TxtEgn::ConsoleProp* _ConsoleCol = new TxtEgn::ConsoleProp();

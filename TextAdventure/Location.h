@@ -30,6 +30,7 @@ public:
 	std::string GetLocationNum() { return m_LocationNum; }
 	std::map<std::string, Location*> GetExits() { return m_Exits; }
 	Object* FindObject(std::string ObjName);
+	NPC* Location::FindNPC(std::string NPCName);
 
 	//Setters
 	void SetName(std::string Name) { m_Name = Name; }

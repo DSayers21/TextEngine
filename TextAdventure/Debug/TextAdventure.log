@@ -1,6 +1,16 @@
-﻿  Location.cpp
-d:\documents\github\textengine\textadventure\location.cpp(80): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\location.cpp(89): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\location.cpp(98): warning C4018: '<': signed/unsigned mismatch
+﻿  MainGame.cpp
+  DialogTree.cpp
+d:\documents\github\textengine\textadventure\dialogtree.h(32): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(24): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(50): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(62): warning C4018: '>': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(118): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(135): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(143): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(178): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(192): warning C4018: '<': signed/unsigned mismatch
+d:\documents\github\textengine\textadventure\dialogtree.cpp(215): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+d:\documents\github\textengine\textadventure\dialogtree.cpp(72): warning C4715: 'DialogTree::PerformDialog': not all control paths return a value
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)

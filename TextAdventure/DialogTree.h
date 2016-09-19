@@ -8,6 +8,7 @@
 #include <boost/property_tree/ptree.hpp>
 #include "SaveLoadControl.h"
 #include "Item.h"
+#include "Player.h"
 
 class DialogOption;
 class DialogNode;
@@ -26,6 +27,16 @@ public:
 class DialogNode
 {
 public:
+	void GiveItems(Player* Plr, TxtEgn::COutput* Output)
+	{
+		for (int i = 0; i < m_DialogItems.size(); i++)
+		{
+			Output->WriteSlow("<C11>You receive " + m_DialogItems[i].GetItemName(), true);
+			Plr->AddItem(m_DialogItems[i]);
+			m_DialogItems.erase(m_DialogItems.begin() + i);
+		}
+	}
+
 	DialogNode(std::string Text);
 
 	std::string m_Text;
@@ -37,12 +48,11 @@ class DialogTree
 {
 public:
 	DialogTree();
-	DialogTree(TxtEgn::COutput& Output);
 	~DialogTree();
 
 	void Init(std::string FilePath);
 
-	int PerformDialog();
+	int PerformDialog(std::string NPCName, TxtEgn::COutput* Output, Player* Plr);
 
 	void Load(std::string FilePath);
 	void Save(std::string FilePath);
@@ -58,6 +68,5 @@ private:
 	TxtEgn::InputControl m_Input;
 	std::string m_DiaName;
 	std::vector<DialogNode*> m_DialogNodes;
-	TxtEgn::COutput* m_Output;
 	SaveLoadControl m_SandL;
 };

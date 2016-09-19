@@ -25,6 +25,18 @@ Object* Location::FindObject(std::string ObjName)
 	return Temp;
 }
 
+NPC* Location::FindNPC(std::string NPCName)
+{
+	NPC* Temp = nullptr;
+	int Size = static_cast<int>(m_NPC.size());
+	for (int i = 0; i < Size; i++)
+	{
+		if (m_Input.CompareStrings(m_NPC[i]->GetName(), NPCName))
+			return m_NPC[i];
+	}
+	return Temp;
+}
+
 std::string Location::BuildPath(std::string FilePath)
 {
 	return FilePath + "/Location/" + m_Input.RemoveSpaces(m_Name);

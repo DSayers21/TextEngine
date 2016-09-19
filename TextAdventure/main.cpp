@@ -19,7 +19,7 @@ int main()
 	TxtEgn::COutput _Output(_Console, _Input, Cache);
 
 	//Draw title
-	_Output.DrawImage("Images/MainTitle.txt", TxtEgn::ALIGN::CENTER);
+	_Output.DrawImage("Images/MainTitle", TxtEgn::ALIGN::CENTER);
 
 	//Init MainGame
 	MainGame Game("CloudGame", true, &_Input, &_Console, &Cache, &_Output);

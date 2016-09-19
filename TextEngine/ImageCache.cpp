@@ -47,7 +47,7 @@ namespace TxtEgn
 	ASCImage ImageCache::LoadImage(std::string FileName)
 	{
 		std::string Input, Line;
-		std::ifstream myfile(FileName);
+		std::ifstream myfile(FileName + ".txt");
 
 		int Count = 0;
 		int Width;

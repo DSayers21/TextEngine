@@ -30,12 +30,15 @@ public:
 	std::string GetLocationNum() { return m_LocationNum; }
 	std::map<std::string, Location*> GetExits() { return m_Exits; }
 	Object* FindObject(std::string ObjName);
-	NPC* Location::FindNPC(std::string NPCName);
+	NPC* FindNPC(std::string NPCName);
+	std::string GetImage() { return m_LocationImage; }
 
 	//Setters
 	void SetName(std::string Name) { m_Name = Name; }
 	void SetDesc(std::string Desc) { m_Desc = Desc; }
 	void SetLocationNum(std::string LocationNum) { m_LocationNum = LocationNum; }
+
+	bool HasImage() { return (m_LocationImage == "") ? false : true; }
 
 	std::string BuildPath(std::string FilePath);
 
@@ -76,6 +79,8 @@ private:
 
 	std::string m_Name;
 	std::string m_Desc;
+
+	std::string m_LocationImage = "BLANK";
 
 	std::map<std::string, Location*> m_Exits = std::map<std::string, Location*>();
 

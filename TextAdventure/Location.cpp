@@ -55,6 +55,8 @@ void Location::Load(std::string FilePath)
 	m_Name = Tree.get<std::string>("LocName");
 	m_Desc = Tree.get<std::string>("LocDesc");
 
+	m_LocationImage = Tree.get<std::string>("LocImage");
+
 	/////////////////Items////////////////////////////////////
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
@@ -82,6 +84,7 @@ void Location::Save(std::string FilePath, std::string Num)
 	//Add the Conversation name to the top of the tree
 	Tree.put("LocName", m_Name);
 	Tree.put("LocDesc", m_Desc);
+	Tree.put("LocImage", m_LocationImage);
 
 	//Items////////////////////////////////////////////////
 	boost::property_tree::ptree Items;

@@ -88,6 +88,9 @@ bool MainGame::GameLoop()
 				}
 				case 3:									//Look Command
 				{
+					//Draw location image
+					if (m_CurrentLocation->HasImage())
+						m_Output->DrawImage(m_CurrentLocation->GetImage(), TxtEgn::ALIGN::CENTER);
 					m_CurrentLocation->DisplayAll(m_Output);
 					break;
 				}

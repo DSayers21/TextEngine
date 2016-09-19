@@ -18,7 +18,7 @@ class DialogTree;
 class WantedItem
 {
 public:
-	void Init(Item* WItem, Item* GItem, std::string GiveMessage, int Amount)
+	void Init(Item WItem, Item GItem, std::string GiveMessage, int Amount)
 	{
 		m_wanItem = WItem;
 		m_giveItem = GItem;
@@ -34,8 +34,8 @@ public:
 		//Add the Conversation name to the top of the tree
 		Tree.put("WItmGiveMess", m_GiveMessage);
 		Tree.put("WItmAmount", m_Amount);
-		Tree.put("WItmWan", m_wanItem->BuildPath(FilePath));
-		Tree.put("WItmGive", m_giveItem->BuildPath(FilePath));
+		Tree.put("WItmWan", m_wanItem.BuildPath(FilePath));
+		Tree.put("WItmGive", m_giveItem.BuildPath(FilePath));
 
 		//Save the tree to a readable format
 		return Tree;
@@ -48,17 +48,15 @@ public:
 
 		std::string ItmLoad = TreeLoad.get<std::string>("WItmWan");
 
-		m_wanItem = new Item();
-		m_wanItem->Load(ItmLoad);
+		m_wanItem.Load(ItmLoad);
 
 		ItmLoad = TreeLoad.get<std::string>("WItmGive");
 
-		m_giveItem = new Item();
-		m_giveItem->Load(ItmLoad);
+		m_giveItem.Load(ItmLoad);
 	}
 
-	Item* m_wanItem = nullptr;
-	Item* m_giveItem = nullptr;
+	Item m_wanItem;
+	Item m_giveItem;
 	int m_Amount;
 	std::string m_GiveMessage;
 private:
@@ -86,6 +84,7 @@ public:
 	std::string GetAlrGivenMes() { return m_AlrGivenMes; }
 
 	void StartConversation(TxtEgn::COutput* Output, Player* Plr);
+	void StarGiveItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName);
 
 private:
 	void StartShop(TxtEgn::COutput* Output, Player* Plr);

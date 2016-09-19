@@ -68,7 +68,12 @@ public:
 	void CommandObject(TxtEgn::COutput* Output, GameWorld* Game, std::string Command, std::string InitialString, Player* Plr);
 	std::vector<std::string> Location::GetObjectFrString(std::string InitialString);
 
+	void GivetoNPC(std::string Command, TxtEgn::COutput* Output, Player* Plr);
+
 private:
+	NPC* InRoomNPC(std::string NPCName);
+	void GiveCommand(std::string Command, std::string ItemName, TxtEgn::COutput* Output, Player* Plr);
+
 	std::string m_Name;
 	std::string m_Desc;
 

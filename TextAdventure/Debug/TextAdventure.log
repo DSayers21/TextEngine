@@ -5,19 +5,6 @@ d:\documents\github\textengine\textadventure\npc.cpp(52): warning C4018: '<': si
 d:\documents\github\textengine\textadventure\npc.cpp(59): warning C4018: '<': signed/unsigned mismatch
 d:\documents\github\textengine\textadventure\npc.cpp(100): warning C4018: '<': signed/unsigned mismatch
 d:\documents\github\textengine\textadventure\npc.cpp(170): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  DialogTree.cpp
-d:\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(24): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(51): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(95): warning C4018: '>': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(152): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(169): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(177): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(212): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(226): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textadventure\dialogtree.cpp(249): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-d:\documents\github\textengine\textadventure\dialogtree.cpp(106): warning C4715: 'DialogTree::PerformDialog': not all control paths return a value
+d:\documents\github\textengine\textadventure\npc.cpp(180): warning C4018: '<': signed/unsigned mismatch
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
   TextAdventure.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)

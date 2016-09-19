@@ -74,6 +74,18 @@ void Player::RemoveItem(Item remItem)
 	}
 }
 
+void Player::RemoveItem(std::string ItemName)
+{
+	for (int i = 0; i < m_PlyrItems.size(); i++)
+	{
+		if (m_Input.CompareStrings(m_PlyrItems[i].GetItemName(), ItemName))
+		{
+			m_PlyrItems.erase(m_PlyrItems.begin() + i);
+			break;
+		}
+	}
+}
+
 void Player::DropItem(TxtEgn::COutput* Out, Location* CurrentLocation, std::string ItemName)
 {
 	int StrLen = static_cast<int>(m_PlyrItems.size());
@@ -90,18 +102,18 @@ void Player::DropItem(TxtEgn::COutput* Out, Location* CurrentLocation, std::stri
 	Out->WriteSlow("<C12>You do not have that item.", true);
 }
 
-Item* Player::GetItem(std::string ItemName)
+Item Player::GetItem(std::string ItemName)
 {
 	TxtEgn::InputControl Input;
 	for (auto it : m_PlyrItems)
 	{
 		if (Input.CompareStrings(it.GetItemName(), ItemName))
 		{
-			return &it;
+			return it;
 		}	
 	}
-	Item* BlankReturn = nullptr;;
-	return BlankReturn;
+	Item Blank;
+	return Blank;
 }
 
 std::string Player::BuildPath(std::string FilePath)

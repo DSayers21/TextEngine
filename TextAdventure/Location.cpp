@@ -316,7 +316,7 @@ void Location::CommandObject(TxtEgn::COutput* Output, GameWorld* Game, std::stri
 				{
 					if (m_Input.CompareStrings(Obj->GetActionConnector(), Connector))
 					{
-						if (Plr->GetItem(ItemName) != nullptr)
+						if (Plr->GetItem(ItemName).GetItemName() != "EmptyItem")
 						{
 							//WriteSlow("<C4> " + Command + " " + "<C11> " + ObjName + " " + "<C14> " + Connector + "<C110> " + ItemName, true);
 							Obj->ObjectAction(Output, Game, this);
@@ -336,7 +336,7 @@ void Location::CommandObject(TxtEgn::COutput* Output, GameWorld* Game, std::stri
 				Connector[0] = toupper(Connector[0]);
 				std::string Temp = m_Input.ParseIntoSentence(Output->GetInput("<C10> " + Connector + " what?"), 0);
 
-				if (Plr->GetItem(Temp) != nullptr)
+				if (Plr->GetItem(Temp).GetItemName() != "EmptyItem")
 					Obj->ObjectAction(Output, Game, this);
 				else
 					Output->WriteSlow("<C12>You do not have this item", true);
@@ -367,4 +367,45 @@ std::vector<std::string> Location::GetObjectFrString(std::string InitialString)
 		}
 	}
 	return{ ObjectName, m_Input.ParseIntoSentence(Temp, PosEnd) };
+}
+
+void Location::GivetoNPC(std::string Command, TxtEgn::COutput* Output, Player* Plr)
+{
+	std::vector<std::string> Temp = m_Input.ParseIntoWords(Command);
+	std::string CurTest = "";
+	std::string Best;
+	int PosEnd = 0;
+	int Size = static_cast<int>(Temp.size());
+
+	for (int i = 0; i < Size; i++)
+	{
+		CurTest = (CurTest.size() == 0) ? CurTest + Temp[i] : CurTest = CurTest + " " + Temp[i];
+		if (InRoomNPC(CurTest) != nullptr)
+		{
+			Best = CurTest;
+			PosEnd = (i != Size) ? i + 1 : i;
+		}
+	}
+	GiveCommand(Best, m_Input.ParseIntoSentence(Temp, PosEnd), Output, Plr);
+}
+
+NPC* Location::InRoomNPC(std::string NPCName)
+{
+	int Size = static_cast<int>(m_NPC.size());
+	for (int i = 0; i < Size; i++)
+	{
+		if (m_Input.CompareStrings(m_NPC[i]->GetName(), NPCName))
+			return m_NPC[i];
+	}
+	return nullptr;
+}
+
+void Location::GiveCommand(std::string Command, std::string ItemName, TxtEgn::COutput* Output, Player* Plr)
+{
+	int Size = static_cast<int>(m_NPC.size());
+	for (int i = 0; i < Size; i++)
+	{
+		if (m_Input.CompareStrings(m_NPC[i]->GetName(), Command))
+			m_NPC[i]->StarGiveItem(Output, Plr, ItemName);
+	}
 }

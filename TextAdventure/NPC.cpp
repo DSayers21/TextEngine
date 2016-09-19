@@ -173,3 +173,40 @@ void NPC::PurchaseItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemNam
 		}
 	}
 }
+
+void NPC::StarGiveItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName)
+{
+	bool FoundAny = false;
+	for (int i = 0; i < m_WantedItems.size(); i++)
+	{
+		if (m_Input.CompareStrings(m_WantedItems[i].m_wanItem.GetItemName(), ItemName))
+		{
+			FoundAny = true;
+			if (Plr->GetItem(ItemName).GetItemName() != "EmptyItem")
+			{
+				if (m_WantedItems[i].m_Amount > 0)
+				{
+					Output->DisplayColumnsConvo(m_Name, m_WantedItems[i].m_GiveMessage, 159, 249);
+					Output->WriteLine(8, '-');
+					Output->WriteSlow("<C12> You gave " + m_Name + ", " + Plr->GetItem(ItemName).GetItemName(), true);
+					Output->WriteSlow("<C11> You received " + m_WantedItems[i].m_giveItem.GetItemName(), true);
+					Plr->RemoveItem(ItemName);
+					Plr->AddItem(m_WantedItems[i].m_giveItem);
+					m_WantedItems[i].m_Amount = m_WantedItems[i].m_Amount - 1;
+					Output->WriteLine(7, '=');
+				}
+				else
+					Output->DisplayColumnsConvo(m_Name, "I dont need that anymore", 159, 249);
+			}
+			else
+			{
+				if (m_WantedItems[i].m_Amount > 0)
+					Output->DisplayColumnsConvo(m_Name, "I am looking for that, but you dont appear to have it!", 159, 249);
+				else
+					Output->DisplayColumnsConvo(m_Name, "I dont need that anymore", 159, 249);
+			}
+		}
+	}
+	if (!FoundAny)
+		Output->DisplayColumnsConvo(m_Name, "What would I want with that!", 159, 249);
+}

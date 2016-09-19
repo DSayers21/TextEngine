@@ -211,6 +211,14 @@ bool MainGame::GameLoop()
 						m_Output->WriteSlow("<C12>You need to enter a item to inspect", true);
 					break;
 				}
+				case 18:								//Give Item
+				{
+					if (CurCommand.size() > 1)
+						m_CurrentLocation->GivetoNPC(m_Input->ParseIntoSentence(CurCommand, 1), m_Output, &m_Player);
+					else
+						m_Output->WriteSlow("<C12>You need to enter a item to give", true);
+					break;
+				}
 			}
 		}
 	}

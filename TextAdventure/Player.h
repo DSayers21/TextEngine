@@ -22,6 +22,7 @@ public:
 
 	void AddItem(Item addItem);
 	void RemoveItem(Item remItem);
+	void RemoveItem(std::string ItemName);
 	void DropItem(TxtEgn::COutput* Out, Location* CurrentLocation, std::string ItemName);
 
 	void Display(TxtEgn::COutput* Out);
@@ -33,7 +34,7 @@ public:
 	void IncPlyrGold(float Gold) { m_Gold += Gold; }
 	void DecPlyrGold(float Gold) { m_Gold = (m_Gold - Gold < 0) ? 0 : m_Gold -= Gold; }
 	//Getters
-	Item* GetItem(std::string ItemName);
+	Item GetItem(std::string ItemName);
 	std::vector<Item> GetItems() { return m_PlyrItems; }
 	std::string GetPlyrName() { return m_PlyrName; }
 	unsigned int GetPlyrLevel() { return m_Level; }
@@ -41,7 +42,7 @@ public:
 
 	std::string BuildPath(std::string FilePath);
 private:
-	std::string m_PlyrName = "John Doe";
+	std::string m_PlyrName = "BLANK";
 	std::vector<Item> m_PlyrItems;
 	unsigned int m_Level = 1;
 	float m_Gold = 0;

@@ -53,6 +53,7 @@ void Object::Save(std::string FilePath)
 	Tree.put("ObjActCon", m_ActionConnector);
 	Tree.put("ObjRemDesc", m_RemovedDesc);
 	Tree.put("ObjItmName", m_ActionItemName);
+	Tree.put("ObjIfRemoved", m_IfRemoved);
 
 	///Items
 	//If there is create the options tree
@@ -99,6 +100,7 @@ void Object::Load(std::string FilePath)
 	m_ActionConnector = Tree.get<std::string>("ObjActCon");
 	m_RemovedDesc = Tree.get<std::string>("ObjRemDesc");
 	m_ActionItemName = Tree.get<std::string>("ObjItmName");
+	m_IfRemoved = Tree.get<bool>("ObjIfRemoved");
 
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");

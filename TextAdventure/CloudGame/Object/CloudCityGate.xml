@@ -5,7 +5,7 @@
 <ObjActCon>with</ObjActCon>
 <ObjRemDesc>The gate slowly opens allowing you entry to the great city.</ObjRemDesc>
 <ObjItmName>City Pass</ObjItmName>
-
+<ObjIfRemoved>0</ObjIfRemoved>
 <Items/>
 
 <Locations>

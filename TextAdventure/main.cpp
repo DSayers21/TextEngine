@@ -10,10 +10,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <tuple>
 #include <windows.h>
 
 void ResetMenu(TxtEgn::COutput* Output, std::vector<std::string> Command);
 bool dirExists(const std::string& dirName_in);
+void SettingsMenu(TxtEgn::COutput* Output);
+void SetFont(TxtEgn::COutput* Output, int X, int Y);
+void SaveFont(int X, int Y);
+void LoadFont(TxtEgn::COutput* Output);
 
 int main()
 {
@@ -23,10 +28,11 @@ int main()
 	TxtEgn::ConsoleProp _Console;
 	_Console.Init(10, 16, 0, 0, 7, true);
 	TxtEgn::COutput _Output(_Console, _Input, Cache);
-
+	//Load Font
+	LoadFont(&_Output);
 	//Menu Stuff
 	std::vector<std::string> CurCommand;
-	std::vector<std::string> Command = { "New", "Load", "Quit", "Help" };
+	std::vector<std::string> Command = { "New", "Load", "Settings", "Help", "Quit" };
 	bool Running = true;
 
 	//Draw title
@@ -69,14 +75,21 @@ int main()
 						_Output.WriteSlow("No data exists with that name!", true);
 					break;
 				}
-				case 2:			//Quit
+				case 2:			//Settings
 				{
-					Running = false;
+					_Output.ConsoleClear();
+					SettingsMenu(&_Output);
+					ResetMenu(&_Output, Command);
 					break;
 				}
 				case 3:			//Help
 				{
 					_Output.DisplayTextBox(Command, '*', 7);
+					break;
+				}
+				case 4:			//Quit
+				{
+					Running = false;
 					break;
 				}
 			}
@@ -102,4 +115,83 @@ bool dirExists(const std::string& dirName_in)
 		return true;   // this is a directory!
 
 	return false;    // this is not a directory!
+}
+
+typedef std::tuple<std::string, std::string> FontSize;
+
+void SettingsMenu(TxtEgn::COutput* Output)
+{
+	std::vector<FontSize> SettingsFonts{ { "2", "5" }, { "3", "6" }, { "4", "8" }, { "5", "10" },
+										   { "6", "12" },{ "7", "14" }, { "8", "16" },{ "8", "18" },
+										   { "9", "20" },{ "11", "24" }, { "13", "28" }};
+
+	std::vector<std::string> SettingsOptions{ "5", "6", "8", "10", "12", "14", "16", "18", "20", "24", "28", "Back" };
+
+	std::vector<std::string> ShowOPT{ ":5, 6, 8, 10, 12, 14, 16, 18, 20, 24, 28:", ":Back:" };
+	std::vector<std::string> CurCommand;
+	TxtEgn::InputControl _Input;
+	Output->DrawImage("Images/OptionsTitle", TxtEgn::ALIGN::CENTER);
+	
+	bool MenuLoop = true;
+
+	Output->DisplayTextBox(ShowOPT, '*', 11);
+
+	while (MenuLoop)
+	{
+		CurCommand = Output->GetInput("<C10>Enter a text size option: ");
+		if (CurCommand.size() > 0)
+		{
+			int Swi = _Input.FindStringPosition(SettingsOptions, CurCommand[0]);
+			switch (Swi)
+			{
+			default:
+			{
+				Output->WriteSlow("<C12>You need to enter a valid Command", true);
+				break;
+			}
+			case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10:
+			{
+				int X = std::stoi(std::get<0>(SettingsFonts[Swi]));
+				int Y = std::stoi(std::get<1>(SettingsFonts[Swi]));
+				SetFont(Output, X, Y);
+				MenuLoop = false;
+				break;
+			}
+			case 11:
+				MenuLoop = false;
+				break;
+			}
+		}
+	}
+}
+
+void SetFont(TxtEgn::COutput* Output, int X, int Y)
+{
+	Output->GetConsole()->SetFont(X, Y);
+	Output->GetConsole()->SetConsoleWidth(Output->GetConsole()->FindConsoleWidth());
+	Output->GetConsole()->ToggleFull();
+	Output->GetConsole()->ToggleFull();
+	SaveFont(X, Y);
+}
+
+void SaveFont(int X, int Y)
+{
+	InOutDataManager m_IOMan;
+	boost::property_tree::ptree Tree;
+	boost::property_tree::ptree FontSize;
+	FontSize.put("X", X);
+	FontSize.put("Y", Y);
+	Tree.add_child("CurrentFont", FontSize);
+	//Save the tree to a readable format
+	m_IOMan.SaveFile("FontSizes", Tree);
+}
+
+void LoadFont(TxtEgn::COutput* Output)
+{
+	InOutDataManager m_IOMan;
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile("FontSizes");
+	boost::property_tree::ptree FontSize = Tree.get_child("CurrentFont");
+	int X = FontSize.get<int>("X");
+	int Y = FontSize.get<int>("Y");
+	SetFont(Output, X, Y);
 }

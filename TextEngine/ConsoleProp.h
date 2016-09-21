@@ -43,10 +43,12 @@ namespace TxtEgn
 		void SetCurrentY(int CurrentY) { _CurrentY = CurrentY; }
 		void SetStartX(int StartX) { _StartX = StartX; }
 		void SetConsoleWidth(int Width) { _Width = Width; }
+
+		void ToggleFull();
 	private:
 		int UpdateFont();
 		void UpdateColour();
-		void ToggleFull();
+		
 	protected:
 		int _FontX, _FontY, _StartX, _StartY, _CurrentY, _Width;
 		unsigned short _Colour;

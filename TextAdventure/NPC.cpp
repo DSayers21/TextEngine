@@ -161,7 +161,7 @@ void NPC::PurchaseItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemNam
 		{
 			if (m_ShopItems[i].GetItemValue() <= Plr->GetPlyrGold())
 			{
-				Plr->SetPlyrGold(-m_ShopItems[i].GetItemValue());
+				Plr->SetPlyrGold(Plr->GetPlyrGold() - m_ShopItems[i].GetItemValue());
 				Plr->AddItem(m_ShopItems[i]);
 				Output->WriteSlow("<C11>You bought " + m_ShopItems[i].GetItemName() + " for" + " <C14>$" + std::to_string(m_ShopItems[i].GetItemValue()), true);
 			}

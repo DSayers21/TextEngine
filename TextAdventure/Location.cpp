@@ -215,7 +215,6 @@ Location* Location::GoCommand(std::string Direction)
 std::string Location::BuildPath(std::string FilePath, std::string LocationNum)
 {
 	std::string Ret = FilePath + "/Location/" + m_Input.RemoveSpaces(LocationNum);
-	std::cout << Ret << std::endl;
 	return Ret;
 }
 

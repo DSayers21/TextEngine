@@ -19,10 +19,14 @@ MainGame::MainGame(std::string FilePath, bool NewPlayer, TxtEgn::InputControl* I
 	}
 	else
 	{
+		//LoadPlayer
 		m_Player.Load(FilePath);
+		//Get Current Location
+		boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath + "/CurLoc");
+		std::string CurrentLoc = Tree.get<std::string>("CurrentLocation");
+		m_CurrentLocation = m_Game.FindLocation(CurrentLoc);
 	}
 }
-
 
 MainGame::~MainGame()
 {
@@ -31,7 +35,8 @@ MainGame::~MainGame()
 
 void MainGame::StartGame()
 {
-	m_CurrentLocation = m_Game.GetFirstLocation();
+	if(m_CurrentLocation == nullptr)
+		m_CurrentLocation = m_Game.GetFirstLocation();
 	GameLoop();
 }
 
@@ -221,6 +226,22 @@ bool MainGame::GameLoop()
 					else
 						m_Output->WriteSlow("<C12>You need to enter a item to give", true);
 					break;
+				}
+				case 19:								//Save Command
+				{
+					std::string SaveName = m_Input->ParseIntoSentence(m_Output->GetInput("<C10> What do you want to save the file as?"), 0);
+					
+					m_Game.Save(SaveName, &m_Player);
+					
+					//Create Main Tree and Nodes tree
+					boost::property_tree::ptree Tree;
+					//Add the Conversation name to the top of the tree
+					Tree.put("CurrentLocation", m_CurrentLocation->GetName());
+					//Save the tree to a readable format
+					m_IOMan.SaveFile(SaveName + "/CurLoc", Tree);
+
+					m_Output->DisplayBanner(207, m_Input->AlignCenter(' ', m_Output->GetConsole()->FindConsoleWidth(), 
+						"Game Saved"), true);
 				}
 			}
 		}

@@ -1,7 +1,8 @@
 #pragma once
 #include <boost/property_tree/ptree.hpp>
 #include <vector>
-
+#include <windows.h>
+#include <stdio.h>
 #include <map>
 
 class Location;
@@ -30,5 +31,13 @@ public:
 
 	std::vector<NPC*> SaveNPCsToVector(std::vector<NPC*> NPCVec, boost::property_tree::ptree& NPCs);
 	void SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec, std::string FilePath);
+
+	void CreateFolder(const char * path)
+	{
+		if (!CreateDirectory(path, NULL))
+		{
+			return;
+		}
+	}
 };
 

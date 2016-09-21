@@ -116,6 +116,7 @@ namespace TxtEgn
 
 	void COutput::DisplayTextBox(std::vector<std::string> SentText, char Surround, int Colour)
 	{
+		int InitY = _Console->wherey();
 		int VecSize = static_cast<int>(SentText.size());
 		std::string Space = "";
 		std::string LEndCap = _Input->AlignLeft(' ', _Console->GetConsoleWidth(), Space + Surround);
@@ -130,6 +131,8 @@ namespace TxtEgn
 			DisplayBanner(Colour, Output, false);
 		}
 		WriteLine(Colour, Surround);
+		_Console->SetCurrentY(InitY + VecSize + 2);
+		_Console->Update();
 	}
 
 	void COutput::ConsoleClear()

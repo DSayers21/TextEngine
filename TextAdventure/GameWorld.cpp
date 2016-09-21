@@ -1,6 +1,7 @@
 #include "GameWorld.h"
 #include "Location.h"
 #include "DialogTree.h"
+#include "Player.h"
 
 void PrintTree(boost::property_tree::ptree &pt, int level);
 std::string Indent(int level);
@@ -83,8 +84,19 @@ void GameWorld::Load(std::string FilePath)
 	}
 }
 
-void GameWorld::Save(std::string FilePath)
+void GameWorld::Save(std::string FilePath, Player* Plr)
 {
+	//Create Initial Directory
+	m_SandL.CreateFolder(&FilePath[0]);
+	//Create Sub Folders
+	CreateFolder(FilePath + "/Location");
+	CreateFolder(FilePath + "/Object");
+	CreateFolder(FilePath + "/Item");
+	CreateFolder(FilePath + "/NPC");
+	CreateFolder(FilePath + "/Dialog");
+
+	Plr->Save(FilePath);
+
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree;
 	boost::property_tree::ptree Locations;
@@ -135,6 +147,11 @@ void GameWorld::Save(std::string FilePath)
 
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(FilePath + "/Location/Location", Tree);
+}
+
+void GameWorld::CreateFolder(std::string Path)
+{
+	m_SandL.CreateFolder(&Path[0]);
 }
 
 void PrintTree(boost::property_tree::ptree &pt, int level)

@@ -20,6 +20,7 @@ void SaveLoadControl::SaveItemsToTree(boost::property_tree::ptree* Items, std::v
 		{
 			//Get the current option
 			Item* Current = &ItmVec[i];
+			Current->Save(FilePath);
 			//Get the option number
 			std::string ItmNum = "Item" + std::to_string(i);
 			//Create the tree for the current option num

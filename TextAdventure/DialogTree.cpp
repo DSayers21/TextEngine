@@ -241,6 +241,12 @@ void DialogTree::Save(std::string FilePath)
 			//Add all the options to the current node
 			NodeNum.add_child("Options", Options);
 		}
+		else 
+		{
+			//If there is create the options tree
+			boost::property_tree::ptree Options;
+			NodeNum.add_child("Options", Options);
+		}
 		//If there is create the options tree
 		boost::property_tree::ptree Items;
 		//Add Items to Tree

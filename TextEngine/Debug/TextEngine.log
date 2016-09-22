@@ -1,14 +1,9 @@
-﻿  COutput.cpp
-d:\documents\github\textengine\textengine\coutput.cpp(184): warning C4018: '<': signed/unsigned mismatch
-d:\documents\github\textengine\textengine\coutput.cpp(286): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-d:\documents\github\textengine\textengine\coutput.cpp(305): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-d:\documents\github\textengine\textengine\coutput.cpp(279): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
-  Compiling...
-  ConsoleProp.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  InputControl.cpp
-  ImageCache.cpp
-  ConsoleZone.cpp
-  TextEngine.vcxproj -> D:\Documents\GitHub\TextEngine\Debug\TextEngine.lib
+﻿Build started 22/09/2016 22:55:13.
+     1>Project "F:\User\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         TextEngine.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextEngine.lib
+     1>Done Building Project "F:\User\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05

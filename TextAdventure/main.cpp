@@ -117,15 +117,11 @@ bool dirExists(const std::string& dirName_in)
 	return false;    // this is not a directory!
 }
 
-typedef std::tuple<std::string, std::string> FontSize;
-
 void SettingsMenu(TxtEgn::COutput* Output)
 {
-	std::vector<FontSize> SettingsFonts{ { "2", "5" }, { "3", "6" }, { "4", "8" }, { "5", "10" },
-										   { "6", "12" },{ "7", "14" }, { "8", "16" },{ "8", "18" },
-										   { "9", "20" },{ "11", "24" }, { "13", "28" }};
-
 	std::vector<std::string> SettingsOptions{ "5", "6", "8", "10", "12", "14", "16", "18", "20", "24", "28", "Back" };
+	std::vector<std::string> SettingsOptionsTwo{ "2", "3", "4", "5", "6", "7", "8", "8", "9", "11", "13", "Back" };
+
 
 	std::vector<std::string> ShowOPT{ ":5, 6, 8, 10, 12, 14, 16, 18, 20, 24, 28:", ":Back:" };
 	std::vector<std::string> CurCommand;
@@ -151,8 +147,8 @@ void SettingsMenu(TxtEgn::COutput* Output)
 			}
 			case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10:
 			{
-				int X = std::stoi(std::get<0>(SettingsFonts[Swi]));
-				int Y = std::stoi(std::get<1>(SettingsFonts[Swi]));
+				int X = std::stoi(SettingsOptionsTwo[Swi]);
+				int Y = std::stoi(SettingsOptions[Swi]);
 				SetFont(Output, X, Y);
 				MenuLoop = false;
 				break;

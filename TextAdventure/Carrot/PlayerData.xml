@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlrName>Dean</PlrName>
+<PlrLevel>1</PlrLevel>
+<PlrGold>100</PlrGold>
+<Items>
+	<Item0>
+		<ItmPath>Carrot/Item/TestItem</ItmPath>
+	</Item0>
+</Items>
+<StatBlock>Carrot/StatBlocks/Dean</StatBlock>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlrName>df</PlrName>
+<PlrLevel>1</PlrLevel>
+<PlrGold>100</PlrGold>
+<Items>
+	<Item0>
+		<ItmPath>ddf/Item/TestItem</ItmPath>
+	</Item0>
+</Items>

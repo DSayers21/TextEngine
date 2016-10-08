@@ -15,6 +15,10 @@ public:
 	void setStrength(int val);
 	int getDurability();
 	void setDurability(int val);
+
+	void Save(std::string FilePath);
+	void Weapon::Load(std::string FilePath);
+	std::string BuildPath(std::string FilePath);
 };
 
 #endif

@@ -13,12 +13,14 @@ StatBlock::StatBlock(double s_val, double d_val, double c_val, double i_val, dou
 	WIS = w_val;
 	CHA = ch_val;
 
-	SetSTR(CalcModifier(s_val));
-	SetDEX(CalcModifier(d_val));
-	SetCON(CalcModifier(c_val));
-	SetINT(CalcModifier(i_val));
-	SetWIS(CalcModifier(w_val));
-	SetCHA(CalcModifier(ch_val));
+	SetSTRMod(CalcModifier(s_val));
+	SetDEXMod(CalcModifier(d_val));
+	SetCONMod(CalcModifier(c_val));
+	SetINTMod(CalcModifier(i_val));
+	SetWISMod(CalcModifier(w_val));
+	SetCHAMod(CalcModifier(ch_val));
+
+	proficiency = 2;
 }
 
 StatBlock::~StatBlock()

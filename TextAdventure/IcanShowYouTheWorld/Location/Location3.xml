@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LocName>Mysterious Tower</LocName>
+<LocDesc>a strange tower, it appears to be emmitting an ominous dark glow across the sky.</LocDesc>
+<LocImage/>
+<Items/>
+<Enemys/>
+<Weapons>
+	<Weapon0>
+		<ItmPath>IcanShowYouTheWorld/Weapon/SwordofPower</ItmPath>
+	</Weapon0>
+</Weapons>
+<Objects/>
+<NPCs>
+	<NPC0>
+		<NPCPath>IcanShowYouTheWorld/NPC/NigelSamson</NPCPath>
+	</NPC0>
+</NPCs>

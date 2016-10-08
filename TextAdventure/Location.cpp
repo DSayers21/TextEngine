@@ -63,6 +63,18 @@ void Location::Load(std::string FilePath)
 	//Save Items from Tree into Vector
 	m_SandL.SaveItemsToVector(&m_Items, Items);
 
+	/////////////////Enemy////////////////////////////////////
+	//Get Items child
+	boost::property_tree::ptree Enemy = Tree.get_child("Enemys");
+	//Save Items from Tree into Vector
+	m_SandL.SaveEnemysToVector(&m_Enemys, Enemy);
+
+	/////////////////Weapons////////////////////////////////////
+	//Get Weapons child
+	Items = Tree.get_child("Weapons");
+	//Save Items from Tree into Vector
+	m_SandL.SaveWeaponsToVector(&m_Weapons, Items);
+
 	/////////////////Objects///////////////////////////////////
 	//Get Objects child
 	boost::property_tree::ptree Objects = Tree.get_child("Objects");
@@ -94,6 +106,25 @@ void Location::Save(std::string FilePath, std::string Num)
 
 	for (int i = 0; i < m_Items.size(); i++)
 		m_Items[i].Save(FilePath);
+
+	//Enemys////////////////////////////////////////////////
+	boost::property_tree::ptree Enemys;
+	m_SandL.SaveEnemysToTree(&Enemys, m_Enemys, FilePath);
+	//Add all the options to the current node
+	Tree.add_child("Enemys", Enemys);
+
+	for (int i = 0; i < m_Enemys.size(); i++)
+		m_Enemys[i].Save(FilePath);
+
+	//Weapons////////////////////////////////////////////////
+	boost::property_tree::ptree Weapons;
+	
+	m_SandL.SaveWeaponsToTree(&Weapons, m_Weapons, FilePath);
+	//Add all the options to the current node
+	Tree.add_child("Weapons", Weapons);
+
+	for (int i = 0; i < m_Weapons.size(); i++)
+		m_Weapons[i].Save(FilePath);
 
 	//Objects//////////////////////////////////////////////
 	boost::property_tree::ptree Objects;
@@ -146,6 +177,7 @@ void Location::DisplayAll(TxtEgn::COutput* Output)
 	Output->WriteSlow("<C7>You are in " + m_Name + ". You see a " + m_Desc, false);
 	DisplayNPCs(Output);
 	DisplayItems(Output);
+	DisplayWeapons(Output);
 	DisplayObjects(Output);
 	DisplayExits(Output);
 
@@ -172,6 +204,22 @@ void Location::DisplayItems(TxtEgn::COutput* Output)
 				Output->WriteSlow("<C7>You see " + m_Items[i].GetItemName() + ".", false);
 			else
 				Output->WriteSlow("<C7>You then see " + m_Items[i].GetItemName() + ".", false);
+		}
+	}
+}
+
+void Location::DisplayWeapons(TxtEgn::COutput* Output)
+{
+	int Count = 0;
+	int Size = static_cast<int>(m_Weapons.size());
+	if (Size != 0)
+	{
+		for (int i = 0; i < Size; i++)
+		{
+			if (i == 0)
+				Output->WriteSlow("<C7>You see " + m_Weapons[i].GetItemName() + ".", false);
+			else
+				Output->WriteSlow("<C7>You then see " + m_Weapons[i].GetItemName() + ".", false);
 		}
 	}
 }

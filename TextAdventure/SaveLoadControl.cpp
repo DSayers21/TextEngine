@@ -3,6 +3,8 @@
 #include "NPC.h"
 #include "Location.h"
 #include "Item.h"
+#include "Weapon.h"
+#include "Enemies.h"
 
 SaveLoadControl::SaveLoadControl()
 {
@@ -198,5 +200,85 @@ void SaveLoadControl::SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vec
 		NPCTree.put("NPCPath", Current->BuildPath(FilePath));
 		//Add the current option num into the options tree
 		NPCs->add_child(NPCNum, NPCTree);
+	}
+}
+
+
+void SaveLoadControl::SaveWeaponsToVector(std::vector<Weapon>* ItemVec, boost::property_tree::ptree& Items)
+{
+	for (int j = 0; j < Items.size(); j++)
+	{
+		//Get options number child
+		std::string ItemName = "Weapon" + std::to_string(j);
+		boost::property_tree::ptree ItemNum = Items.get_child(ItemName);
+		//Get all information needed from optionNum
+		std::string FilePath = ItemNum.get<std::string>("ItmPath");
+
+		//Add Item
+		Weapon loadItem;
+		loadItem.Load(FilePath);
+		ItemVec->push_back(loadItem);
+	}
+}
+
+void SaveLoadControl::SaveWeaponsToTree(boost::property_tree::ptree* Items, std::vector<Weapon>& ItmVec, std::string FilePath)
+{
+	if (ItmVec.size() > 0)
+	{
+		//Loop through all the options
+		for (int i = 0; i < ItmVec.size(); i++)
+		{
+			//Get the current option
+			Weapon* Current = &ItmVec[i];
+			Current->Save(FilePath);
+			//Get the option number
+			std::string ItmNum = "Weapon" + std::to_string(i);
+			//Create the tree for the current option num
+			boost::property_tree::ptree ItemTree;
+			//Put all the option information into the tree
+			ItemTree.put("ItmPath", Current->BuildPath(FilePath));
+			//Add the current option num into the options tree
+			Items->add_child(ItmNum, ItemTree);
+		}
+	}
+}
+
+
+void SaveLoadControl::SaveEnemysToVector(std::vector<Enemies>* EnemyVec, boost::property_tree::ptree& EnemyTree)
+{
+	for (int j = 0; j < EnemyTree.size(); j++)
+	{
+		//Get options number child
+		std::string ItemName = "Enemy" + std::to_string(j);
+		boost::property_tree::ptree ItemNum = EnemyTree.get_child(ItemName);
+		//Get all information needed from optionNum
+		std::string FilePath = ItemNum.get<std::string>("Path");
+
+		//Add Item
+		Enemies loadItem;
+		loadItem.Load(FilePath);
+		EnemyVec->push_back(loadItem);
+	}
+}
+
+void SaveLoadControl::SaveEnemysToTree(boost::property_tree::ptree* EnemyTree, std::vector<Enemies>& EnemyVec, std::string FilePath)
+{
+	if (EnemyVec.size() > 0)
+	{
+		//Loop through all the options
+		for (int i = 0; i < EnemyVec.size(); i++)
+		{
+			//Get the current option
+			Enemies* Current = &EnemyVec[i];
+			Current->Save(FilePath);
+			//Get the option number
+			std::string ItmNum = "Enemy" + std::to_string(i);
+			//Create the tree for the current option num
+			boost::property_tree::ptree ItemTree;
+			//Put all the option information into the tree
+			ItemTree.put("Path", Current->BuildPath(FilePath));
+			//Add the current option num into the options tree
+			EnemyTree->add_child(ItmNum, ItemTree);
+		}
 	}
 }

@@ -6,6 +6,8 @@
 #include "StatBlock.h"
 #include <string>
 #include <iostream>
+#include <TextEngine/InOutDataManager.h>
+#include <TextEngine/InputControl.h>
 ////////////////////////////////////////////////////////////////////
 struct Drops
 {
@@ -22,6 +24,7 @@ protected:
 
 	Drops loot;
 public:
+	Enemies();
 	Enemies(std::string, int, double, double, double, double, double, double, int, int, Item, int);
 	~Enemies();
 	double TakeDamage(int);
@@ -38,5 +41,12 @@ public:
 	StatBlock stats;
 
 	int Attack();
+
+	void Save(std::string FilePath);
+	void Load(std::string FilePath);
+	std::string BuildPath(std::string FilePath);
+private:
+	InOutDataManager m_IOMan;
+	TxtEgn::InputControl m_Input;
 };
 #endif

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConversationName>City Merchant Conversation</ConversationName>
+<Nodes>
+	<Node0>
+		<Dialog>Hello pleasure to see you, Do you want to buy anything?</Dialog>
+		<Options>
+			<Option0>
+				<Name>Yes</Name>
+				<ReturnCode>2</ReturnCode>
+				<NextNode>Node2</NextNode>
+			</Option0>
+			<Option1>
+				<Name>No</Name>
+				<ReturnCode>0</ReturnCode>
+				<NextNode>Node1</NextNode>
+			</Option1>
+		</Options>
+		<Items/>
+	</Node0>
+	<Node1>
+		<Dialog>Okay then</Dialog>
+		<Options/>
+		<Items/>
+	</Node1>
+	<Node2>
+		<Dialog>Here is a list of what I have</Dialog>
+		<Options/>
+		<Items/>
+	</Node2>
+</Nodes>

@@ -43,6 +43,13 @@ public:
 	double GetWISMod();
 	double GetCHAMod();
 
+	void SetSTRMod(int Mod) { STR_mod = Mod; }
+	void SetDEXMod(int Mod) { DEX_mod = Mod; }
+	void SetCONMod(int Mod) { CON_mod = Mod; }
+	void SetINTMod(int Mod) { INT_mod = Mod; }
+	void SetWISMod(int Mod) { WIS_mod = Mod; }
+	void SetCHAMod(int Mod) { CHA_mod = Mod; }
+
 	double CalcModifier(double val);
 
 	void BuffStat(std::string stat_name, double multiplier);

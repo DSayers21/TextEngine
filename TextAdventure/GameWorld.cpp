@@ -94,6 +94,9 @@ void GameWorld::Save(std::string FilePath, Player* Plr)
 	CreateFolder(FilePath + "/Item");
 	CreateFolder(FilePath + "/NPC");
 	CreateFolder(FilePath + "/Dialog");
+	CreateFolder(FilePath + "/Weapon");
+	CreateFolder(FilePath + "/Enemy");
+	CreateFolder(FilePath + "/StatBlocks");
 
 	Plr->Save(FilePath);
 

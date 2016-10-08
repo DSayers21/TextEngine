@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConversationName>Nigel Conversation</ConversationName>
+<Nodes>
+	<Node0>
+		<Dialog>Oh how did you sneak in here?</Dialog>
+		<Options>
+			<Option0>
+				<Name>There was an ominous dark glow from the tower.. I came to help</Name>
+				<ReturnCode>0</ReturnCode>
+				<NextNode>Node1</NextNode>
+			</Option0>
+			<Option1>
+				<Name>Whats it to you cloud boy!</Name>
+				<ReturnCode>0</ReturnCode>
+				<NextNode>Node3</NextNode>
+			</Option1>
+			<Option2>
+				<Name>Oh I am sorry, I didn&apos;t realise anyone lived here!</Name>
+				<ReturnCode>0</ReturnCode>
+				<NextNode>Node4</NextNode>
+			</Option2>
+		</Options>
+		<Items/>
+	</Node0>
+	<Node1>
+		<Dialog>Ahh an enquisitive one aren&apos;t you. Well no need to worry, I was trying to access the etherial dimension when something went wrong with my spell.</Dialog>
+		<Options>
+			<Option0>
+				<Name>What went wrong?</Name>
+				<ReturnCode>0</ReturnCode>
+				<NextNode>Node2</NextNode>
+			</Option0>
+			<Option1>
+				<Name>I&apos;m sorry to hear that.</Name>
+				<ReturnCode>0</ReturnCode>
+				<NextNode>Node5</NextNode>
+			</Option1>
+		</Options>
+		<Items/>
+	</Node1>
+	<Node2>
+		<Dialog>I was missing a vial of blottergale! Hey boy you seem like this may be more useful to you than me, here..</Dialog>
+		<Options/>
+		<Items>
+			<Item0>
+				<ItmPath>Carrot/Item/MagicWand</ItmPath>
+			</Item0>
+		</Items>
+	</Node2>
+	<Node3>
+		<Dialog>&lt;C252&gt; I HAVE NEVER HEARD SUCH RUDENESS! NOW LEAVE ME TO MY WORK</Dialog>
+		<Options/>
+		<Items/>
+	</Node3>
+	<Node4>
+		<Dialog>I guess my tower is not in as good of a condition these days, anyhow I need to continue my research.</Dialog>
+		<Options/>
+		<Items/>
+	</Node4>
+	<Node5>
+		<Dialog>..</Dialog>
+		<Options/>
+		<Items/>
+	</Node5>
+</Nodes>

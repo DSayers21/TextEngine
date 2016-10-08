@@ -30,8 +30,6 @@ public:
 
 	void Display(TxtEgn::COutput* Out);
 	
-	
-	
 	//Setters
 	void SetPlyrName(std::string PlyrName) { m_PlyrName = PlyrName; }
 	void SetHP(int val) {m_HP = val; }

@@ -9,6 +9,8 @@ class Location;
 class Object;
 class NPC;
 class Item;
+class Weapon;
+class Enemies;
 
 class SaveLoadControl
 {
@@ -31,6 +33,13 @@ public:
 
 	std::vector<NPC*> SaveNPCsToVector(std::vector<NPC*> NPCVec, boost::property_tree::ptree& NPCs);
 	void SaveNPCsToTree(boost::property_tree::ptree* NPCs, std::vector<NPC*> NPCVec, std::string FilePath);
+
+	void SaveWeaponsToVector(std::vector<Weapon>* ItemVec, boost::property_tree::ptree& Items);
+	void SaveWeaponsToTree(boost::property_tree::ptree* Items, std::vector<Weapon>& ItmVec, std::string FilePath);
+
+	void SaveLoadControl::SaveEnemysToVector(std::vector<Enemies>* EnemyVec, boost::property_tree::ptree& EnemyTree);
+	void SaveLoadControl::SaveEnemysToTree(boost::property_tree::ptree* EnemyTree, std::vector<Enemies>& EnemyVec, std::string FilePath);
+
 
 	void CreateFolder(const char * path)
 	{

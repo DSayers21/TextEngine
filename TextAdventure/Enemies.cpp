@@ -1,5 +1,10 @@
 #include "Enemies.h"
 
+Enemies::Enemies()
+{
+
+}
+
 Enemies::Enemies(std::string val, int hp_val, double s_val, double d_val, double c_val, double i_val, double w_val, double ch_val, int EXP_val, int G_val, Item item_reward, int armour)
 {
 	stats = StatBlock(s_val, d_val, c_val, i_val, w_val, ch_val);
@@ -76,3 +81,49 @@ int Enemies::Attack()
 	return (4 + stats.GetSTRMod());
 }
 
+void Enemies::Save(std::string FilePath)
+{
+	//Create Main Tree and Nodes tree
+	boost::property_tree::ptree Tree;
+	//Add the Conversation name to the top of the tree
+	Tree.put("name", name);
+	Tree.put("current_HP", current_HP);
+	Tree.put("max_HP", max_HP);
+	Tree.put("AC", AC);
+	
+	Tree.put("LootExp", loot.EXP);
+	Tree.put("LootGold", loot.Gold);
+	//Item
+	loot.reward.Save(FilePath);
+
+	Tree.put("StatBlock", stats.BuildPath(FilePath, name));
+	stats.Save(FilePath, name);
+
+	//Save the tree to a readable format
+	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
+}
+
+void Enemies::Load(std::string FilePath)
+{
+	//Create Main Tree and Nodes tree
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
+
+	name = Tree.get<std::string>("name");
+	current_HP = Tree.get<int>("current_HP");
+	max_HP = Tree.get<int>("max_HP");
+	AC = Tree.get<int>("AC");
+	
+	loot.EXP = Tree.get<int>("LootExp");
+	loot.Gold = Tree.get<int>("LootGold");
+	
+	std::string ItemPath = Tree.get<std::string>("LootReward");
+	loot.reward.Load(ItemPath);
+	
+	std::string StatsPath = Tree.get<std::string>("StatBlock");
+	stats.Load(StatsPath);
+}
+
+std::string Enemies::BuildPath(std::string FilePath)
+{
+	return FilePath + "/Enemy/" + m_Input.RemoveSpaces(name);
+}

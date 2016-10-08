@@ -1,13 +1,9 @@
-﻿  ConsoleProp.cpp
-  ConsoleZone.cpp
-  COutput.cpp
-COutput.cpp(147): warning C4018: '<': signed/unsigned mismatch
-  ImageCache.cpp
-ImageCache.cpp(76): warning C4018: '<': signed/unsigned mismatch
-  InOutDataManager.cpp
-  InputControl.cpp
-InputControl.cpp(209): warning C4018: '<': signed/unsigned mismatch
-InputControl.cpp(233): warning C4018: '<': signed/unsigned mismatch
-InputControl.cpp(244): warning C4018: '<': signed/unsigned mismatch
-  Pixel.cpp
-  TextEngine.vcxproj -> D:\Documents\GitHub\TextEngine\Release\TextEngine.lib
+﻿Build started 08/10/2016 17:00:35.
+     1>Project "F:\User\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         TextEngine.vcxproj -> F:\User\Documents\GitHub\TextEngine\Release\TextEngine.lib
+     1>Done Building Project "F:\User\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05

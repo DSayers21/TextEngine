@@ -17,6 +17,8 @@
 
 class Object;
 class NPC;
+class Enemies;
+
 class Location
 {
 public:
@@ -53,6 +55,8 @@ public:
 	void DisplayAll(TxtEgn::COutput* Output);
 	void DisplayExits(TxtEgn::COutput* Output);
 	void DisplayItems(TxtEgn::COutput* Output);
+	void DisplayWeapons(TxtEgn::COutput* Output);
+
 	void DisplayObjects(TxtEgn::COutput* Output);
 	void DisplayNPCs(TxtEgn::COutput* Output);
 
@@ -85,6 +89,8 @@ private:
 	std::map<std::string, Location*> m_Exits = std::map<std::string, Location*>();
 
 	std::vector<Item> m_Items;
+	std::vector<Weapon> m_Weapons;
+	std::vector<Enemies> m_Enemys;
 	std::vector<Object*> m_Objects;
 	std::vector<NPC*> m_NPC;
 

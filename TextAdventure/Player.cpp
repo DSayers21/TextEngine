@@ -14,6 +14,8 @@ Player::Player(std::string PlyrName, unsigned int Level, float Gold) :
 	m_Level(Level),
 	m_Gold(Gold)
 {
+
+	m_PC_Stats = RollStats();
 	//Empty
 }
 
@@ -39,6 +41,9 @@ void Player::Save(std::string FilePath)
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
 
+	Tree.put("StatBlock", m_PC_Stats.BuildPath(FilePath, m_PlyrName));
+	m_PC_Stats.Save(FilePath, m_PlyrName);
+
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
 }
@@ -56,6 +61,10 @@ void Player::Load(std::string FilePath)
 	boost::property_tree::ptree Items = Tree.get_child("Items");
 	//Save Items from Tree into Vector
 	m_SandL.SaveItemsToVector(&m_PlyrItems, Items);
+
+
+	std::string StatsPath = Tree.get<std::string>("StatBlock");
+	m_PC_Stats.Load(StatsPath);
 }
 
 void Player::AddItem(Item addItem)
@@ -186,9 +195,11 @@ double Player::Roll4d6()
 	for (int i = 0; i < 4; i++)
 	{
 		temp = D6.Roll();
+		total += temp;
 		smallest = (temp < smallest) ? temp : smallest;
 	}
-	total -= smallest;
+
+	total = total - smallest;
 	return total;
 }
 

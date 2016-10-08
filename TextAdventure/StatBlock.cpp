@@ -230,7 +230,7 @@ void StatBlock::Save(std::string FilePath, std::string Name)
 void StatBlock::Load(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
-	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath));
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
 
 	STR = Tree.get<double>("STR");
 	DEX = Tree.get<double>("DEX");

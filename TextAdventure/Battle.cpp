@@ -12,11 +12,14 @@ Battle::~Battle()
 
 
 
-void Battle::Encounter(Player* PC, Enemies mob)
+void Battle::Encounter(TxtEgn::COutput* Out, Player* PC, Enemies mob)
 {
-	/*
+	Dice D20(20);
+	int Temp1, Temp2;
+	std::vector<std::string> HelpList{ "Attack", "Defend", "Run", "Help" };
 	std::string input;
-	std::cout << "\n A " << mob.getName() << " comes outta nowhere!!\n";
+	Out->WriteSlow("\n A " + mob.getName() + " comes outta nowhere!!", true);
+
 	while (PC->GetHP() != 0 || mob.getHP() != 0)
 	{
 		if (PC->GetHP() <= 0)
@@ -26,10 +29,13 @@ void Battle::Encounter(Player* PC, Enemies mob)
 		else
 		{
 			//if (PC->PC_Stats.GetDEX() > mob.stats.GetDEX())
-			std::cout << "\nYou have " << PC->GetHP() << "HP left.";
-			std::cout << "\nIt is your turn, choose an action. (Type Help to list commands):\n";
+			Out->WriteSlow("You have " + std::to_string(PC->GetHP()) + "HP left.", true);
+			Out->WriteSlow("It is your turn, choose an action. (Type Help to list commands):", true);
 			std::cout << ">";
 			std::cin >> input;
+			
+			input = m_Input.ParseIntoSentence(Out->GetInput("What do you do? >"), 0);
+
 			if (input == "Attack")
 				actions = Attack;
 			else if (input == "Defend")
@@ -45,56 +51,56 @@ void Battle::Encounter(Player* PC, Enemies mob)
 				switch (mob_Defending)
 				{
 				case true:
-					D20 = RollD20() + PC->PC_Stats.GetSTRMod();					//first roll
-					extra_D20 = RollD20() + PC->PC_Stats.GetSTRMod();			//second roll
-
-					if (extra_D20 < D20)
+					Temp1 = D20.Roll() + PC->GetStatBlock().GetSTRMod();					//first roll
+					Temp2 = D20.Roll() + PC->GetStatBlock().GetSTRMod();			//second roll
+					int Smallest;
+					if (Temp2 < Temp1)
 					{
-						D20 = extra_D20;
+						Smallest = Temp2;
 					}
 					else
 					{
-						if (D20 >= mob.getAC())
+						if (Temp1 >= mob.getAC())
 						{
-							std::cout << "\nYou hit the " << mob.getName();
-							mob.TakeDamage(PC->WeaponAttack(PC->getWeapon(), mob));
+							Out->WriteSlow("You hit the " + mob.getName(), true);
+							mob.TakeDamage(PC->WeaponAttack(PC->GetWeapon(), mob));
 						}
 						else
-							std::cout << "\nYou miss the " << mob.getName();
+							Out->WriteSlow("You miss the " + mob.getName(), true);
 					}
-
 					break;
 				case false:
-					D20 = Battle::RollD20() + PC->PC_Stats.GetSTRMod();
-					if (D20 >= mob.getAC())
+					Temp1 = D20.Roll() + PC->GetStatBlock().GetSTRMod();
+					if (Temp1 >= mob.getAC())
 					{
-						std::cout << "\nYou hit the " << mob.getName();
-						mob.TakeDamage(PC->WeaponAttack(PC->getWeapon(), mob));
+						Out->WriteSlow("You hit the " + mob.getName(), true);
+						mob.TakeDamage(PC->WeaponAttack(PC->GetWeapon(), mob));
 					}
 					else
-						std::cout << "\nYou miss the " << mob.getName();
+						Out->WriteSlow("You miss the " + mob.getName(), true);
 					break;
 				}
 				break;
 			case Defend:
-				std::cout << "\nyou try and defend yourself...";
+				Out->WriteSlow("you try and defend yourself...", true);
 				PC_defending = true;
 				break;
 			case Run:
-				D20 = RollD20() + PC->PC_Stats.GetDEXMod();
-				mob_D20 = RollD20() + mob.stats.GetDEXMod();
-				if (D20 >= mob_D20 + mob.stats.GetDEXMod())
+				Temp1 = D20.Roll() + PC->GetStatBlock().GetDEXMod();
+				Temp2 = D20.Roll() + mob.stats.GetDEXMod();
+
+				if (Temp1 >= Temp2 + mob.stats.GetDEXMod())
 				{
-					std::cout << "\nYou're too slow! The " << mob.getName() << " senses an opening and strikes!";
-					mob_D20 = RollD20() + mob.stats.GetSTRMod();
-					if (mob_D20 >= PC->getAC())
+					Out->WriteSlow("You're too slow! The " + mob.getName() + " senses an opening and strikes!", true);
+					Temp2 = D20.Roll() + mob.stats.GetSTRMod();
+					if (Temp2 >= PC->GetAC())
 					{
 						PC->SetHP(PC->GetHP() - mob.Attack());
 					}
 				}
 				break;
 			case Help:
-				std::cout << "\nAttack\nDefend\nRun\nHelp\n";
+				Out->DisplayTextBox(HelpList, '*', 14);
 				break;
 			default:
 				break;
@@ -105,8 +111,8 @@ void Battle::Encounter(Player* PC, Enemies mob)
 			break;
 		else
 		{
-			std::cout << "\n" << mob.getName() << " has " << mob.getHP() << "HP left.";
-			std::cout << "\n\nit's the " << mob.getName() << "'s turn!";
+			Out->WriteSlow(mob.getName() + " has " + std::to_string(mob.getHP()) + "HP left.", true);
+			Out->WriteSlow("it's the " + mob.getName() + "'s turn!", true);
 			if (mob.getHP() < (20 * (mob.getMaxHP() / 100)))		//if health is below 20%
 			{
 				switch (defend_prev_turn)
@@ -127,30 +133,30 @@ void Battle::Encounter(Player* PC, Enemies mob)
 				switch (PC_defending)
 				{
 				case true:
-					D20 = RollD20() + mob.stats.GetSTRMod();					//first roll
-					extra_D20 = RollD20() + mob.stats.GetSTRMod();				//second roll
+					Temp1 = D20.Roll() + mob.stats.GetSTRMod();					//first roll
+					Temp2 = D20.Roll() + mob.stats.GetSTRMod();			//second roll
 
-					if (extra_D20 < D20)
+					if (Temp2 < Temp1)
 					{
-						D20 = extra_D20;
+						Temp1 = Temp2;
 					}
-					else if (D20 >= mob.getAC())
+					else if (Temp1 >= mob.getAC())
 					{
-						std::cout << "\nThe " << mob.getName() << " hits you!";
+						Out->WriteSlow("The " + mob.getName() + " hits you!", true);
 						PC->SetHP(PC->GetHP() - mob.Attack());
 					}
 					else
-						std::cout << "\nThe " << mob.getName() << " misses you!";
+						Out->WriteSlow("The " + mob.getName() + " misses you!", true);
 					break;
 				case false:
-					D20 = RollD20() + mob.stats.GetSTRMod();
-					if (D20 >= PC->getAC())
+					Temp1 = D20.Roll() + mob.stats.GetSTRMod();
+					if (Temp1 >= PC->GetAC())
 					{
-						std::cout << "\nThe " << mob.getName() << " hits you!";
+						Out->WriteSlow("The " + mob.getName() + " hits you!", true);
 						PC->SetHP(PC->GetHP() - mob.Attack());
 					}
 					else
-						std::cout << "\nThe " << mob.getName() << " misses you!";
+						Out->WriteSlow("The " + mob.getName() + " misses you!", true);
 					break;
 				}
 			}
@@ -159,21 +165,20 @@ void Battle::Encounter(Player* PC, Enemies mob)
 	}
 	if (mob.getHP() <= 0)
 	{
-		roll_for_loot = RollD20();
+		roll_for_loot = D20.Roll();
 
-		std::cout << "\nYou defeated " << mob.getName() << "! You gain " << mob.getEXP() << " XP and " << mob.getGold() << " Gold!\n";
+		Out->WriteSlow("You defeated " + mob.getName() + "! You gain " + std::to_string(mob.getEXP()) + " XP and " + std::to_string(mob.getGold()) + " Gold!", true);
 
 		if (roll_for_loot % 2 == 0)
-			std::cout << "You loot the " << mob.getName() << " and find " << mob.getLootName() << "!\n";
+			Out->WriteSlow("You loot the " + mob.getName() + " and find " + mob.getLootName() + "!", true);
 
 		PC->AddEXP(mob.getEXP());
-		PC->SetMoney(PC->GetMoney() + mob.getGold());
+		PC->SetPlyrGold(PC->GetPlyrGold() + mob.getGold());
 		PC->AddItem(mob.getLoot());
 	}
 	else
 	{
-		std::cout << "\n\nYou have fallen!\n";
+		Out->WriteSlow("You have fallen!", true);
 		//player dies
 	}
-	*/
 }

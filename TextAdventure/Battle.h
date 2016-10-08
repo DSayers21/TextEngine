@@ -1,8 +1,10 @@
 #pragma once
 #include "Player.h"
 #include "Enemies.h"
-#include <stdlib.h>
-#include <time.h>
+#include "Dice.h"
+
+#include <TextEngine/COutput.h>
+#include <TextEngine/InputControl.h>
 
 enum Commands
 {
@@ -11,7 +13,7 @@ enum Commands
 class Battle
 {
 private:
-
+	TxtEgn::InputControl m_Input;
 	//extra D20 is for advantage and disadvantage
 	bool PC_first, mob_first;
 	bool PC_defending = false;
@@ -23,7 +25,7 @@ private:
 
 public:
 	Battle(Player* PC, Enemies mob);
-	void Encounter( Player*, Enemies);
+	void Encounter(TxtEgn::COutput* Out, Player*, Enemies);
 	~Battle();
 };
 

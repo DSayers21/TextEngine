@@ -50,7 +50,7 @@ public:
 	float GetPlyrGold() { return m_Gold; }
 	int GetHP() { return m_HP; }
 	int getMaxHP() { return m_MaxHP; }
-
+	StatBlock GetStatBlock() { return m_PC_Stats; }
 
 	void UpdateHP(StatBlock);
 	void AddEXP(int val);

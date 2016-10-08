@@ -44,6 +44,9 @@ void Player::Save(std::string FilePath)
 	Tree.put("StatBlock", m_PC_Stats.BuildPath(FilePath, m_PlyrName));
 	m_PC_Stats.Save(FilePath, m_PlyrName);
 
+	Tree.put("ActiveWeapon", m_Equipped.BuildPath(FilePath));
+	m_Equipped.Save(FilePath);
+
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
 }
@@ -65,6 +68,9 @@ void Player::Load(std::string FilePath)
 
 	std::string StatsPath = Tree.get<std::string>("StatBlock");
 	m_PC_Stats.Load(StatsPath);
+
+	std::string WeapPath = Tree.get<std::string>("ActiveWeapon");
+	m_Equipped.Load(WeapPath);
 }
 
 void Player::AddItem(Item addItem)

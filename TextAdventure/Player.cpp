@@ -2,6 +2,7 @@
 #include "Item.h"
 #include "Location.h"
 #include <TextEngine/InputControl.h>
+#include "Dice.h"
 
 Player::Player()
 {
@@ -181,9 +182,11 @@ double Player::Roll4d6()
 	int total = 0;
 	int temp;
 	int smallest = 7;
-
+	Dice D6(6);
 	for (int i = 0; i < 4; i++)
 	{
+		temp = D6.Roll();
+		smallest = (temp < smallest) ? temp : smallest;
 	}
 	total -= smallest;
 	return total;

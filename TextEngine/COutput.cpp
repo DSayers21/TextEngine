@@ -287,7 +287,7 @@ namespace TxtEgn
 		//Create Columns to output information to
 		TxtEgn::COutput _OutputLeft = CreateColumn(ColWidth, 0, Colour);
 		TxtEgn::COutput _OutputMiddle = CreateColumn(ColWidth, ColWidth, Colour);
-		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth+1, ColWidth*2, Colour);
+		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth+2, ColWidth*2, Colour);
 		//Output information to columns whilst updating lowestY
 		LowestY = _OutputLeft.DisplayColumn(Left, LowestY);
 		LowestY = _OutputMiddle.DisplayColumn(Middle, LowestY);

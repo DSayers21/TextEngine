@@ -1,24 +1,36 @@
-﻿Build started 08/10/2016 13:47:32.
-     1>Project "F:\User\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" on node 2 (Build target(s)).
+﻿Build started 08/10/2016 14:42:30.
+     1>Project "C:\Users\Gabriel\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\TextEngine.pdb" /Gd /TP /analyze- /errorReport:prompt COutput.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\TextEngine.pdb" /Gd /TP /analyze- /errorReport:prompt ConsoleProp.cpp ConsoleZone.cpp COutput.cpp ImageCache.cpp InOutDataManager.cpp InputControl.cpp Pixel.cpp
+         Pixel.cpp
+         InputControl.cpp
+     1>c:\users\gabriel\documents\github\textengine\textengine\inputcontrol.cpp(220): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textengine\inputcontrol.cpp(244): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textengine\inputcontrol.cpp(255): warning C4018: '<': signed/unsigned mismatch
+         InOutDataManager.cpp
+         ImageCache.cpp
+     1>c:\users\gabriel\documents\github\textengine\textengine\imagecache.cpp(81): warning C4018: '<': signed/unsigned mismatch
          COutput.cpp
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(184): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(286): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(305): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(279): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(345): warning C4715: 'TxtEgn::COutput::MenuOptions': not all control paths return a value
+     1>c:\users\gabriel\documents\github\textengine\textengine\coutput.cpp(184): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textengine\coutput.cpp(286): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textengine\coutput.cpp(305): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+         ConsoleZone.cpp
+         ConsoleProp.cpp
+         Generating Code...
+     1>c:\users\gabriel\documents\github\textengine\textengine\coutput.cpp(279): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
+     1>c:\users\gabriel\documents\github\textengine\textengine\coutput.cpp(345): warning C4715: 'TxtEgn::COutput::MenuOptions': not all control paths return a value
+     1>c:\users\gabriel\documents\github\textengine\textengine\imagecache.cpp(76): warning C4715: 'TxtEgn::ImageCache::LoadImageW': not all control paths return a value
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"F:\User\Documents\GitHub\TextEngine\Debug\TextEngine.lib" /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" /NOLOGO Debug\ConsoleProp.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"C:\Users\Gabriel\Documents\GitHub\TextEngine\Debug\TextEngine.lib" /NOLOGO Debug\ConsoleProp.obj
          Debug\ConsoleZone.obj
          Debug\COutput.obj
          Debug\ImageCache.obj
          Debug\InOutDataManager.obj
          Debug\InputControl.obj
          Debug\Pixel.obj
-         TextEngine.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextEngine.lib
-     1>Done Building Project "F:\User\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" (Build target(s)).
+         TextEngine.vcxproj -> C:\Users\Gabriel\Documents\GitHub\TextEngine\Debug\TextEngine.lib
+     1>Done Building Project "C:\Users\Gabriel\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.28
+Time Elapsed 00:00:19.18

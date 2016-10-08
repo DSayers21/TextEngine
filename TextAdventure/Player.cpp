@@ -147,3 +147,60 @@ void Player::Display(TxtEgn::COutput* Out)
 	}
 	Out->WriteLine(7, '-');
 }
+
+
+void Player::AddEXP(int val)
+{
+	m_EXP += val;
+
+	int start_lvl = 0;
+
+	for (int i = 2; i < 6; i++)
+	{
+		if (m_EXP == m_level_threshold[m_threshold_index] && (m_Level > start_lvl && m_Level <= start_lvl + 4))
+		{
+			m_level_up = true;
+			m_PC_Stats.SetProf(i);
+			m_threshold_index++;
+		}
+		start_lvl += 4;
+	}
+	
+}
+
+StatBlock Player::RollStats()
+{
+	StatBlock Temp(Roll4d6(), Roll4d6(), Roll4d6(), Roll4d6(), Roll4d6(), Roll4d6());
+	m_HP = 10 + Temp.GetCONMod();
+	m_MaxHP = m_HP;
+	return Temp;
+}
+
+double Player::Roll4d6()
+{
+	int total = 0;
+	int temp;
+	int smallest = 7;
+
+	for (int i = 0; i < 4; i++)
+	{
+	}
+	total -= smallest;
+	return total;
+}
+
+double Player::WeaponAttack(Weapon Equipped, Enemies target)
+{
+	if (target.stats.GetCON() > m_PC_Stats.GetSTR())											//If enemy COn is greater than the PC STR, reduce durability of weapon by 1
+		Equipped.setDurability(Equipped.getDurability() - 1);
+
+	return (Equipped.getStrength() + m_PC_Stats.GetSTRMod());
+}
+
+void Player::UpdateHP(StatBlock a)
+{
+	if (m_Level == 1)
+		m_HP = 10 + a.GetCONMod();
+	else
+		m_HP = (m_Level * 10) + a.GetCONMod();
+}

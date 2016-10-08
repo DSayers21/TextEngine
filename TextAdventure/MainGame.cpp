@@ -254,6 +254,12 @@ bool MainGame::GameLoop()
 
 					m_Output->DisplayBanner(207, m_Input->AlignCenter(' ', m_Output->GetConsole()->FindConsoleWidth(), 
 						"Game Saved"), true);
+					break;
+				}
+				case 20:								//Battle Command
+				{
+					m_BattleField.Encounter(m_Output, &m_Player, m_CurrentLocation->FindEnemy(m_Input->ParseIntoSentence(CurCommand, 1)));
+					break;
 				}
 			}
 		}

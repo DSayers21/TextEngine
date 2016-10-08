@@ -25,6 +25,18 @@ Object* Location::FindObject(std::string ObjName)
 	return Temp;
 }
 
+Enemies* Location::FindEnemy(std::string EnemyName)
+{
+	Enemies* Temp = nullptr;
+	int Size = static_cast<int>(m_Enemys.size());
+	for (int i = 0; i < Size; i++)
+	{
+		if (m_Input.CompareStrings(m_Enemys[i].getName(), EnemyName))
+			return &m_Enemys[i];
+	}
+	return Temp;
+}
+
 NPC* Location::FindNPC(std::string NPCName)
 {
 	NPC* Temp = nullptr;

@@ -33,6 +33,7 @@ public:
 	std::map<std::string, Location*> GetExits() { return m_Exits; }
 	Object* FindObject(std::string ObjName);
 	NPC* FindNPC(std::string NPCName);
+	Enemies* FindEnemy(std::string EnemyName);
 	std::string GetImage() { return m_LocationImage; }
 
 	//Setters

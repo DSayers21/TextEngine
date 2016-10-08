@@ -24,8 +24,9 @@ private:
 	Commands actions;
 
 public:
+	Battle();
 	Battle(Player* PC, Enemies mob);
-	void Encounter(TxtEgn::COutput* Out, Player*, Enemies);
+	void Encounter(TxtEgn::COutput* Out, Player*, Enemies*);
 	~Battle();
 };
 

@@ -54,7 +54,7 @@ public:
 	void AddEXP(int val);
 	StatBlock RollStats();
 	double Roll4d6();
-	double Player::WeaponAttack(Weapon, Enemies);
+	double Player::WeaponAttack(Weapon, Enemies*);
 	std::string BuildPath(std::string FilePath);
 private:
 	std::string m_PlyrName = "BLANK";

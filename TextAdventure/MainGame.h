@@ -2,6 +2,7 @@
 #include "GameWorld.h"
 #include "Location.h"
 #include "Player.h"
+#include "Battle.h"
 #include <vector>
 #include <string>
 #include <TextEngine/InputControl.h>
@@ -26,11 +27,12 @@ private:
 
 	std::vector<std::string> Direction{ "North", "South", "West", "East", "Up", "Down", "North West", "North East", "Out" };
 	std::vector<std::string> Command{ "Go", "Take", "Quit", "Look", "Clear", "Help", "Stats", "Drop", "Push", "Pull",
-		"Unlock","Colours", "Hello", "Hi", "Hey", "Howdy", "Search", "Inspect", "Give", "Save" };
+		"Unlock","Colours", "Hello", "Hi", "Hey", "Howdy", "Search", "Inspect", "Give", "Save", "Battle" };
 
 	TxtEgn::InputControl* m_Input;
 	TxtEgn::ConsoleProp* m_Console;
 	TxtEgn::ImageCache* m_Cache;
 	TxtEgn::COutput* m_Output;
 	InOutDataManager m_IOMan;
+	Battle m_BattleField;
 };

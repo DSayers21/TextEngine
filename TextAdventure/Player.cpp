@@ -209,9 +209,9 @@ double Player::Roll4d6()
 	return total;
 }
 
-double Player::WeaponAttack(Weapon Equipped, Enemies target)
+double Player::WeaponAttack(Weapon Equipped, Enemies* target)
 {
-	if (target.stats.GetCON() > m_PC_Stats.GetSTR())											//If enemy COn is greater than the PC STR, reduce durability of weapon by 1
+	if (target->stats.GetCON() > m_PC_Stats.GetSTR())											//If enemy COn is greater than the PC STR, reduce durability of weapon by 1
 		Equipped.setDurability(Equipped.getDurability() - 1);
 
 	return (Equipped.getStrength() + m_PC_Stats.GetSTRMod());

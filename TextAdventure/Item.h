@@ -30,7 +30,7 @@ public:
 	void Load(std::string FilePath);
 	void Save(std::string FilePath);
 
-private:
+protected:
 	std::string m_ItmName = "EmptyItem";
 	std::string m_ItmDesc = "EmptyDesc";
 	float m_ItmValue = 0.0f;

@@ -14,6 +14,7 @@ Battle::~Battle()
 
 void Battle::Encounter(Player* PC, Enemies mob)
 {
+	/*
 	std::string input;
 	std::cout << "\n A " << mob.getName() << " comes outta nowhere!!\n";
 	while (PC->GetHP() != 0 || mob.getHP() != 0)
@@ -174,4 +175,5 @@ void Battle::Encounter(Player* PC, Enemies mob)
 		std::cout << "\n\nYou have fallen!\n";
 		//player dies
 	}
+	*/
 }

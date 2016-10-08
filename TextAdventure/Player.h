@@ -39,6 +39,7 @@ public:
 	std::string GetPlyrName() { return m_PlyrName; }
 	unsigned int GetPlyrLevel() { return m_Level; }
 	float GetPlyrGold() { return m_Gold; }
+	int GetHP() { return HP; }
 
 	std::string BuildPath(std::string FilePath);
 private:
@@ -46,6 +47,8 @@ private:
 	std::vector<Item> m_PlyrItems;
 	unsigned int m_Level = 1;
 	float m_Gold = 0;
+
+	int HP, MaxHP;
 
 	TxtEgn::InputControl m_Input;
 	SaveLoadControl m_SandL;

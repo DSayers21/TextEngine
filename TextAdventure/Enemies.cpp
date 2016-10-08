@@ -53,7 +53,7 @@ Item Enemies::getLoot()
 
 std::string Enemies::getLootName()
 {
-	return loot.reward.GetName();
+	return loot.reward.GetItemName();
 }
 
 int Enemies::getAC()

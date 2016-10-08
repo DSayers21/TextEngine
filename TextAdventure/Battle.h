@@ -12,9 +12,7 @@ class Battle
 {
 private:
 
-	int D20 = RollD20();
-	int mob_D20 = RollD20();
-	int extra_D20 = RollD20();						//extra D20 is for advantage and disadvantage
+	//extra D20 is for advantage and disadvantage
 	bool PC_first, mob_first;
 	bool PC_defending = false;
 	bool mob_Defending = false;
@@ -25,7 +23,6 @@ private:
 
 public:
 	Battle(Player* PC, Enemies mob);
-	int RollD20();
 	void Encounter( Player*, Enemies);
 	~Battle();
 };

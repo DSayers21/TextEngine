@@ -124,7 +124,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battle.cpp" />
     <ClCompile Include="DialogTree.cpp" />
+    <ClCompile Include="Dice.cpp" />
+    <ClCompile Include="Enemies.cpp" />
     <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Location.cpp" />
@@ -135,9 +138,13 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SaveLoadControl.cpp" />
     <ClCompile Include="StatBlock.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle.h" />
     <ClInclude Include="DialogTree.h" />
+    <ClInclude Include="Dice.h" />
+    <ClInclude Include="Enemies.h" />
     <ClInclude Include="GameWorld.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Location.h" />
@@ -148,6 +155,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SaveLoadControl.h" />
     <ClInclude Include="StatBlock.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TextAdventure.rc" />

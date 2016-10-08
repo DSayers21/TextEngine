@@ -10,12 +10,12 @@ Weapon::Weapon(std::string SItmName, std::string SItmDesc, double SItmValue, boo
 {
 	weapon_strength = strength;
 	weapon_durability = durability;
-	ItmName = SItmName;
-	ItmDesc = SItmDesc;
-	ItmValue = SItmValue;
-	StackAble = SStackAble;
-}
 
+	m_ItmName = SItmName;
+	m_ItmDesc = SItmDesc;
+	m_ItmValue = SItmValue;
+	m_Stackable = SStackAble;
+}
 
 Weapon::~Weapon()
 {

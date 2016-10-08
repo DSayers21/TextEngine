@@ -1,8 +1,8 @@
 #pragma once
 #ifndef EN_H
 #define EN_H
-#include "Items.h"
-#include "Attack.h"
+#include "Item.h"
+//#include "Attack.h"
 #include "StatBlock.h"
 #include <string>
 #include <iostream>

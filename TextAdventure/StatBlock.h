@@ -1,5 +1,10 @@
 #pragma once
 #include <string>
+#include <boost/property_tree/ptree.hpp>
+#include <TextEngine/InOutDataManager.h>
+#include "SaveLoadControl.h"
+#include <TextEngine/InputControl.h>
+
 class StatBlock
 {
 private:
@@ -7,6 +12,10 @@ private:
 	int STR_mod, DEX_mod, CON_mod, INT_mod, WIS_mod, CHA_mod;
 	double temp_multiplier;
 	int proficiency;
+
+	SaveLoadControl m_SandL;
+	InOutDataManager m_IOMan;
+	TxtEgn::InputControl m_Input;
 public:
 	StatBlock();
 	StatBlock(double s_val, double d_val, double c_val, double i_val, double w_val, double ch_val);
@@ -41,4 +50,9 @@ public:
 
 	double GetMultiplier();
 	void SetMultiplier(double val);
+
+	void StatBlock::Save(std::string FilePath, std::string Name);
+	void StatBlock::Load(std::string FilePath);
+
+	std::string BuildPath(std::string FilePath, std::string Name);
 };

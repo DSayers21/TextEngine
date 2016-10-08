@@ -202,3 +202,54 @@ void StatBlock::SetMultiplier(double val)
 {
 	temp_multiplier = val;
 }
+
+void StatBlock::Save(std::string FilePath, std::string Name)
+{
+	//Create Main Tree and Nodes tree
+	boost::property_tree::ptree Tree;
+	//Add the Conversation name to the top of the tree
+	Tree.put("STR", STR);
+	Tree.put("DEX", DEX);
+	Tree.put("CON", CON);
+	Tree.put("INT", INT);
+	Tree.put("WIS", WIS);
+	Tree.put("CHA", CHA);
+
+	Tree.put("STR_mod", STR_mod);
+	Tree.put("DEX_mod", DEX_mod);
+	Tree.put("CON_mod", CON_mod);
+	Tree.put("INT_mod", INT_mod);
+	Tree.put("WIS_mod", WIS_mod);
+	Tree.put("CHA_mod", CHA_mod);
+
+	Tree.put("proficiency", proficiency);
+	//Save the tree to a readable format
+	m_IOMan.SaveFile(BuildPath(FilePath, Name), Tree);
+}
+
+void StatBlock::Load(std::string FilePath)
+{
+	//Create Main Tree and Nodes tree
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath));
+
+	STR = Tree.get<double>("STR");
+	DEX = Tree.get<double>("DEX");
+	CON = Tree.get<double>("CON");
+	INT = Tree.get<double>("INT");
+	WIS = Tree.get<double>("WIS");
+	CHA = Tree.get<double>("CHA");
+
+	STR_mod = Tree.get<int>("STR_mod");
+	DEX_mod = Tree.get<int>("DEX_mod");
+	CON_mod = Tree.get<int>("CON_mod");
+	INT_mod = Tree.get<int>("INT_mod");
+	WIS_mod = Tree.get<int>("WIS_mod");
+	CHA_mod = Tree.get<int>("CHA_mod");
+
+	proficiency = Tree.get<int>("proficiency");
+}
+
+std::string StatBlock::BuildPath(std::string FilePath, std::string Name)
+{
+	return FilePath + "/StatBlocks/" + m_Input.RemoveSpaces(Name);
+}

@@ -44,8 +44,7 @@ bool MainGame::GameLoop()
 {
 	bool GameRunning = true;
 	std::vector<std::string> CurCommand;
-	//m_Output->WriteSlow("The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog lol", true);
-	
+
 	m_Output->DisplayBanner(207, m_Input->AlignCenter(' ', m_Output->GetConsole()->GetConsoleWidth(), "[Type 'HELP' to see a full list of known commands]"), true);
 	
 	while (GameRunning)

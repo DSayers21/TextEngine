@@ -333,6 +333,17 @@ namespace TxtEgn
 		return (GetConsole()->wherey() > LowestY) ? GetConsole()->GetCurrentY() : LowestY;
 	}
 
+	int COutput::MenuOptions(std::vector<std::string> OptionList)
+	{
+		std::vector<std::string> CurCommand;
+
+		CurCommand.clear();
+		CurCommand = GetInput("<C7>");
+
+		if (CurCommand.size() > 0)
+			return _Input->ContainsString(OptionList, _Input->ParseIntoSentence(CurCommand, 0));
+	}
+
 	//Setters
 	void COutput::SetConsole(ConsoleProp& Console)
 	{

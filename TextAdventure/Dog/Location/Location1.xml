@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LocName>Outskirts of Cloud City</LocName>
+<LocDesc>an enourmous city with hundreds of spires which reach high into the atmosphere. The city seems peaceful with a hive of activty.</LocDesc>
+<LocImage>Images\/CloudCity</LocImage>
+<Items/>
+<Objects>
+	<Object0>
+		<ObjectPath>Dog/Object/CloudCityGate</ObjectPath>
+	</Object0>
+</Objects>
+<NPCs/>

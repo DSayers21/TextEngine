@@ -53,6 +53,8 @@ namespace TxtEgn
 
 		int DisplayColumn(std::string Statement, int LowestY);
 
+		int MenuOptions(std::vector<std::string> OptionList);
+
 		//Setters
 		void SetConsole(ConsoleProp& Console);
 

@@ -31,67 +31,60 @@ int main()
 	//Load Font
 	LoadFont(&_Output);
 	//Menu Stuff
-	std::vector<std::string> CurCommand;
-	std::vector<std::string> Command = { "New", "Load", "Settings", "Help", "Quit" };
+	std::vector<std::string> MenuCommand = { "New", "Load", "Settings", "Help", "Quit" };
 	bool Running = true;
 
 	//Draw title
-	ResetMenu(&_Output, Command);
+	ResetMenu(&_Output, MenuCommand);
 
 	//Init MainGame
 	while (Running)
 	{
-		CurCommand.clear();
-		CurCommand = _Output.GetInput("<C7>");
-
-		if (CurCommand.size() > 0)
+		switch (_Output.MenuOptions(MenuCommand))
 		{
-			switch (_Input.ContainsString(Command, _Input.ParseIntoSentence(CurCommand, 0)))
+			default:
 			{
-				default:
+				_Output.WriteSlow("<C12>You need to enter a valid Command", true);
+				break;
+			}
+			case 0:			//New
+			{
+				MainGame Game("CloudGame", true, &_Input, &_Console, &Cache, &_Output);
+				_Output.ConsoleClear();
+				Game.StartGame();
+				ResetMenu(&_Output, MenuCommand);
+				break;
+			}
+			case 1:			//Load
+			{
+				std::string Path = _Input.ParseIntoSentence(_Output.GetInput("<C10>What is the name of the game?"), 0);
+				if (dirExists(Path))
 				{
-					_Output.WriteSlow("<C12>You need to enter a valid Command", true);
-					break;
-				}
-				case 0:			//New
-				{
-					MainGame Game("CloudGame", true, &_Input, &_Console, &Cache, &_Output);
+					MainGame Game(Path, false, &_Input, &_Console, &Cache, &_Output);
 					_Output.ConsoleClear();
 					Game.StartGame();
-					ResetMenu(&_Output, Command);
-					break;
+					ResetMenu(&_Output, MenuCommand);
 				}
-				case 1:			//Load
-				{
-					std::string Path = _Input.ParseIntoSentence(_Output.GetInput("<C10>What is the name of the game?"), 0);
-					if (dirExists(Path))
-					{
-						MainGame Game(Path, false, &_Input, &_Console, &Cache, &_Output);
-						_Output.ConsoleClear();
-						Game.StartGame();
-						ResetMenu(&_Output, Command);
-					}
-					else
-						_Output.WriteSlow("No data exists with that name!", true);
-					break;
-				}
-				case 2:			//Settings
-				{
-					_Output.ConsoleClear();
-					SettingsMenu(&_Output);
-					ResetMenu(&_Output, Command);
-					break;
-				}
-				case 3:			//Help
-				{
-					_Output.DisplayTextBox(Command, '*', 7);
-					break;
-				}
-				case 4:			//Quit
-				{
-					Running = false;
-					break;
-				}
+				else
+					_Output.WriteSlow("No data exists with that name!", true);
+				break;
+			}
+			case 2:			//Settings
+			{
+				_Output.ConsoleClear();
+				SettingsMenu(&_Output);
+				ResetMenu(&_Output, MenuCommand);
+				break;
+			}
+			case 3:			//Help
+			{
+				_Output.DisplayTextBox(MenuCommand, '*', 7);
+				break;
+			}
+			case 4:			//Quit
+			{
+				Running = false;
+				break;
 			}
 		}
 	}
@@ -122,9 +115,8 @@ void SettingsMenu(TxtEgn::COutput* Output)
 	std::vector<std::string> SettingsOptions{ "5", "6", "8", "10", "12", "14", "16", "18", "20", "24", "28", "Back" };
 	std::vector<std::string> SettingsOptionsTwo{ "2", "3", "4", "5", "6", "7", "8", "8", "9", "11", "13", "Back" };
 
-
 	std::vector<std::string> ShowOPT{ ":5, 6, 8, 10, 12, 14, 16, 18, 20, 24, 28:", ":Back:" };
-	std::vector<std::string> CurCommand;
+	int Position;
 	TxtEgn::InputControl _Input;
 	Output->DrawImage("Images/OptionsTitle", TxtEgn::ALIGN::CENTER);
 	
@@ -134,12 +126,9 @@ void SettingsMenu(TxtEgn::COutput* Output)
 
 	while (MenuLoop)
 	{
-		CurCommand = Output->GetInput("<C10>Enter a text size option: ");
-		if (CurCommand.size() > 0)
+		Position = Output->MenuOptions(SettingsOptions);
+		switch (Position)
 		{
-			int Swi = _Input.FindStringPosition(SettingsOptions, CurCommand[0]);
-			switch (Swi)
-			{
 			default:
 			{
 				Output->WriteSlow("<C12>You need to enter a valid Command", true);
@@ -147,13 +136,14 @@ void SettingsMenu(TxtEgn::COutput* Output)
 			}
 			case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10:
 			{
-				int X = std::stoi(SettingsOptionsTwo[Swi]);
-				int Y = std::stoi(SettingsOptions[Swi]);
+				int X = std::stoi(SettingsOptionsTwo[Position]);
+				int Y = std::stoi(SettingsOptions[Position]);
 				SetFont(Output, X, Y);
 				MenuLoop = false;
 				break;
 			}
 			case 11:
+			{
 				MenuLoop = false;
 				break;
 			}

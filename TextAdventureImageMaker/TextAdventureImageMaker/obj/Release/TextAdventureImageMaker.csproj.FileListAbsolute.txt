@@ -23,3 +23,6 @@ D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\o
 D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.csproj.GenerateResource.Cache
 D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.exe
 D:\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.pdb
+F:\User\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\bin\Release\TextAdventureImageMaker.exe.config
+F:\User\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.exe
+F:\User\Documents\GitHub\TextEngine\TextAdventureImageMaker\TextAdventureImageMaker\obj\Release\TextAdventureImageMaker.pdb

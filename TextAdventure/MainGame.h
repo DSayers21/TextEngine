@@ -34,4 +34,3 @@ private:
 	TxtEgn::COutput* m_Output;
 	InOutDataManager m_IOMan;
 };
-

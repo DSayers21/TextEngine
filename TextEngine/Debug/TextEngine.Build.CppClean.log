@@ -1,5 +1,13 @@
-c:\users\gabriel\documents\github\textengine\textengine\debug\textengine.pdb
-c:\users\gabriel\documents\github\textengine\textengine\debug\textengine.idb
+f:\user\documents\github\textengine\textengine\debug\textengine.pdb
+f:\user\documents\github\textengine\textengine\debug\textengine.idb
+f:\user\documents\github\textengine\textengine\debug\consoleprop.obj
+f:\user\documents\github\textengine\textengine\debug\consolezone.obj
+f:\user\documents\github\textengine\textengine\debug\coutput.obj
+f:\user\documents\github\textengine\textengine\debug\imagecache.obj
+f:\user\documents\github\textengine\textengine\debug\inoutdatamanager.obj
+f:\user\documents\github\textengine\textengine\debug\inputcontrol.obj
+f:\user\documents\github\textengine\textengine\debug\pixel.obj
+f:\user\documents\github\textengine\debug\textengine.lib
 c:\users\gabriel\documents\github\textengine\textengine\debug\consoleprop.obj
 c:\users\gabriel\documents\github\textengine\textengine\debug\consolezone.obj
 c:\users\gabriel\documents\github\textengine\textengine\debug\coutput.obj
@@ -7,8 +15,10 @@ c:\users\gabriel\documents\github\textengine\textengine\debug\imagecache.obj
 c:\users\gabriel\documents\github\textengine\textengine\debug\inoutdatamanager.obj
 c:\users\gabriel\documents\github\textengine\textengine\debug\inputcontrol.obj
 c:\users\gabriel\documents\github\textengine\textengine\debug\pixel.obj
-c:\users\gabriel\documents\github\textengine\debug\textengine.lib
+c:\users\gabriel\documents\github\textengine\textengine\debug\textengine.idb
+c:\users\gabriel\documents\github\textengine\textengine\debug\textengine.pdb
 c:\users\gabriel\documents\github\textengine\debug\textengine.pdb
+c:\users\gabriel\documents\github\textengine\debug\textengine.lib
 c:\users\gabriel\documents\github\textengine\textengine\debug\textengine.tlog\cl.command.1.tlog
 c:\users\gabriel\documents\github\textengine\textengine\debug\textengine.tlog\cl.read.1.tlog
 c:\users\gabriel\documents\github\textengine\textengine\debug\textengine.tlog\cl.write.1.tlog

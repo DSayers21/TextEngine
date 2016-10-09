@@ -244,7 +244,7 @@ void SaveLoadControl::SaveWeaponsToTree(boost::property_tree::ptree* Items, std:
 }
 
 
-void SaveLoadControl::SaveEnemysToVector(std::vector<Enemies>* EnemyVec, boost::property_tree::ptree& EnemyTree)
+void SaveLoadControl::SaveEnemiesToVector(std::vector<Enemies>* EnemyVec, boost::property_tree::ptree& EnemyTree)
 {
 	for (int j = 0; j < EnemyTree.size(); j++)
 	{
@@ -261,7 +261,7 @@ void SaveLoadControl::SaveEnemysToVector(std::vector<Enemies>* EnemyVec, boost::
 	}
 }
 
-void SaveLoadControl::SaveEnemysToTree(boost::property_tree::ptree* EnemyTree, std::vector<Enemies>& EnemyVec, std::string FilePath)
+void SaveLoadControl::SaveEnemiesToTree(boost::property_tree::ptree* EnemyTree, std::vector<Enemies>& EnemyVec, std::string FilePath)
 {
 	if (EnemyVec.size() > 0)
 	{

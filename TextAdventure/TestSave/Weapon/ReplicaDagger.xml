@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ItmName>Replica Dagger</ItmName>
-<ItmDesc>A Dagger you bought at a medieval fayre, you sharpened it yourself, badly, it seems mass produced.</ItmDesc>
-<ItmValue>0</ItmValue>
-<ItmStack>false</ItmStack>
-<weapon_strength>5</weapon_strength>
-<weapon_durability>50</weapon_durability>

@@ -28,11 +28,11 @@ Object* Location::FindObject(std::string ObjName)
 Enemies* Location::FindEnemy(std::string EnemyName)
 {
 	Enemies* Temp = nullptr;
-	int Size = static_cast<int>(m_Enemys.size());
+	int Size = static_cast<int>(m_Enemies.size());
 	for (int i = 0; i < Size; i++)
 	{
-		if (m_Input.CompareStrings(m_Enemys[i].getName(), EnemyName))
-			return &m_Enemys[i];
+		if (m_Input.CompareStrings(m_Enemies[i].getName(), EnemyName))
+			return &m_Enemies[i];
 	}
 	return Temp;
 }
@@ -77,9 +77,9 @@ void Location::Load(std::string FilePath)
 
 	/////////////////Enemy////////////////////////////////////
 	//Get Items child
-	boost::property_tree::ptree Enemy = Tree.get_child("Enemys");
+	boost::property_tree::ptree Enemy = Tree.get_child("Enemies");
 	//Save Items from Tree into Vector
-	m_SandL.SaveEnemysToVector(&m_Enemys, Enemy);
+	m_SandL.SaveEnemiesToVector(&m_Enemies, Enemy);
 
 	/////////////////Weapons////////////////////////////////////
 	//Get Weapons child
@@ -119,14 +119,14 @@ void Location::Save(std::string FilePath, std::string Num)
 	for (int i = 0; i < m_Items.size(); i++)
 		m_Items[i].Save(FilePath);
 
-	//Enemys////////////////////////////////////////////////
-	boost::property_tree::ptree Enemys;
-	m_SandL.SaveEnemysToTree(&Enemys, m_Enemys, FilePath);
+	//Enemies////////////////////////////////////////////////
+	boost::property_tree::ptree Enemies;
+	m_SandL.SaveEnemiesToTree(&Enemies, m_Enemies, FilePath);
 	//Add all the options to the current node
-	Tree.add_child("Enemys", Enemys);
+	Tree.add_child("Enemies", Enemies);
 
-	for (int i = 0; i < m_Enemys.size(); i++)
-		m_Enemys[i].Save(FilePath);
+	for (int i = 0; i < m_Enemies.size(); i++)
+		m_Enemies[i].Save(FilePath);
 
 	//Weapons////////////////////////////////////////////////
 	boost::property_tree::ptree Weapons;
@@ -187,7 +187,7 @@ void Location::AddNPC(NPC *npc)
 
 void Location::AddEnemy(Enemies Enmy)
 {
-	m_Enemys.push_back(Enmy);
+	m_Enemies.push_back(Enmy);
 }
 
 void Location::DisplayAll(TxtEgn::COutput* Output)
@@ -274,11 +274,11 @@ void Location::DisplayNPCs(TxtEgn::COutput* Output)
 void Location::DisplayEnemies(TxtEgn::COutput * Output)
 {
 	int Count = 0;
-	int Size = static_cast<int>(m_Enemys.size());
+	int Size = static_cast<int>(m_Enemies.size());
 	if (Size != 0)
 	{
 		for (int i = 0; i < Size; i++)
-			Output->WriteSlow("<C7>You see a creature, It appears to be a " + m_Enemys[i].getName() + ".", false);
+			Output->WriteSlow("<C7>You see a creature, It appears to be a " + m_Enemies[i].getName() + ".", false);
 	}
 }
 

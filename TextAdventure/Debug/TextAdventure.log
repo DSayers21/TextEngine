@@ -1,21 +1,104 @@
-﻿Build started 08/10/2016 17:32:42.
-     1>Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" on node 2 (Build target(s)).
+﻿Build started 09/10/2016 11:13:47.
+     1>Project "C:\Users\Gabriel\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Battle.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Battle.cpp DialogTree.cpp Dice.cpp Enemies.cpp GameWorld.cpp Item.cpp Location.cpp main.cpp MainGame.cpp NPC.cpp Object.cpp Player.cpp SaveLoadControl.cpp StatBlock.cpp Weapon.cpp
+         Weapon.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\weapon.cpp(16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+         StatBlock.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\statblock.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\statblock.cpp(17): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\statblock.cpp(18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\statblock.cpp(19): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\statblock.cpp(20): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\statblock.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+         SaveLoadControl.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(21): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(42): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(60): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(76): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(115): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(134): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(151): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(171): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(190): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(209): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(229): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(249): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\saveloadcontrol.cpp(269): warning C4018: '<': signed/unsigned mismatch
+         Player.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\player.cpp(83): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\player.cpp(95): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\player.cpp(176): warning C4018: '>': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\player.cpp(176): warning C4018: '<=': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\player.cpp(190): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\player.cpp(223): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\player.cpp(225): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+         Object.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\object.cpp(35): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\object.cpp(115): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\object.cpp(142): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\object.cpp(170): warning C4018: '<': signed/unsigned mismatch
+         NPC.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\npc.cpp(52): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\npc.cpp(59): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\npc.cpp(100): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\npc.cpp(170): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\npc.cpp(180): warning C4018: '<': signed/unsigned mismatch
+         MainGame.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\maingame.cpp(114): warning C4018: '<': signed/unsigned mismatch
+         main.cpp
+         Location.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\location.cpp(119): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\location.cpp(128): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\location.cpp(138): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\location.cpp(147): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\location.cpp(156): warning C4018: '<': signed/unsigned mismatch
+         Item.cpp
+         GameWorld.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\gameworld.cpp(11): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\gameworld.cpp(40): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\gameworld.cpp(58): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\gameworld.cpp(66): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\gameworld.cpp(110): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\gameworld.cpp(193): warning C4018: '<': signed/unsigned mismatch
+         Enemies.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\enemies.cpp(81): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+         Dice.cpp
+         DialogTree.cpp
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(24): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(51): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(95): warning C4018: '>': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(152): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(169): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(177): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(212): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(226): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(255): warning C4018: '<': signed/unsigned mismatch
          Battle.cpp
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(82): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(155): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(156): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(171): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(82): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(155): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(156): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gabriel\documents\github\textengine\textadventure\battle.cpp(171): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+         Generating Code...
+     1>c:\users\gabriel\documents\github\textengine\textadventure\dialogtree.cpp(106): warning C4715: 'DialogTree::PerformDialog': not all control paths return a value
+     1>c:\users\gabriel\documents\github\textengine\textadventure\statblock.cpp(134): warning C4715: 'StatBlock::CalcModifier': not all control paths return a value
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Debug\TextAdventure.res" TextAdventure.rc 
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.lib" /MACHINE:X86 Debug\TextAdventure.res
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gabriel\Documents\GitHub\TextEngine\Debug\TextAdventure.exe" /INCREMENTAL /NOLOGO TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Gabriel\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gabriel\Documents\GitHub\TextEngine\Debug\TextAdventure.lib" /MACHINE:X86 Debug\TextAdventure.res
          Debug\Battle.obj
          Debug\DialogTree.obj
          Debug\Dice.obj
@@ -31,9 +114,9 @@
          Debug\SaveLoadControl.obj
          Debug\StatBlock.obj
          Debug\Weapon.obj
-         TextAdventure.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
-     1>Done Building Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" (Build target(s)).
+         TextAdventure.vcxproj -> C:\Users\Gabriel\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
+     1>Done Building Project "C:\Users\Gabriel\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.85
+Time Elapsed 00:01:32.82

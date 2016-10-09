@@ -4,7 +4,6 @@
 class Dice
 {
 public:
-	Dice();
 	Dice(unsigned int Sides);
 	~Dice();
 

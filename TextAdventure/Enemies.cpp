@@ -5,7 +5,7 @@ Enemies::Enemies()
 
 }
 
-Enemies::Enemies(std::string val, int hp_val, double s_val, double d_val, double c_val, double i_val, double w_val, double ch_val, int EXP_val, int G_val, Item item_reward, int armour, int dice, int challenge)
+Enemies::Enemies(std::string val, int hp_val, double s_val, double d_val, double c_val, double i_val, double w_val, double ch_val, int EXP_val, int G_val, Item item_reward, int armour)
 {
 	stats = StatBlock(s_val, d_val, c_val, i_val, w_val, ch_val);
 
@@ -16,10 +16,6 @@ Enemies::Enemies(std::string val, int hp_val, double s_val, double d_val, double
 	current_HP = hp_val;
 	max_HP = hp_val;
 	AC = armour;
-	dice_sides = dice;
-	Dice Temp(dice_sides);
-	m_roll_dmg = Temp;
-	CR = challenge;
 }
 
 Enemies::~Enemies()
@@ -82,7 +78,7 @@ std::string Enemies::getName()
 
 int Enemies::Attack()
 {
-	return (m_roll_dmg.Roll() + stats.GetSTRMod());
+	return (4 + stats.GetSTRMod());
 }
 
 void Enemies::Save(std::string FilePath)
@@ -102,8 +98,7 @@ void Enemies::Save(std::string FilePath)
 
 	Tree.put("StatBlock", stats.BuildPath(FilePath, name));
 	stats.Save(FilePath, name);
-	Tree.put("dice_sides", dice_sides);
-	Tree.put("CR", CR);
+
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
 }
@@ -125,8 +120,6 @@ void Enemies::Load(std::string FilePath)
 	loot.reward.Load(ItemPath);
 	
 	std::string StatsPath = Tree.get<std::string>("StatBlock");
-	dice_sides = Tree.get<int>("dice_sides");
-	CR = Tree.get<int>("CR");
 	stats.Load(StatsPath);
 }
 

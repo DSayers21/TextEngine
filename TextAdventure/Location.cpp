@@ -170,6 +170,11 @@ void Location::AddItem(Item Itm)
 	m_Items.push_back(Itm);
 }
 
+void Location::AddWeapon(Weapon Wpn)
+{
+	m_Weapons.push_back(Wpn);
+}
+
 void Location::AddObject(Object *Obj)
 {
 	m_Objects.push_back(Obj);
@@ -178,6 +183,11 @@ void Location::AddObject(Object *Obj)
 void Location::AddNPC(NPC *npc)
 {
 	m_NPC.push_back(npc);
+}
+
+void Location::AddEnemy(Enemies Enmy)
+{
+	m_Enemys.push_back(Enmy);
 }
 
 void Location::DisplayAll(TxtEgn::COutput* Output)
@@ -261,6 +271,17 @@ void Location::DisplayNPCs(TxtEgn::COutput* Output)
 	}
 }
 
+void Location::DisplayEnemies(TxtEgn::COutput * Output)
+{
+	int Count = 0;
+	int Size = static_cast<int>(m_Enemys.size());
+	if (Size != 0)
+	{
+		for (int i = 0; i < Size; i++)
+			Output->WriteSlow("<C7>You see a creature, It appears to be a " + m_Enemys[i].getName() + ".", false);
+	}
+}
+
 Location* Location::GoCommand(std::string Direction)
 {
 	Location* ReturnLoc = this;
@@ -315,6 +336,23 @@ bool Location::InspectItems(TxtEgn::COutput* Output, std::string Compare)
 			if (m_Input.CompareStrings(m_Items[i].GetItemName(), Compare))
 			{
 				Output->WriteSlow("<C7>You see " + m_Items[i].GetItemName() + ", it appears to be " + m_Items[i].GetItemDesc(), true);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool Location::InspectWeapons(TxtEgn::COutput * Output, std::string Compare)
+{
+	int Size = static_cast<int>(m_Weapons.size());
+	if (m_Weapons.size() != 0)
+	{
+		for (int i = 0; i < Size; i++)
+		{
+			if (m_Input.CompareStrings(m_Weapons[i].GetItemName(), Compare))
+			{
+				Output->WriteSlow("<C7>You see " + m_Weapons[i].GetItemName() + ", it appears to be " + m_Weapons[i].GetItemDesc(), true);
 				return true;
 			}
 		}

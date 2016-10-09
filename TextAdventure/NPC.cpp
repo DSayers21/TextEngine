@@ -93,7 +93,7 @@ void NPC::Load(std::string FilePath)
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
 	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(&m_ShopItems, Items, "Item");
+	m_SandL.SaveTreeToVector(m_ShopItems, Items, "Item");
 
 	//Add Wanted Items
 	boost::property_tree::ptree WItems = Tree.get_child("WItems");

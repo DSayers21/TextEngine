@@ -73,32 +73,34 @@ void Location::Load(std::string FilePath)
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
 	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(&m_Items, Items, "Item");
+	m_SandL.SaveTreeToVector(m_Items, Items, "Item");
+	if (m_Items.size() > 0)
+		std::cout << "";
 
 	/////////////////Enemy////////////////////////////////////
 	//Get Items child
 	boost::property_tree::ptree Enemy = Tree.get_child("Enemys");
 	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(&m_Enemys, Enemy, "Enemy");
+	m_SandL.SaveTreeToVector(m_Enemys, Enemy, "Enemy");
 
 	/////////////////Weapons////////////////////////////////////
 	//Get Weapons child
 	Items = Tree.get_child("Weapons");
 	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(&m_Weapons, Items, "Weapon");
+	m_SandL.SaveTreeToVector(m_Weapons, Items, "Weapon");
 
 	/////////////////Objects///////////////////////////////////
 	//Get Objects child
 	boost::property_tree::ptree Objects = Tree.get_child("Objects");
 
 	//Save Objects from Tree into Vector
-	m_SandL.SaveTreeToVector(&m_Objects, Objects, "Object");
+	m_SandL.SaveTreeToVector(m_Objects, Objects, "Object");
 
 	/////////////////NPCs//////////////////////////////////////
 	//Get NPCs child
 	boost::property_tree::ptree NPCs = Tree.get_child("NPCs");
 	//Save NPCs from Tree into Vector
-	m_SandL.SaveTreeToVector(&m_NPC, NPCs, "NPC");
+	m_SandL.SaveTreeToVector(m_NPC, NPCs, "NPC");
 	if (NPCs.size() > 0)
 		std::cout << "";
 

@@ -197,7 +197,7 @@ void DialogTree::Load(std::string FilePath)
 		//Get Items child
 		boost::property_tree::ptree Items = NodeNum.get_child("Items");
 		//Save Items from Tree into Vector
-		m_SandL.SaveTreeToVector(&m_DialogNodes[i]->m_DialogItems, Items, "Item");
+		m_SandL.SaveTreeToVector(m_DialogNodes[i]->m_DialogItems, Items, "Item");
 	}
 }
 

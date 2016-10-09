@@ -64,7 +64,7 @@ public:
 		}
 	}
 	template <class T>
-	void SaveTreeToVector(std::vector<T>* Vec, boost::property_tree::ptree& Tree, std::string Type)
+	void SaveTreeToVector(std::vector<T>& Vec, boost::property_tree::ptree& Tree, std::string Type)
 	{
 		if (Tree.size() > 0)
 		{
@@ -75,16 +75,15 @@ public:
 				boost::property_tree::ptree TypeNum = Tree.get_child(Name);
 				//Get all information needed from optionNum
 				std::string FilePath = TypeNum.get<std::string>(Type + "Path");
-
 				//Add Item
-				T* LoadObject = new T();
-				LoadObject->Load(FilePath);
-				Vec->push_back(&LoadObject);
+				T LoadObject;
+				LoadObject.Load(FilePath);
+				Vec.push_back(LoadObject);
 			}
 		}
 	}
 	template <class T>
-	void SaveTreeToVector(std::vector<T*>* Vec, boost::property_tree::ptree& Tree, std::string Type)
+	void SaveTreeToVector(std::vector<T*>& Vec, boost::property_tree::ptree& Tree, std::string Type)
 	{
 		if (Tree.size() > 0)
 		{
@@ -95,11 +94,10 @@ public:
 				boost::property_tree::ptree TypeNum = Tree.get_child(Name);
 				//Get all information needed from optionNum
 				std::string FilePath = TypeNum.get<std::string>(Type + "Path");
-
 				//Add Item
 				T* LoadObject = new T();
 				LoadObject->Load(FilePath);
-				Vec->push_back(LoadObject);
+				Vec.push_back(LoadObject);
 			}
 		}
 	}

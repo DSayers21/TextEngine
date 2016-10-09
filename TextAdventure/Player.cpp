@@ -63,7 +63,7 @@ void Player::Load(std::string FilePath)
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
 	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(&m_PlyrItems, Items, "Item");
+	m_SandL.SaveTreeToVector(m_PlyrItems, Items, "Item");
 
 
 	std::string StatsPath = Tree.get<std::string>("StatBlock");

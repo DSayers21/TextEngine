@@ -1,32 +1,46 @@
-﻿Build started 09/10/2016 12:08:06.
+﻿Build started 09/10/2016 14:19:04.
      1>Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt DialogTree.cpp
-         DialogTree.cpp
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(24): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(51): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(95): warning C4018: '>': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(152): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(169): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(177): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(212): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(226): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(255): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(71): warning C4018: '<': signed/unsigned mismatch
-         f:\user\documents\github\textengine\textadventure\dialogtree.cpp(200): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Item>(std::vector<Item,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
-                 with
-                 [
-                     _Ty=Item
-                 ]
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Object.cpp Player.cpp
+         Player.cpp
+     1>f:\user\documents\github\textengine\textadventure\player.cpp(83): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\player.cpp(95): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\player.cpp(176): warning C4018: '>': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\player.cpp(176): warning C4018: '<=': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\player.cpp(190): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\player.cpp(223): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\player.cpp(225): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
      1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(30): warning C4018: '<': signed/unsigned mismatch
-         f:\user\documents\github\textengine\textadventure\dialogtree.cpp(253): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Item>(boost::property_tree::ptree *,std::vector<Item,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+         f:\user\documents\github\textengine\textadventure\player.cpp(39): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Item>(boost::property_tree::ptree *,std::vector<Item,std::allocator<_Ty>> &,std::string,std::string)' being compiled
                  with
                  [
                      _Ty=Item
                  ]
-     1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(106): warning C4715: 'DialogTree::PerformDialog': not all control paths return a value
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(71): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\player.cpp(66): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Item>(std::vector<Item,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Item
+                 ]
+         Object.cpp
+     1>f:\user\documents\github\textengine\textadventure\object.cpp(35): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\object.cpp(115): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\object.cpp(142): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\object.cpp(170): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(51): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\object.cpp(62): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Item>(boost::property_tree::ptree *,std::vector<Item *,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Item *
+                 ]
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(90): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\object.cpp(108): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Item>(std::vector<Item *,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Item *
+                 ]
+         Generating Code...
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.lib" /MACHINE:X86 Debug\TextAdventure.res
          Debug\Battle.obj
@@ -43,9 +57,10 @@
          Debug\Player.obj
          Debug\StatBlock.obj
          Debug\Weapon.obj
+         LINK : F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe not found or not built by the last incremental link; performing full link
          TextAdventure.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
      1>Done Building Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.24
+Time Elapsed 00:00:05.74

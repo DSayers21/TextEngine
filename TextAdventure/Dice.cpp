@@ -1,6 +1,10 @@
 #include "Dice.h"
 #include <random>
 
+Dice::Dice()
+{
+
+}
 Dice::Dice(unsigned int Sides) : m_sides(Sides) {}
 
 Dice::~Dice()

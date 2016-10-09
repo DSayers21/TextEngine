@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlrName>Save</PlrName>
+<PlrLevel>1</PlrLevel>
+<PlrGold>100</PlrGold>
+<Items>
+	<Item0>
+		<ItmPath>TestSave/Item/TestItem</ItmPath>
+	</Item0>
+</Items>
+<StatBlock>TestSave/StatBlocks/Save</StatBlock>
+<ActiveWeapon>TestSave/Weapon/ReplicaDagger</ActiveWeapon>

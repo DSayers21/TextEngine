@@ -37,8 +37,8 @@ public:
 	void SaveWeaponsToVector(std::vector<Weapon>* ItemVec, boost::property_tree::ptree& Items);
 	void SaveWeaponsToTree(boost::property_tree::ptree* Items, std::vector<Weapon>& ItmVec, std::string FilePath);
 
-	void SaveLoadControl::SaveEnemiesToVector(std::vector<Enemies>* EnemyVec, boost::property_tree::ptree& EnemyTree);
-	void SaveLoadControl::SaveEnemiesToTree(boost::property_tree::ptree* EnemyTree, std::vector<Enemies>& EnemyVec, std::string FilePath);
+	void SaveLoadControl::SaveEnemysToVector(std::vector<Enemies>* EnemyVec, boost::property_tree::ptree& EnemyTree);
+	void SaveLoadControl::SaveEnemysToTree(boost::property_tree::ptree* EnemyTree, std::vector<Enemies>& EnemyVec, std::string FilePath);
 
 
 	void CreateFolder(const char * path)

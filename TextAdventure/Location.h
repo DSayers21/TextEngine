@@ -94,7 +94,7 @@ private:
 
 	std::vector<Item> m_Items;
 	std::vector<Weapon> m_Weapons;
-	std::vector<Enemies> m_Enemies;
+	std::vector<Enemies> m_Enemys;
 	std::vector<Object*> m_Objects;
 	std::vector<NPC*> m_NPC;
 

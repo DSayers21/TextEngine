@@ -4,12 +4,12 @@
 <LocImage/>
 <Items>
 	<Item0>
-		<ItmPath>CloudGame\/Item\/CityPass</ItmPath>
+		<ItemPath>CloudGame\/Item\/CityPass</ItemPath>
 	</Item0>
 </Items>
 <Enemys>
 	<Enemy0>
-		<Path>CloudGame\/Enemy\/AlexBill</Path>
+		<EnemyPath>CloudGame\/Enemy\/AlexBill</EnemyPath>
 	</Enemy0>
 </Enemys>
 <Weapons/>

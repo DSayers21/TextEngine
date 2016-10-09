@@ -59,7 +59,7 @@ void Object::Save(std::string FilePath)
 	//If there is create the options tree
 	boost::property_tree::ptree Items;
 	//Add Items to Tree
-	m_SandL.SaveItemsToTree(&Items, m_NewItems, FilePath);
+	m_SandL.SaveVecToTree(&Items, m_NewItems, FilePath, "Item");
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
 
@@ -105,7 +105,7 @@ void Object::Load(std::string FilePath)
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
 	//Save Items from Tree into Vector
-	m_SandL.SaveItemsToVector(&m_NewItems, Items);
+	m_SandL.SaveTreeToVector(&m_NewItems, Items, "Item");
 
 	////////////////////////////////////////////////////////////////////////////////////////
 	//Get Locations child

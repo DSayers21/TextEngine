@@ -36,7 +36,7 @@ void Player::Save(std::string FilePath)
 	//If there is create the options tree
 	boost::property_tree::ptree Items;
 	//Add Items to Tree
-	m_SandL.SaveItemsToTree(&Items, m_PlyrItems, FilePath);
+	m_SandL.SaveVecToTree(&Items, m_PlyrItems, FilePath, "Item");
 
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
@@ -63,7 +63,7 @@ void Player::Load(std::string FilePath)
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
 	//Save Items from Tree into Vector
-	m_SandL.SaveItemsToVector(&m_PlyrItems, Items);
+	m_SandL.SaveTreeToVector(&m_PlyrItems, Items, "Item");
 
 
 	std::string StatsPath = Tree.get<std::string>("StatBlock");

@@ -6,7 +6,7 @@
 <Enemys/>
 <Weapons>
 	<Weapon0>
-		<ItmPath>CloudGame\/Weapon\/SwordOfPower</ItmPath>
+		<WeaponPath>CloudGame\/Weapon\/SwordOfPower</WeaponPath>
 	</Weapon0>
 </Weapons>
 <Objects/>

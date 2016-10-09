@@ -141,7 +141,6 @@
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SaveLoadControl.cpp" />
     <ClCompile Include="StatBlock.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>

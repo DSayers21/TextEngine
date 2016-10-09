@@ -9,22 +9,22 @@
 
 <Items>
 	<Item0>
-		<ItmPath>CloudGame\/Item\/CloudShoes</ItmPath>
+		<ItemPath>CloudGame\/Item\/CloudShoes</ItemPath>
 	</Item0>
 	<Item1>
-		<ItmPath>CloudGame\/Item\/CandyFloss</ItmPath>
+		<ItemPath>CloudGame\/Item\/CandyFloss</ItemPath>
 	</Item1>
 	<Item2>
-		<ItmPath>CloudGame\/Item\/OrnateSphere</ItmPath>
+		<ItemPath>CloudGame\/Item\/OrnateSphere</ItemPath>
 	</Item2>
 	<Item3>
-		<ItmPath>CloudGame\/Item\/WoodenSword</ItmPath>
+		<ItemPath>CloudGame\/Item\/WoodenSword</ItemPath>
 	</Item3>
 	<Item4>
-		<ItmPath>CloudGame\/Item\/GoldFishBowl</ItmPath>
+		<ItemPath>CloudGame\/Item\/GoldFishBowl</ItemPath>
 	</Item4>
 	<Item5>
-		<ItmPath>CloudGame\/Item\/RainDrops</ItmPath>
+		<ItemPath>CloudGame\/Item\/RainDrops</ItemPath>
 	</Item5>
 </Items>
 

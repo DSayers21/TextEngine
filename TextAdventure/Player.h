@@ -10,6 +10,8 @@
 #include "Weapon.h"
 #include "Enemies.h"
 #include "StatBlock.h"
+#include "Dice.h"
+
 class Item;
 class Location;
 
@@ -69,8 +71,9 @@ private:
 	int m_EXP = 0;
 	bool m_level_up;
 	int m_threshold_index = 0;
+	Dice m_dmg;
 	int m_level_threshold[19] = { 300,900,2700,6500,14000,23000,34000,48000,64000,85000,100000,120000,140000,165000,195000,225000,265000,305000,355000 };
-	Weapon m_Equipped = Weapon("Replica Dagger", "A Dagger you bought at a medieval fayre, you sharpened it yourself, badly, it seems mass produced.", 0, false, 5, 50);
+	Weapon m_Equipped = Weapon("Replica Dagger", "A Dagger you bought at a medieval fayre, you sharpened it yourself, badly, it seems mass produced.", 0, false, 5, 10, 4);
 	TxtEgn::InputControl m_Input;
 	SaveLoadControl m_SandL;
 	InOutDataManager m_IOMan;

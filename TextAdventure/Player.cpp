@@ -16,7 +16,9 @@ Player::Player(std::string PlyrName, unsigned int Level, float Gold) :
 {
 
 	m_PC_Stats = RollStats();
-	//Empty
+	//assign damage dice, no need for storage, maybe could be implemented if more efficient
+	Dice Temp(m_Equipped.getDmgDice());
+	m_dmg = Temp;
 }
 
 Player::~Player()
@@ -214,7 +216,7 @@ double Player::WeaponAttack(Weapon Equipped, Enemies* target)
 	if (target->stats.GetCON() > m_PC_Stats.GetSTR())											//If enemy COn is greater than the PC STR, reduce durability of weapon by 1
 		Equipped.setDurability(Equipped.getDurability() - 1);
 
-	return (Equipped.getStrength() + m_PC_Stats.GetSTRMod());
+	return (Equipped.getStrength() + m_dmg.Roll() + m_PC_Stats.GetSTRMod());
 }
 
 void Player::UpdateHP(StatBlock a)

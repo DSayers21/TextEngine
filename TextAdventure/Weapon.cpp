@@ -6,7 +6,7 @@ Weapon::Weapon()
 {
 }
 
-Weapon::Weapon(std::string SItmName, std::string SItmDesc, double SItmValue, bool SStackAble, int strength, int durability)
+Weapon::Weapon(std::string SItmName, std::string SItmDesc, double SItmValue, bool SStackAble, int strength, int durability, int sides)
 {
 	weapon_strength = strength;
 	weapon_durability = durability;
@@ -15,6 +15,7 @@ Weapon::Weapon(std::string SItmName, std::string SItmDesc, double SItmValue, boo
 	m_ItmDesc = SItmDesc;
 	m_ItmValue = SItmValue;
 	m_Stackable = SStackAble;
+	m_dmg_dice = sides;
 }
 
 Weapon::~Weapon()
@@ -50,6 +51,7 @@ void Weapon::Save(std::string FilePath)
 
 	Tree.put("weapon_strength", weapon_strength);
 	Tree.put("weapon_durability", weapon_durability);
+	Tree.put("m_dmg_dice", m_dmg_dice);
 
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
@@ -67,6 +69,7 @@ void Weapon::Load(std::string FilePath)
 
 	weapon_strength = Tree.get<int>("weapon_strength");
 	weapon_durability = Tree.get<int>("weapon_durability");
+	m_dmg_dice = Tree.get<int>("m_dmg_dice");
 }
 
 std::string Weapon::BuildPath(std::string FilePath)

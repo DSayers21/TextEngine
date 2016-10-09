@@ -3,7 +3,7 @@
 <LocDesc>a strange tower, it appears to be emmitting an ominous dark glow across the sky.</LocDesc>
 <LocImage/>
 <Items/>
-<Enemys/>
+<Enemies/>
 <Weapons>
 	<Weapon0>
 		<WeaponPath>CloudGame\/Weapon\/SwordOfPower</WeaponPath>

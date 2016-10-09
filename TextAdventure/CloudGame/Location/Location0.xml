@@ -7,11 +7,11 @@
 		<ItemPath>CloudGame\/Item\/CityPass</ItemPath>
 	</Item0>
 </Items>
-<Enemys>
+<Enemies>
 	<Enemy0>
 		<EnemyPath>CloudGame\/Enemy\/AlexBill</EnemyPath>
 	</Enemy0>
-</Enemys>
+</Enemies>
 <Weapons/>
 <Objects/>
 <NPCs/>

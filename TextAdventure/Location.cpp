@@ -28,11 +28,11 @@ Object* Location::FindObject(std::string ObjName)
 Enemies* Location::FindEnemy(std::string EnemyName)
 {
 	Enemies* Temp = nullptr;
-	int Size = static_cast<int>(m_Enemys.size());
+	int Size = static_cast<int>(m_Enemies.size());
 	for (int i = 0; i < Size; i++)
 	{
-		if (m_Input.CompareStrings(m_Enemys[i].getName(), EnemyName))
-			return &m_Enemys[i];
+		if (m_Input.CompareStrings(m_Enemies[i].getName(), EnemyName))
+			return &m_Enemies[i];
 	}
 	return Temp;
 }
@@ -79,9 +79,9 @@ void Location::Load(std::string FilePath)
 
 	/////////////////Enemy////////////////////////////////////
 	//Get Items child
-	boost::property_tree::ptree Enemy = Tree.get_child("Enemys");
+	boost::property_tree::ptree Enemy = Tree.get_child("Enemies");
 	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(m_Enemys, Enemy, "Enemy");
+	m_SandL.SaveTreeToVector(m_Enemies, Enemy, "Enemy");
 
 	/////////////////Weapons////////////////////////////////////
 	//Get Weapons child
@@ -127,12 +127,12 @@ void Location::Save(std::string FilePath, std::string Num)
 
 	//Enemys////////////////////////////////////////////////
 	boost::property_tree::ptree Enemys;
-	m_SandL.SaveVecToTree(&Enemys, m_Enemys, FilePath, "Enemy");
+	m_SandL.SaveVecToTree(&Enemys, m_Enemies, FilePath, "Enemy");
 	//Add all the options to the current node
-	Tree.add_child("Enemys", Enemys);
+	Tree.add_child("Enemies", Enemys);
 
-	for (int i = 0; i < m_Enemys.size(); i++)
-		m_Enemys[i].Save(FilePath);
+	for (int i = 0; i < m_Enemies.size(); i++)
+		m_Enemies[i].Save(FilePath);
 
 	//Weapons////////////////////////////////////////////////
 	boost::property_tree::ptree Weapons;
@@ -176,6 +176,11 @@ void Location::AddItem(Item Itm)
 	m_Items.push_back(Itm);
 }
 
+void Location::AddWeapon(Weapon Wpn)
+{
+	m_Weapons.push_back(Wpn);
+}
+
 void Location::AddObject(Object *Obj)
 {
 	m_Objects.push_back(Obj);
@@ -184,6 +189,11 @@ void Location::AddObject(Object *Obj)
 void Location::AddNPC(NPC *npc)
 {
 	m_NPC.push_back(npc);
+}
+
+void Location::AddEnemy(Enemies Enmy)
+{
+	m_Enemies.push_back(Enmy);
 }
 
 void Location::DisplayAll(TxtEgn::COutput* Output)
@@ -267,6 +277,17 @@ void Location::DisplayNPCs(TxtEgn::COutput* Output)
 	}
 }
 
+void Location::DisplayEnemies(TxtEgn::COutput * Output)
+{
+	int Count = 0;
+	int Size = static_cast<int>(m_Enemies.size());
+	if (Size != 0)
+	{
+		for (int i = 0; i < Size; i++)
+			Output->WriteSlow("<C7>You see a creature, It appears to be a " + m_Enemies[i].getName() + ".", false);
+	}
+}
+
 Location* Location::GoCommand(std::string Direction)
 {
 	Location* ReturnLoc = this;
@@ -321,6 +342,23 @@ bool Location::InspectItems(TxtEgn::COutput* Output, std::string Compare)
 			if (m_Input.CompareStrings(m_Items[i].GetItemName(), Compare))
 			{
 				Output->WriteSlow("<C7>You see " + m_Items[i].GetItemName() + ", it appears to be " + m_Items[i].GetItemDesc(), true);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool Location::InspectWeapons(TxtEgn::COutput * Output, std::string Compare)
+{
+	int Size = static_cast<int>(m_Weapons.size());
+	if (m_Weapons.size() != 0)
+	{
+		for (int i = 0; i < Size; i++)
+		{
+			if (m_Input.CompareStrings(m_Weapons[i].GetItemName(), Compare))
+			{
+				Output->WriteSlow("<C7>You see " + m_Weapons[i].GetItemName() + ", it appears to be " + m_Weapons[i].GetItemDesc(), true);
 				return true;
 			}
 		}

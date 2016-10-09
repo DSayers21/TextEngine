@@ -197,7 +197,7 @@ void DialogTree::Load(std::string FilePath)
 		//Get Items child
 		boost::property_tree::ptree Items = NodeNum.get_child("Items");
 		//Save Items from Tree into Vector
-		m_SandL.SaveItemsToVector(&m_DialogNodes[i]->m_DialogItems, Items);
+		m_SandL.SaveTreeToVector(m_DialogNodes[i]->m_DialogItems, Items, "Item");
 	}
 }
 
@@ -250,7 +250,7 @@ void DialogTree::Save(std::string FilePath)
 		//If there is create the options tree
 		boost::property_tree::ptree Items;
 		//Add Items to Tree
-		m_SandL.SaveItemsToTree(&Items, m_DialogNodes[i]->m_DialogItems, FilePath);
+		m_SandL.SaveVecToTree(&Items, m_DialogNodes[i]->m_DialogItems, FilePath, "Item");
 
 		for (int x = 0; x < m_DialogNodes[i]->m_DialogItems.size(); x++)
 		{

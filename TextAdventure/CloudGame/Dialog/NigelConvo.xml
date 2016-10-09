@@ -43,7 +43,7 @@
 		<Options/>
 		<Items>
 			<Item0>
-				<ItmPath>CloudGame\/Item\/NigelsWand</ItmPath>
+				<ItemPath>CloudGame\/Item\/NigelsWand</ItemPath>
 			</Item0>
 		</Items>
 	</Node2>

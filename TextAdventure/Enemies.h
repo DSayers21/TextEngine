@@ -2,6 +2,7 @@
 #ifndef EN_H
 #define EN_H
 #include "Item.h"
+#include "Dice.h"
 //#include "Attack.h"
 #include "StatBlock.h"
 #include <string>
@@ -21,11 +22,13 @@ protected:
 	std::string name;
 	double current_HP, max_HP;
 	int AC;
-
+	int dice_sides;
+	Dice m_roll_dmg;
 	Drops loot;
+	int CR;
 public:
 	Enemies();
-	Enemies(std::string, int, double, double, double, double, double, double, int, int, Item, int);
+	Enemies(std::string, int, double, double, double, double, double, double, int, int, Item, int, int, int);
 	~Enemies();
 	double TakeDamage(int);
 	double getHP();

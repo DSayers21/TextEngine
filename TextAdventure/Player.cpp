@@ -16,7 +16,9 @@ Player::Player(std::string PlyrName, unsigned int Level, float Gold) :
 {
 
 	m_PC_Stats = RollStats();
-	//Empty
+	//assign damage dice, no need for storage, maybe could be implemented if more efficient
+	Dice Temp(m_Equipped.getDmgDice());
+	m_dmg = Temp;
 }
 
 Player::~Player()
@@ -36,7 +38,7 @@ void Player::Save(std::string FilePath)
 	//If there is create the options tree
 	boost::property_tree::ptree Items;
 	//Add Items to Tree
-	m_SandL.SaveItemsToTree(&Items, m_PlyrItems, FilePath);
+	m_SandL.SaveVecToTree(&Items, m_PlyrItems, FilePath, "Item");
 
 	//Add all the options to the current node
 	Tree.add_child("Items", Items);
@@ -63,7 +65,7 @@ void Player::Load(std::string FilePath)
 	//Get Items child
 	boost::property_tree::ptree Items = Tree.get_child("Items");
 	//Save Items from Tree into Vector
-	m_SandL.SaveItemsToVector(&m_PlyrItems, Items);
+	m_SandL.SaveTreeToVector(m_PlyrItems, Items, "Item");
 
 
 	std::string StatsPath = Tree.get<std::string>("StatBlock");
@@ -214,7 +216,7 @@ double Player::WeaponAttack(Weapon Equipped, Enemies* target)
 	if (target->stats.GetCON() > m_PC_Stats.GetSTR())											//If enemy COn is greater than the PC STR, reduce durability of weapon by 1
 		Equipped.setDurability(Equipped.getDurability() - 1);
 
-	return (Equipped.getStrength() + m_PC_Stats.GetSTRMod());
+	return (Equipped.getStrength() + m_dmg.Roll() + m_PC_Stats.GetSTRMod());
 }
 
 void Player::UpdateHP(StatBlock a)

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NpcName>City Merchant</NpcName>
+<NpcDesc>a merchant whom sells general items and trinkets.</NpcDesc>
+<NpcGender>merchant</NpcGender>
+<NpcBye>Come back again with more &lt;C246&gt; GOLD! &lt;C249&gt; *chuckle*</NpcBye>
+<NpcAlrGiv>Oh I don&apos;t actually have it sorry.</NpcAlrGiv>
+<Dialog>Dean/Dialog/CityMerchantConversation</Dialog>
+<Items/>
+<WItems/>

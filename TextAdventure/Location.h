@@ -50,16 +50,18 @@ public:
 
 	void AddExit(std::string Direction, Location *Loc);
 	void AddItem(Item Itm);
+	void AddWeapon(Weapon Wpn);
 	void AddObject(Object *Obj);
 	void AddNPC(NPC *npc);
+	void AddEnemy(Enemies Enmy);
 
 	void DisplayAll(TxtEgn::COutput* Output);
 	void DisplayExits(TxtEgn::COutput* Output);
 	void DisplayItems(TxtEgn::COutput* Output);
 	void DisplayWeapons(TxtEgn::COutput* Output);
-
 	void DisplayObjects(TxtEgn::COutput* Output);
 	void DisplayNPCs(TxtEgn::COutput* Output);
+	void DisplayEnemies(TxtEgn::COutput* Output);
 
 	Location* GoCommand(std::string Direction);
 
@@ -70,6 +72,7 @@ public:
 
 	void InspectAll(TxtEgn::COutput* Output, std::string Compare);
 	bool InspectItems(TxtEgn::COutput* Output, std::string Compare);
+	bool InspectWeapons(TxtEgn::COutput* Output, std::string Compare);
 	bool InspectObjects(TxtEgn::COutput* Output, std::string Compare);
 	bool InspectNPCs(TxtEgn::COutput* Output, std::string Compare);
 
@@ -91,7 +94,7 @@ private:
 
 	std::vector<Item> m_Items;
 	std::vector<Weapon> m_Weapons;
-	std::vector<Enemies> m_Enemys;
+	std::vector<Enemies> m_Enemies;
 	std::vector<Object*> m_Objects;
 	std::vector<NPC*> m_NPC;
 

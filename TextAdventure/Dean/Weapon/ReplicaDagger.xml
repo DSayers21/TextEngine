@@ -4,4 +4,5 @@
 <ItmValue>0</ItmValue>
 <ItmStack>false</ItmStack>
 <weapon_strength>5</weapon_strength>
-<weapon_durability>50</weapon_durability>
+<weapon_durability>10</weapon_durability>
+<m_dmg_dice>4</m_dmg_dice>

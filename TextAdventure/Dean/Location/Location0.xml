@@ -2,12 +2,16 @@
 <LocName>Cloud Forest</LocName>
 <LocDesc>a wide variety of trees all with a perculiar type of leaf.. it almost looks like clouds. You stand in a clearning.</LocDesc>
 <LocImage/>
-<Items/>
-<Enemys>
+<Items>
+	<Item0>
+		<ItemPath>Dean/Item/CityPass</ItemPath>
+	</Item0>
+</Items>
+<Enemies>
 	<Enemy0>
 		<EnemyPath>Dean/Enemy/AlexBillington</EnemyPath>
 	</Enemy0>
-</Enemys>
+</Enemies>
 <Weapons/>
 <Objects/>
 <NPCs/>

@@ -1,9 +1,17 @@
-﻿Build started 09/10/2016 14:46:05.
+﻿Build started 09/10/2016 14:59:31.
      1>Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Battle.cpp DialogTree.cpp Dice.cpp Enemies.cpp GameWorld.cpp Location.cpp MainGame.cpp NPC.cpp Object.cpp Player.cpp Weapon.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Battle.cpp DialogTree.cpp Dice.cpp Enemies.cpp GameWorld.cpp Location.cpp MainGame.cpp NPC.cpp Object.cpp Player.cpp StatBlock.cpp Weapon.cpp main.cpp
+         main.cpp
          Weapon.cpp
      1>f:\user\documents\github\textengine\textadventure\weapon.cpp(16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+         StatBlock.cpp
+     1>f:\user\documents\github\textengine\textadventure\statblock.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\statblock.cpp(17): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\statblock.cpp(18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\statblock.cpp(19): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\statblock.cpp(20): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\statblock.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
          Player.cpp
      1>f:\user\documents\github\textengine\textadventure\player.cpp(85): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\player.cpp(97): warning C4018: '<': signed/unsigned mismatch
@@ -24,42 +32,6 @@
                  [
                      _Ty=Item
                  ]
-         Location.cpp
-     1>f:\user\documents\github\textengine\textadventure\location.cpp(125): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\location.cpp(134): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\location.cpp(144): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\location.cpp(153): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\location.cpp(162): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(71): warning C4018: '<': signed/unsigned mismatch
-         f:\user\documents\github\textengine\textadventure\location.cpp(76): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Item>(std::vector<Item,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
-                 with
-                 [
-                     _Ty=Item
-                 ]
-     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(90): warning C4018: '<': signed/unsigned mismatch
-         f:\user\documents\github\textengine\textadventure\location.cpp(97): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Object>(std::vector<Object *,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
-                 with
-                 [
-                     _Ty=Object *
-                 ]
-     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(30): warning C4018: '<': signed/unsigned mismatch
-         f:\user\documents\github\textengine\textadventure\location.cpp(121): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Item>(boost::property_tree::ptree *,std::vector<Item,std::allocator<_Ty>> &,std::string,std::string)' being compiled
-                 with
-                 [
-                     _Ty=Item
-                 ]
-     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(51): warning C4018: '<': signed/unsigned mismatch
-         f:\user\documents\github\textengine\textadventure\location.cpp(149): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Object>(boost::property_tree::ptree *,std::vector<Object *,std::allocator<_Ty>> &,std::string,std::string)' being compiled
-                 with
-                 [
-                     _Ty=Object *
-                 ]
-         Enemies.cpp
-     1>f:\user\documents\github\textengine\textadventure\enemies.cpp(85): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-         Dice.cpp
-         Generating Code...
-         Compiling...
-         main.cpp
          Object.cpp
      1>f:\user\documents\github\textengine\textadventure\object.cpp(35): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\object.cpp(115): warning C4018: '<': signed/unsigned mismatch
@@ -99,6 +71,36 @@
                  ]
          MainGame.cpp
      1>f:\user\documents\github\textengine\textadventure\maingame.cpp(114): warning C4018: '<': signed/unsigned mismatch
+         Location.cpp
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(125): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(134): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(144): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(153): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(162): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(71): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(76): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Item>(std::vector<Item,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Item
+                 ]
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(90): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(97): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Object>(std::vector<Object *,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Object *
+                 ]
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(30): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(121): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Item>(boost::property_tree::ptree *,std::vector<Item,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Item
+                 ]
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(51): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(149): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Object>(boost::property_tree::ptree *,std::vector<Object *,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Object *
+                 ]
          GameWorld.cpp
      1>f:\user\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
@@ -108,6 +110,9 @@
      1>f:\user\documents\github\textengine\textadventure\gameworld.cpp(66): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\gameworld.cpp(110): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\gameworld.cpp(193): warning C4018: '<': signed/unsigned mismatch
+         Enemies.cpp
+     1>f:\user\documents\github\textengine\textadventure\enemies.cpp(85): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+         Dice.cpp
          DialogTree.cpp
      1>f:\user\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
@@ -146,6 +151,7 @@
      1>f:\user\documents\github\textengine\textadventure\battle.cpp(171): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
          Generating Code...
      1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(106): warning C4715: 'DialogTree::PerformDialog': not all control paths return a value
+     1>f:\user\documents\github\textengine\textadventure\statblock.cpp(134): warning C4715: 'StatBlock::CalcModifier': not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.lib" /MACHINE:X86 Debug\TextAdventure.res
          Debug\Battle.obj
@@ -162,9 +168,10 @@
          Debug\Player.obj
          Debug\StatBlock.obj
          Debug\Weapon.obj
+         LINK : F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe not found or not built by the last incremental link; performing full link
          TextAdventure.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
      1>Done Building Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:26.84
+Time Elapsed 00:00:28.99

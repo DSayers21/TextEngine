@@ -6,6 +6,9 @@
 	<Item0>
 		<ItemPath>Dean/Item/TestItem</ItemPath>
 	</Item0>
+	<Item1>
+		<ItemPath>Dean/Item/MagicWand</ItemPath>
+	</Item1>
 </Items>
 <StatBlock>Dean/StatBlocks/Dean</StatBlock>
 <ActiveWeapon>Dean/Weapon/ReplicaDagger</ActiveWeapon>

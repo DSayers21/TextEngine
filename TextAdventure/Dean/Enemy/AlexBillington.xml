@@ -5,4 +5,6 @@
 <AC>10</AC>
 <LootExp>50</LootExp>
 <LootGold>10</LootGold>
+<dice_sides>4</dice_sides>
+<CR>1</CR>
 <StatBlock>Dean/StatBlocks/AlexBillington</StatBlock>

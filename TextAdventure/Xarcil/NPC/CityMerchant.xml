@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NpcName>City Merchant</NpcName>
+<NpcDesc>a merchant whom sells general items and trinkets.</NpcDesc>
+<NpcGender>merchant</NpcGender>
+<NpcBye>Come back again with more &lt;C246&gt; GOLD! &lt;C249&gt; *chuckle*</NpcBye>
+<NpcAlrGiv>Oh I don't actually have it sorry.</NpcAlrGiv>
+
+<Dialog>CloudGame\/Dialog\/CityMerchConvo</Dialog>
+
+<Items>
+	<Item0>
+		<ItemPath>CloudGame\/Item\/CloudShoes</ItemPath>
+	</Item0>
+	<Item1>
+		<ItemPath>CloudGame\/Item\/CandyFloss</ItemPath>
+	</Item1>
+	<Item2>
+		<ItemPath>CloudGame\/Item\/OrnateSphere</ItemPath>
+	</Item2>
+	<Item3>
+		<ItemPath>CloudGame\/Item\/WoodenSword</ItemPath>
+	</Item3>
+	<Item4>
+		<ItemPath>CloudGame\/Item\/GoldFishBowl</ItemPath>
+	</Item4>
+	<Item5>
+		<ItemPath>CloudGame\/Item\/RainDrops</ItemPath>
+	</Item5>
+</Items>
+
+<WItems/>

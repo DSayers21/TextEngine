@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LocName>Cloud Forest</LocName>
+<LocDesc>a wide variety of trees all with a perculiar type of leaf.. it almost looks like clouds. You stand in a clearning.</LocDesc>
+<LocImage/>
+<Items>
+	<Item0>
+		<ItemPath>CloudGame\/Item\/CityPass</ItemPath>
+	</Item0>
+</Items>
+<Enemies>
+	<Enemy0>
+		<EnemyPath>CloudGame\/Enemy\/AlexBill</EnemyPath>
+	</Enemy0>
+</Enemies>
+<Weapons/>
+<Objects/>
+<NPCs/>

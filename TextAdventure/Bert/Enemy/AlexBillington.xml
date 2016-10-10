@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<name>Alex Billington</name>
-<current_HP>50</current_HP>
-<max_HP>100</max_HP>
-<AC>10</AC>
-<LootExp>50</LootExp>
-<LootGold>10</LootGold>
-<StatBlock>Bert/StatBlocks/AlexBillington</StatBlock>

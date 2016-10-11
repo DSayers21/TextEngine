@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LocName>Dusty Road West</LocName>
-<LocDesc>The road is barren and dusty, there is nothing much to be seen in either direction other than the occasional small bush and the odd bird flying overhead. A tumble weed blows slowly across the descolate and empty road.</LocDesc>
-<LocImage/>
+<LocName>Outskirts of Cloud City</LocName>
+<LocDesc>an enourmous city with hundreds of spires which reach high into the atmosphere. The city seems peaceful with a hive of activty.</LocDesc>
+<LocImage>Images\/CloudCity</LocImage>
 <Items/>
 <Enemies/>
 <Weapons/>
-<Objects/>
+<Objects>
+	<Object0>
+		<ObjectPath>CloudGame\/Object\/CloudCityGate</ObjectPath>
+	</Object0>
+</Objects>
 <NPCs/>

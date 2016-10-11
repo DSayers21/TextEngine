@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LocName>Broken Cart</LocName>
-<LocDesc>A broken cart lies by the side of the dusty road. One of its wheels has broken off and rolled away, stopped by a dead tree trunk on the opposite side of the road. The empty crates and barrels the cart was carrying have fallen out and are strewn all over the side of the road.</LocDesc>
+<LocName>Cloud Forest</LocName>
+<LocDesc>a wide variety of trees all with a perculiar type of leaf.. it almost looks like clouds. You stand in a clearning.</LocDesc>
 <LocImage/>
-<Items/>
-<Enemies/>
+<Items>
+	<Item0>
+		<ItemPath>CloudGame\/Item\/CityPass</ItemPath>
+	</Item0>
+</Items>
+<Enemies>
+	<Enemy0>
+		<EnemyPath>CloudGame\/Enemy\/AlexBill</EnemyPath>
+	</Enemy0>
+</Enemies>
 <Weapons/>
 <Objects/>
 <NPCs/>

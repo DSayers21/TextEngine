@@ -148,6 +148,13 @@ void Player::Display(TxtEgn::COutput* Out)
 
 	Out->WriteSlow("<C10> [" + m_PlyrName + "] <C7>: Character Information", true);
 	Out->WriteSlow("<C7>|- Your Current Level is: <C11>" + std::to_string(m_Level), true);
+	
+	Out->WriteSlow("<C7>|- Equiped Weapon", true);
+
+	Out->DisplayColumns3("Weapon Name:", "Weapon Description:", "Weapon Damage Dice:", 208);
+	Out->DisplayColumns3(m_Equipped.GetItemName(), m_Equipped.GetItemDesc(), std::to_string(m_Equipped.getDmgDice()), 13);
+	
+	
 	Out->WriteSlow("<C7>|- You currently have: <C14>$" + std::to_string(m_Gold), true);
 
 	if (StrLen > 0)

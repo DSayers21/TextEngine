@@ -37,6 +37,8 @@ void MainGame::StartGame()
 {
 	if(m_CurrentLocation == nullptr)
 		m_CurrentLocation = m_Game.GetFirstLocation();
+
+	m_Output->DrawImage(m_Game.GetImage(), TxtEgn::ALIGN::CENTER);
 	GameLoop();
 }
 
@@ -258,7 +260,16 @@ bool MainGame::GameLoop()
 				}
 				case 20:								//Battle Command
 				{
-					m_BattleField.Encounter(m_Output, &m_Player, m_CurrentLocation->FindEnemy(m_Input->ParseIntoSentence(CurCommand, 1)));
+					if (CurCommand.size() > 1)
+					{
+						Enemies* Find = m_CurrentLocation->FindEnemy(m_Input->ParseIntoSentence(CurCommand, 1));
+						if(Find != nullptr)
+							m_BattleField.Encounter(m_Output, &m_Player, Find);
+						else
+							m_Output->WriteSlow("<C7>You look around but do not notice anything by that name in the area.", true);
+					}
+					else
+						m_Output->WriteSlow("<C12>You need to enter the name of what you want to battle", true);
 					break;
 				}
 			}

@@ -26,12 +26,15 @@ public:
 
 	Location* FindLocation(std::string LocName);
 
+	std::string GetImage() { return m_Image; }
+
 private:
 	void CreateFolder(std::string Path);
 
 	std::vector<Location*> m_Locations;
 
 	std::string m_GameName;
+	std::string m_Image = "BLANK";
 
 	TxtEgn::InputControl m_Input;
 	SaveLoadControl m_SandL;

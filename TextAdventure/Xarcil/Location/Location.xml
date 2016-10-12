@@ -25,6 +25,10 @@
 				<Direction>WEST</Direction>
 				<NextLocation>Location2</NextLocation>
 			</Exit1>
+			<Exit2>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location11</NextLocation>
+			</Exit2>
 		</Exits>
 	</Location1>
 	<Location2>
@@ -41,14 +45,96 @@
 		</Exits>
 	</Location2>
 	<Location3>
-		<LocPath>Xarcil/Location/Location2</LocPath>
+		<LocPath>Xarcil/Location/Location3</LocPath>
 		<Exits>
 			<Exit0>
 				<Direction>EAST</Direction>
 				<NextLocation>Location2</NextLocation>
 			</Exit0>
 		</Exits>
-	</Location2>
+	</Location3>
+	<Location4>
+		<LocPath>Xarcil/Location/Location4</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>WEST</Direction>
+				<NextLocation>Location5</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location14</NextLocation>
+			</Exit1>
+		</Exits>
+	</Location4>
+	<Location5>
+		<LocPath>Xarcil/Location/Location5</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>EAST</Direction>
+				<NextLocation>Location4</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>WEST</Direction>
+				<NextLocation>Location6</NextLocation>
+			</Exit1>
+		</Exits>
+	</Location5>
+	<Location6>
+		<LocPath>Xarcil/Location/Location6</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>EAST</Direction>
+				<NextLocation>Location5</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>WEST</Direction>
+				<NextLocation>Location7</NextLocation>
+			</Exit1>
+			<Exit2>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location16</NextLocation>
+			</Exit2>
+		</Exits>
+	</Location6>
+	<Location7>
+		<LocPath>Xarcil/Location/Location7</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>WEST</Direction>
+				<NextLocation>Location8</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>EAST</Direction>
+				<NextLocation>Location6</NextLocation>
+			</Exit1>
+			<Exit2>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location17</NextLocation>
+			</Exit2>
+		</Exits>
+	</Location7>
+	<Location8>
+		<LocPath>Xarcil/Location/Location8</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>EAST</Direction>
+				<NextLocation>Location7</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location18</NextLocation>
+			</Exit1>
+		</Exits>
+	</Location8>
+	<Location9>
+		<LocPath>Xarcil/Location/Location9</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location19</NextLocation>
+			</Exit0>
+		</Exits>
+	</Location9>
 	<Location10>
 		<LocPath>Xarcil/Location/Location10</LocPath>
 		<Exits>
@@ -56,6 +142,14 @@
 				<Direction>SOUTH</Direction>
 				<NextLocation>Location0</NextLocation>
 			</Exit0>
+			<Exit1>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location20</NextLocation>
+			</Exit1>
+			<Exit2>
+				<Direction>WEST</Direction>
+				<NextLocation>Location11</NextLocation>
+			</Exit2>
 		</Exits>
 	</Location10>
 </Locations>

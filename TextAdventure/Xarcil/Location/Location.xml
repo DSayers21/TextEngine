@@ -152,4 +152,25 @@
 			</Exit2>
 		</Exits>
 	</Location10>
+	<Location11>
+		<LocPath>Xarcil/Location/Location11</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>SOUTH</Direction>
+				<NextLocation>Location1</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location21</NextLocation>
+			</Exit1>
+			<Exit2>
+				<Direction>WEST</Direction>
+				<NextLocation>Location12</NextLocation>
+			</Exit2>
+			<Exit3>
+				<Direction>EAST</Direction>
+				<NextLocation>Location10</NextLocation>
+			</Exit3>
+		</Exits>
+	</Location11>
 </Locations>

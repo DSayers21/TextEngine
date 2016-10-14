@@ -1,7 +1,7 @@
-﻿Build started 14/10/2016 18:47:20.
+﻿Build started 14/10/2016 20:20:23.
      1>Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Player.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Battle.cpp DialogTree.cpp GameWorld.cpp Location.cpp MainGame.cpp NPC.cpp Object.cpp Player.cpp main.cpp
          Player.cpp
      1>f:\user\documents\github\textengine\textadventure\player.cpp(85): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\player.cpp(97): warning C4018: '<': signed/unsigned mismatch
@@ -22,6 +22,46 @@
                  [
                      _Ty=Item
                  ]
+         MainGame.cpp
+     1>f:\user\documents\github\textengine\textadventure\maingame.cpp(116): warning C4018: '<': signed/unsigned mismatch
+         Location.cpp
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(125): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(134): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(144): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(153): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\location.cpp(162): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(71): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(76): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Item>(std::vector<Item,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Item
+                 ]
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(90): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(97): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Object>(std::vector<Object *,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Object *
+                 ]
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(30): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(121): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Item>(boost::property_tree::ptree *,std::vector<Item,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Item
+                 ]
+     1>f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(51): warning C4018: '<': signed/unsigned mismatch
+         f:\user\documents\github\textengine\textadventure\location.cpp(149): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Object>(boost::property_tree::ptree *,std::vector<Object *,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+                 with
+                 [
+                     _Ty=Object *
+                 ]
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         main.cpp
+         Object.cpp
+         NPC.cpp
+         GameWorld.cpp
+         DialogTree.cpp
+         Battle.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.lib" /MACHINE:X86 Debug\TextAdventure.res
          Debug\Battle.obj
@@ -43,4 +83,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.33
+Time Elapsed 00:00:08.06

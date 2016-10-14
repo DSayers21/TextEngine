@@ -26,6 +26,7 @@ Item::Item(const Item& other)
 	m_ItmDesc = other.m_ItmDesc;
 	m_ItmValue = other.m_ItmValue;
 	m_Stackable = other.m_Stackable;
+	m_Image = other.m_Image;
 }
 
 Item Item::operator=(const Item& other)
@@ -34,7 +35,7 @@ Item Item::operator=(const Item& other)
 	m_ItmDesc = other.m_ItmDesc;
 	m_ItmValue = other.m_ItmValue;
 	m_Stackable = other.m_Stackable;
-
+	m_Image = other.m_Image;
 	return *this;
 }
 
@@ -47,6 +48,8 @@ void Item::Load(std::string FilePath)
 	m_ItmDesc = Tree.get<std::string>("ItmDesc");
 	m_ItmValue = Tree.get<float>("ItmValue");
 	m_Stackable = Tree.get<bool>("ItmStack");
+	m_Image = Tree.get<std::string>("Image");
+
 }
 
 void Item::Save(std::string FilePath)
@@ -58,6 +61,7 @@ void Item::Save(std::string FilePath)
 	Tree.put("ItmDesc", m_ItmDesc);
 	Tree.put("ItmValue", m_ItmValue);
 	Tree.put("ItmStack", m_Stackable);
+	Tree.put("Image", m_Image);
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath), Tree);
 }

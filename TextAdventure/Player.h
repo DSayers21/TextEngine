@@ -58,6 +58,10 @@ public:
 	double Roll4d6();
 	double Player::WeaponAttack(Weapon, Enemies*);
 	std::string BuildPath(std::string FilePath);
+
+	bool InspectAll(TxtEgn::COutput* Output, std::string Compare);
+	bool InspectItems(TxtEgn::COutput* Output, std::string Compare);
+	bool InspectWeapons(TxtEgn::COutput* Output, std::string Compare);
 private:
 	std::string m_PlyrName = "BLANK";
 	std::vector<Item> m_PlyrItems;

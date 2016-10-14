@@ -21,11 +21,11 @@ MainGame::MainGame(std::string FilePath, bool NewPlayer, TxtEgn::InputControl* I
 	{
 		//LoadPlayer
 		m_Player.Load(FilePath);
-		//Get Current Location
-		boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath + "/CurLoc");
-		std::string CurrentLoc = Tree.get<std::string>("CurrentLocation");
-		m_CurrentLocation = m_Game.FindLocation(CurrentLoc);
 	}
+	//Get Current Location
+	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath + "/CurLoc");
+	std::string CurrentLoc = Tree.get<std::string>("CurrentLocation");
+	m_CurrentLocation = m_Game.FindLocation(CurrentLoc);
 }
 
 MainGame::~MainGame()

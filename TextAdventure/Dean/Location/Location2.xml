@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LocName>Cloud City</LocName>
+<LocDesc>a busseling city center full of people all going about their business.</LocDesc>
+<LocImage/>
+<Items/>
+<Enemies/>
+<Weapons/>
+<Objects/>
+<NPCs>
+	<NPC0>
+		<NPCPath>Dean/NPC/CityMerchant</NPCPath>
+	</NPC0>
+</NPCs>

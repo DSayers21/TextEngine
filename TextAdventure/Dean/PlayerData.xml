@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PlrName>Dean</PlrName>
+<PlrLevel>1</PlrLevel>
+<PlrGold>100</PlrGold>
+<Items>
+	<Item0>
+		<ItemPath>Dean/Item/TestItem</ItemPath>
+	</Item0>
+</Items>
+<StatBlock>Dean/StatBlocks/Dean</StatBlock>
+<ActiveWeapon>Dean/Weapon/ReplicaDagger</ActiveWeapon>

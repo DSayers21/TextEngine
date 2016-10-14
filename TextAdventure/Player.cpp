@@ -233,3 +233,41 @@ void Player::UpdateHP(StatBlock a)
 	else
 		m_HP = (m_Level * 10) + a.GetCONMod();
 }
+
+bool Player::InspectAll(TxtEgn::COutput* Output, std::string Compare)
+{
+	if (InspectItems(Output, Compare))
+		return true;
+	if (InspectWeapons(Output, Compare))
+		return true;
+	return false;
+}
+
+bool Player::InspectItems(TxtEgn::COutput* Output, std::string Compare)
+{
+	int Size = static_cast<int>(m_PlyrItems.size());
+	if (m_PlyrItems.size() != 0)
+	{
+		for (int i = 0; i < Size; i++)
+		{
+			if (m_Input.CompareStrings(m_PlyrItems[i].GetItemName(), Compare))
+			{
+				Output->WriteSlow("<C7>You see " + m_PlyrItems[i].GetItemName() + ", it appears to be " + m_PlyrItems[i].GetItemDesc(), true);
+				if (m_PlyrItems[i].HasImage())
+					Output->DrawImage(m_PlyrItems[i].GetImage(), TxtEgn::ALIGN::CENTER);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool Player::InspectWeapons(TxtEgn::COutput * Output, std::string Compare)
+{
+	if (m_Input.CompareStrings(m_Equipped.GetItemName(), Compare))
+	{
+		Output->WriteSlow("<C7>You see " + m_Equipped.GetItemName() + ", it appears to be " + m_Equipped.GetItemDesc(), true);
+		return true;
+	}
+	return false;
+}

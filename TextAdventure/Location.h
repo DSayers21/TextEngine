@@ -70,7 +70,7 @@ public:
 
 	void PickUpItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName);
 
-	void InspectAll(TxtEgn::COutput* Output, std::string Compare);
+	bool InspectAll(TxtEgn::COutput* Output, std::string Compare);
 	bool InspectItems(TxtEgn::COutput* Output, std::string Compare);
 	bool InspectWeapons(TxtEgn::COutput* Output, std::string Compare);
 	bool InspectObjects(TxtEgn::COutput* Output, std::string Compare);

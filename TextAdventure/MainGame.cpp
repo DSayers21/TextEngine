@@ -228,7 +228,18 @@ bool MainGame::GameLoop()
 				case 17:								//Inspect Item
 				{
 					if (CurCommand.size() > 1)
-						m_CurrentLocation->InspectAll(m_Output, m_Input->ParseIntoSentence(CurCommand, 1));
+					{
+						bool Found = false;
+						//Inspect Current Location
+						Found = m_CurrentLocation->InspectAll(m_Output, m_Input->ParseIntoSentence(CurCommand, 1));
+						//Inspect BackPack
+						if (!Found)
+							Found = m_Player.InspectAll(m_Output, m_Input->ParseIntoSentence(CurCommand, 1));
+						//Nothing Found
+						if (!Found)
+							m_Output->WriteSlow("<C12>Could not find " + m_Input->ParseIntoSentence(CurCommand, 1)
+								+ " in the current area", true);
+					}
 					else
 						m_Output->WriteSlow("<C12>You need to enter a item to inspect", true);
 					break;

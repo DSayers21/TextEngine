@@ -321,15 +321,15 @@ void Location::PickUpItem(TxtEgn::COutput* Output, Player* Plr, std::string Item
 	Output->WriteSlow("<C12>There is no item of that name in the area.", true);
 }
 
-void Location::InspectAll(TxtEgn::COutput* Output, std::string Compare)
+bool Location::InspectAll(TxtEgn::COutput* Output, std::string Compare)
 {
 	if (InspectItems(Output, Compare))
-		return;
+		return true;
 	if (InspectObjects(Output, Compare))
-		return;
+		return true;
 	if (InspectNPCs(Output, Compare))
-		return;
-	Output->WriteSlow("<C12>Could not find " + Compare + " in the current area", true);
+		return true;
+	return false;
 }
 
 bool Location::InspectItems(TxtEgn::COutput* Output, std::string Compare)

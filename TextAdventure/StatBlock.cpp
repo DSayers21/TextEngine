@@ -27,76 +27,6 @@ StatBlock::~StatBlock()
 {
 }
 
-double StatBlock::GetSTR()
-{
-	return STR;
-}
-
-void StatBlock::SetSTR(double val)
-{
-	STR = val;
-}
-
-double StatBlock::GetDEX()
-{
-	return DEX;
-}
-
-void StatBlock::SetDEX(double val)
-{
-	DEX = val;
-}
-
-double StatBlock::GetCON()
-{
-	return CON;
-}
-
-void StatBlock::SetCON(double val)
-{
-	CON = val;
-}
-
-double StatBlock::GetINT()
-{
-	return INT;
-}
-
-void StatBlock::SetINT(double val)
-{
-	INT = val;
-}
-
-double StatBlock::GetWIS()
-{
-	return WIS;
-}
-
-void StatBlock::SetWIS(double val)
-{
-	WIS = val;
-}
-
-double StatBlock::GetCHA()
-{
-	return CHA;
-}
-
-void StatBlock::SetCHA(double val)
-{
-	CHA = val;
-}
-
-int StatBlock::GetProf()
-{
-	return proficiency;
-}
-
-void StatBlock::SetProf(int val)
-{
-	proficiency = val;
-}
-
 double StatBlock::CalcModifier(double val)
 {
 	if (val == 1)
@@ -133,36 +63,6 @@ double StatBlock::CalcModifier(double val)
 		return 10;
 }
 
-double StatBlock::GetSTRMod()
-{
-	return STR_mod;
-}
-
-double StatBlock::GetDEXMod()
-{
-	return DEX_mod;
-}
-
-double StatBlock::GetCONMod()
-{
-	return CON_mod;
-}
-
-double StatBlock::GetINTMod()
-{
-	return INT_mod;
-}
-
-double StatBlock::GetWISMod()
-{
-	return WIS_mod;
-}
-
-double StatBlock::GetCHAMod()
-{
-	return CHA_mod;
-}
-
 void StatBlock::BuffStat(std::string stat_name, double multiplier)
 {
 	if (stat_name == "STR")
@@ -195,16 +95,7 @@ void StatBlock::DeBuffStat(std::string stat_name, double multiplier)
 		CHA *= multiplier;
 }
 
-double StatBlock::GetMultiplier()
-{
-	return temp_multiplier;
-}
-
-void StatBlock::SetMultiplier(double val)
-{
-	temp_multiplier = val;
-}
-
+//Save and Load Stat Block
 void StatBlock::Save(std::string FilePath, std::string Name)
 {
 	//Create Main Tree and Nodes tree

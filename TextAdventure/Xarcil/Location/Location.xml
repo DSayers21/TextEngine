@@ -309,4 +309,52 @@
 			</Exit2>
 		</Exits>
 	</Location19>
+	<Location20>
+		<LocPath>Xarcil/Location/Location20</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>NORTH</Direction>
+				<NextLocation>Location30</NextLocation>
+			</Exit0>
+		</Exits>
+	</Location20>
+	<Location21>
+		<LocPath>Xarcil/Location/Location21</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>SOUTH</Direction>
+				<NextLocation>11</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>WEST</Direction>
+				<NextLocation>22</NextLocation>
+			</Exit1>
+		</Exits>
+	</Location21>
+	<Location22>
+		<LocPath>Xarcil/Location/Location22</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>EAST</Direction>
+				<NextLocation>Location21</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>WEST</Direction>
+				<NextLocation>Location23</NextLocation>
+			</Exit1>
+		</Exits>
+	</Location22>
+	<Location23>
+		<LocPath>Xarcil/Location/Location23</LocPath>
+		<Exits>
+			<Exit0>
+				<Direction>EAST</Direction>
+				<NextLocation>Location22</NextLocation>
+			</Exit0>
+			<Exit1>
+				<Direction>SOUTH</Direction>
+				<NextLocation>Location13</NextLocation>
+			</Exit1>
+		</Exits>
+	</Location23>
 </Locations>

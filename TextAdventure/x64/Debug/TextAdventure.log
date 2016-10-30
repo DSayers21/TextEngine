@@ -1,19 +1,27 @@
 ﻿  main.cpp
-d:\documents\github\textengine\textadventure\main.cpp(1): fatal error C1083: Cannot open include file: 'TextEngine/ConsoleProp.h': No such file or directory
-  SaveLoadControl.cpp
-d:\documents\github\textengine\textadventure\saveloadcontrol.h(2): fatal error C1083: Cannot open include file: 'boost/property_tree/ptree.hpp': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\main.cpp(1): fatal error C1083: Cannot open include file: 'TextEngine/ConsoleProp.h': No such file or directory
+  Weapon.cpp
+c:\users\dean\desktop\textenginer\textadventure\item.h(3): fatal error C1083: Cannot open include file: 'TextEngine/InOutDataManager.h': No such file or directory
+  StatBlock.cpp
+c:\users\dean\desktop\textenginer\textadventure\statblock.h(3): fatal error C1083: Cannot open include file: 'boost/property_tree/ptree.hpp': No such file or directory
   Player.cpp
-d:\documents\github\textengine\textadventure\player.h(4): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\player.h(5): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
   Object.cpp
-d:\documents\github\textengine\textadventure\object.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\object.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
   NPC.cpp
-d:\documents\github\textengine\textadventure\npc.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\npc.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+  MainGame.cpp
+c:\users\dean\desktop\textenginer\textadventure\gameworld.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
   Location.cpp
-d:\documents\github\textengine\textadventure\location.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\location.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
   Item.cpp
-d:\documents\github\textengine\textadventure\item.h(3): fatal error C1083: Cannot open include file: 'TextEngine/InOutDataManager.h': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\item.h(3): fatal error C1083: Cannot open include file: 'TextEngine/InOutDataManager.h': No such file or directory
   GameWorld.cpp
-d:\documents\github\textengine\textadventure\gameworld.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\gameworld.h(2): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
+  Enemies.cpp
+c:\users\dean\desktop\textenginer\textadventure\item.h(3): fatal error C1083: Cannot open include file: 'TextEngine/InOutDataManager.h': No such file or directory
   DialogTree.cpp
-d:\documents\github\textengine\textadventure\dialogtree.h(5): fatal error C1083: Cannot open include file: 'TextEngine/COutput.h': No such file or directory
+c:\users\dean\desktop\textenginer\textadventure\dialogtree.h(5): fatal error C1083: Cannot open include file: 'TextEngine/COutput.h': No such file or directory
+  Battle.cpp
+c:\users\dean\desktop\textenginer\textadventure\player.h(5): fatal error C1083: Cannot open include file: 'TextEngine/InputControl.h': No such file or directory
   Generating Code...

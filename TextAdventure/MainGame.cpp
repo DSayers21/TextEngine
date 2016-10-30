@@ -5,6 +5,7 @@ MainGame::MainGame(std::string FilePath, bool NewPlayer, TxtEgn::InputControl* I
 	m_Cache = Cache;
 	m_Input = Input;
 	m_Console = Console;
+
 	m_Output = Output;
 
 	m_Game.Load(FilePath);
@@ -143,7 +144,7 @@ bool MainGame::GameLoop()
 						if (RowComplete)
 						{
 							RowComplete = false;
-							m_Output->DisplayColumns3(Left, Middle, Right, 112);
+							m_Output->DisplayColumns3(Left, Middle, Right, 112, TxtEgn::ALIGN::CENTER);
 							Left = "", Right = "", Middle = "";
 						}
 					}

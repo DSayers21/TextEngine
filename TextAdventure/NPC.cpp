@@ -139,15 +139,15 @@ void NPC::StartShop(TxtEgn::COutput* Output, Player* Plr)
 		else
 			PurchaseItem(Output, Plr, Temp);
 	}
-	Output->DisplayColumnsConvo(m_Name, m_Goodbye, 159, 249);
+	Output->DisplayColumnsConvo(m_Name, m_Goodbye, 159, 249, TxtEgn::ALIGN::LEFT);
 }
 
 void NPC::DisplayShop(TxtEgn::COutput* Output)
 {
 	int Size = static_cast<int>(m_ShopItems.size());
-	Output->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 224);
+	Output->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 224, TxtEgn::ALIGN::CENTER);
 	for (int i = 0; i < Size; i++)
-		Output->DisplayColumns3(m_ShopItems[i].GetItemName(), m_ShopItems[i].GetItemDesc(), "$" + std::to_string(m_ShopItems[i].GetItemValue()), 14);
+		Output->DisplayColumns3(m_ShopItems[i].GetItemName(), m_ShopItems[i].GetItemDesc(), "$" + std::to_string(m_ShopItems[i].GetItemValue()), 14, TxtEgn::ALIGN::LEFT);
 }
 
 void NPC::PurchaseItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemName)
@@ -186,7 +186,7 @@ void NPC::StarGiveItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemNam
 			{
 				if (m_WantedItems[i].m_Amount > 0)
 				{
-					Output->DisplayColumnsConvo(m_Name, m_WantedItems[i].m_GiveMessage, 159, 249);
+					Output->DisplayColumnsConvo(m_Name, m_WantedItems[i].m_GiveMessage, 159, 249, TxtEgn::ALIGN::LEFT);
 					Output->WriteLine(8, '-');
 					Output->WriteSlow("<C12> You gave " + m_Name + ", " + Plr->GetItem(ItemName).GetItemName(), true);
 					Output->WriteSlow("<C11> You received " + m_WantedItems[i].m_giveItem.GetItemName(), true);
@@ -196,17 +196,17 @@ void NPC::StarGiveItem(TxtEgn::COutput* Output, Player* Plr, std::string ItemNam
 					Output->WriteLine(7, '=');
 				}
 				else
-					Output->DisplayColumnsConvo(m_Name, "I dont need that anymore", 159, 249);
+					Output->DisplayColumnsConvo(m_Name, "I dont need that anymore", 159, 249, TxtEgn::ALIGN::LEFT);
 			}
 			else
 			{
 				if (m_WantedItems[i].m_Amount > 0)
-					Output->DisplayColumnsConvo(m_Name, "I am looking for that, but you dont appear to have it!", 159, 249);
+					Output->DisplayColumnsConvo(m_Name, "I am looking for that, but you dont appear to have it!", 159, 249, TxtEgn::ALIGN::LEFT);
 				else
-					Output->DisplayColumnsConvo(m_Name, "I dont need that anymore", 159, 249);
+					Output->DisplayColumnsConvo(m_Name, "I dont need that anymore", 159, 249, TxtEgn::ALIGN::LEFT);
 			}
 		}
 	}
 	if (!FoundAny)
-		Output->DisplayColumnsConvo(m_Name, "What would I want with that!", 159, 249);
+		Output->DisplayColumnsConvo(m_Name, "What would I want with that!", 159, 249, TxtEgn::ALIGN::LEFT);
 }

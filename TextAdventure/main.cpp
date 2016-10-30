@@ -27,9 +27,11 @@ int main()
 	TxtEgn::ImageCache Cache(_Input);
 	TxtEgn::ConsoleProp _Console;
 	_Console.Init(10, 16, 0, 0, 7, true);
+
 	TxtEgn::COutput _Output(_Console, _Input, Cache);
 	//Load Font
 	LoadFont(&_Output);
+
 	//Menu Stuff
 	std::vector<std::string> MenuCommand = { "New", "Load", "Settings", "Help", "Quit" };
 	bool Running = true;

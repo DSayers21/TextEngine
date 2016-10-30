@@ -44,7 +44,7 @@ int DialogTree::PerformDialog(NPC* Person, TxtEgn::COutput* Output, Player* Plr,
 	while (isConvo)
 	{
 		//Start Convo
-		Output->DisplayColumnsConvo(Person->GetName(), CurrentNode->m_Text, 159, 249);
+		Output->DisplayColumnsConvo(Person->GetName(), CurrentNode->m_Text, 159, 249, TxtEgn::ALIGN::LEFT);
 
 		//Set Colours for options
 		Output->GetConsole()->SetColour(7);
@@ -86,7 +86,7 @@ int DialogTree::PerformDialog(NPC* Person, TxtEgn::COutput* Output, Player* Plr,
 		{
 			if (m_Input.FindString(GoodByeMes, Input))
 			{
-				Output->DisplayColumnsConvo(Person->GetName(), Person->GetGoodBye(), 159, 249);
+				Output->DisplayColumnsConvo(Person->GetName(), Person->GetGoodBye(), 159, 249, TxtEgn::ALIGN::LEFT);
 				isConvo = false;
 				return LastCode;
 			}

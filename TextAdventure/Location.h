@@ -56,12 +56,12 @@ public:
 	void AddEnemy(Enemies Enmy);
 
 	void DisplayAll(TxtEgn::COutput* Output);
-	void DisplayExits(TxtEgn::COutput* Output);
-	void DisplayItems(TxtEgn::COutput* Output);
-	void DisplayWeapons(TxtEgn::COutput* Output);
-	void DisplayObjects(TxtEgn::COutput* Output);
-	void DisplayNPCs(TxtEgn::COutput* Output);
-	void DisplayEnemies(TxtEgn::COutput* Output);
+	std::string DisplayExits(TxtEgn::COutput* Output);
+	std::string DisplayItems(TxtEgn::COutput* Output);
+	std::string DisplayWeapons(TxtEgn::COutput* Output);
+	std::string DisplayObjects(TxtEgn::COutput* Output);
+	std::string DisplayNPCs(TxtEgn::COutput* Output);
+	std::string DisplayEnemies(TxtEgn::COutput* Output);
 
 	Location* GoCommand(std::string Direction);
 

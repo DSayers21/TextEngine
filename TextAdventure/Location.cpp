@@ -202,26 +202,32 @@ void Location::DisplayAll(TxtEgn::COutput* Output)
 
 	Output->WriteLine(7, '-');
 
-	Output->WriteSlow("<C7>You are in " + m_Name + ". You see a " + m_Desc, false);
-	DisplayNPCs(Output);
-	DisplayItems(Output);
-	DisplayWeapons(Output);
-	DisplayObjects(Output);
-	DisplayExits(Output);
+	std::string Disp = "";
+	Disp = "<C7>You are in " + m_Name + ". You see a " + m_Desc + " ";
+	
+	Disp += DisplayNPCs(Output);
+	Disp += DisplayItems(Output);
+	Disp += DisplayWeapons(Output);
+	Disp += DisplayObjects(Output);
+	Disp += DisplayExits(Output);
 
+	Output->WriteSlow(Disp, false);
 	Output->GetConsole()->EndLine();
 
 	Output->WriteLine(7, '-');
 }
 
-void Location::DisplayExits(TxtEgn::COutput* Output)
+std::string Location::DisplayExits(TxtEgn::COutput* Output)
 {
+	std::string Return = "";
 	for (std::map<std::string, Location*>::iterator ii = m_Exits.begin(); ii != m_Exits.end(); ++ii)
-		Output->WriteSlow("<C7>You can travel " + (*ii).first + " to go to " + (*ii).second->GetName() + ".", false);
+		Return = Return + "<C7>You can travel " + (*ii).first + " to go to " + (*ii).second->GetName() + ". ";
+	return Return;
 }
 
-void Location::DisplayItems(TxtEgn::COutput* Output)
+std::string Location::DisplayItems(TxtEgn::COutput* Output)
 {
+	std::string Return = "";
 	int Count = 0;
 	int Size = static_cast<int>(m_Items.size());
 	if (Size != 0)
@@ -229,15 +235,17 @@ void Location::DisplayItems(TxtEgn::COutput* Output)
 		for (int i = 0; i < Size; i++)
 		{
 			if (i == 0)
-				Output->WriteSlow("<C7>You see " + m_Items[i].GetItemName() + ".", false);
+				Return = Return + "<C7>You see " + m_Items[i].GetItemName() + ". ";
 			else
-				Output->WriteSlow("<C7>You then see " + m_Items[i].GetItemName() + ".", false);
+				Return = Return + "<C7>You then see " + m_Items[i].GetItemName() + ". ";
 		}
 	}
+	return Return;
 }
 
-void Location::DisplayWeapons(TxtEgn::COutput* Output)
+std::string Location::DisplayWeapons(TxtEgn::COutput* Output)
 {
+	std::string Return = "";
 	int Count = 0;
 	int Size = static_cast<int>(m_Weapons.size());
 	if (Size != 0)
@@ -245,47 +253,55 @@ void Location::DisplayWeapons(TxtEgn::COutput* Output)
 		for (int i = 0; i < Size; i++)
 		{
 			if (i == 0)
-				Output->WriteSlow("<C7>You see " + m_Weapons[i].GetItemName() + ".", false);
+				Return = Return + "<C7>You see " + m_Weapons[i].GetItemName() + ". ";
 			else
-				Output->WriteSlow("<C7>You then see " + m_Weapons[i].GetItemName() + ".", false);
+				Return = Return + "<C7>You then see " + m_Weapons[i].GetItemName() + ". ";
 		}
 	}
+	return Return;
 }
 
-void Location::DisplayObjects(TxtEgn::COutput* Output)
+std::string Location::DisplayObjects(TxtEgn::COutput* Output)
 {
+	std::string Return = "";
 	int Count = 0;
 	int Size = static_cast<int>(m_Objects.size());
 
 	for (int i = 0; i < Size; i++)
 	{
 		if (i == 0)
-			Output->WriteSlow("<C7>You see " + m_Objects[i]->GetName() + ".", false);
+			Return = Return + "<C7>You see " + m_Objects[i]->GetName() + ". ";
 		else
-			Output->WriteSlow("<C7>You then see " + m_Objects[i]->GetName() + ".", false);
+			Return = Return + "<C7>You then see " + m_Objects[i]->GetName() + ". ";
 	}
+	return Return;
 }
 
-void Location::DisplayNPCs(TxtEgn::COutput* Output)
+std::string Location::DisplayNPCs(TxtEgn::COutput* Output)
 {
+	std::string Return = "";
 	int Count = 0;
 	int Size = static_cast<int>(m_NPC.size());
 	if (Size != 0)
 	{
 		for (int i = 0; i < Size; i++)
-			Output->WriteSlow("<C7>You see a " + m_NPC[i]->GetGender() + " you overhear that their name is " + m_NPC[i]->GetName() + ".", false);
+			Return = Return + "<C7>You see a " + m_NPC[i]->GetGender() + 
+			" you overhear that their name is " + m_NPC[i]->GetName() + ". ";
 	}
+	return Return;
 }
 
-void Location::DisplayEnemies(TxtEgn::COutput * Output)
+std::string Location::DisplayEnemies(TxtEgn::COutput * Output)
 {
+	std::string Return = "";
 	int Count = 0;
 	int Size = static_cast<int>(m_Enemies.size());
 	if (Size != 0)
 	{
 		for (int i = 0; i < Size; i++)
-			Output->WriteSlow("<C7>You see a creature, It appears to be a " + m_Enemies[i].getName() + ".", false);
+			Return = Return + "<C7>You see a creature, It appears to be a " + m_Enemies[i].getName() + ". ";
 	}
+	return Return;
 }
 
 Location* Location::GoCommand(std::string Direction)

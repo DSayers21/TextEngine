@@ -3,6 +3,7 @@
 #include "Location.h"
 #include <TextEngine/InputControl.h>
 #include "Dice.h"
+#include <TextEngine/COutput.h>
 
 Player::Player()
 {
@@ -151,8 +152,9 @@ void Player::Display(TxtEgn::COutput* Out)
 	
 	Out->WriteSlow("<C7>|- Equiped Weapon", true);
 
-	Out->DisplayColumns3("Weapon Name:", "Weapon Description:", "Weapon Damage Dice:", 208);
-	Out->DisplayColumns3(m_Equipped.GetItemName(), m_Equipped.GetItemDesc(), std::to_string(m_Equipped.getDmgDice()), 13);
+	Out->DisplayColumns3("Weapon Name:", "Weapon Description:", "Weapon Damage Dice:", 208, TxtEgn::ALIGN::CENTER);
+	Out->DisplayColumns3(m_Equipped.GetItemName(), m_Equipped.GetItemDesc(), 
+		std::to_string(m_Equipped.getDmgDice()), 13, TxtEgn::ALIGN::LEFT);
 	
 	
 	Out->WriteSlow("<C7>|- You currently have: <C14>$" + std::to_string(m_Gold), true);
@@ -161,11 +163,11 @@ void Player::Display(TxtEgn::COutput* Out)
 	{
 		Out->WriteSlow("<C7>|- Currently in your inventory you have; ", true);
 
-		Out->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 208);
+		Out->DisplayColumns3("Item Name:", "Item Description:", "Item Price($):", 208, TxtEgn::ALIGN::CENTER);
 
 		for (int i = 0; i < StrLen; i++)
 		{
-			Out->DisplayColumns3(m_PlyrItems[i].GetItemName(), m_PlyrItems[i].GetItemDesc(), "$" + std::to_string(m_PlyrItems[i].GetItemValue()), 13);
+			Out->DisplayColumns3(m_PlyrItems[i].GetItemName(), m_PlyrItems[i].GetItemDesc(), "$" + std::to_string(m_PlyrItems[i].GetItemValue()), 13, TxtEgn::ALIGN::LEFT);
 			Out->GetConsole()->SetCurrentY(Out->GetConsole()->wherey());
 			Out->GetConsole()->Update();
 		}

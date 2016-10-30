@@ -15,7 +15,7 @@ namespace TxtEgn
 		_Console(&Console),
 		_Input(&Input),
 		_Cache(&Cache),
-		_Speed(0)
+		_Speed(30)
 	{
 
 	}
@@ -34,61 +34,148 @@ namespace TxtEgn
 		_Console->SetColour(_Console->GetPrevColour());
 	}
 
-	void COutput::WriteSlow(std::string DisplayString, bool EndL)
+	void COutput::WriteSlow(std::string DisplayString, bool EndL, ALIGN Align, bool CompLine)
 	{
-		std::vector<std::string> TempVec = _Input->ParseIntoWords(DisplayString);
-		int Size = static_cast<int>(TempVec.size());
+		std::vector<std::string> Words = _Input->ParseIntoWords(DisplayString);
+
+		std::string CurrentLine = "";
+		std::vector<std::string> Lines;
+		std::vector<int> LineLengths;
+
+		int StartX = _Console->wherex();
+		int CurX = StartX;
+		int ConStrtX = _Console->GetStartX();
+
+
+		int Size = static_cast<int>(Words.size());
+
+		int CurSize = 0;
+
 		for (int i = 0; i < Size; i++)
 		{
-			if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 2))
+			//Test for Colour Tags
+			if ((Words[i].size() > 3) && (TestTag(Words[i]) == 2))
 			{
-				_Console->RevertColour();
+				CurrentLine += Words[i];
 			}
-			else if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 1))
-				SetTag(TempVec[i]);
+			else if ((Words[i].size() > 3) && (TestTag(Words[i]) == 1))
+				CurrentLine += Words[i];
 			else
 			{
-				TypeString(TempVec[i], false);
-				if ((i != Size) && (_Console->wherex() != _Console->GetConsoleWidth()) && (_Console->wherex() != 0) && (_Console->wherex() != _Console->GetConsoleWidth() - 1))
-					std::cout << " ";
+				if (CurSize + CurX + Words[i].size() < _Console->GetConsoleWidth())
+				{
+					CurrentLine += Words[i];
+					CurSize += Words[i].size();
+					if (CurSize + CurX != _Console->GetConsoleWidth())
+					{
+						CurrentLine += " ";
+						CurSize++;
+					}	
+				}
+				else
+				{
+					std::cout << "";
+					CurX = 0;
+					LineLengths.push_back(CurSize);
+					CurSize = 0;
+					_Console->gotoxy(ConStrtX, _Console->wherey());
+					Lines.push_back(CurrentLine);
+
+					CurrentLine = "";
+					CurrentLine += Words[i];
+					CurSize += Words[i].size();
+					if (CurSize + CurX != _Console->GetConsoleWidth())
+					{
+						CurrentLine += " ";
+						CurSize++;
+					}
+				}
 			}
 		}
-		if (EndL)
+		if((StartX > _Console->GetStartX())&&(StartX < _Console->GetConsoleWidth()))
+			_Console->gotoxy(StartX, _Console->wherey());
+		else
+			_Console->gotoxy(_Console->GetStartX(), _Console->wherey());
+		Lines.push_back(CurrentLine);
+		LineLengths.push_back(CurSize);
+		CurrentLine = "";
+		DisplayAll(Lines, LineLengths, EndL, Align, CompLine);
+	}
+
+	void COutput::DisplayAll(std::vector<std::string> Lines, std::vector<int> LineLengths, bool EndL, ALIGN Align, bool CompLine)
+	{
+		for (int i = 0; i < Lines.size(); i++)
 		{
-			if(_Console->wherex() != _Console->GetStartX())
-				_Console->EndLine();
+			if ((i == Lines.size() - 1) && (!EndL))
+				DisplayLine(Lines[i], LineLengths[i], Align, CompLine);
+			else
+			{
+				DisplayLine(Lines[i], LineLengths[i], Align, CompLine);
+				//Go to new line and update console
+				GetConsole()->EndLine();
+				GetConsole()->Update();
+			}
 		}
 	}
 
-	void COutput::WriteSlow(std::string DisplayString, bool EndL, bool CompLine)
+	int COutput::AlignString(int Buffer, ALIGN Align)
 	{
-		std::vector<std::string> TempVec = _Input->ParseIntoWords(DisplayString);
-		int Size = static_cast<int>(TempVec.size());
+		switch (Align)
+		{
+			case ALIGN::LEFT:
+			{
+				return 0;
+			}
+			case ALIGN::RIGHT:
+			{
+				return Buffer;
+			}
+			case ALIGN::CENTER:
+			{
+				return Buffer/2;
+			}
+		}
+	}
+
+	void COutput::DisplayLine(std::string Line, int LineLength, ALIGN Align, bool CompLine)
+	{
+		std::vector<std::string> Words = _Input->ParseIntoWords(Line);
+		std::string PrevStrings = "";
+
+		//Align
+		int Buff = _Console->GetConsoleWidth() - LineLength;
+		Buff = AlignString(Buff, Align);
+		for (int i = 0; i < Buff; i++)
+			std::cout << " ";
+
+		int Size = static_cast<int>(Words.size());
+
 		for (int i = 0; i < Size; i++)
 		{
-			if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 2))
-			{
+			//Test for Colour Tags
+			if ((Words[i].size() > 3) && (TestTag(Words[i]) == 2))
 				_Console->RevertColour();
-			}
-			else if ((TempVec[i].size() > 3) && (TestTag(TempVec[i]) == 1))
-				SetTag(TempVec[i]);
+			else if ((Words[i].size() > 3) && (TestTag(Words[i]) == 1))
+				SetTag(Words[i]);
 			else
 			{
-				TypeString(TempVec[i], CompLine);
-				if ((i != Size) && (_Console->wherex() != _Console->GetConsoleWidth()) && (_Console->wherex() != 0) && (_Console->wherex() != _Console->GetConsoleWidth() - 1))
+				TypeString(Words[i]);
+				if (_Console->wherex() != _Console->GetConsoleWidth())
 					std::cout << " ";
 			}
 		}
-
 		if (CompLine)
 			CompleteLine(' ');
+	}
 
-		if (EndL)
+	void COutput::TypeString(std::string DisplayString)
+	{
+		int Size = static_cast<int>(DisplayString.size());
+
+		for (int i = 0; i < Size; i++)
 		{
-			if (_Console->wherex() != _Console->GetStartX())
-			{
-				_Console->EndLine();
-			}
+			std::cout << DisplayString[i];
+			std::this_thread::sleep_for(std::chrono::milliseconds(_Speed));
 		}
 	}
 
@@ -146,6 +233,16 @@ namespace TxtEgn
 			_Console->gotoxy(_Console->GetStartX(), i);
 		}
 		_Console->gotoxy(_Console->GetStartX(), _Console->GetStartY());
+	}
+
+	void COutput::ConsoleClearLine()
+	{
+		int PrevX = _Console->wherex();
+		_Console->gotoxy(_Console->GetStartX(), _Console->wherey());
+
+		WriteLine(0, ' ');
+		_Console->gotoxy(PrevX, _Console->wherey()-1);
+		_Console->RevertColour();
 	}
 
 	std::vector<std::string> COutput::GetInput(std::string Question)
@@ -214,26 +311,6 @@ namespace TxtEgn
 		return false;
 	}
 
-	void COutput::TypeString(std::string DisplayString, bool CompLine)
-	{
-		int Size = static_cast<int>(DisplayString.size());
-		int InitX = _Console->wherex();
-		if (InitX + Size > _Console->GetConsoleWidth())
-		{
-			CompleteLine(' ');
-			_Console->EndLine();
-		}
-
-		for (int i = 0; i < Size; i++)
-		{
-			std::cout << DisplayString[i];
-			std::this_thread::sleep_for(std::chrono::milliseconds(_Speed));
-		}
-	
-		if (InitX + Size == _Console->GetConsoleWidth())
-			_Console->EndLine();
-	}
-
 	int COutput::TestTag(std::string StringPassed)
 	{
 		char First, Second, Last, Special;
@@ -278,7 +355,7 @@ namespace TxtEgn
 		}
 	}
 
-	void COutput::DisplayColumns3(std::string Left, std::string Middle, std::string Right, int Colour)
+	void COutput::DisplayColumns3(std::string Left, std::string Middle, std::string Right, int Colour, ALIGN Align)
 	{
 		//Init LowestY
 		int LowestY = 0;
@@ -289,15 +366,15 @@ namespace TxtEgn
 		TxtEgn::COutput _OutputMiddle = CreateColumn(ColWidth, ColWidth, Colour);
 		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth+2, ColWidth*2, Colour);
 		//Output information to columns whilst updating lowestY
-		LowestY = _OutputLeft.DisplayColumn(Left, LowestY);
-		LowestY = _OutputMiddle.DisplayColumn(Middle, LowestY);
-		LowestY = _OutputRight.DisplayColumn(Right, LowestY);
+		LowestY = _OutputLeft.DisplayColumn(Left, LowestY, Align);
+		LowestY = _OutputMiddle.DisplayColumn(Middle, LowestY, Align);
+		LowestY = _OutputRight.DisplayColumn(Right, LowestY, Align);
 		//Set main console to the lowest position
 		GetConsole()->SetCurrentY(++LowestY);
 		GetConsole()->Update();
 	}
 
-	void COutput::DisplayColumnsConvo(std::string Left, std::string Right, int ColourA, int ColourB)
+	void COutput::DisplayColumnsConvo(std::string Left, std::string Right, int ColourA, int ColourB, ALIGN Align)
 	{
 		//Init LowestY
 		int LowestY = 0;
@@ -307,8 +384,8 @@ namespace TxtEgn
 		TxtEgn::COutput _OutputLeft = CreateColumn(ColWidth, 0, ColourA);
 		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth*2+1, ColWidth, ColourB);
 		//Output information to columns whilst updating lowestY
-		LowestY = _OutputLeft.DisplayColumn(Left, LowestY);
-		LowestY = _OutputRight.DisplayColumn(Right, LowestY);
+		LowestY = _OutputLeft.DisplayColumn(Left, LowestY, Align);
+		LowestY = _OutputRight.DisplayColumn(Right, LowestY, Align);
 		//Set main console to the lowest position
 		GetConsole()->SetCurrentY(++LowestY);
 		GetConsole()->Update();
@@ -325,10 +402,10 @@ namespace TxtEgn
 		return _OutputCol;
 	}
 
-	int COutput::DisplayColumn(std::string Statement, int LowestY)
+	int COutput::DisplayColumn(std::string Statement, int LowestY, ALIGN Align)
 	{
 		GetConsole()->Update();
-		WriteSlow(Statement, false, true);
+		WriteSlow(Statement, false, Align, true);
 		//CompleteLine(' ');
 		return (GetConsole()->wherey() > LowestY) ? GetConsole()->GetCurrentY() : LowestY;
 	}

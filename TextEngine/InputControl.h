@@ -1,5 +1,6 @@
 #pragma once
 
+//Includes
 #include <string>
 #include <vector>
 #include "ConsoleProp.h"
@@ -9,16 +10,17 @@ namespace TxtEgn
 	class InputControl
 	{
 	public:
+		//Constructor
 		InputControl();
-
+		//Destructor
 		~InputControl();
-
+		//Checks if vector of strings contains a string, returns its position in that vector
 		int ContainsString(std::vector<std::string> CheckVec, std::string ReadLine);
-
+		//Splits a string up by "spaces"
 		std::vector<std::string> ParseIntoWords(std::string Current);
-
+		//Gets user input from the console, returns as a vector of strings
 		std::vector<std::string> AskInput();
-
+		//Takes a vector of strings and combines the strings in it after a start positon in the vector
 		std::string ParseIntoSentence(std::vector<std::string> TempVector, int Start);
 
 		int HowManyLetters(char input[100]);

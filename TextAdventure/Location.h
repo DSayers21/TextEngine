@@ -55,6 +55,8 @@ public:
 	void AddNPC(NPC *npc);
 	void AddEnemy(Enemies Enmy);
 
+	void RemEnemy();	//removes enemy if it falls to 0HP after the end of a battle
+
 	void DisplayAll(TxtEgn::COutput* Output);
 	std::string DisplayExits(TxtEgn::COutput* Output);
 	std::string DisplayItems(TxtEgn::COutput* Output);

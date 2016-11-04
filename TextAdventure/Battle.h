@@ -26,7 +26,7 @@ private:
 public:
 	Battle();
 	Battle(Player* PC, Enemies mob);
-	void Encounter(TxtEgn::COutput* Out, Player*, Enemies*);
+	bool Encounter(TxtEgn::COutput* Out, Player*, Enemies*);
 	~Battle();
 };
 

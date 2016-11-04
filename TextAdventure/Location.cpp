@@ -196,6 +196,11 @@ void Location::AddEnemy(Enemies Enmy)
 	m_Enemies.push_back(Enmy);
 }
 
+void Location::RemEnemy()
+{
+	m_Enemies.pop_back();
+}
+
 void Location::DisplayAll(TxtEgn::COutput* Output)
 {
 	Output->GetConsole()->Update();

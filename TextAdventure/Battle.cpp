@@ -14,7 +14,7 @@ Battle::~Battle()
 {
 }
 
-void Battle::Encounter(TxtEgn::COutput* Out, Player* PC, Enemies* mob)
+bool Battle::Encounter(TxtEgn::COutput* Out, Player* PC, Enemies* mob)
 {
 	Dice D20(20);
 	int Temp1, Temp2;
@@ -193,10 +193,13 @@ void Battle::Encounter(TxtEgn::COutput* Out, Player* PC, Enemies* mob)
 		PC->AddEXP(mob->getEXP());
 		PC->SetPlyrGold(PC->GetPlyrGold() + mob->getGold());
 		PC->AddItem(mob->getLoot());
+
+		return true;
 	}
 	else
 	{
 		Out->WriteSlow("You have fallen!", true);
+		return false;
 		//player dies
 	}
 }

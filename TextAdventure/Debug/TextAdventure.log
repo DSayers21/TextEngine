@@ -1,7 +1,21 @@
-﻿Build started 30/10/2016 22:58:26.
+﻿Build started 04/11/2016 12:30:46.
      1>Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Battle.cpp DialogTree.cpp Dice.cpp Enemies.cpp GameWorld.cpp Item.cpp Location.cpp MainGame.cpp NPC.cpp Object.cpp Player.cpp StatBlock.cpp Weapon.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Battle.cpp DialogTree.cpp Enemies.cpp GameWorld.cpp Item.cpp Location.cpp MainGame.cpp NPC.cpp Object.cpp Player.cpp StatBlock.cpp Weapon.cpp main.cpp
+         Battle.cpp
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(82): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(155): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(156): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+     1>f:\user\documents\github\textengine\textadventure\battle.cpp(171): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+         Generating Code...
+         Compiling...
          main.cpp
          Weapon.cpp
      1>f:\user\documents\github\textengine\textadventure\weapon.cpp(16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -113,7 +127,6 @@
      1>f:\user\documents\github\textengine\textadventure\gameworld.cpp(196): warning C4018: '<': signed/unsigned mismatch
          Enemies.cpp
      1>f:\user\documents\github\textengine\textadventure\enemies.cpp(85): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-         Dice.cpp
          DialogTree.cpp
      1>f:\user\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
      1>f:\user\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
@@ -138,23 +151,9 @@
                  [
                      _Ty=Item
                  ]
-         Battle.cpp
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(82): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(155): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(156): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textadventure\battle.cpp(171): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
          Generating Code...
      1>f:\user\documents\github\textengine\textadventure\dialogtree.cpp(106): warning C4715: 'DialogTree::PerformDialog': not all control paths return a value
      1>f:\user\documents\github\textengine\textadventure\statblock.cpp(64): warning C4715: 'StatBlock::CalcModifier': not all control paths return a value
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"Debug\TextAdventure.res" TextAdventure.rc 
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.lib" /MACHINE:X86 Debug\TextAdventure.res
          Debug\Battle.obj
@@ -176,4 +175,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:32.70
+Time Elapsed 00:00:32.28

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Mimic</name>
+<current_HP>58</current_HP>
+<max_HP>58</max_HP>
+<AC>12</AC>
+
+<LootExp>450</LootExp>
+<LootGold>1000</LootGold>
+<LootReward>Xarcil\/Item\/BundleOfWondrousGoods</LootReward>
+
+<StatBlock>Xarcil\/StatBlocks\/MimicStatBlock</StatBlock>
+
+<dice_sides>8</dice_sides>
+<CR>2</CR>

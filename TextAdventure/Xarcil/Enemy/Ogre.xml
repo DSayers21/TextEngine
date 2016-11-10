@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Ogre</name>
+<current_HP>59</current_HP>
+<max_HP>59</max_HP>
+<AC>11</AC>
+
+<LootExp>450</LootExp>
+<LootGold>5</LootGold>
+<LootReward>Xarcil\/Item\/PocketLint</LootReward>
+
+<StatBlock>Xarcil\/StatBlocks\/OgreStatBlock</StatBlock>
+
+<dice_sides>16</dice_sides>
+<CR>2</CR>

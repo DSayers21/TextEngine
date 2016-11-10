@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<STR>20</STR>
+<DEX>12</DEX>
+<CON>17</CON>
+<INT>3</INT>
+<WIS>12</WIS>
+<CHA>7</CHA>
+
+<STR_mod>5</STR_mod>
+<DEX_mod>1</DEX_mod>
+<CON_mod>3</CON_mod>
+<INT_mod>-4</INT_mod>
+<WIS_mod>1</WIS_mod>
+<CHA_mod>-2</CHA_mod>
+
+<proficiency>2</proficiency>

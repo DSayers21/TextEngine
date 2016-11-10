@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Gray Ooze</name>
+<current_HP>22</current_HP>
+<max_HP>22</max_HP>
+<AC>8</AC>
+
+<LootExp>100</LootExp>
+<LootGold>0</LootGold>
+<LootReward>Xarcil\/Item\/GrayJellyCube</LootReward>
+
+<StatBlock>Xarcil\/StatBlocks\/GrayOozeStatBlock</StatBlock>
+
+<dice_sides>6</dice_sides>
+<CR>0.5</CR>

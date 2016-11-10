@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Owlbear</name>
+<current_HP>59</current_HP>
+<max_HP>59</max_HP>
+<AC>13</AC>
+
+<LootExp>700</LootExp>
+<LootGold>0</LootGold>
+<LootReward>Xarcil\/Item\/RaggedFeather</LootReward>
+
+<StatBlock>Xarcil\/StatBlocks\/OwlbearStatBlock</StatBlock>
+
+<dice_sides>16</dice_sides>
+<CR>3</CR>

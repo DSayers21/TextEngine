@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Gelatinous Cube</name>
+<current_HP>84</current_HP>
+<max_HP>84</max_HP>
+<AC>6</AC>
+
+<LootExp>450</LootExp>
+<LootGold>300</LootGold>
+<LootReward>Xarcil\/Item\/GelatinousChunk</LootReward>
+
+<StatBlock>Xarcil\/StatBlocks\/GelatinousCubeStatBlock</StatBlock>
+
+<dice_sides>18</dice_sides>
+<CR>2</CR>

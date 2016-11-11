@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Goblin</name>
+<current_HP>7</current_HP>
+<max_HP>7</max_HP>
+<AC>15</AC>
+<LootExp>50</LootExp>
+<LootGold>50</LootGold>
+<LootReward>Xarcil\/Item\/GoblinTooth</LootReward>
+<StatBlock>Xarcil\/StatBlocks\/GoblinStatBlock</StatBlock>
+<dice_sides>6</dice_sides>
+<CR>0.25</CR>

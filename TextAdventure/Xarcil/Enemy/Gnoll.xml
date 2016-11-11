@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Gnoll</name>
+<current_HP>22</current_HP>
+<max_HP>22</max_HP>
+<AC>15</AC>
+<LootExp>100</LootExp>
+<LootGold>50</LootGold>
+<LootReward>Xarcil\/Item\/GnollClaw</LootReward>
+<StatBlock>Xarcil\/StatBlocks\/GnollStatBlock</StatBlock>
+<dice_sides>8</dice_sides>
+<CR>0.5</CR>

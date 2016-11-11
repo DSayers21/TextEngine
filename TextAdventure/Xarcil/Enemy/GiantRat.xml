@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Giant Rat</name>
+<current_HP>7</current_HP>
+<max_HP>7</max_HP>
+<AC>12</AC>
+<LootExp>25</LootExp>
+<LootGold>2</LootGold>
+<LootReward>Xarcil\/Item\/PersistentFlea</LootReward>
+<StatBlock>Xarcil\/StatBlocks\/GiantRatStatBlock</StatBlock>
+<dice_sides>4</dice_sides>
+<CR>0.125</CR>

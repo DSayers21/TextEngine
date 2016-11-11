@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Air Elemental</name>
+<current_HP>90</current_HP>
+<max_HP>90</max_HP>
+<AC>15</AC>
+<LootExp>1800</LootExp>
+<LootGold>200</LootGold>
+<LootReward>Xarcil\/Item\/BreezeShard</LootReward>
+<StatBlock>Xarcil\/StatBlocks\/AirElementalStatBlock</StatBlock>
+<dice_sides>32</dice_sides>
+<CR>5</CR>

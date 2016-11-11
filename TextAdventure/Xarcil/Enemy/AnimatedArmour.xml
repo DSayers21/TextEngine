@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<name>Animated Armour</name>
+<current_HP>33</current_HP>
+<max_HP>33</max_HP>
+<AC>18</AC>
+<LootExp>200</LootExp>
+<LootGold>200</LootGold>
+<LootReward>Xarcil\/Item\/BreezeShard</LootReward>
+<StatBlock>Xarcil\/StatBlocks\/AirElementalStatBlock</StatBlock>
+<dice_sides>12</dice_sides>
+<CR>1</CR>

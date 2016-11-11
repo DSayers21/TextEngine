@@ -185,7 +185,7 @@ void DialogTree::Load(std::string FilePath)
 			int ReturnCode = OptionNum.get<int>("ReturnCode");
 			std::string NextNode = OptionNum.get<std::string>("NextNode");
 			//Find which node is to be pointed to
-			int Position = m_Input.SearchVector(_DialogName, NextNode);
+			int Position = m_Input.FindStringPosition(_DialogName, NextNode);
 
 			//std::cout << i << " |:| " << Position << std::endl;
 			//Add option to the _DialogNodes node 

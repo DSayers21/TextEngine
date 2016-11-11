@@ -7,11 +7,13 @@
 
 namespace TxtEgn
 {
+	//Constructor
 	InputControl::InputControl()
 	{
 
 	}
 
+	//Destructor 
 	InputControl::~InputControl()
 	{
 
@@ -20,6 +22,7 @@ namespace TxtEgn
 	//Function to find where string is in vector
 	int InputControl::ContainsString(std::vector<std::string> CheckVec, std::string ReadLine)
 	{
+		//Get size of vector
 		int VecSizeTemp = static_cast<int>(CheckVec.size());
 		//Loop through all of the elements in the vector
 		for (int i = 0; i < VecSizeTemp; i++)
@@ -28,7 +31,7 @@ namespace TxtEgn
 			if (CompareStrings(ReadLine, CheckVec[i]))
 				return i;
 		}//end for
-		 //Return -1 to show that the vector does not contain the string
+		//Return -1 to show that the vector does not contain the string
 		return -1;
 	}
 
@@ -106,64 +109,86 @@ namespace TxtEgn
 	//Function to Check if a string is a number
 	bool InputControl::is_number(std::string& s)
 	{
+		//Get size of vector
 		int Size = static_cast<int>(s.size());
+		//Loop through each character of string
 		for (int i = 0; i < Size; i++)
-			if (!isdigit(s[i]))
+			if (!isdigit(s[i])) //Check if the current character in string is not a digit
 				return 0;
 		return 1;
 	}
 
+	//Combines two strings together into one string
 	std::string InputControl::CombineString(std::string StringA, std::string StringB)
 	{
+		//Create empty string
 		std::string Temp = "";
+		//Set first pass to true
 		bool FirstPass = true;
+		//Get size of string A
 		int Size = static_cast<int>(StringA.size());
+		//Create two characters to hold current values
 		char Temp1, Temp2;
+		//Check if both strings are the same size
 		if (StringA.size() == StringB.size())
 		{
+			//Loop through every character in the string
 			for (int i = 0; i < Size; i++)
 			{
+				//Set current characters to temp variables
 				Temp1 = StringA[i];
 				Temp2 = StringB[i];
+				//Check if which of the temps are equal and not equal to ' ' and then add in the correct order
 				if ((Temp1 == ' ') && (Temp2 != ' '))
 					Temp = Temp + Temp2;
 				else if ((Temp1 != ' ') && (Temp2 == ' '))
 					Temp = Temp + Temp1;
 				else
-					Temp = Temp + ' ';
+					Temp = Temp + ' ';   //Else just add space
 			}
 		}
+		//Return
 		return Temp;
 	}
 
+	//Finds if a string is located within an vector of strings
 	bool InputControl::FindString(std::vector<std::string> CheckVec, std::string Search)
 	{
+		//Get size of vector of strings
 		int VecSizeTemp = static_cast<int>(CheckVec.size());
+		//Loop through all the strings in the vector
 		for (int i = 0; i < VecSizeTemp; i++)
 		{
+			//Check if the current string in the vector is the same as the search criteria
 			if (CompareStrings(Search, CheckVec[i]))
 				return 1;
 		}
 		return 0;
 	}
 
+	//Finds the string position in a vector of strings
 	int InputControl::FindStringPosition(std::vector<std::string> CheckVec, std::string Search)
 	{
+		//Get size of vector of strings
 		int VecSizeTemp = static_cast<int>(CheckVec.size());
+		//Loop through all the strings in the vector
 		for (int i = 0; i < VecSizeTemp; i++)
 		{
+			//Check if the current string in the vector is the same as the search criteria
 			if (CompareStrings(Search, CheckVec[i]))
-				return i;
+				return i;	//Return current element
 		}
 		return -1;
 	}
 
+	//Compares two strings to see if they are the same
 	bool InputControl::CompareStrings(std::string One, std::string Two)
 	{
+		//Transform both strings One and Two to being all lowercase
 		std::transform(One.begin(), One.end(), One.begin(), ::tolower);
 		std::transform(Two.begin(), Two.end(), Two.begin(), ::tolower);
-		bool Respond = (One == Two) ? 1 : 0;
-		return Respond;
+		//Check if the two strings are the same then return true or false
+		return  (One == Two) ? true : false;
 	}
 
 	//Function for Centering string on console
@@ -212,53 +237,50 @@ namespace TxtEgn
 		return Original;
 	}
 
+	//Parses a string into a vector of ints by comma
 	std::vector<int> InputControl::ParseByComma(std::string InputS)
 	{
+		//Create return vector
 		std::vector<int> vect;
+		//Create string to hold current level in return vector
 		std::string rem = "";
-
+		//Loop through all the characters in the input string
 		for (int i = 0; i < InputS.size(); i++)
 		{
+			//Check if the current character is a space
 			if ((InputS[i] == ' '))
-			{
-			}
+			{}
 			else
 			{
+				//Check if the current character is a comma
 				if ((InputS[i] == ','))
 				{
-					//std::cout << "[" << rem << "]";
+					//If true then push the current level to the vector and converit it to an int
 					vect.push_back(stoi(rem));
+					//Set back to "" to be repopulated by the next number inbetween commas
 					rem = "";
 				}
 				else
-				{
-					rem += InputS[i];
-				}
+					rem += InputS[i]; //Add the current character to the back of rem
 			}
 		}
+		//Return the populated vector of ints
 		return vect;
 	}
 
-	int InputControl::SearchVector(std::vector<std::string> Vector, std::string Find)
-	{
-		for (int i = 0; i < Vector.size(); i++)
-		{
-			if (Vector[i] == Find)
-				return i;
-		}
-		return -1;
-	}
-
+	//Removes all the spaces in a string
 	std::string InputControl::RemoveSpaces(std::string Original)
 	{
+		//Create return vector
 		std::string Out = "";
+		//Loop through each character in the input string
 		for (int i = 0; i < Original.size(); i++)
 		{
+			//If the current character is not a space then add it to the output string
 			if (Original[i] != ' ')
-			{
 				Out += Original[i];
-			}
 		}
+		//Return the vector
 		return Out;
 	}
 }

@@ -42,8 +42,6 @@ namespace TxtEgn
 		std::string AlignRight(char Letter, int Buffer, std::string Original);
 		//Parses a input string by commas and returns a vector of ints
 		std::vector<int> ParseByComma(std::string InputS);
-		//Searches a vector of strings to find the location of a string within a vector of strings
-		int SearchVector(std::vector<std::string> Vector, std::string Find);
 		//Removes all spaces in a string
 		std::string RemoveSpaces(std::string Original);
 	};

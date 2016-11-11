@@ -75,7 +75,7 @@ void GameWorld::Load(std::string FilePath)
 			std::string NextLocation = ExitNum.get<std::string>("NextLocation");
 
 			//Find which node is to be pointed to
-			int Position = m_Input.SearchVector(_LocationNames, NextLocation);
+			int Position = m_Input.FindStringPosition(_LocationNames, NextLocation);
 			//std::cout << i << " |:| " << Position << std::endl;
 			//Add option to the _DialogNodes node 
 

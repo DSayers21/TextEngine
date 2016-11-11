@@ -1,33 +1,10 @@
-﻿Build started 04/11/2016 12:30:25.
+﻿Build started 11/11/2016 17:32:51.
      1>Project "F:\User\Documents\GitHub\TextEngine\TextEngine\TextEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\TextEngine.pdb" /Gd /TP /analyze- /errorReport:prompt COutput.cpp ConsoleProp.cpp ConsoleZone.cpp ImageCache.cpp InOutDataManager.cpp InputControl.cpp Pixel.cpp
-         COutput.cpp
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(65): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(107): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(281): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(363): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(382): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-         Generating Code...
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(138): warning C4715: 'TxtEgn::COutput::AlignString': not all control paths return a value
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(356): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
-     1>f:\user\documents\github\textengine\textengine\coutput.cpp(422): warning C4715: 'TxtEgn::COutput::MenuOptions': not all control paths return a value
-         Compiling...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files\Boost\boost_1_61_0" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\TextEngine.pdb" /Gd /TP /analyze- /errorReport:prompt InputControl.cpp
          InputControl.cpp
-     1>f:\user\documents\github\textengine\textengine\inputcontrol.cpp(220): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textengine\inputcontrol.cpp(244): warning C4018: '<': signed/unsigned mismatch
-     1>f:\user\documents\github\textengine\textengine\inputcontrol.cpp(255): warning C4018: '<': signed/unsigned mismatch
-         ImageCache.cpp
-     1>f:\user\documents\github\textengine\textengine\imagecache.cpp(81): warning C4018: '<': signed/unsigned mismatch
-         ConsoleZone.cpp
-         ConsoleProp.cpp
-         Generating Code...
-     1>f:\user\documents\github\textengine\textengine\imagecache.cpp(76): warning C4715: 'TxtEgn::ImageCache::LoadImageW': not all control paths return a value
-         Compiling...
-         InOutDataManager.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Pixel.cpp
+     1>f:\user\documents\github\textengine\textengine\inputcontrol.cpp(248): warning C4018: '<': signed/unsigned mismatch
+     1>f:\user\documents\github\textengine\textengine\inputcontrol.cpp(277): warning C4018: '<': signed/unsigned mismatch
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\Lib.exe /OUT:"F:\User\Documents\GitHub\TextEngine\Debug\TextEngine.lib" /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" /NOLOGO Debug\ConsoleProp.obj
          Debug\ConsoleZone.obj
@@ -41,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:20.53
+Time Elapsed 00:00:01.55

@@ -366,8 +366,8 @@ namespace TxtEgn
 		int ColWidth = _Console->FindConsoleWidth()*0.333;
 		//Create Columns to output information to
 		TxtEgn::COutput _OutputLeft = CreateColumn(ColWidth, 0, Colour);
-		TxtEgn::COutput _OutputMiddle = CreateColumn(ColWidth, ColWidth, Colour);
-		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth+2, ColWidth*2, Colour);
+		TxtEgn::COutput _OutputMiddle = CreateColumn(ColWidth-1, ColWidth+1, Colour);
+		TxtEgn::COutput _OutputRight = CreateColumn((ColWidth+2)-1, (ColWidth*2)+1, Colour);
 		//Output information to columns whilst updating lowestY
 		LowestY = _OutputLeft.DisplayColumn(Left, LowestY, Align);
 		LowestY = _OutputMiddle.DisplayColumn(Middle, LowestY, Align);
@@ -385,7 +385,7 @@ namespace TxtEgn
 		int ColWidth = _Console->FindConsoleWidth()*0.333;
 		//Create Columns to output information to
 		TxtEgn::COutput _OutputLeft = CreateColumn(ColWidth, 0, ColourA);
-		TxtEgn::COutput _OutputRight = CreateColumn(ColWidth*2+1, ColWidth, ColourB);
+		TxtEgn::COutput _OutputRight = CreateColumn((ColWidth*2)+1, ColWidth+1, ColourB);
 		//Output information to columns whilst updating lowestY
 		LowestY = _OutputLeft.DisplayColumn(Left, LowestY, Align);
 		LowestY = _OutputRight.DisplayColumn(Right, LowestY, Align);

@@ -251,7 +251,10 @@ namespace TxtEgn
 		unsigned short PTmpCol = _Console->GetPrevColour();
 		WriteSlow("<C10>" + Question + " <C7> " + ">", false);
 		std::vector<std::string> InData = _Input->AskInput();
-		_Console->EndLine();
+
+		_Console->SetCurrentY(_Console->wherey());
+		_Console->Update();
+
 		_Console->SetColour(TmpCol);
 		_Console->SetPrevColour(PTmpCol);
 		return InData;

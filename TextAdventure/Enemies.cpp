@@ -101,6 +101,7 @@ void Enemies::Save(std::string FilePath)
 	Tree.put("dice_sides", dice_sides);
 	Tree.put("CR", CR);
 	//Item
+	Tree.put("LootReward", loot.reward.BuildPath(FilePath));
 	loot.reward.Save(FilePath);
 	
 	Tree.put("StatBlock", stats.BuildPath(FilePath, name));

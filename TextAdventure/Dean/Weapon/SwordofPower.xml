@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ItmName>Sword of Power</ItmName>
-<ItmDesc>The most powerful sword in the world</ItmDesc>
-<ItmValue>50000</ItmValue>
-<ItmStack>false</ItmStack>
-<weapon_strength>9000</weapon_strength>
-<weapon_durability>40</weapon_durability>
-<m_dmg_dice>4</m_dmg_dice>

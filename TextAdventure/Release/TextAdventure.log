@@ -1,45 +1,21 @@
-﻿Build started 08/10/2016 17:00:35.
-     1>Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\User\Documents\GitHub\TextEngine\Release\TextAdventure.exe" /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" TextEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"F:\User\Documents\GitHub\TextEngine\Release\TextAdventure.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\User\Documents\GitHub\TextEngine\Release\TextAdventure.lib" /MACHINE:X86 /SAFESEH Release\TextAdventure.res
-         Release\Battle.obj
-         Release\DialogTree.obj
-         Release\Dice.obj
-         Release\Enemies.obj
-         Release\GameWorld.obj
-         Release\Item.obj
-         Release\Location.obj
-         Release\main.obj
-         Release\MainGame.obj
-         Release\NPC.obj
-         Release\Object.obj
-         Release\Player.obj
-         Release\SaveLoadControl.obj
-         Release\StatBlock.obj
-         Release\Weapon.obj
-     1>TextEngine.lib(InOutDataManager.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
-     1>TextEngine.lib(InOutDataManager.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
-     1>TextEngine.lib(InOutDataManager.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
-     1>TextEngine.lib(COutput.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
-     1>TextEngine.lib(COutput.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
-     1>TextEngine.lib(InputControl.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
-     1>TextEngine.lib(InputControl.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
-     1>TextEngine.lib(ConsoleProp.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
-     1>TextEngine.lib(ConsoleProp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
-     1>TextEngine.lib(ImageCache.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
-     1>TextEngine.lib(ImageCache.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
-     1>LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
-     1>TextEngine.lib(InOutDataManager.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
-     1>TextEngine.lib(COutput.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
-     1>TextEngine.lib(InputControl.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
-     1>TextEngine.lib(ImageCache.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
-     1>TextEngine.lib(InOutDataManager.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
-     1>TextEngine.lib(COutput.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
-     1>TextEngine.lib(InputControl.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
-     1>TextEngine.lib(ImageCache.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
-     1>F:\User\Documents\GitHub\TextEngine\Release\TextAdventure.exe : fatal error LNK1120: 2 unresolved externals
-     1>Done Building Project "F:\User\Documents\GitHub\TextEngine\TextAdventure\TextAdventure.vcxproj" (Build target(s)) -- FAILED.
-
-Build FAILED.
-
-Time Elapsed 00:00:00.55
+﻿TextEngine.lib(InOutDataManager.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
+TextEngine.lib(InOutDataManager.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
+TextEngine.lib(InOutDataManager.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+TextEngine.lib(ConsoleProp.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
+TextEngine.lib(ConsoleProp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
+TextEngine.lib(COutput.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
+TextEngine.lib(COutput.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
+TextEngine.lib(InputControl.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
+TextEngine.lib(InputControl.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
+TextEngine.lib(ImageCache.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Battle.obj
+TextEngine.lib(ImageCache.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Battle.obj
+LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+TextEngine.lib(InOutDataManager.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
+TextEngine.lib(COutput.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
+TextEngine.lib(InputControl.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
+TextEngine.lib(ImageCache.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
+TextEngine.lib(InOutDataManager.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
+TextEngine.lib(COutput.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
+TextEngine.lib(InputControl.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
+TextEngine.lib(ImageCache.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
+C:\Users\Dean\Documents\GitHub\TextEngine\Release\TextAdventure.exe : fatal error LNK1120: 2 unresolved externals

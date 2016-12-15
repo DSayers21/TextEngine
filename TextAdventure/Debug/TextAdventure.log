@@ -1,4 +1,26 @@
-﻿  Enemies.cpp
-f:\user\documents\github\textengine\textadventure\enemies.cpp(85): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  TextAdventure.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
-  TextAdventure.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)
+﻿  Battle.cpp
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(82): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(155): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(156): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dean\documents\github\textengine\textadventure\battle.cpp(171): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  StatBlock.cpp
+  Player.cpp
+  Object.cpp
+  NPC.cpp
+  MainGame.cpp
+  Location.cpp
+  GameWorld.cpp
+  Enemies.cpp
+  DialogTree.cpp
+  TextAdventure.vcxproj -> C:\Users\Dean\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
+  TextAdventure.vcxproj -> C:\Users\Dean\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)

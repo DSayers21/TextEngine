@@ -1,10 +1,1 @@
-﻿  COutput.cpp
-f:\user\documents\github\textengine\textengine\coutput.cpp(65): warning C4018: '<': signed/unsigned mismatch
-f:\user\documents\github\textengine\textengine\coutput.cpp(107): warning C4018: '<': signed/unsigned mismatch
-f:\user\documents\github\textengine\textengine\coutput.cpp(284): warning C4018: '<': signed/unsigned mismatch
-f:\user\documents\github\textengine\textengine\coutput.cpp(366): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-f:\user\documents\github\textengine\textengine\coutput.cpp(385): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-f:\user\documents\github\textengine\textengine\coutput.cpp(138): warning C4715: 'TxtEgn::COutput::AlignString': not all control paths return a value
-f:\user\documents\github\textengine\textengine\coutput.cpp(359): warning C4715: 'TxtEgn::COutput::ImageAlign': not all control paths return a value
-f:\user\documents\github\textengine\textengine\coutput.cpp(425): warning C4715: 'TxtEgn::COutput::MenuOptions': not all control paths return a value
-  TextEngine.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextEngine.lib
+﻿  TextEngine.vcxproj -> C:\Users\Dean\Documents\GitHub\TextEngine\Debug\TextEngine.lib

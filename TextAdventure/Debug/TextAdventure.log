@@ -1,26 +1,86 @@
-﻿  Battle.cpp
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(62): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(82): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(109): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(155): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(156): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\dean\documents\github\textengine\textadventure\battle.cpp(171): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  GameWorld.cpp
+f:\user\documents\github\textengine\textadventure\dialogtree.h(33): warning C4018: '<': signed/unsigned mismatch
+f:\user\documents\github\textengine\textadventure\dialogtree.h(44): warning C4018: '<': signed/unsigned mismatch
+f:\user\documents\github\textengine\textadventure\gameworld.cpp(11): warning C4018: '<': signed/unsigned mismatch
+f:\user\documents\github\textengine\textadventure\gameworld.cpp(41): warning C4018: '<': signed/unsigned mismatch
+f:\user\documents\github\textengine\textadventure\gameworld.cpp(59): warning C4018: '<': signed/unsigned mismatch
+f:\user\documents\github\textengine\textadventure\gameworld.cpp(67): warning C4018: '<': signed/unsigned mismatch
+f:\user\documents\github\textengine\textadventure\gameworld.cpp(113): warning C4018: '<': signed/unsigned mismatch
+f:\user\documents\github\textengine\textadventure\gameworld.cpp(196): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  MainGame.cpp
+f:\user\documents\github\textengine\textadventure\maingame.cpp(117): warning C4018: '<': signed/unsigned mismatch
+  Location.cpp
+f:\user\documents\github\textengine\textadventure\location.h(99): warning C4018: '<': signed/unsigned mismatch
+  f:\user\documents\github\textengine\textadventure\location.cpp(93): note: see reference to function template instantiation 'void Location::SaveType<Item>(boost::property_tree::ptree &,std::vector<Item,std::allocator<_Ty>>,std::string,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Item
+          ]
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(54): note: see reference to class template instantiation 'boost::arg<9>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(53): note: see reference to class template instantiation 'boost::arg<8>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(52): note: see reference to class template instantiation 'boost::arg<7>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(51): note: see reference to class template instantiation 'boost::arg<6>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(50): note: see reference to class template instantiation 'boost::arg<5>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(49): note: see reference to class template instantiation 'boost::arg<4>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(48): note: see reference to class template instantiation 'boost::arg<3>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(47): note: see reference to class template instantiation 'boost::arg<2>' being compiled
+  f:\user\documents\github\textengine\packages\boost.1.62.0.0\lib\native\include\boost\bind\placeholders.hpp(46): note: see reference to class template instantiation 'boost::arg<1>' being compiled
+f:\user\documents\github\textengine\textadventure\location.h(112): warning C4018: '<': signed/unsigned mismatch
+  f:\user\documents\github\textengine\textadventure\location.cpp(99): note: see reference to function template instantiation 'void Location::SaveTypeP<Object>(boost::property_tree::ptree &,std::vector<Object *,std::allocator<_Ty>>,std::string,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Object *
+          ]
+f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(71): warning C4018: '<': signed/unsigned mismatch
+  f:\user\documents\github\textengine\textadventure\location.h(123): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Item>(std::vector<Item,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+          with
+          [
+              _Ty=Item
+          ]
+  f:\user\documents\github\textengine\textadventure\location.cpp(72): note: see reference to function template instantiation 'void Location::LoadType<Item>(boost::property_tree::ptree &,std::vector<Item,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Item
+          ]
+f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(90): warning C4018: '<': signed/unsigned mismatch
+  f:\user\documents\github\textengine\textadventure\location.h(123): note: see reference to function template instantiation 'void SaveLoadControl::SaveTreeToVector<Object>(std::vector<Object *,std::allocator<_Ty>> &,boost::property_tree::ptree &,std::string)' being compiled
+          with
+          [
+              _Ty=Object *
+          ]
+  f:\user\documents\github\textengine\textadventure\location.cpp(79): note: see reference to function template instantiation 'void Location::LoadType<Object*>(boost::property_tree::ptree &,std::vector<Object *,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Object *
+          ]
+f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(30): warning C4018: '<': signed/unsigned mismatch
+  f:\user\documents\github\textengine\textadventure\location.h(95): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Item>(boost::property_tree::ptree *,std::vector<Item,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Item
+          ]
+  f:\user\documents\github\textengine\textadventure\location.cpp(93): note: see reference to function template instantiation 'void Location::SaveType<Item>(boost::property_tree::ptree &,std::vector<Item,std::allocator<_Ty>>,std::string,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Item
+          ]
+f:\user\documents\github\textengine\textadventure\saveloadcontrol.h(51): warning C4018: '<': signed/unsigned mismatch
+  f:\user\documents\github\textengine\textadventure\location.h(108): note: see reference to function template instantiation 'void SaveLoadControl::SaveVecToTree<Object>(boost::property_tree::ptree *,std::vector<Object *,std::allocator<_Ty>> &,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Object *
+          ]
+  f:\user\documents\github\textengine\textadventure\location.cpp(99): note: see reference to function template instantiation 'void Location::SaveTypeP<Object>(boost::property_tree::ptree &,std::vector<Object *,std::allocator<_Ty>>,std::string,std::string,std::string)' being compiled
+          with
+          [
+              _Ty=Object *
+          ]
   Generating Code...
   Skipping... (no relevant changes detected)
   main.cpp
-  StatBlock.cpp
   Player.cpp
   Object.cpp
-  NPC.cpp
-  MainGame.cpp
-  Location.cpp
-  GameWorld.cpp
-  Enemies.cpp
-  DialogTree.cpp
-  TextAdventure.vcxproj -> C:\Users\Dean\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
-  TextAdventure.vcxproj -> C:\Users\Dean\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)
+  TextAdventure.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.exe
+  TextAdventure.vcxproj -> F:\User\Documents\GitHub\TextEngine\Debug\TextAdventure.pdb (Full PDB)

@@ -63,49 +63,23 @@ void Location::Load(std::string FilePath)
 {
 	//Create Main Tree and Nodes tree
 	boost::property_tree::ptree Tree = m_IOMan.LoadFile(FilePath);
-
+	//Load Name And Desc for location
 	m_Name = Tree.get<std::string>("LocName");
 	m_Desc = Tree.get<std::string>("LocDesc");
-
+	//Load Image
 	m_LocationImage = Tree.get<std::string>("LocImage");
-
 	/////////////////Items////////////////////////////////////
-	//Get Items child
-	boost::property_tree::ptree Items = Tree.get_child("Items");
-	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(m_Items, Items, "Item");
-	if (m_Items.size() > 0)
-		std::cout << "";
-
+	LoadType(Tree, m_Items, "Item", "Items");
 	/////////////////Enemy////////////////////////////////////
-	//Get Items child
-	boost::property_tree::ptree Enemy = Tree.get_child("Enemies");
-	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(m_Enemies, Enemy, "Enemy");
-
+	LoadType(Tree, m_Enemies, "Enemy", "Enemies");
 	/////////////////Weapons////////////////////////////////////
-	//Get Weapons child
-	Items = Tree.get_child("Weapons");
-	//Save Items from Tree into Vector
-	m_SandL.SaveTreeToVector(m_Weapons, Items, "Weapon");
-
+	LoadType(Tree, m_Weapons, "Weapon", "Weapons");
 	/////////////////Objects///////////////////////////////////
 	//Get Objects child
-	boost::property_tree::ptree Objects = Tree.get_child("Objects");
-
-	//Save Objects from Tree into Vector
-	m_SandL.SaveTreeToVector(m_Objects, Objects, "Object");
-
+	LoadType(Tree, m_Objects, "Object", "Objects");
 	/////////////////NPCs//////////////////////////////////////
-	//Get NPCs child
-	boost::property_tree::ptree NPCs = Tree.get_child("NPCs");
-	//Save NPCs from Tree into Vector
-	m_SandL.SaveTreeToVector(m_NPC, NPCs, "NPC");
-	if (NPCs.size() > 0)
-		std::cout << "";
-
+	LoadType(Tree, m_NPC, "NPC", "NPCs");
 }
-
 
 void Location::Save(std::string FilePath, std::string Num)
 {
@@ -115,53 +89,16 @@ void Location::Save(std::string FilePath, std::string Num)
 	Tree.put("LocName", m_Name);
 	Tree.put("LocDesc", m_Desc);
 	Tree.put("LocImage", m_LocationImage);
-
 	//Items////////////////////////////////////////////////
-	boost::property_tree::ptree Items;
-	m_SandL.SaveVecToTree(&Items, m_Items, FilePath, "Item");
-	//Add all the options to the current node
-	Tree.add_child("Items", Items);
-
-	for (int i = 0; i < m_Items.size(); i++)
-		m_Items[i].Save(FilePath);
-
+	SaveType(Tree, m_Items, FilePath, "Item", "Items");
 	//Enemys////////////////////////////////////////////////
-	boost::property_tree::ptree Enemys;
-	m_SandL.SaveVecToTree(&Enemys, m_Enemies, FilePath, "Enemy");
-	//Add all the options to the current node
-	Tree.add_child("Enemies", Enemys);
-
-	for (int i = 0; i < m_Enemies.size(); i++)
-		m_Enemies[i].Save(FilePath);
-
+	SaveType(Tree, m_Enemies, FilePath, "Enemy", "Enemies");
 	//Weapons////////////////////////////////////////////////
-	boost::property_tree::ptree Weapons;
-	
-	m_SandL.SaveVecToTree(&Weapons, m_Weapons, FilePath, "Weapon");
-	//Add all the options to the current node
-	Tree.add_child("Weapons", Weapons);
-
-	for (int i = 0; i < m_Weapons.size(); i++)
-		m_Weapons[i].Save(FilePath);
-
+	SaveType(Tree, m_Weapons, FilePath, "Weapon", "Weapons");
 	//Objects//////////////////////////////////////////////
-	boost::property_tree::ptree Objects;
-	m_SandL.SaveVecToTree(&Objects, m_Objects, FilePath, "Object");
-	//Add all the options to the current node
-	Tree.add_child("Objects", Objects);
-
-	for (int i = 0; i < m_Objects.size(); i++)
-		m_Objects[i]->Save(FilePath);
-
+	SaveTypeP(Tree, m_Objects, FilePath, "Object", "Objects");
 	//NPCs/////////////////////////////////////////////////
-	boost::property_tree::ptree NPCs;
-	m_SandL.SaveVecToTree(&NPCs, m_NPC, FilePath, "NPC");
-	//Add all the options to the current node
-	Tree.add_child("NPCs", NPCs);
-
-	for (int i = 0; i < m_NPC.size(); i++)
-		m_NPC[i]->Save(FilePath);
-
+	SaveTypeP(Tree, m_NPC, FilePath, "NPC", "NPCs");
 	//Save the tree to a readable format
 	m_IOMan.SaveFile(BuildPath(FilePath, Num), Tree);
 }

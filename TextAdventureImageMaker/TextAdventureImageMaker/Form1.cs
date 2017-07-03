@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -224,8 +225,35 @@ namespace TextAdventureImageMaker
                         Output = Output + ',' + dG_List[j, i].Value;
                 }
             }
-            MessageBox.Show(Output);
+            SaveFile(Output);
             //Console.WriteLine(Output);
+        }
+
+        private void SaveFile(string Save)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            // set a default file name
+            savefile.FileName = "unknown.txt";
+            // set filters - this can be done in properties as well
+            savefile.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.FileStream fs = (System.IO.FileStream)savefile.OpenFile();
+                //Create Byte array
+                Byte[] info = new UTF8Encoding(true).GetBytes("");
+                //Create byte array
+                byte[] newline = Encoding.ASCII.GetBytes(Environment.NewLine);
+
+                info = new UTF8Encoding(true).GetBytes(tb_Width.Text);
+                fs.Write(info, 0, info.Length);
+                fs.Write(newline, 0, newline.Length);
+                info = new UTF8Encoding(true).GetBytes(Save);
+                fs.Write(info, 0, info.Length);
+
+                //Closes the file stream
+                fs.Close();
+            }
         }
 
         private void b_black_Click(object sender, EventArgs e)
@@ -331,22 +359,61 @@ namespace TextAdventureImageMaker
 
         private void loadFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadFormat loadForm = new LoadFormat(this);
-            loadForm.Show();
+            //LoadFormat loadForm = new LoadFormat(this);
+            //loadForm.Show();
+            int counter = 0;
+            string line;
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //Set the title of the open file dialog
+            openFileDialog1.Title = "Open List File";
+            //Set the filter as to what the file can be opened as e.g. .txt
+            openFileDialog1.Filter = "List File|*.txt";
+            //Set the initial directory the open file dialog opens to
+            //penFileDialog1.InitialDirectory = @"C:\";
+            //If open file has been clicked on acceptable file in the open file dialog
+            string[] values = { };
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                // Read the file and display it line by line.
+                System.IO.StreamReader file = new System.IO.StreamReader(openFileDialog1.FileName);
+                while ((line = file.ReadLine()) != null)
+                {
+                    if (counter == 0)
+                    {
+                        tb_Width.Text = line;
+                    }
+                    if (counter == 1)
+                    {
+                        values = line.Split(',');
+                        for (int i = 0; i < values.Length; i++)
+                        {
+                            values[i] = values[i].Trim();
+                        }
+                    }
+                    counter++;
+                }
+                file.Close();
+            }
+            int Width = Convert.ToInt32(tb_Width.Text);
+            int Size = values.Length;
+            int Height = Size / Width;
+            tb_Height.Text = Convert.ToString(Height);
+            LoadFormatPub(values);
         }
         public DataGridView GetTable()
         {
             return dG_List;
         }
-        public void LoadFormatPub(int h, int w, string[] Sent)
+        public void LoadFormatPub(string[] Sent)
         {
             Refreshing = true;
             dG_List.Rows.Clear();
-            dG_List.ColumnCount = w;
+            dG_List.ColumnCount = Convert.ToInt32(tb_Width.Text);
             int Count = 0;
             foreach (DataGridViewColumn c in dG_List.Columns)
                 c.Width = 20;
-            for (int i = 0; i < h; i++)
+            for (int i = 0; i < Convert.ToInt32(tb_Height.Text); i++)
                 dG_List.Rows.Add();
 
             for (int i = 0; i < dG_List.RowCount; i++)

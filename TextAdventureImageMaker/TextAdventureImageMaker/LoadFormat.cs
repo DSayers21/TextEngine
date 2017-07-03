@@ -30,7 +30,7 @@ namespace TextAdventureImageMaker
                 values[i] = values[i].Trim();
                 Console.WriteLine(values[i]);
             }
-            Hold.LoadFormatPub(Convert.ToInt32(tb_Height.Text), Convert.ToInt32(tb_Width.Text), values);
+            //Hold.LoadFormatPub(Convert.ToInt32(tb_Height.Text), Convert.ToInt32(tb_Width.Text), values);
         }
 
         private void LoadFormat_Load(object sender, EventArgs e)

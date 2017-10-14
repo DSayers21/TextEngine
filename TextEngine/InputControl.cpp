@@ -264,6 +264,9 @@ namespace TxtEgn
 					rem += InputS[i]; //Add the current character to the back of rem
 			}
 		}
+		if(rem.size() > 0)
+			vect.push_back(stoi(rem));
+		
 		//Return the populated vector of ints
 		return vect;
 	}
